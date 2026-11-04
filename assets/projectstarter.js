@@ -28,7 +28,7 @@ const safeString=(v,max=250)=>typeof v==='string'?v.slice(0,max):'';
 const limitNumber=(s,max)=>{const n=Number(s);return Number.isFinite(n)&&n>=0&&n<=max?n:NaN};
 function totals(){
  let subtotal=0,invalid=false;
- for(const c of state.costs){if(!(c.item||'').trim())continue;const q=limitNumber(c.qty,1000000),u=limitNumber(c.unit,1e12);if(!Number.isFinite(q)||!Number.isFinite(u)){invalid=true;continue}subtotal+=q*u;}
+ for(const c of state.costs){if(!(c.item||'').trim()){if(String(c.qty||'1')!=='1'||String(c.unit||'0')!=='0')invalid=true;continue}const q=limitNumber(c.qty,1000000),u=limitNumber(c.unit,1e12);if(!Number.isFinite(q)||!Number.isFinite(u)){invalid=true;continue}subtotal+=q*u;}
  const contingency=limitNumber(state.contingency,50),funding=limitNumber(state.funding,1e15);
  if(!Number.isFinite(contingency)||!Number.isFinite(funding)||subtotal>1e15)invalid=true;
  const reserve=subtotal*(Number.isFinite(contingency)?contingency:0)/100,grand=subtotal+reserve;
@@ -180,6 +180,20 @@ function summary(){
  T('total')+': '+(b.invalid?'—':money(b.grand)),T('gap')+': '+(b.invalid?'—':money(b.gap)),
  T('proposalDisclaimer')].join('\n\n');
 }
+const siraiTemplates={
+ kitchen:{name:'Community kitchen (planning draft)',category:'community',problem:'Local households may need coordinated access to communal meals. Confirm current needs and capacity with participants.',people:'Households that choose to participate; avoid collecting names or sensitive information here.',action:'Identify available food, safe cooking capacity, volunteers and a locally agreed distribution approach.',success:'Track available meal portions and anonymous feedback; do not promise quantities before verification.',voice:'Agree decisions with local participants and people responsible for cooking and distribution.',consult:'Consult local organizers and intended participants before agreeing on a plan.',inclusion:'Consider people who face barriers to receiving meals; avoid recording identifying details.'},
+ water:{name:'Shared water-point coordination (planning draft)',category:'community',problem:'Shared access to water may be limited or unpredictable; verify source availability locally.',people:'Participating households, represented anonymously.',action:'Identify general capacity and agree flexible collection arrangements, only when locally safe.',success:'Review whether groups understand allocations and can adapt when access changes.',voice:'Let participating households review the plan.',consult:'Consult users and people responsible for the water source.',inclusion:'Consider accessibility and differing household needs without collecting private information.'},
+ generator:{name:'Shared generator coordination (planning draft)',category:'energy',problem:'Electricity availability and fuel supply can vary, affecting shared essential loads.',people:'Participants choosing to share essential electricity access.',action:'List essential loads, estimate operating costs and agree responsibilities before considering any electrical work.',success:'Verify budget assumptions and fair access through regular reviews.',voice:'Agree transparent decisions with participants.',consult:'Consult an experienced electrician for safety and local participants for priorities.',inclusion:'Prioritize essential needs while avoiding public disclosure of sensitive locations or equipment.'}
+};
+document.getElementById('sirai-project-template')?.addEventListener('change',event=>{
+ const template=siraiTemplates[event.target.value];if(!template)return;
+ if(!window.confirm('Replace the current planning draft with this example? / هل تريد استبدال المسودة الحالية؟')){event.target.value='';return}
+ state={...defaultState(),...template};
+ syncFields();renderLanguage();setStep(0);
+ message('Example loaded. Enter verified local details and review safety before using.');
+ event.target.value='';
+});
+
 function bind(){
  document.querySelectorAll('[data-field]').forEach(el=>{
   const key=el.dataset.field;
