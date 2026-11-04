@@ -33,5 +33,6 @@ noSaved:'No draft has been saved on this device.',
 confirmLoad:'Replace the current entries with the draft saved on this device?',
 budgetInvalid:'Check all cost, quantity and funding inputs.'
 });
+Object.assign(en,{"fundingNotesLabel":"How might you cover the remaining costs?","fundingNotesHelp":"Separate secured funding from ideas that are still uncertain."});
 window.PS_LOCALES={en};
 })();
