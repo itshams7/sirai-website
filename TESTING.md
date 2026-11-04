@@ -5,7 +5,7 @@
 ## 1. Offline functionality (real-device checks required)
 
 1. On an HTTPS connection, visit the homepage and each of WaterShare, ProjectStarter and TaqaWise. Stay online until files finish loading.
-2. Confirm the browser has a controlling service worker and that `sirai-offline-v2-20261104` exists in Cache Storage (where browser developer tools are available).
+2. Confirm the browser has a controlling service worker and that `sirai-offline-v3-20261104` exists in Cache Storage (where browser developer tools are available).
 3. Switch the phone into airplane mode. Open each previously loaded page, change inputs, calculate results, move between steps and download/export local files.
 4. Verify that all four language options function offline after the initial precache. Photographs from Unsplash may be unavailable. Feedback submissions require connectivity.
 5. On Android Chrome, test browser install / Add to Home Screen if offered. On iPhone Safari, test Share > Add to Home Screen. Do not claim automatic installation until observed.
@@ -16,9 +16,9 @@
 
 - Generate a WaterShare allocation; use Share. Confirm no times, personal names, location or water-point identifiers are included by default.
 - Export a detailed WaterShare CSV; verify the safety warning appears before downloading sensitive schedule times.
-- Create a ProjectStarter draft and share; verify explicit location and team details are not included by default. **Review free-text fields manually** because people can write sensitive details there.
+- Create a ProjectStarter draft and share. Confirm the editable review dialog opens with a text preview, edits are preserved, cancellation sends nothing, and location/team fields are excluded. **Review free-text fields manually** because people can write sensitive details there.
 - Generate a TaqaWise plan; verify the shared summary contains energy calculations, not contact/location fields.
-- Try the native share sheet on Android and iOS. If unavailable, verify the clipboard fallback and paste into a draft WhatsApp/SMS message **without sending** during testing.
+- Verify the editable review dialog works with Arabic text and both phone orientations. Try the native share sheet on Android and iOS. If unavailable, verify the clipboard fallback and paste into a draft WhatsApp/SMS message **without sending** during testing.
 - Never include identifiable vulnerable persons, water-point coordinates, predictable travel times or unsafe resource inventories in shared examples.
 
 ## 3. Technical scenarios
