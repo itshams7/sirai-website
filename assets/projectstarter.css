@@ -7,3 +7,12 @@ html[dir=rtl] .ps-step{text-align:right}html[dir=rtl] .ps-proposal-table th{text
 @media(max-width:600px){.ps-hero h1{font-size:52px}.ps-hero-title{font-size:25px}.ps-hero-description{font-size:14px}.ps-hero-art{height:195px}.ps-intro{padding:63px 0}.ps-intro-grid{grid-template-columns:1fr;gap:10px}.ps-intro p{font-size:15px}.ps-workspace-section{padding:65px 0}.ps-form-grid,.ps-repeat-grid{grid-template-columns:1fr}.ps-tab{padding:23px 18px 5px}.ps-panel-header h3{font-size:27px}.ps-repeat{padding:14px}.ps-subheading{align-items:start;flex-direction:column}.ps-add{align-self:flex-start}.ps-repeat-grid .full{grid-column:auto}.ps-bottom-controls{padding:19px 17px;gap:8px}.ps-tools{order:3;flex-basis:100%;justify-content:space-between}.ps-message{padding:0 18px 15px}.ps-proposal{padding:18px}.ps-proposal-header{flex-direction:column}.ps-export .btn{width:100%}.ps-footer-callout .container{flex-direction:column;align-items:start}.ps-footer-callout{padding:61px 0}.ps-intro h2{font-size:35px}}
 @media(prefers-reduced-motion:reduce){.ps *{transition:none!important}html{scroll-behavior:auto!important}}
 @media print{.site-header,.site-footer,.ps-hero,.ps-meta,.ps-intro,.ps-workspace-heading,.ps-sidebar,.ps-bottom-controls,.ps-footer-callout,.ps-export,.ps-panel-header,.ps-message,.ps-privacy,.ps-quality,.ps-explain{display:none!important}.ps-workspace-section{padding:0!important;background:white!important}.ps-layout,.ps-main{display:block!important;border:0!important;box-shadow:none!important}.ps-tab{display:none!important}.ps-preview-tab{display:block!important;padding:0!important;min-height:0!important}.ps-proposal{padding:0!important;border:0!important}.ps-proposal-table{font-size:10px!important}.ps-proposal-block{break-inside:avoid}.ps-proposal-table tr{break-inside:avoid}body{background:white!important}}
+
+/* Ensure the printable proposal is visible even when another step is active. */
+@media print{
+.ps .ps-preview-tab[hidden]{display:block!important}
+.ps .ps-preview-tab[hidden] .ps-proposal{display:block!important}
+.ps .ps-proposal{display:block!important}
+.ps .ps-workspace-section{display:block!important}
+.ps .ps-proposal-header{display:flex!important}
+}
