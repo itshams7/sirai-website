@@ -218,6 +218,19 @@ function bind(){
  });
  $('ps-download').addEventListener('click',download);
  $('ps-print').addEventListener('click',()=>{renderPreview();window.print()});
+ $('ps-share').addEventListener('click',()=>{
+  const b=totals();
+  const draft=[
+   'SIRAI ProjectStarter | DRAFT / مسودة',
+   'Community project / مشروع مجتمعي: '+(state.name||'Untitled'),
+   'Planned activity / النشاط المخطط: '+state.action,
+   'Expected result / النتيجة المتوقعة: '+state.success,
+   'Estimated cost / التكلفة التقديرية: '+(b.invalid?'Needs checking':money(b.grand)),
+   'Review with local participants. No funding or SIRAI endorsement is implied.',
+   'Remove all identifying or sensitive details before sharing.'
+  ].join('\n');
+  window.SIRAI_SHARE?.share(draft);
+ });
  $('ps-copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText(summary());message(T('copied'))}catch(e){message(T('copyFailed'))}});
  document.querySelectorAll('[data-lang-select]').forEach(el=>el.addEventListener('change',renderLanguage));
  window.addEventListener('beforeprint',renderPreview);
