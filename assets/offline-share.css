@@ -22,3 +22,9 @@
 .sirai-preset-control select{display:block;width:100%;max-width:610px;min-height:46px;border:1px solid #a8c4b0;background:#fff;border-radius:8px;padding:10px 12px;color:#244436}
 .sirai-preset-control p{font-size:12px;line-height:1.6;margin:9px 0 0;color:#4e6756}
 .sirai-preset-control select:focus-visible{outline:3px solid #d4ad6c;outline-offset:2px}
+
+.sirai-prelaunch-guide{background:#eff3e9;border-bottom:1px solid #d5e2d4}
+.sirai-prelaunch-inner{display:grid;grid-template-columns:minmax(185px,.34fr) 1fr;gap:22px;align-items:center;padding:20px 0}
+.sirai-prelaunch-inner strong{color:#1c4c37;font-size:14px;line-height:1.4}
+.sirai-prelaunch-inner p{color:#52695a;font-size:12px;line-height:1.7;margin:0}
+@media(max-width:700px){.sirai-prelaunch-inner{grid-template-columns:1fr;gap:6px;padding:16px 0}.sirai-offline-indicator{position:fixed;z-index:50;inset:auto 12px 12px auto;box-shadow:0 6px 22px rgba(2,36,17,.22)}}
