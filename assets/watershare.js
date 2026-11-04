@@ -83,6 +83,7 @@ function rowsForCSV(){
 function csvEscape(value){return '"'+String(value).replaceAll('"','""')+'"'}
 function download(){
  if(!current)return;
+ if(!window.confirm('This CSV includes collection times. Store it privately and only share with participants when safe. Continue? / يحتوي الجدول على أوقات الجمع. احتفظ به بشكل خاص. هل تريد المتابعة؟'))return;
  const content='\uFEFF'+rowsForCSV().map(row=>row.map(csvEscape).join(',')).join('\r\n');
  const url=URL.createObjectURL(new Blob([content],{type:'text/csv;charset=utf-8'}));
  const a=document.createElement('a');a.href=url;a.download='SIRAI_WaterShare_Draft_Schedule.csv';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),500);
@@ -93,7 +94,7 @@ function summary(){
  'SIRAI WaterShare | '+t('summaryDraft'),
  t('households')+': '+p.households,t('litres')+': '+p.litres+' L',
  t('daily')+': '+p.total+' L',t('windows')+': '+p.windows,
- ...p.rows.map(g=>t('window')+' '+g.number+': '+g.start+'–'+g.end+', HH-'+String(g.from).padStart(3,'0')+'–HH-'+String(g.to).padStart(3,'0')+', '+g.volume+' L'),
+ ...p.rows.map(g=>t('window')+' '+g.number+': HH-'+String(g.from).padStart(3,'0')+'–HH-'+String(g.to).padStart(3,'0')+', '+g.volume+' L'),
  t('summaryCaution')].join('\n');
 }
 async function copy(){
