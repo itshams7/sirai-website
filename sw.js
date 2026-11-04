@@ -1,5 +1,5 @@
 /* SIRAI pre-launch offline shell. Does not cache personal drafts or feedback submissions. */
-const VERSION='sirai-offline-v3-20261104';
+const VERSION='sirai-offline-v4-20261104';
 const ROOT=new URL('./',self.registration.scope).pathname;
 const ASSETS=[
  'index.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html',
@@ -37,13 +37,15 @@ self.addEventListener('fetch',event=>{
  if(request.mode==='navigate'){
   event.respondWith((async()=>{
    const cache=await caches.open(VERSION);
+   const controller=new AbortController();
+   const timeout=setTimeout(()=>controller.abort(),4500);
    try{
-    const response=await fetch(request);
+    const response=await fetch(request,{signal:controller.signal});
     if(response.ok&&response.type==='basic')await cache.put(cacheKey,response.clone());
     return response;
    }catch(error){
     return await cache.match(cacheKey)||Response.error();
-   }
+   }finally{clearTimeout(timeout)}
   })());
   return;
  }
