@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 330" role="img" aria-label="An idea becoming a structured community project plan">
+  <defs>
+    <linearGradient id="ps-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eaf1e6"/>
+      <stop offset="1" stop-color="#c8ddce"/>
+    </linearGradient>
+    <linearGradient id="ps-paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf7"/>
+      <stop offset="1" stop-color="#edf5eb"/>
+    </linearGradient>
+    <linearGradient id="ps-idea" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4c8c69"/>
+      <stop offset="1" stop-color="#1d513d"/>
+    </linearGradient>
+    <pattern id="ps-grid" width="23" height="23" patternUnits="userSpaceOnUse">
+      <path d="M23 0H0V23" fill="none" stroke="#7daa91" stroke-width=".7" opacity=".25"/>
+      <circle cx="0" cy="0" r="1.2" fill="#719a7f" opacity=".28"/>
+    </pattern>
+    <filter id="ps-shadow" x="-30%" y="-30%" width="170%" height="170%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#194b38" flood-opacity=".13"/>
+    </filter>
+  </defs>
+  <rect width="540" height="330" fill="url(#ps-bg)"/>
+  <rect width="540" height="330" fill="url(#ps-grid)"/>
+  <circle cx="504" cy="12" r="173" fill="none" stroke="#fbfff6" stroke-width="1.2" opacity=".68"/>
+  <circle cx="504" cy="12" r="127" fill="none" stroke="#fbfff6" stroke-width="1.2" opacity=".48"/>
+  <circle cx="19" cy="338" r="153" fill="#a9cdb4" opacity=".23"/>
+  <path d="M29 269C112 290 156 243 176 201" fill="none" stroke="#39765a" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" opacity=".55"/>
+  <path d="M380 227C421 218 441 229 463 252" fill="none" stroke="#39765a" stroke-width="2" stroke-dasharray="3 9" stroke-linecap="round" opacity=".55"/>
+
+  <!-- The spark: a community idea -->
+  <g filter="url(#ps-shadow)">
+    <circle cx="112" cy="179" r="61" fill="#f5faf0" stroke="#83b294" stroke-width="1.5"/>
+    <circle cx="112" cy="179" r="48" fill="url(#ps-idea)"/>
+  </g>
+  <g stroke="#f5efce" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M99 177a14 14 0 1 1 26 0c-2 4-6 7-7 12h-12c-1-5-5-8-7-12Z"/>
+    <path d="M106 195h12M108 201h8M112 145v-8M85 156l-6-6M139 156l6-6M80 178h-8M144 178h8"/>
+  </g>
+  <g fill="#dbbf80">
+    <circle cx="101" cy="170" r="3"/>
+    <circle cx="122" cy="171" r="2.2"/>
+  </g>
+  <circle cx="175" cy="125" r="6.5" fill="#e2c58d" stroke="#f8faef" stroke-width="2"/>
+
+  <!-- The plan: a checklist, task lines, and a visible progress path -->
+  <g filter="url(#ps-shadow)">
+    <rect x="193" y="39" width="222" height="263" rx="17" fill="url(#ps-paper)" stroke="#9cbea5" stroke-width="1.8"/>
+    <rect x="211" y="58" width="186" height="48" rx="11" fill="#dfece0"/>
+    <rect x="224" y="73" width="27" height="18" rx="5" fill="#386e52"/>
+    <path d="m231 82 5 5 9-10" stroke="#fff8e7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <rect x="263" y="73" width="109" height="5" rx="2.5" fill="#477e5c"/>
+    <rect x="263" y="84" width="72" height="4" rx="2" fill="#8fb7a0"/>
+    <path d="M222 119H386" stroke="#d8e7da"/>
+    <g>
+      <rect x="220" y="131" width="25" height="25" rx="7" fill="#467f5d"/>
+      <path d="m227 143 5 5 8-9" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="259" y="134" width="111" height="6" rx="3" fill="#47775d"/>
+      <rect x="259" y="146" width="81" height="4" rx="2" fill="#b3cbb8"/>
+
+      <rect x="220" y="170" width="25" height="25" rx="7" fill="#467f5d"/>
+      <path d="m227 182 5 5 8-9" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="259" y="173" width="103" height="6" rx="3" fill="#47775d"/>
+      <rect x="259" y="185" width="67" height="4" rx="2" fill="#b3cbb8"/>
+
+      <rect x="220" y="209" width="25" height="25" rx="7" fill="#f4ead1" stroke="#c1a675" stroke-width="1.4"/>
+      <circle cx="232.5" cy="221.5" r="4.2" fill="#d1ac67"/>
+      <rect x="259" y="212" width="96" height="6" rx="3" fill="#77977e"/>
+      <rect x="259" y="224" width="119" height="4" rx="2" fill="#b3cbb8"/>
+    </g>
+    <rect x="222" y="258" width="157" height="7" rx="3.5" fill="#d2e3d4"/>
+    <rect x="222" y="258" width="104" height="7" rx="3.5" fill="#5c9c72"/>
+    <circle cx="329" cy="261.5" r="8.5" fill="#f6f3de" stroke="#5c9c72" stroke-width="2"/>
+    <circle cx="329" cy="261.5" r="3.3" fill="#438d64"/>
+  </g>
+
+  <!-- The outcome: the idea becomes a completed action -->
+  <g filter="url(#ps-shadow)">
+    <circle cx="437" cy="252" r="42" fill="#fffaf0" stroke="#92b59a" stroke-width="1.6"/>
+    <circle cx="437" cy="252" r="30" fill="#e2efe0"/>
+  </g>
+  <g fill="none" stroke="#2c6c4b" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M428 265V238"/>
+    <path d="M429 238h25l-6 9 6 9h-25"/>
+    <path d="m431 247 4 4 8-9" stroke="#bd9150" stroke-width="2.8"/>
+  </g>
+  <circle cx="461" cy="194" r="3.3" fill="#bd955c"/>
+  <circle cx="483" cy="222" r="2.5" fill="#4b8662"/>
+  <path d="m456 136 3-8 3 8 8 3-8 3-3 8-3-8-8-3Z" fill="#c2a16a" opacity=".8"/>
+</svg>
