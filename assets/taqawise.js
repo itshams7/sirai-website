@@ -77,6 +77,19 @@ function addItem(){
  model.items.push({...preset,id:nextId++,name:T(preset.key).split(' · ')[0]});
  renderItems();refresh();showMessage('');
 }
+function renderBreakdown(data){
+ const host=$('tq-breakdown-bars');host.replaceChildren();
+ if(!data.valid||!data.rows.length||data.daily<=0){host.appendChild(el('p',T('noLoads'),'tq-breakdown-empty'));return}
+ const ranked=[...data.rows].sort((a,b)=>b.energy-a.energy).slice(0,6);
+ for(const row of ranked){
+  const item=el('div',undefined,'tq-breakdown-row'),top=el('div',undefined,'tq-breakdown-top');
+  top.appendChild(el('span',row.name));top.appendChild(el('strong',number(row.energy/data.daily*100,0)+'% · '+wh(row.energy)));
+  item.appendChild(top);
+  const track=el('div',undefined,'tq-breakdown-track'),fill=el('span');
+  fill.style.width=Math.max(0,Math.min(100,row.energy/data.daily*100))+'%';
+  track.appendChild(fill);item.appendChild(track);host.appendChild(item);
+ }
+}
 function calculateText(data){
  $('tq-daily').textContent=data.valid?kilowatt(data.daily):'—';
  $('tq-connected').textContent=data.valid?watt(data.connected):'—';
@@ -84,6 +97,8 @@ function calculateText(data){
  $('tq-essential-day').textContent=data.valid?kilowatt(data.essentialDaily):'—';
  $('tq-runtime').textContent=data.valid&&data.runtime!==null?hours(data.runtime):'—';
  $('tq-needed').textContent=data.valid&&data.required!==null?wh(data.required):'—';
+ $('tq-all-runtime').textContent=data.valid&&data.usable!==null&&data.connected>0?hours(data.usable/data.connected):'—';
+ $('tq-priority-runtime').textContent=data.valid&&data.runtime!==null?hours(data.runtime):'—';
  $('tq-solar-energy').textContent=data.valid?kilowatt(data.daily):'—';
  $('tq-pv').textContent=data.valid&&data.pv!==null?watt(data.pv):'—';
  $('tq-pv-margin').textContent=data.valid&&data.pv!==null?watt(data.pv*1.25):'—';
@@ -120,7 +135,7 @@ function report(data){
  host.appendChild(el('p',T('reportLimit'),'tq-report-notes'));
 }
 function refresh(){
- const data=getData();calculateText(data);if(step===3){if(data.valid)report(data);else $('tq-report').replaceChildren(el('p',T('invalid')))}
+ const data=getData();calculateText(data);renderBreakdown(data);if(step===3){if(data.valid)report(data);else $('tq-report').replaceChildren(el('p',T('invalid')))}
 }
 function go(n){
  step=Math.min(3,Math.max(0,n));
