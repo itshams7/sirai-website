@@ -175,7 +175,7 @@ function download(){
 function summary(){
  const b=totals();return [
  'SIRAI / PROJECTSTARTER',T('draft'),state.name||T('untitled'),
- T('areaLabel')+': '+state.area,T('problemLabel')+': '+state.problem,T('peopleLabel')+': '+state.people,
+ T('problemLabel')+': '+state.problem,T('peopleLabel')+': '+state.people,
  T('actionLabel')+': '+state.action,T('successLabel')+': '+state.success,T('voiceLabel')+': '+state.voice,
  T('total')+': '+(b.invalid?'—':money(b.grand)),T('gap')+': '+(b.invalid?'—':money(b.gap)),
  T('proposalDisclaimer')].join('\n\n');
