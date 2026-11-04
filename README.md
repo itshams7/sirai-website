@@ -49,12 +49,30 @@ All entries are processed in the browser. TaqaWise does not submit the household
 
 https://itshams7.github.io/sirai-website/taqawise.html
 
+### Community Feedback Center
+
+SIRAI's dedicated feedback page accepts suggestions, issue reports, translation feedback, usability concerns and practical experiences about the site or three resources.
+
+- HTML form works with standard POST to the user-configured Formspree endpoint.
+- JavaScript enhances submission with in-page status, accessible errors, and localized messages.
+- Required: resource, feedback category, detailed message, and acknowledgment of external processing.
+- Optional: steps to reproduce, interface language, device/browser, and a reply email.
+- Anonymous submission supported; contact information is not required.
+- English, Arabic, French and German.
+- Shared site navigation and context-specific feedback links across the resources.
+- Reports are processed by Formspree, not stored in the public GitHub repository.
+
+https://itshams7.github.io/sirai-website/feedback.html
+
+The endpoint is configured by the owner. Do not submit fake test reports; use a clearly labeled genuine test and check both the dashboard and notification email.
+
 ## Structure
 
 - `index.html`: main SIRAI website
 - `water-toolkit.html`: WaterShare
 - `projectstarter.html`: ProjectStarter
 - `taqawise.html`: TaqaWise
+- `feedback.html`: SIRAI Community Feedback Center
 - `assets/`: design, functionality, languages, and founder photo
 
 ## Status and accuracy
