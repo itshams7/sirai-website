@@ -33,11 +33,28 @@ Project entries are processed in the user's browser. The tool does not submit pr
 
 https://itshams7.github.io/sirai-website/projectstarter.html
 
+### TaqaWise (Resource 003)
+
+A free multilingual household electricity planning tool.
+
+- Appliance-by-appliance rated wattage, count, and daily effective operating hours
+- Live daily energy and connected-load totals, with per-appliance contribution bars
+- Optional prioritization of essential loads during outages
+- Illustrative battery runtime and nominal energy capacity for a chosen outage duration
+- Simplified solar PV power estimates using equivalent peak sun hours and a user-adjustable performance factor
+- Printable summary, appliance CSV export, and editable JSON draft import/export
+- English, Arabic (RTL), French and German
+
+All entries are processed in the browser. TaqaWise does not submit the household plan to SIRAI or save it persistently. Its calculations exclude startup currents, system protection, seasonal weather, battery aging and professional design constraints. It is not suitable for determining critical medical backup power or specifying equipment for installation.
+
+https://itshams7.github.io/sirai-website/taqawise.html
+
 ## Structure
 
 - `index.html`: main SIRAI website
 - `water-toolkit.html`: WaterShare
 - `projectstarter.html`: ProjectStarter
+- `taqawise.html`: TaqaWise
 - `assets/`: design, functionality, languages, and founder photo
 
 ## Status and accuracy
