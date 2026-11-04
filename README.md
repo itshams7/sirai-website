@@ -91,13 +91,13 @@ Resource-page image credits (the credits are maintained here rather than display
 
 The current GitHub Pages website is a **public testing build**, not a validated humanitarian service. The domain launch is pending.
 
-- A service-worker-based offline package caches the static pages, calculator code, translations and styles after successful initial loading. Photos and submitting feedback still require internet.
-- WaterShare, ProjectStarter and TaqaWise include native share-sheet / clipboard fallback with a review warning. Default WaterShare shares exclude precise collection times.
+- A service-worker-based offline package caches the static pages, calculator code, translations and styles after successful initial loading. Photos and submitting feedback still require internet. The offline homepage has an explicit fallback, and delayed network responses fall back to cached pages.
+- WaterShare, ProjectStarter and TaqaWise include native share-sheet / clipboard fallback with an editable review dialog so users can remove sensitive information before sharing. Default WaterShare shares exclude precise collection times.
 - TaqaWise includes example nominal batteries (12 V/200 Ah and 24 V/200 Ah lead-acid, 48 V/100 Ah lithium) with conservative illustrative loss assumptions. These are **not market surveys or equipment approvals**.
 - ProjectStarter includes hypothetical community kitchen, water-source coordination and generator planning templates.
 - The interface recognizes Arabic-language browsers and retains all four language options.
 - Added explicit privacy warnings for potentially sensitive plans. Sharing is optional; data are not uploaded by the sharing feature.
-- Corrections and actual usage validation remain necessary.
+- Static HTML and offline-package consistency checks are in the repository, along with GitHub Actions syntax checks. Real-device offline operation, installation behaviour, Arabic usability and local field validation still require testing.
 
 See [TESTING.md](TESTING.md) for real-device acceptance tests and the pending field-validation process. No partnership, adoption or implementation impact has been claimed.
 
