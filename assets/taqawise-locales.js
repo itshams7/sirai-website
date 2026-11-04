@@ -22,5 +22,6 @@ limit:'Maximum 40 appliances per plan.',
 confirmReset:'Reset your entries to the example appliances? Current unsaved changes will be lost.',
 resetDone:'Example plan restored.'
 });
+Object.assign(en,{"breakdownTitle":"Where does your daily electricity go?","breakdownNote":"A visual breakdown based on the operating hours and wattages you entered.","compareTitle":"Why prioritizing essentials matters","allRuntime":"All entered loads, continuously","priorityRuntime":"Only your selected essentials","compareNote":"Compares continuous rated loads, not real appliance duty cycles or equipment limits.","externalTitle":"For location-specific solar analysis","externalText":"For a more detailed grid-connected PV model, explore NLR PVWatts. It cannot replace local design, particularly for off-grid backup.","externalLink":"Explore PVWatts ↗"});
 window.TQ_LOCALES={en};
 })();
