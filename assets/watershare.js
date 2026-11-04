@@ -107,6 +107,19 @@ for(const k of keys)pick('ws-'+k).addEventListener('input',calculate);
 pick('ws-reset').addEventListener('click',reset);
 pick('ws-csv').addEventListener('click',download);
 pick('ws-copy').addEventListener('click',copy);
+pick('ws-share').addEventListener('click',()=>{
+ if(!current)return;
+ const p=current;
+ const lines=[
+ 'SIRAI WaterShare | DRAFT / مسودة',
+ 'Households / الأسر: '+p.households,
+ 'Total daily water / إجمالي المياه يومياً: '+p.total+' L',
+ 'Collection groups / مجموعات التوزيع: '+p.windows,
+ ...p.rows.map(g=>'Group '+g.number+' / المجموعة '+g.number+': '+g.count+' households, '+g.volume+' L'),
+ 'Times and locations are deliberately excluded for safety. Agree any details privately, only if safe.'
+ ];
+ window.SIRAI_SHARE?.share(lines.join('\n'));
+});
 pick('ws-print').addEventListener('click',printPlan);
 document.querySelectorAll('[data-lang-select]').forEach(el=>el.addEventListener('change',renderLabels));
 renderLabels();
