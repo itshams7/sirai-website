@@ -1,9 +1,9 @@
 /* SIRAI pre-launch offline shell. Does not cache personal drafts or feedback submissions. */
-const VERSION='sirai-offline-v4-20261104';
+const VERSION='sirai-offline-v5-palette-20261104';
 const ROOT=new URL('./',self.registration.scope).pathname;
 const ASSETS=[
  'index.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html',
- 'manifest.webmanifest','assets/favicon.svg','assets/styles.css',
+ 'manifest.webmanifest','assets/favicon.svg','assets/styles.css','assets/premium-palette.css',
  'assets/app.js','assets/offline-share.js','assets/offline-share.css',
  'assets/feedback.css','assets/feedback.js',
  'assets/ws-locales.js','assets/ws-ar.js','assets/ws-fr.js','assets/ws-de.js','assets/watershare.js',
