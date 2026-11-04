@@ -1,0 +1,133 @@
+/* SIRAI / Forest & Linen. Premium palette, November 2026.
+   Forest and beige own the visual hierarchy. Violet is an interaction accent.
+   The founder panel is deliberately monochrome with restrained neon lime. */
+:root{
+ --green:#123e30;--green2:#235743;--mint:#e6e9da;
+ --cream:#f3ede0;--paper:#fcf8ef;--ink:#182e25;
+ --muted:#5c685d;--line:#ded8c8;--orange:#c9ac7b;
+ --sirai-forest:#123e30;--sirai-deep:#0c2e24;
+ --sirai-beige:#f3ede0;--sirai-ivory:#fcf8ef;
+ --sirai-purple:#a56bff;--sirai-purple-deep:#6932bd;
+ --sirai-lime:#c4ff39;
+ --shadow:0 18px 48px rgba(14,42,31,.11);
+}
+body{background:var(--sirai-beige)}
+.site-header{background:rgba(243,237,224,.96);border-bottom-color:#d9d1bd}
+.brand-symbol{background:var(--sirai-forest)}
+.nav a:hover,.footer-links a:hover{color:var(--sirai-purple-deep)}
+.lang-toggle,.lang-select{border-color:#bdc5b3;background:#faf7ed;color:var(--sirai-forest)}
+.lang-toggle:hover{background:#e9e4d5}
+.hero,.page-hero,.quote-band{background:var(--sirai-forest)}
+.hero h1 em{color:#e7d1a5}
+.hero-lead,.page-hero p{color:#e5e4d5}
+.eyebrow,.hero .eyebrow{color:#e5d5b5}
+.eyebrow:before{background:var(--sirai-purple)}
+.status-strip,.light-section,.ws-banner,.ps-meta,.tq-strip,.sf-notice{background:#e9e4d5;border-color:#d9d2c0}
+.section-kicker,.number,.phase span,.mini-tag{color:#386449}
+.panel,.pillar,.phase{background:var(--sirai-ivory);border-color:#ded8c8}
+.feature-visual{background:var(--sirai-forest)}
+.btn-light,.ps-hero-link,.tq-primary-link,.sf-start{background:#f6ebd5;color:#173b2e}
+.btn-light:hover,.ps-hero-link:hover,.tq-primary-link:hover,.sf-start:hover{background:#fff9ec}
+.btn-green,.sf-inline-link{background:var(--sirai-forest);color:#fff}
+.btn-green:hover,.sf-inline-link:hover{background:#225841}
+.btn-ghost{border-color:rgba(246,235,213,.55)}
+.btn-outline{border-color:#8d9c8b}
+.site-footer{background:#0b2a21;color:#d8dfd3}
+.site-footer .footer-bottom{color:#b8c8b8}
+.hero-art .art-sun{background:#ebd0a2}
+.hero-art{background:linear-gradient(145deg,#477765,#143d31)}
+/* Purple marks interaction, never body text or broad surfaces. */
+:is(a,button,select,input,textarea):focus-visible{outline:3px solid var(--sirai-purple);outline-offset:3px}
+.btn-green:focus-visible,.btn-light:focus-visible{outline-color:var(--sirai-purple)}
+.hero-actions .btn-ghost:hover{border-color:var(--sirai-purple);box-shadow:inset 0 -2px 0 var(--sirai-purple)}
+.pillar:hover,.panel:hover{border-color:#c7b0e6}
+.resource-photo-frame>figcaption a:focus-visible{outline-color:var(--sirai-purple)}
+/* Consistent linen and forest across the specialist tool pages. */
+.ws-page,.ps,.tq,.sf{background:var(--sirai-beige);color:var(--sirai-forest)}
+.ws-hero,.ps-hero,.tq-hero,.sf-hero{
+ background:radial-gradient(circle at 84% 0%,rgba(71,116,86,.40),transparent 47%),
+ linear-gradient(130deg,#164635,#092b23);
+}
+.ws-planner-section,.ps-workspace-section,.tq-workspace-section,.sf-workspace{background:#eae5d9}
+.ps-intro,.tq-intro{background:var(--sirai-beige)}
+.ps-sidebar,.tq-sidebar{background:#113b2d;border-color:#325d47}
+.sf-form-wrap{background:var(--sirai-ivory);border-color:#dcd4c3}
+.ws-hero h1 span,.ps-hero h1 span,.tq-hero h1 span{color:#e7d0a0}
+.sf-overline,.ps-overline,.tq-kicker{color:#36684c}
+.sf-hero .sf-overline{color:#ead8b8}
+.ps-hero-dot,.ps-meta-dot,.tq-dot,.tq-strip-dot{background:var(--sirai-purple)}
+:is(.ps,.tq,.sf) :is(input,select,textarea):focus-visible{outline:2px solid var(--sirai-purple);outline-offset:2px}
+.sf-field :focus{border-color:var(--sirai-purple-deep);box-shadow:0 0 0 3px rgba(165,107,255,.17)}
+/* Founder: deliberately separate art direction. No forest/beige accents here. */
+section.founder-section{
+ background:#0b0c0c;
+ color:#f7f8f5;
+ border-top:1px solid #282c28;
+ border-bottom:1px solid #282c28;
+ position:relative;
+ isolation:isolate;
+}
+.founder-section:before{
+ content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+ background:radial-gradient(ellipse at 11% 15%,rgba(196,255,57,.055),transparent 35%);
+}
+.founder-section .founder-grid{gap:clamp(32px,6vw,82px)}
+.founder-section .founder-photo-shell.portrait-frame.premium-portrait{
+ border:1px solid #4b4f48;
+ background:#151717;
+ box-shadow:0 22px 60px rgba(0,0,0,.48);
+ border-radius:18px;
+}
+.founder-section .founder-photo-shell:before{
+ background:linear-gradient(180deg,rgba(255,255,255,.055),transparent 47%,rgba(0,0,0,.22));
+}
+.founder-section .founder-photo-accent{
+ width:76px;height:76px;border-radius:50%;
+ border:1px solid rgba(196,255,57,.73);
+ box-shadow:0 0 0 16px rgba(196,255,57,.06),0 0 0 32px rgba(196,255,57,.025);
+}
+.founder-section .founder-photo-shell.portrait-frame.premium-portrait .founder-badge{
+ background:rgba(14,16,15,.94);
+ border:1px solid #55594f;
+ box-shadow:0 12px 28px rgba(0,0,0,.35);
+ backdrop-filter:blur(13px);
+}
+.founder-section .founder-badge-top{color:var(--sirai-lime)!important}
+.founder-section .founder-badge strong{color:#f5f6f1}
+.founder-section .founder-side-note{
+ background:#181b19;border:1px solid #363c34;
+ box-shadow:none;color:#f4f6ef;
+}
+.founder-section .founder-side-note:before{background:var(--sirai-lime);width:2px}
+.founder-section .founder-side-kicker{color:#fff}
+.founder-section .founder-note-subline{color:#bbc3b7}
+.founder-section .founder-chip{background:#252a25;border:1px solid #444c41;color:#f5f6ef}
+.founder-section .founder-chip:first-child{border-color:#95bd37;color:var(--sirai-lime)}
+.founder-section .section-kicker{color:var(--sirai-lime);letter-spacing:.17em}
+.founder-section .founder-copy h2{color:#fff;max-width:690px}
+.founder-section .founder-name{color:#fff}
+.founder-section .founder-role{color:var(--sirai-lime)}
+.founder-section .founder-copy>p:not(.founder-disclosure){color:#d1d5ce}
+.founder-section .founder-copy .founder-disclosure{
+ background:#191d19;color:#c0c9bd;
+ border-inline-start:2px solid var(--sirai-lime);border-left:0;
+ border-radius:0 8px 8px 0;
+}
+.founder-section .founder-link{
+ color:var(--sirai-lime);
+ border-bottom:1px solid rgba(196,255,57,.65);
+}
+.founder-section .founder-link:hover{color:#fff;border-bottom-color:#fff}
+.founder-section .founder-link:focus-visible{outline-color:var(--sirai-lime)}
+body[dir=rtl] .founder-section .founder-copy .founder-disclosure{
+ border-inline-start:2px solid var(--sirai-lime);border-right:2px solid var(--sirai-lime);border-left:0;
+ border-radius:8px 0 0 8px;
+}
+@media(max-width:550px){
+ .founder-section .founder-grid{gap:30px}
+ .founder-section .founder-copy h2{font-size:clamp(32px,8vw,39px)}
+ .founder-section .founder-photo-accent{width:60px;height:60px}
+}
+@media(prefers-reduced-motion:reduce){
+ .founder-section *, .hero-actions .btn-ghost{transition:none!important}
+}
