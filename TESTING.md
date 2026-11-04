@@ -5,12 +5,12 @@
 ## 1. Offline functionality (real-device checks required)
 
 1. On an HTTPS connection, visit the homepage and each of WaterShare, ProjectStarter and TaqaWise. Stay online until files finish loading.
-2. Confirm the browser has a controlling service worker and that `sirai-offline-v3-20261104` exists in Cache Storage (where browser developer tools are available).
+2. Confirm the browser has a controlling service worker and that `sirai-offline-v4-20261104` exists in Cache Storage (where browser developer tools are available).
 3. Switch the phone into airplane mode. Open each previously loaded page, change inputs, calculate results, move between steps and download/export local files.
 4. Verify that all four language options function offline after the initial precache. Photographs from Unsplash may be unavailable. Feedback submissions require connectivity.
-5. On Android Chrome, test browser install / Add to Home Screen if offered. On iPhone Safari, test Share > Add to Home Screen. Do not claim automatic installation until observed.
-6. Clear browser website data and confirm the offline package no longer works until downloaded again. Repeat on an older Android phone with limited storage.
-7. After a subsequent website update, reconnect and check that an updated service worker installs and obsolete cache versions are deleted.
+5. Verify the homepage root URL (ending in /sirai-website/) works in airplane mode, not just /index.html.\n6. On Android Chrome, test browser install / Add to Home Screen if offered. On iPhone Safari, test Share > Add to Home Screen. Do not claim automatic installation until observed.
+7. Clear browser website data and confirm the offline package no longer works until downloaded again. Repeat on an older Android phone with limited storage.
+8. After a subsequent website update, reconnect and check that an updated service worker installs and obsolete cache versions are deleted.
 
 ## 2. Sharing tests
 
