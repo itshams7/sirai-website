@@ -44,3 +44,31 @@
 .founder-photo-shell.portrait-frame .founder-badge{z-index:4}
 @media(max-width:900px){.founder-photo-shell.portrait-frame{min-height:410px}}
 @media(max-width:550px){.founder-photo-shell.portrait-frame{min-height:380px}}
+
+/* Hero badge: the top curve previously clipped the flag and text. Position safely in the straight-sided lower portion. */
+.hero-art.sudan-hero-art .sudan-scene-label{
+  top:auto!important;
+  bottom:22px!important;
+  inset-inline-start:23px!important;
+  inset-inline-end:auto!important;
+  max-width:calc(100% - 46px);
+  box-sizing:border-box;
+  overflow:visible;
+  padding:10px 13px;
+  border-radius:9px;
+  font-size:11px;
+  letter-spacing:.065em;
+  background:rgba(16,49,39,.86);
+  box-shadow:0 8px 23px rgba(9,35,25,.13);
+}
+.hero-art.sudan-hero-art .sudan-scene-label span:last-child{display:inline-block;white-space:normal;line-height:1.4}
+.hero-art.sudan-hero-art .sudan-scene-footer{display:none!important}
+@media(max-width:550px){
+  .hero-art.sudan-hero-art .sudan-scene-label{
+    top:auto!important;bottom:17px!important;
+    inset-inline-start:18px!important;
+    max-width:calc(100% - 36px);
+    padding:8px 10px;
+    font-size:10px;
+  }
+}
