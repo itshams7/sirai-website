@@ -4,9 +4,9 @@ const page=document.querySelector('.ps');
 if(!page)return;
 const $=id=>document.getElementById(id);
 const STEP_COUNT=5, MAX_ROWS=30, MAX_FILE=300000;
-const FIELD_KEYS=['name','category','area','problem','people','action','success','voice','currency','funding','contingency','consult','inclusion'];
-const LIMITS={name:100,area:100,problem:700,people:450,action:650,success:500,voice:500,consult:600,inclusion:600};
-const defaultState=()=>({name:'',category:'education',area:'',problem:'',people:'',action:'',success:'',voice:'',currency:'SDG',funding:'0',contingency:'10',consult:'',inclusion:'',costs:[{item:'',qty:'1',unit:'0'}],roles:[{role:'',responsibility:''}],milestones:[{task:'',when:'',owner:''}],risks:[{risk:'',response:'',level:'medium'}]});
+const FIELD_KEYS=['name','category','area','problem','people','action','success','voice','currency','funding','contingency','fundingNotes','consult','inclusion'];
+const LIMITS={name:100,area:100,problem:700,people:450,action:650,success:500,voice:500,fundingNotes:450,consult:600,inclusion:600};
+const defaultState=()=>({name:'',category:'education',area:'',problem:'',people:'',action:'',success:'',voice:'',currency:'SDG',funding:'0',contingency:'10',fundingNotes:'',consult:'',inclusion:'',costs:[{item:'',qty:'1',unit:'0'}],roles:[{role:'',responsibility:''}],milestones:[{task:'',when:'',owner:''}],risks:[{risk:'',response:'',level:'medium'}]});
 let state=defaultState(),step=0;
 const lang=()=>['en','ar','fr','de'].includes(document.documentElement.lang)?document.documentElement.lang:'en';
 const T=k=>window.PS_LOCALES?.[lang()]?.[k]??window.PS_LOCALES?.en?.[k]??k;
@@ -48,7 +48,7 @@ function checks(){
  ['checkRoles',r&&filled(state.consult)],
  ['checkMilestones',m],
  ['checkRisks',risk],
- ['checkFunding',!totals().invalid&&state.costs.some(x=>filled(x.item))&&(totals().gap===0||filled(state.funding)&&Number(state.funding)>0)]
+ ['checkFunding',!totals().invalid&&state.costs.some(x=>filled(x.item))&&(totals().gap===0||filled(state.fundingNotes))]
  ];
 }
 function renderProgress(){
@@ -119,7 +119,7 @@ function proposal(){
  const budgetRows=state.costs.filter(x=>filled(x.item)).map(x=>[x.item,x.qty,x.unit,money(Number(x.qty)*Number(x.unit))]);
  if(budgetRows.length)budgetSection.appendChild(makeTable(['costDescription','quantity','unitCost','lineTotal'],budgetRows));
  else budgetSection.appendChild(text('p',T('unspecified')));
- const b=totals();budgetSection.appendChild(text('p',T('total')+': '+(b.invalid?'—':money(b.grand))+'   |   '+T('gap')+': '+(b.invalid?'—':money(b.gap)),'ps-budget-caption'));host.appendChild(budgetSection);
+ const b=totals();budgetSection.appendChild(text('p',T('total')+': '+(b.invalid?'—':money(b.grand))+'   |   '+T('gap')+': '+(b.invalid?'—':money(b.gap)),'ps-budget-caption'));host.appendChild(budgetSection);addBlock(host,'fundingNotesLabel',state.fundingNotes);
  const roleRows=state.roles.filter(x=>filled(x.role)||filled(x.responsibility)).map(x=>[x.role,x.responsibility]);
  const milestoneRows=state.milestones.filter(x=>filled(x.task)||filled(x.when)||filled(x.owner)).map(x=>[x.task,x.when,x.owner]);
  const riskRows=state.risks.filter(x=>filled(x.risk)||filled(x.response)).map(x=>[x.risk,T('risk'+(x.level||'medium').charAt(0).toUpperCase()+(x.level||'medium').slice(1)),x.response]);
