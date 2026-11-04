@@ -344,3 +344,28 @@ html[dir=rtl] .ws-critical{border-radius:12px 0 0 12px}
 @media(prefers-reduced-motion:reduce){
  .ps-resource-home-mark .resource-art-image,.tq-resource-home-icon .resource-art-image{transition:none}
 }
+
+
+/* WaterShare flagship: community water storage + scheduled collection illustration */
+.ws-resource-visual{isolation:isolate;background:#173e35}
+.ws-resource-visual::after{display:none}
+.ws-resource-visual .water-resource-art{
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ object-fit:cover;
+ object-position:center;
+ display:block;
+ z-index:0;
+ pointer-events:none;
+}
+.ws-resource-visual .tiny,.ws-resource-visual strong{
+ position:relative;
+ z-index:2;
+ text-shadow:0 2px 14px rgba(7,28,21,.4);
+}
+.ws-resource-visual .tiny{color:#d8e9da}
+@media(max-width:550px){
+ .ws-resource-visual .water-resource-art{object-position:56% center}
+}
