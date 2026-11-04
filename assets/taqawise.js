@@ -14,8 +14,8 @@ const template={
  pump:{key:'pPump',name:'Water pump',watts:600,qty:1,hours:1,essential:false},
  custom:{key:'pCustom',name:'Custom appliance',watts:60,qty:1,hours:3,essential:false}
 };
-const fresh=()=>({items:[{...template.led,id:1},{...template.fan,id:2},{...template.router,id:3}],settings:{battery:'2000',dod:'80',eff:'85',outage:'6',psh:'4.5',pr:'75'}});
-let model=fresh(),step=0,nextId=4;
+const fresh=()=>({items:[{...template.led,id:1},{...template.fan,id:2},{...template.router,id:3},{...template.tv,id:4}],settings:{battery:'2000',dod:'80',eff:'85',outage:'6',psh:'4.5',pr:'75'}});
+let model=fresh(),step=0,nextId=5;
 const locale=()=>['en','ar','fr','de'].includes(document.documentElement.lang)?document.documentElement.lang:'en';
 const T=k=>window.TQ_LOCALES?.[locale()]?.[k]??window.TQ_LOCALES?.en?.[k]??k;
 const number=(x,maxDecimals=1)=>new Intl.NumberFormat(locale(),{maximumFractionDigits:maxDecimals}).format(x);
@@ -170,7 +170,7 @@ function safeImport(doc){
  const settings={};for(const [key,min,max] of [['battery',100,1000000],['dod',10,100],['eff',40,100],['outage',.5,72],['psh',1,9],['pr',40,95]]){const value=String(doc.settings[key]??'');if(numeric(value,min,max)===null)throw Error(T('badFile'));settings[key]=value}
  return {items,settings}
 }
-function reset(){if(!confirm(T('confirmReset')))return;model=fresh();nextId=4;for(const input of document.querySelectorAll('[data-setting]'))input.value=model.settings[input.dataset.setting];renderLanguage();go(0);showMessage(T('resetDone'))}
+function reset(){if(!confirm(T('confirmReset')))return;model=fresh();nextId=5;for(const input of document.querySelectorAll('[data-setting]'))input.value=model.settings[input.dataset.setting];renderLanguage();go(0);showMessage(T('resetDone'))}
 for(const s of document.querySelectorAll('[data-setting]'))s.addEventListener('input',()=>{model.settings[s.dataset.setting]=s.value;refresh()});
 $('tq-add').addEventListener('click',addItem);
 document.querySelectorAll('[data-step]').forEach(s=>s.addEventListener('click',()=>go(Number(s.dataset.step))));
