@@ -177,6 +177,34 @@ document.querySelectorAll('[data-step]').forEach(s=>s.addEventListener('click',(
 $('tq-prev').addEventListener('click',()=>go(step-1));$('tq-next').addEventListener('click',()=>go(step+1));
 $('tq-reset').addEventListener('click',reset);
 $('tq-print').addEventListener('click',()=>{const d=getData();if(!d.valid){showMessage(T('invalid'));return}report(d);window.print()});
+$('tq-share').addEventListener('click',()=>{
+ const d=getData();if(!d.valid){showMessage(T('invalid'));return}
+ const lines=[
+  'SIRAI TaqaWise | DRAFT / مسودة',
+  'Daily demand / الاستهلاك اليومي: '+number(d.daily,0)+' Wh',
+  'Essential load / الأحمال الأساسية: '+number(d.essentialW,0)+' W',
+  'Battery nominal / سعة البطارية الاسمية: '+number(d.settings.battery,0)+' Wh',
+  'Estimated backup runtime / التشغيل التقديري: '+(d.runtime===null?'—':number(d.runtime,1)+' h'),
+  'Preliminary PV estimate / تقدير الطاقة الشمسية: '+(d.pv===null?'—':number(d.pv,0)+' W'),
+  'Not a solar installation design. Verify real battery health, inverter, heat, shading and local safety.'
+ ];
+ window.SIRAI_SHARE?.share(lines.join('\n'));
+});
+const batteryPresets={
+ gel12:{battery:'2400',dod:'50',eff:'80',pr:'65'},
+ gel24:{battery:'4800',dod:'50',eff:'80',pr:'65'},
+ lithium48:{battery:'4800',dod:'80',eff:'85',pr:'70'}
+};
+$('sirai-battery-preset')?.addEventListener('change',event=>{
+ const preset=batteryPresets[event.target.value];if(!preset)return;
+ for(const [key,value] of Object.entries(preset)){
+  model.settings[key]=value;
+  const input=document.querySelector('[data-setting="'+key+'"]');
+  if(input)input.value=value;
+ }
+ refresh();
+ showMessage('Example assumptions applied. Verify voltage, battery condition, chemistry and heat losses before purchasing.');
+});
 $('tq-csv').addEventListener('click',exportCsv);$('tq-json').addEventListener('click',exportJson);
 $('tq-import').addEventListener('click',()=>$('tq-import-file').click());
 $('tq-import-file').addEventListener('change',async event=>{
