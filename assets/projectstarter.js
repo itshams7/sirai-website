@@ -48,7 +48,7 @@ function checks(){
  ['checkRoles',r&&filled(state.consult)],
  ['checkMilestones',m],
  ['checkRisks',risk],
- ['checkFunding',!totals().invalid&&(totals().gap===0||filled(state.funding)&&Number(state.funding)>0)]
+ ['checkFunding',!totals().invalid&&state.costs.some(x=>filled(x.item))&&(totals().gap===0||filled(state.funding)&&Number(state.funding)>0)]
  ];
 }
 function renderProgress(){
@@ -195,6 +195,14 @@ function bind(){
  $('ps-save').addEventListener('click',()=>{
   try{localStorage.setItem('sirai-projectstarter-draft',JSON.stringify({format:'SIRAI-ProjectStarter-v1',project:state}));message(T('saved'))}
   catch(e){message(T('saveFailed'))}
+ });
+ $('ps-load').addEventListener('click',()=>{
+  try{
+    const saved=localStorage.getItem('sirai-projectstarter-draft');
+    if(!saved){message(T('noSaved'));return}
+    if(!confirm(T('confirmLoad')))return;
+    state=validateDraft(JSON.parse(saved));syncFields();renderLanguage();message(T('loaded'));
+  }catch(e){message(T('badFile'))}
  });
  $('ps-import').addEventListener('click',()=>$('ps-import-file').click());
  $('ps-import-file').addEventListener('change',async e=>{
