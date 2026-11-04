@@ -79,6 +79,8 @@ The endpoint is configured by the owner. Do not submit fake test reports; use a 
 
 The homepage and the three resource pages use different illustrative, real-world photographs. These images do not depict SIRAI projects or project beneficiaries.
 
+Homepage hero: an illustrative, real aerial photograph of Khartoum and the Nile at sunset, sourced from [an Unsplash-hosted photo of Khartoum](https://images.unsplash.com/photo-1608666052855-a7431e7f7c52), also [featured in a Sudan travel article](https://www.vizesizgezi.com/sudan). It is not a photograph of SIRAI activity or necessarily a depiction of current conditions.
+
 Resource-page image credits (the credits are maintained here rather than displayed as links beneath the hero images):
 
 - WaterShare: [mathieu gauzy, public water collection](https://unsplash.com/photos/woman-filling-water-bottles-at-a-public-fountain-ZPLO3bUNtFA)
