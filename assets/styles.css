@@ -406,3 +406,83 @@ html[dir=rtl] .ws-critical{border-radius:12px 0 0 12px}
  .ps-resource-home-mark .resource-art-image{object-position:center 55%}
  .tq-resource-home-icon .resource-art-image{object-position:center 48%}
 }
+
+
+/* Real photography on resource landing pages. Editorial treatment, no abstract overlays. */
+.ws-hero-art.resource-photo-frame,
+.ps-hero-art.resource-photo-frame,
+.tq-hero-art.resource-photo-frame{
+  position:relative;
+  display:block;
+  width:100%;
+  height:clamp(275px,29vw,365px);
+  max-width:none;
+  margin:0;
+  border:1px solid rgba(230,242,225,.25);
+  border-radius:20px;
+  overflow:hidden;
+  isolation:isolate;
+  background:#264c3b;
+  box-shadow:0 24px 46px rgba(5,24,16,.23);
+}
+.ws-hero-art.resource-photo-frame::before,
+.ws-hero-art.resource-photo-frame::after,
+.ps-hero-art.resource-photo-frame::before,
+.ps-hero-art.resource-photo-frame::after,
+.tq-hero-art.resource-photo-frame::before,
+.tq-hero-art.resource-photo-frame::after{display:none}
+.resource-photo-frame>img{
+  display:block;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+  object-position:center;
+  filter:saturate(.94) contrast(1.03);
+}
+.ws-hero-art.resource-photo-frame>img{object-position:48% 53%}
+.ps-hero-art.resource-photo-frame>img{object-position:53% 50%}
+.tq-hero-art.resource-photo-frame>img{object-position:50% 49%}
+.resource-photo-frame>figcaption{
+  position:absolute;
+  z-index:2;
+  inset-inline-start:0;
+  inset-inline-end:0;
+  inset-block-end:0;
+  padding:26px 16px 12px;
+  background:linear-gradient(transparent,rgba(9,24,19,.72));
+  color:#eff5ed;
+  font-size:10px;
+  line-height:1.5;
+  font-weight:550;
+  letter-spacing:.01em;
+}
+.resource-photo-frame>figcaption a{
+  color:#fff;
+  text-decoration:underline;
+  text-underline-offset:3px;
+  text-decoration-color:rgba(255,255,255,.5);
+}
+.resource-photo-frame>figcaption a:hover{color:#e5d4a7}
+.resource-photo-frame>figcaption a:focus-visible{outline:2px solid #e5d4a7;outline-offset:3px}
+@media(max-width:840px){
+  .ws-hero-art.resource-photo-frame,
+  .ps-hero-art.resource-photo-frame,
+  .tq-hero-art.resource-photo-frame{
+    height:clamp(235px,42vw,330px);
+    border-radius:16px;
+    max-width:540px;
+  }
+}
+@media(max-width:560px){
+  .ws-hero-art.resource-photo-frame,
+  .ps-hero-art.resource-photo-frame,
+  .tq-hero-art.resource-photo-frame{
+    height:245px;
+    border-radius:14px;
+  }
+  .ws-hero-art.resource-photo-frame>img{object-position:50% 50%}
+  .tq-hero-art.resource-photo-frame>img{object-position:48% 48%}
+}
