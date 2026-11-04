@@ -1,0 +1,6 @@
+(() => {
+const english={};
+document.querySelectorAll('[data-ws]').forEach(el=>{english[el.dataset.ws]=el.textContent.trim()});
+Object.assign(english,{invalid:'Check this input',invalidTime:'Enter a valid start time',tooManyWindows:'The number of windows cannot exceed participating households.',overlap:'Window starts must be spaced at least one full window apart.',pastMidnight:'The final window must finish before midnight.',notEntered:'Not entered',tankWarning:'The proposed daily volume is larger than one full tank. Refilling or additional storage would be needed; this tool cannot verify either.',supplyWarning:'Planned demand exceeds the daily supply you entered by',unknownWarning:'Daily supply or tank volume is unknown. Confirm actual availability before making a schedule.',verifyWarning:'These comparisons do not establish that the water will be available or safe.',csvWindow:'Window',csvTime:'Time',csvHousehold:'Household ID',csvLitres:'Planned litres',csvCollected:'Collected litres',csvNotes:'Notes',summaryDraft:'DRAFT PLANNING SUMMARY',summaryCaution:'Draft estimate only. Confirm supply, safety, access and fairness locally.',window:'Window',downloaded:'Schedule downloaded. Review it with participants.',copied:'Summary copied.',copyFailed:'Copy not available in this browser. Try the CSV download or print option.'});
+window.WS_LOCALES={en:english};
+})();
