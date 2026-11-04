@@ -87,6 +87,20 @@ Resource-page image credits (the credits are maintained here rather than display
 - ProjectStarter: [Giu Vicente, community planning workshop](https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-writing-on-a-piece-of-paper--ieXKEI1ivg)
 - TaqaWise: [Siwawut Phoophinyo, solar-panel installation](https://unsplash.com/photos/a-man-in-a-hardhat-working-on-a-solar-panel-JlhvFEVMwng)
 
+## Pre-launch improvements (November 2026)
+
+The current GitHub Pages website is a **public testing build**, not a validated humanitarian service. The domain launch is pending.
+
+- A service-worker-based offline package caches the static pages, calculator code, translations and styles after successful initial loading. Photos and submitting feedback still require internet.
+- WaterShare, ProjectStarter and TaqaWise include native share-sheet / clipboard fallback with a review warning. Default WaterShare shares exclude precise collection times.
+- TaqaWise includes example nominal batteries (12 V/200 Ah and 24 V/200 Ah lead-acid, 48 V/100 Ah lithium) with conservative illustrative loss assumptions. These are **not market surveys or equipment approvals**.
+- ProjectStarter includes hypothetical community kitchen, water-source coordination and generator planning templates.
+- The interface recognizes Arabic-language browsers and retains all four language options.
+- Added explicit privacy warnings for potentially sensitive plans. Sharing is optional; data are not uploaded by the sharing feature.
+- Corrections and actual usage validation remain necessary.
+
+See [TESTING.md](TESTING.md) for real-device acceptance tests and the pending field-validation process. No partnership, adoption or implementation impact has been claimed.
+
 ## Status and accuracy
 
 SIRAI is an initiative in development, not a registered NGO. Its resources are educational drafts and have not been validated as substitutes for local expert advice, participant consent, safeguarding or operational review. Earlier community activities completed personally by the founder predate SIRAI and must not be represented as SIRAI field projects.
