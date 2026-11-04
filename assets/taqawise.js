@@ -60,7 +60,7 @@ function renderItems(){
   for(const [key,label,type] of [['name','name','text'],['watts','watts','number'],['qty','qty','number'],['hours','dailyHours','number']]){
    const block=el('div',undefined,'tq-load-field');const lab=el('label',T(label));const input=el('input');
    const id='tq-item-'+item.id+'-'+key;input.id=id;lab.htmlFor=id;
-   input.type=type;input.value=String(item[key]);input.maxLength=key==='name'?80:undefined;
+   input.type=type;input.value=String(item[key]);if(key==='name')input.maxLength=80;
    if(type==='number'){input.min=key==='qty'?'1':'0';input.max=key==='watts'?'25000':key==='qty'?'100':'24';input.step=key==='hours'?'0.25':'1';input.inputMode='decimal'}
    input.addEventListener('input',()=>{item[key]=input.value;refresh()});
    block.appendChild(lab);block.appendChild(input);cols.appendChild(block);
@@ -137,7 +137,7 @@ function renderLanguage(){
 function downloadFile(name,data,mime){
  const blob=new Blob([data],{type:mime});const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),500);
 }
-const csvField=x=>'"'+String(x).replaceAll('"','""')+'"';
+const csvField=x=>{let s=String(x);if(/^[\\s]*[=+@\\-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"'};
 function exportCsv(){
  const d=getData();if(!d.valid||!d.rows.length){showMessage(T('invalid'));return}
  const rows=[[T('name'),T('watts'),T('qty'),T('dailyHours'),T('energy')+' (Wh)',T('essential')],...d.rows.map(r=>[r.name,r.watts,r.qty,r.hours,r.energy,r.essential?T('yes'):T('no')])];
