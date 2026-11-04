@@ -246,3 +246,17 @@ html[dir=rtl] .ws-critical{border-radius:12px 0 0 12px}
 @media(max-width:970px){.ws-workspace{grid-template-columns:1fr}.ws-guide-grid{grid-template-columns:repeat(2,1fr)}.ws-hero-grid{grid-template-columns:1fr .65fr;gap:22px}}
 @media(max-width:680px){.ws-hero-grid{grid-template-columns:1fr;padding:50px 0;gap:30px}.ws-hero h1{font-size:65px}.ws-hero-art{height:190px;max-width:380px}.ws-fields{grid-template-columns:1fr}.ws-card{padding:23px}.ws-stats{gap:9px}.ws-stats>div{padding:14px}.ws-stats span{min-height:43px}.ws-schedule-header{padding:18px;align-items:start;flex-direction:column}.ws-actions{padding:10px 18px 22px}.ws-actions .btn{flex:1}.ws-schedule-tip,.ws-action-message{padding-inline:18px}.ws-guide-grid{grid-template-columns:1fr}.ws-end .container{align-items:start;flex-direction:column}.ws-end{padding:55px 0}}
 @media print{.site-header,.site-footer,.ws-hero-art,.ws-banner,.ws-actions,.ws-reset,.ws-end,.ws-hero .btn{display:none!important}body,.ws-page{background:#fff!important;color:#000!important}.ws-hero{background:#fff!important;color:#000!important;padding:0!important}.ws-hero-grid{display:block;min-height:0;padding:10px 0}.ws-hero h1{font-size:38px;color:#000!important}.ws-hero h1 span{color:#333!important}.ws-hero h2,.ws-hero p{color:#111!important}.ws-hero p{font-size:12px}.ws-page section.section{padding:20px 0}.ws-workspace{display:block}.ws-card{box-shadow:none;border:1px solid #aaa;break-inside:avoid;margin:10px 0;padding:15px}.ws-field input{border:0;border-bottom:1px solid #aaa;border-radius:0;padding:3px;max-height:28px}.ws-guide-grid{grid-template-columns:1fr 1fr}.ws-schedule-card{break-inside:auto}.ws-table-scroll{overflow:visible}.ws-table{min-width:0;font-size:10px}.ws-table td,.ws-table th{padding:7px}.ws-critical{break-inside:avoid}}
+
+
+/* Second flagship resource, visually consistent with SIRAI's original layout */
+.ps-resource-wrap{margin-top:49px}
+.ps-resource-home{display:grid;grid-template-columns:minmax(190px,.38fr) minmax(0,.62fr);min-height:270px;background:#eef2e9;border:1px solid #d8e5d8;border-radius:17px;overflow:hidden;box-shadow:0 10px 35px rgba(24,61,43,.04)}
+.ps-resource-home-mark{background:#e2eadf;position:relative;padding:28px;display:flex;flex-direction:column;justify-content:space-between;color:#44785b;border-inline-end:1px solid #cedece;overflow:hidden}
+.ps-resource-home-mark:before{content:"";width:230px;height:230px;position:absolute;bottom:-115px;left:-65px;border:1px solid #8eb19b;border-radius:50%;box-shadow:0 0 0 36px rgba(91,145,109,.07),0 0 0 70px rgba(91,145,109,.045)}
+.ps-resource-home-mark span:first-child{font-size:13px;font-weight:850;letter-spacing:.15em;position:relative}
+.ps-resource-home-mark span:last-child{font-size:90px;font-weight:300;line-height:1;position:relative;color:#3e7657}
+.ps-resource-home-copy{padding:33px 42px;display:flex;flex-direction:column;align-items:start;justify-content:center}
+.ps-resource-home-copy h3{font-size:clamp(24px,2.9vw,35px);letter-spacing:-.045em;line-height:1.18;margin:0 0 13px;color:#234a39}
+.ps-resource-home-copy p{color:#5e7063;font-size:14px;line-height:1.75;max-width:610px;margin:0 0 18px}
+.ps-resource-home-copy .btn{padding:11px 17px;font-size:12px}
+@media(max-width:700px){.ps-resource-home{grid-template-columns:1fr}.ps-resource-home-mark{min-height:112px;flex-direction:row;align-items:center}.ps-resource-home-mark span:last-child{font-size:57px}.ps-resource-home-copy{padding:25px 22px}}
