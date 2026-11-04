@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 330" role="img" aria-label="Sunlight, solar panels, a home, and a backup battery">
+  <defs>
+    <linearGradient id="tq-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e5f0e8"/>
+      <stop offset="1" stop-color="#c7e2d3"/>
+    </linearGradient>
+    <linearGradient id="tq-panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#478e8b"/>
+      <stop offset="1" stop-color="#215f68"/>
+    </linearGradient>
+    <linearGradient id="tq-house" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fffdf2"/>
+      <stop offset="1" stop-color="#e4f0e4"/>
+    </linearGradient>
+    <pattern id="tq-grid" width="23" height="23" patternUnits="userSpaceOnUse">
+      <path d="M23 0H0V23" fill="none" stroke="#77a899" stroke-width=".7" opacity=".23"/>
+      <circle cx="0" cy="0" r="1.2" fill="#6b9d90" opacity=".24"/>
+    </pattern>
+    <filter id="tq-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="9" stdDeviation="11" flood-color="#174637" flood-opacity=".13"/>
+    </filter>
+  </defs>
+  <rect width="540" height="330" fill="url(#tq-bg)"/>
+  <rect width="540" height="330" fill="url(#tq-grid)"/>
+  <circle cx="508" cy="329" r="190" fill="none" stroke="#f7fff6" stroke-width="1.5" opacity=".66"/>
+  <circle cx="508" cy="329" r="144" fill="none" stroke="#f7fff6" stroke-width="1.5" opacity=".44"/>
+  <path d="M0 313C98 271 147 310 239 290s164-11 301 21v19H0Z" fill="#a3cfba" opacity=".31"/>
+
+  <!-- Sun, the primary source -->
+  <circle cx="103" cy="105" r="66" fill="#f4e6c2" opacity=".35"/>
+  <circle cx="103" cy="105" r="45" fill="#f6efd3" stroke="#d7b774" stroke-width="1.7"/>
+  <circle cx="103" cy="105" r="31" fill="#e7c47f"/>
+  <g stroke="#d6ad65" stroke-width="3" stroke-linecap="round">
+    <path d="M103 42v-11M103 178v-11M40 105H29M177 105h-11"/>
+    <path d="m59 61-8-8m96 96 8 8m-96-8-8 8m96-96 8-8"/>
+  </g>
+  <path d="M150 139Q173 161 193 167" fill="none" stroke="#b58f4f" stroke-width="2.5" stroke-dasharray="3 8" stroke-linecap="round" opacity=".75"/>
+
+  <!-- Home, drawn as a clean architectural pictogram -->
+  <g filter="url(#tq-shadow)">
+    <path d="m264 159 96-80 98 80v8H264Z" fill="#255941" stroke="#1c4b37" stroke-width="1.8" stroke-linejoin="round"/>
+    <path d="m280 157 80-65 82 65" fill="none" stroke="#91bea2" stroke-width="2.5" stroke-linecap="round"/>
+    <rect x="291" y="159" width="139" height="124" rx="8" fill="url(#tq-house)" stroke="#97b7a0" stroke-width="1.6"/>
+    <rect x="307" y="185" width="42" height="41" rx="7" fill="#d7ead9" stroke="#78a188" stroke-width="1.5"/>
+    <path d="M328 185v41M307 205.5h42" stroke="#78a188" stroke-width="1.4"/>
+    <rect x="365" y="202" width="44" height="81" rx="7" fill="#306c50"/>
+    <path d="M388 202v81" stroke="#609d78" stroke-width="1"/>
+    <circle cx="400" cy="246" r="3.5" fill="#edcf8e"/>
+    <path d="M303 282h115" stroke="#8db79a" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <!-- Light-on energy status, deliberately separate from equipment specifications -->
+  <circle cx="384" cy="128" r="18" fill="#e9d3a2" stroke="#f6efd9" stroke-width="4"/>
+  <path d="m386 115-10 15h9l-3 12 13-17h-9l5-10Z" fill="#285940"/>
+
+  <!-- Photovoltaic module -->
+  <g filter="url(#tq-shadow)">
+    <path d="m78 185 165-5 18 89-170 5Z" fill="#2b645e" stroke="#f4fff1" stroke-width="4" stroke-linejoin="round"/>
+    <path d="m85 192 152-5 15 76-154 4Z" fill="url(#tq-panel)"/>
+    <path d="M124 190l14 75M162 189l14 75M200 188l14 75" stroke="#c6e3d9" stroke-width="2.2" opacity=".8"/>
+    <path d="m92 217 152-4M97 242l151-4" stroke="#c6e3d9" stroke-width="2" opacity=".8"/>
+    <path d="m129 273-5 23m110-27 8 26" stroke="#285b46" stroke-width="5" stroke-linecap="round"/>
+    <path d="M106 299h145" stroke="#436f55" stroke-width="5" stroke-linecap="round" opacity=".65"/>
+    <path d="m96 193 53-2-44 73-7 0Z" fill="#d9f4e9" opacity=".12"/>
+  </g>
+
+  <!-- Energy transfer, routed to household and backup -->
+  <path d="M262 239c19 2 29-9 47-14" stroke="#ccab64" stroke-width="3" stroke-dasharray="4 7" fill="none" stroke-linecap="round"/>
+  <circle cx="269" cy="237" r="5" fill="#e3c17b" stroke="#f7f7ea" stroke-width="2"/>
+  <path d="M421 235c15-3 23 1 33 12" stroke="#ccab64" stroke-width="3" stroke-dasharray="4 7" fill="none" stroke-linecap="round"/>
+
+  <!-- Portable battery symbol, not a real-world battery design -->
+  <g filter="url(#tq-shadow)">
+    <circle cx="465" cy="259" r="44" fill="#fffaf0" stroke="#90b6a0" stroke-width="1.8"/>
+    <circle cx="465" cy="259" r="32" fill="#e1eee3"/>
+    <rect x="445" y="247" width="36" height="26" rx="5" fill="#2d7154"/>
+    <rect x="481" y="255" width="5" height="10" rx="2" fill="#2d7154"/>
+    <rect x="450" y="252" width="7" height="16" rx="2" fill="#e4ca8c"/>
+    <rect x="460" y="252" width="7" height="16" rx="2" fill="#e4ca8c"/>
+    <rect x="470" y="252" width="6" height="16" rx="2" fill="#a3c7a9"/>
+  </g>
+  <circle cx="509" cy="179" r="4" fill="#ba9b61"/>
+  <path d="m473 135 3-8 3 8 8 3-8 3-3 8-3-8-8-3Z" fill="#bfa06a" opacity=".9"/>
+</svg>
