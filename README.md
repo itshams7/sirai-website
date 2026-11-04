@@ -75,6 +75,16 @@ The endpoint is configured by the owner. Do not submit fake test reports; use a 
 - `feedback.html`: SIRAI Community Feedback Center
 - `assets/`: design, functionality, languages, and founder photo
 
+## Photography
+
+The homepage and the three resource pages use different illustrative, real-world photographs. These images do not depict SIRAI projects or project beneficiaries.
+
+Resource-page image credits (the credits are maintained here rather than displayed as links beneath the hero images):
+
+- WaterShare: [mathieu gauzy, public water collection](https://unsplash.com/photos/woman-filling-water-bottles-at-a-public-fountain-ZPLO3bUNtFA)
+- ProjectStarter: [Giu Vicente, community planning workshop](https://unsplash.com/photos/a-group-of-people-sitting-around-a-table-writing-on-a-piece-of-paper--ieXKEI1ivg)
+- TaqaWise: [Siwawut Phoophinyo, solar-panel installation](https://unsplash.com/photos/a-man-in-a-hardhat-working-on-a-solar-panel-JlhvFEVMwng)
+
 ## Status and accuracy
 
 SIRAI is an initiative in development, not a registered NGO. Its resources are educational drafts and have not been validated as substitutes for local expert advice, participant consent, safeguarding or operational review. Earlier community activities completed personally by the founder predate SIRAI and must not be represented as SIRAI field projects.
