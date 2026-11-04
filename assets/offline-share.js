@@ -14,23 +14,62 @@ function badge(status){
 }
 async function share(text){
  if(!text||!text.trim())return false;
- if(!window.confirm(l().review))return false;
- if(navigator.share){
-  try{await navigator.share({text});return true}catch(e){if(e.name==='AbortError')return false}
- }
- if(navigator.clipboard&&navigator.clipboard.writeText){
-  try{await navigator.clipboard.writeText(text);window.alert(l().copied);return true}catch(e){}
- }
- window.prompt(l().copyFailed,text);
- return false;
+ const loc=document.documentElement.lang;
+ const words={
+  en:['Review before sharing','Edit this summary to remove any names, locations, schedules, sensitive equipment details or identifying information. Your text stays on this device until you choose to share it.','Share or copy text','Cancel'],
+  ar:['راجع النص قبل المشاركة','يمكنك تعديل الملخص وحذف الأسماء والمواقع والمواعيد والتفاصيل الحساسة. لن يُشارك النص حتى تختار ذلك بنفسك.','مشاركة أو نسخ النص','إلغاء'],
+  fr:['Vérifier avant le partage','Modifiez ce résumé : retirez noms, lieux, horaires, équipements sensibles et données personnelles.','Partager ou copier','Annuler'],
+  de:['Vor dem Teilen prüfen','Bearbeiten Sie die Zusammenfassung. Entfernen Sie Namen, Orte, Zeiten, sensible Geräteangaben und personenbezogene Daten.','Teilen oder kopieren','Abbrechen']
+ }[loc]||['Review before sharing','Remove private names, locations, times and sensitive details before sharing.','Share or copy text','Cancel'];
+ const dialog=document.createElement('dialog');dialog.className='sirai-share-dialog';dialog.setAttribute('aria-label',words[0]);
+ const heading=document.createElement('h2');heading.textContent=words[0];
+ const warning=document.createElement('p');warning.textContent=words[1];
+ const input=document.createElement('textarea');input.value=text;input.rows=9;input.maxLength=6500;input.setAttribute('aria-label',words[0]);
+ const actions=document.createElement('div');actions.className='sirai-share-dialog-actions';
+ const cancel=document.createElement('button');cancel.type='button';cancel.textContent=words[3];
+ const confirm=document.createElement('button');confirm.type='button';confirm.textContent=words[2];confirm.className='sirai-share-button';
+ actions.append(cancel,confirm);dialog.append(heading,warning,input,actions);document.body.appendChild(dialog);
+ return await new Promise(resolve=>{
+  let settled=false;
+  function finish(ok){if(settled)return;settled=true;dialog.close();dialog.remove();resolve(ok)}
+  cancel.addEventListener('click',()=>finish(false));
+  dialog.addEventListener('cancel',e=>{e.preventDefault();finish(false)});
+  confirm.addEventListener('click',async()=>{
+   const content=input.value.trim();if(!content){input.focus();return}
+   if(navigator.share){
+    try{await navigator.share({text:content});finish(true);return}
+    catch(e){if(e.name==='AbortError'){finish(false);return}}
+   }
+   if(navigator.clipboard&&navigator.clipboard.writeText){
+    try{await navigator.clipboard.writeText(content);finish(true);return}catch(e){}
+   }
+   window.prompt(l().copyFailed,content);finish(false);
+  });
+  if(typeof dialog.showModal==='function')dialog.showModal();
+  else {dialog.setAttribute('open','');dialog.classList.add('sirai-dialog-fallback')}
+  input.focus();input.setSelectionRange(0,0);
+ });
 }
 window.SIRAI_SHARE={share,label:()=>l().share,safety:()=>l().safety};
-function update(){badge(navigator.onLine?'ready':'offline');document.querySelectorAll('[data-sirai-share]').forEach(b=>b.textContent=l().share);document.querySelectorAll('[data-sirai-safety]').forEach(b=>b.textContent=l().safety)}
+let offlineReady=false,failed=false;
+function update(){
+ const status=failed?'failed':offlineReady?(navigator.onLine?'ready':'offline'):'loading';
+ badge(status);
+ document.querySelectorAll('[data-sirai-share]').forEach(b=>b.textContent=l().share);
+ document.querySelectorAll('[data-sirai-safety]').forEach(b=>b.textContent=l().safety);
+}
 window.addEventListener('online',update);window.addEventListener('offline',update);
 document.querySelectorAll('[data-lang-select]').forEach(el=>el.addEventListener('change',()=>setTimeout(update,0)));
-if('serviceWorker' in navigator&&location.protocol==='https:'){
- badge('loading');
- navigator.serviceWorker.register('./sw.js',{scope:'./'}).then(()=>navigator.serviceWorker.ready).then(()=>update()).catch(()=>badge('failed'));
-}else if(!navigator.onLine)badge('offline');else badge('failed');
+(async()=>{
+ if(!('serviceWorker' in navigator)||location.protocol!=='https:'){failed=true;update();return}
+ try{
+  await navigator.serviceWorker.register('./sw.js',{scope:'./'});
+  await navigator.serviceWorker.ready;
+  const keys=await caches.keys();
+  offlineReady=keys.includes('sirai-offline-v3-20261104');
+  failed=!offlineReady;
+ }catch(e){failed=true}
+ update();
+})();
 update();
 })();
