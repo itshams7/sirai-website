@@ -18,3 +18,20 @@
 .founder-copy .founder-hello{font-size:21px;font-weight:750;line-height:1.4;color:#2b7155;margin:2px 0 16px}
 .founder-copy p:not(.founder-disclosure){line-height:1.78}
 @media(max-width:550px){.lang-select{min-width:93px;max-width:111px;padding:8px 5px;font-size:11px}.founder-copy .founder-hello{font-size:20px}}
+
+/* Focused visual fixes: Sudan hero + founder */
+.hero-art.sudan-hero-art{height:365px;border:1px solid rgba(255,255,255,.34);border-radius:180px 180px 28px 28px;isolation:isolate;overflow:hidden;background:#315C4F;box-shadow:0 18px 40px rgba(3,28,21,.16)}
+.hero-art.sudan-hero-art:before{display:none}
+.sudan-scene{width:100%;height:100%;position:absolute;inset:0;display:block}
+.sudan-scene-label{position:absolute;top:23px;inset-inline-start:25px;display:flex;align-items:center;gap:10px;background:rgba(17,51,40,.73);border:1px solid rgba(255,255,255,.24);padding:8px 12px;border-radius:9px;backdrop-filter:blur(8px);color:#fff;z-index:3;font-size:11px;font-weight:800;letter-spacing:.09em;white-space:nowrap}
+.scene-flag{position:relative;display:block;width:27px;height:18px;flex:none;background:linear-gradient(to bottom,#d3363d 0 33.333%,#fff 33.333% 66.666%,#121a17 66.666%)}
+.scene-flag i{position:absolute;left:0;top:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:12px solid #20794c}
+.sudan-scene-footer{position:absolute;bottom:20px;inset-inline:24px;z-index:3;color:#f1f4eb;font-size:10px;font-weight:850;letter-spacing:.13em;display:flex;justify-content:space-between;align-items:center;text-shadow:0 1px 8px rgba(0,0,0,.32)}
+.sudan-scene-footer span:last-child{font-size:19px}
+.founder-side-note{background:#fffef9;border:1px solid #e0e8dc;box-shadow:0 10px 24px rgba(20,61,45,.05);padding:21px}
+.founder-side-kicker{text-transform:none;letter-spacing:-.015em;font-weight:800;font-size:17px;margin-bottom:6px}
+.founder-note-subline{margin:0 0 17px;font-size:13px;line-height:1.7;color:#617266}
+.founder-chip{background:#f0f5ed;border:1px solid #dfebdc;font-size:11px;padding:8px 11px}
+@media(max-width:900px){.hero-art.sudan-hero-art{display:block;height:330px;max-width:460px;width:100%;margin-inline:auto}}
+@media(max-width:550px){.hero-art.sudan-hero-art{height:285px;max-width:355px;border-radius:160px 160px 22px 22px}.sudan-scene-label{inset-inline-start:19px;top:15px;padding:6px 9px;font-size:10px}.sudan-scene-footer{inset-inline:16px;bottom:14px}}
+@media(prefers-reduced-motion:reduce){.hero-art,.sudan-scene{animation:none}}
