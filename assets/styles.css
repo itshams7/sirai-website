@@ -260,3 +260,16 @@ html[dir=rtl] .ws-critical{border-radius:12px 0 0 12px}
 .ps-resource-home-copy p{color:#5e7063;font-size:14px;line-height:1.75;max-width:610px;margin:0 0 18px}
 .ps-resource-home-copy .btn{padding:11px 17px;font-size:12px}
 @media(max-width:700px){.ps-resource-home{grid-template-columns:1fr}.ps-resource-home-mark{min-height:112px;flex-direction:row;align-items:center}.ps-resource-home-mark span:last-child{font-size:57px}.ps-resource-home-copy{padding:25px 22px}}
+
+/* TaqaWise / third public resource */
+.tq-resource-wrap{margin-top:22px}
+.tq-resource-home{background:#e8f0e8;border:1px solid #d4e3d5;border-radius:17px;overflow:hidden;display:grid;grid-template-columns:minmax(190px,.38fr) minmax(0,.62fr);min-height:270px;box-shadow:0 10px 36px rgba(24,61,43,.04)}
+.tq-resource-home-icon{background:linear-gradient(135deg,#dceade,#c9dfce);border-inline-end:1px solid #c1d8c7;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;padding:27px;position:relative;color:#356b4f}
+.tq-resource-home-icon:before{content:"";position:absolute;width:230px;height:230px;bottom:-110px;right:-42px;border:1px solid #87b498;border-radius:50%;box-shadow:0 0 0 33px rgba(49,113,71,.07),0 0 0 69px rgba(49,113,71,.04)}
+.tq-resource-home-icon span:first-child{position:relative;font-size:13px;font-weight:850;letter-spacing:.15em}
+.tq-resource-home-icon span:last-child{position:relative;font-size:89px;line-height:1;color:#366f50}
+.tq-resource-home-copy{display:flex;flex-direction:column;align-items:start;justify-content:center;padding:35px 43px}
+.tq-resource-home-copy h3{font-size:clamp(24px,2.9vw,35px);letter-spacing:-.045em;line-height:1.19;color:#234a39;margin:0 0 12px}
+.tq-resource-home-copy p{font-size:14px;line-height:1.75;color:#5e7063;margin:0 0 19px;max-width:625px}
+.tq-resource-home-copy .btn{font-size:12px;padding:11px 17px}
+@media(max-width:700px){.tq-resource-home{grid-template-columns:1fr}.tq-resource-home-icon{min-height:112px;flex-direction:row;align-items:center}.tq-resource-home-icon span:last-child{font-size:56px}.tq-resource-home-copy{padding:25px 22px}}
