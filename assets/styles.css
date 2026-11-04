@@ -273,3 +273,17 @@ html[dir=rtl] .ws-critical{border-radius:12px 0 0 12px}
 .tq-resource-home-copy p{font-size:14px;line-height:1.75;color:#5e7063;margin:0 0 19px;max-width:625px}
 .tq-resource-home-copy .btn{font-size:12px;padding:11px 17px}
 @media(max-width:700px){.tq-resource-home{grid-template-columns:1fr}.tq-resource-home-icon{min-height:112px;flex-direction:row;align-items:center}.tq-resource-home-icon span:last-child{font-size:56px}.tq-resource-home-copy{padding:25px 22px}}
+
+/* Consistent navigation and an always-visible feedback invitation */
+@media(min-width:1101px){.header-inner{gap:17px}.nav{gap:15px;font-size:12px}.brand-caption{font-size:9px}}
+@media(min-width:901px) and (max-width:1100px){.nav{display:none;position:absolute;top:77px;left:0;right:0;padding:20px 24px;background:var(--cream);flex-direction:column;align-items:stretch;gap:13px;border-bottom:1px solid var(--line);max-height:calc(100vh - 77px);overflow-y:auto}.nav.open{display:flex}.menu-toggle{display:block}}
+@media(max-width:900px){.nav{gap:12px;max-height:calc(100vh - 77px);overflow-y:auto}}
+.nav a[aria-current=page]{color:#246f4e}.nav a:focus-visible,.menu-toggle:focus-visible{outline:3px solid #ba9658;outline-offset:4px;border-radius:4px}
+.sf-inline-invite{background:#e7eee5;border-top:1px solid #d5e3d5;border-bottom:1px solid #d5e3d5;padding:28px 0}
+.sf-inline-invite .container{display:flex;align-items:center;justify-content:space-between;gap:25px}
+.sf-inline-invite strong{display:block;color:#24573c;font-size:19px;letter-spacing:-.03em;margin-bottom:5px}
+.sf-inline-invite p{font-size:12px;line-height:1.7;color:#53745a;margin:0}
+.sf-inline-link{display:inline-flex;flex:none;align-items:center;justify-content:center;background:#1c5039;color:#fff;border-radius:9px;padding:12px 17px;font-size:12px;font-weight:850;transition:transform .16s}
+.sf-inline-link:hover{transform:translateY(-2px)}.sf-inline-link:focus-visible{outline:3px solid #b79660;outline-offset:3px}
+@media(max-width:620px){.sf-inline-invite .container{flex-direction:column;align-items:start}.sf-inline-link{align-self:stretch}}
+@media print{.sf-inline-invite{display:none!important}}
