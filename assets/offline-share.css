@@ -16,3 +16,9 @@
  input,select,textarea{font-size:max(16px,1em)}
 }
 @media print{.sirai-utility-line,.sirai-offline-indicator,.sirai-mobile-note{display:none!important}}
+
+.sirai-preset-control{border:1px solid #bed6c5;background:#eef5ec;border-radius:12px;padding:17px 18px;margin:8px 0 19px;color:#254c36}
+.sirai-preset-control label{display:block;font-size:13px;font-weight:850;line-height:1.4;margin-bottom:8px}
+.sirai-preset-control select{display:block;width:100%;max-width:610px;min-height:46px;border:1px solid #a8c4b0;background:#fff;border-radius:8px;padding:10px 12px;color:#244436}
+.sirai-preset-control p{font-size:12px;line-height:1.6;margin:9px 0 0;color:#4e6756}
+.sirai-preset-control select:focus-visible{outline:3px solid #d4ad6c;outline-offset:2px}
