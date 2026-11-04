@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 470" role="img" aria-label="Illustration of shared water storage, collection containers and an organized water distribution schedule">
+  <defs>
+    <linearGradient id="ws-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#12382e"/>
+      <stop offset=".55" stop-color="#1c4b3a"/>
+      <stop offset="1" stop-color="#265e49"/>
+    </linearGradient>
+    <linearGradient id="ws-water" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#9bcebb"/>
+      <stop offset="1" stop-color="#468d80"/>
+    </linearGradient>
+    <linearGradient id="ws-tank" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f7f7e9"/>
+      <stop offset="1" stop-color="#bedaca"/>
+    </linearGradient>
+    <linearGradient id="ws-schedule" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f5f5e7"/>
+      <stop offset="1" stop-color="#d7e7d8"/>
+    </linearGradient>
+    <pattern id="ws-grid" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M25 0H0V25" fill="none" stroke="#d8efe0" stroke-width=".65" opacity=".09"/>
+      <circle cx="0" cy="0" r=".95" fill="#c1dccc" opacity=".14"/>
+    </pattern>
+    <filter id="ws-shadow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="9" stdDeviation="12" flood-color="#081d17" flood-opacity=".26"/>
+    </filter>
+    <clipPath id="ws-reservoir-clip">
+      <rect x="365" y="94" width="154" height="122" rx="19"/>
+    </clipPath>
+    <linearGradient id="ws-fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#12382e" stop-opacity="0"/>
+      <stop offset="1" stop-color="#12382e" stop-opacity=".59"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="640" height="470" fill="url(#ws-bg)"/>
+  <rect width="640" height="470" fill="url(#ws-grid)"/>
+  <circle cx="592" cy="18" r="238" fill="none" stroke="#e0f1d8" stroke-opacity=".16" stroke-width="1.5"/>
+  <circle cx="592" cy="18" r="194" fill="none" stroke="#e0f1d8" stroke-opacity=".12" stroke-width="1.4"/>
+  <circle cx="592" cy="18" r="146" fill="none" stroke="#e0f1d8" stroke-opacity=".1" stroke-width="1.4"/>
+  <circle cx="114" cy="448" r="230" fill="none" stroke="#a5d3b8" stroke-opacity=".07" stroke-width="2"/>
+
+  <!-- Water turns into a shared and measurable resource -->
+  <g filter="url(#ws-shadow)">
+    <path d="M355 125V96q0-12 12-12h148q12 0 12 12v29" fill="none" stroke="#92b8a3" stroke-width="4"/>
+    <rect x="359" y="89" width="166" height="132" rx="22" fill="url(#ws-tank)" stroke="#bfdaca" stroke-width="2"/>
+    <g clip-path="url(#ws-reservoir-clip)">
+      <path d="M357 137C380 125 400 145 425 137s48-8 69-1 29 3 38 0V224H357Z" fill="url(#ws-water)"/>
+      <path d="M358 138C383 127 402 147 425 138s43-8 65-2 29 4 38 0" fill="none" stroke="#d9f6e9" stroke-width="3" opacity=".86"/>
+      <path d="M370 162h142M370 191h142" stroke="#d6f5e7" stroke-opacity=".27" stroke-width="1.1" stroke-dasharray="4 6"/>
+      <circle cx="395" cy="181" r="3" fill="#e5f8eb" opacity=".7"/>
+      <circle cx="472" cy="162" r="2.5" fill="#e5f8eb" opacity=".7"/>
+      <circle cx="451" cy="195" r="2" fill="#e5f8eb" opacity=".6"/>
+    </g>
+    <rect x="397" y="75" width="85" height="15" rx="7.5" fill="#e4f0df" stroke="#8dad97" stroke-width="1.5"/>
+    <rect x="382" y="214" width="118" height="12" rx="6" fill="#dcebdc"/>
+    <path d="M389 229v55M495 229v55" stroke="#a6c7b3" stroke-width="8" stroke-linecap="round"/>
+    <path d="M388 251h106" stroke="#a6c7b3" stroke-width="5"/>
+  </g>
+
+  <!-- Water level indicator -->
+  <g transform="translate(537 111)">
+    <path d="M0 2V88" stroke="#c0dfcf" stroke-width="2" opacity=".7"/>
+    <path d="M-5 5H4M-5 25H4M-5 45H4M-5 65H4M-5 85H4" stroke="#d0e6d9" stroke-width="2" stroke-linecap="round" opacity=".65"/>
+    <circle cx="0" cy="49" r="6" fill="#eacb89" stroke="#315946" stroke-width="2"/>
+  </g>
+
+  <!-- Shared outlet and pipe -->
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M442 225v60h-71v31" stroke="#163c30" stroke-width="16"/>
+    <path d="M442 225v60h-71v31" stroke="#96c6ae" stroke-width="9"/>
+    <path d="M442 225v60h-71v31" stroke="#d9f2e0" stroke-width="2" opacity=".45"/>
+    <path d="M371 307h46v-11" stroke="#b4daca" stroke-width="8"/>
+    <path d="M397 295h40" stroke="#d7edda" stroke-width="6"/>
+    <path d="M417 286v22" stroke="#d7edda" stroke-width="5"/>
+    <path d="M370 315v15" stroke="#dbefdf" stroke-width="7"/>
+  </g>
+
+  <!-- Droplets directed toward reusable community containers -->
+  <g fill="#b8e8d5">
+    <path d="M371 327c-6 8-9 14-9 18a9 9 0 0 0 18 0c0-4-3-10-9-18Z"/>
+    <path d="M420 314c-4 5-5 8-5 11a5 5 0 0 0 10 0c0-3-1-6-5-11Z" opacity=".52"/>
+  </g>
+  <g filter="url(#ws-shadow)">
+    <path d="M339 355h68l-7 64q-2 10-12 10h-31q-10 0-12-10Z" fill="#c5e0d0" stroke="#8eb9a5" stroke-width="2"/>
+    <path d="M345 367h56l-5 43q-1 6-8 6h-28q-6 0-7-6Z" fill="#8fc6b4"/>
+    <path d="M347 355q0-20 26-20t26 20" fill="none" stroke="#e9f5e9" stroke-width="6"/>
+    <path d="M353 375h36" stroke="#e5f8e9" stroke-width="2" opacity=".7"/>
+    <path d="M452 369h60l-7 52q-2 9-11 9h-24q-10 0-11-9Z" fill="#d9e9d4" stroke="#8fb69e" stroke-width="2"/>
+    <path d="M455 369q0-20 27-20t27 20" fill="none" stroke="#ecf5df" stroke-width="5.5"/>
+    <path d="M462 389h41" stroke="#a7ccb2" stroke-width="2"/>
+  </g>
+
+  <!-- A scheduled collection cycle, not a random illustration -->
+  <g filter="url(#ws-shadow)">
+    <rect x="72" y="86" width="219" height="182" rx="17" fill="url(#ws-schedule)" stroke="#b9d3bd" stroke-width="1.7"/>
+    <rect x="88" y="101" width="187" height="34" rx="9" fill="#d9e7d8"/>
+    <circle cx="106" cy="118" r="9" fill="none" stroke="#397453" stroke-width="2.3"/>
+    <path d="M106 112v7l4 3" fill="none" stroke="#397453" stroke-width="2.2" stroke-linecap="round"/>
+    <rect x="128" y="111" width="108" height="6" rx="3" fill="#498463"/>
+    <rect x="128" y="122" width="68" height="3" rx="1.5" fill="#a8c5ad"/>
+    <g stroke="#e0e9de" stroke-width="1.4"><path d="M91 167h182M91 205h182M91 241h182"/></g>
+    <g fill="#3d7456">
+      <rect x="99" y="150" width="24" height="21" rx="6"/>
+      <rect x="99" y="188" width="24" height="21" rx="6"/>
+      <rect x="99" y="224" width="24" height="21" rx="6" fill="#d9e6d5" stroke="#7ba589" stroke-width="1.2"/>
+    </g>
+    <g fill="none" stroke="#f7faee" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m106 160 4 4 7-9M106 198l4 4 7-9"/>
+    </g>
+    <circle cx="111" cy="235" r="4" fill="#aaab7a"/>
+    <g fill="#4b8062"><rect x="137" y="151" width="91" height="6" rx="3"/><rect x="137" y="189" width="84" height="6" rx="3"/><rect x="137" y="225" width="107" height="6" rx="3" fill="#8cac94"/></g>
+    <g fill="#b5ceb9"><rect x="137" y="163" width="63" height="4" rx="2"/><rect x="137" y="201" width="72" height="4" rx="2"/><rect x="137" y="237" width="58" height="4" rx="2"/></g>
+    <g fill="#bd9a5c"><circle cx="256" cy="155" r="4"/><circle cx="256" cy="193" r="4"/><circle cx="256" cy="230" r="4"/></g>
+  </g>
+
+  <!-- A relationship between the schedule and the shared tank -->
+  <path d="M292 183c20-10 33-8 47-18" fill="none" stroke="#d0ba82" stroke-width="2.5" stroke-dasharray="3 8" stroke-linecap="round"/>
+  <circle cx="314" cy="173" r="4" fill="#e3ce9c"/>
+  <path d="m570 75 3-9 3 9 9 3-9 3-3 9-3-9-9-3Z" fill="#dac18a" opacity=".8"/>
+
+  <!-- Readability for the existing title at the bottom of the card -->
+  <rect y="295" width="640" height="175" fill="url(#ws-fade)"/>
+</svg>
