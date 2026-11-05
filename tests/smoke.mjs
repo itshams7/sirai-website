@@ -25,7 +25,7 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
 assert.ok(homepage.includes('assets/app.js?v=20261105-hub1'),'Homepage uses a stale language script URL');
-assert.ok(read('sw.js').includes('sirai-offline-v16-modern-humanitarian-20261105'),'Service worker cache not refreshed');
+assert.ok(read('sw.js').includes('sirai-offline-v17-original-palette-20261105'),'Service worker cache not refreshed');
 console.log('Homepage translation regression checks passed.');
 
 // Mobile iPhone header: connection status must live outside the header controls.
@@ -79,10 +79,10 @@ assert.ok(sw.includes("'assets/data-mode.js'")&&sw.includes("'assets/data-mode.c
 assert.ok(read('RELEASE-VERIFICATION.md').includes('Field validation'),'Verification documentation missing');
 console.log('Low-bandwidth, RTL, privacy and release-integrity checks passed.');
 
-// Modern Humanitarian visual system and content invariants.
-for(const page of pages){const html=read(page);assert.ok(html.includes('assets/modern-humanitarian.css'),'Modern design missing on '+page);assert.ok(html.includes('href="about.html"'),'About link missing on '+page);assert.ok(html.includes('href="https://joinsirai.org"'),'Official domain absent in footer on '+page);const headerNav=html.match(/<nav class="nav" id="navigation"[\s\S]*?<\/nav>/)?.[0]||'';assert.equal((headerNav.match(/<a /g)||[]).length,5,'Primary navigation must have five links on '+page);}
-const home=read('index.html');assert.ok(home.includes('data-i18n="hero.photoDisclosure"'),'Photography disclaimer missing');
-for(const locale of ['en','ar','fr','de'])assert.ok(read('assets/app.js').includes(`strings[locale]['hero.photoDisclosure']`),'Photo disclosure not multilingual');
-const visualCss=read('assets/modern-humanitarian.css');assert.ok(visualCss.includes('--mh-deep:#123d35'),'Modern color system missing');assert.ok(visualCss.includes('prefers-reduced-motion'),'Reduced motion not supported');
-assert.ok(sw.includes("'assets/modern-humanitarian.css'")&&sw.includes("'about.html'"),'Offline package missing redesigned assets');
-console.log('Modern Humanitarian navigation, palette, photo disclosure, offline and accessibility tests passed.');
+// Preserve original brand palette and useful changes after visual rollback.
+for(const page of pages){const html=read(page);assert.ok(!html.includes('assets/modern-humanitarian.css'),'Experimental design must not load on '+page);assert.ok(html.includes('assets/premium-palette.css'),'Original palette missing on '+page);assert.ok(html.includes('href="about.html"'),'About link missing on '+page);assert.ok(html.includes('href="https://joinsirai.org"'),'Official domain absent on '+page);const headerNav=html.match(/<nav class="nav" id="navigation"[\\s\\S]*?<\\/nav>/)?.[0]||'';assert.equal((headerNav.match(/<a /g)||[]).length,5,'Expected five main navigation links in '+page);}
+assert.ok(read('assets/premium-palette.css').includes('--sirai-beige:#f3ede0'),'Original linen color missing');
+assert.ok(read('assets/premium-palette.css').includes('--sirai-forest:#123e30'),'Original forest color missing');
+assert.ok(sw.includes("'about.html'"),'About page must remain offline');
+assert.ok(!sw.includes("'assets/modern-humanitarian.css'"),'Old redesign must not be cached');
+console.log('Original brand palette restored with About and navigation preserved.');
