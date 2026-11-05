@@ -1,14 +1,15 @@
 /* SIRAI pre-launch offline shell. Does not cache personal drafts or feedback submissions. */
-const VERSION='sirai-offline-v11-community-hub-20261105';
+const VERSION='sirai-offline-v12-practical-20261105';
 const ROOT=new URL('./',self.registration.scope).pathname;
 const ASSETS=[
- 'index.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html','transparency.html','start-here.html','resources.html','faq.html','updates.html','get-involved.html',
+ 'index.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html','transparency.html','start-here.html','resources.html','faq.html','updates.html','get-involved.html','practical-guide.html','issues.html',
  'manifest.webmanifest','assets/favicon.svg','assets/styles.css','assets/premium-palette.css','assets/site-motion.css','assets/site-motion.js',
- 'assets/app.js','assets/offline-share.js','assets/offline-share.css','assets/launch-quality.css','assets/launch-quality.js','assets/transparency.js','assets/phase2.css','assets/phase2.js','assets/phase2-guide.js','assets/community-hub.css','assets/community-hub.js',
+ 'assets/app.js','assets/offline-share.js','assets/offline-share.css','assets/launch-quality.css','assets/launch-quality.js','assets/transparency.js','assets/phase2.css','assets/phase2.js','assets/phase2-guide.js','assets/community-hub.css','assets/community-hub.js','assets/sirai-math.js','assets/practical.css','assets/practical.js','assets/practical-guide.js','assets/issues.js','assets/resource-pack.js','assets/offline-images.js',
  'assets/feedback.css','assets/feedback.js',
  'assets/ws-locales.js','assets/ws-ar.js','assets/ws-fr.js','assets/ws-de.js','assets/watershare.js',
  'assets/projectstarter.css','assets/projectstarter-locales.js','assets/projectstarter-ar.js','assets/projectstarter-fr.js','assets/projectstarter-de.js','assets/projectstarter.js',
- 'assets/taqawise.css','assets/taqawise-locales.js','assets/taqawise-ar.js','assets/taqawise-fr.js','assets/taqawise-de.js','assets/taqawise.js'
+ 'assets/taqawise.css','assets/taqawise-locales.js','assets/taqawise-ar.js','assets/taqawise-fr.js','assets/taqawise-de.js','assets/taqawise.js',
+ 'downloads/water-worksheet-en.csv','downloads/water-worksheet-ar.csv','downloads/project-budget-en.csv','downloads/project-budget-ar.csv','downloads/energy-inventory-en.csv','downloads/energy-inventory-ar.csv'
 ];
 const localRequest=url=>new Request(url.origin+url.pathname);
 self.addEventListener('install',event=>event.waitUntil((async()=>{
