@@ -64,3 +64,17 @@ console.log('Practical resources, offline fallback, printable guides and issue r
 for(const illustration of ['assets/watershare-resource-art.svg','assets/projectstarter-resource-art.svg','assets/taqawise-resource-art.svg']) assert.ok(sw.includes("'"+illustration+"'"),'Fallback image not cached: '+illustration);
 const manifest=JSON.parse(read('manifest.webmanifest'));assert.equal(manifest.shortcuts.length,3,'Missing direct access to three tools');
 console.log('Offline image fallback and home-screen shortcut checks passed.');
+
+// Low-data mode, Arabic RTL and release controls.
+for(const page of pages){const html=read(page);assert.ok(html.includes('assets/data-mode.js'),'Data mode missing from '+page);assert.ok(html.includes('assets/data-mode.css'),'RTL/data stylesheet missing from '+page);assert.ok(html.includes('data-lang-select'),'Language selector missing from '+page)}
+for(const page of ['index.html','water-toolkit.html','projectstarter.html','taqawise.html']){
+ const html=read(page);assert.ok(html.includes('data-sirai-remote-photo'),'Photographs must opt in after low-data preference: '+page);
+ assert.doesNotMatch(html,/<img[^>]+src="https:\/\/images\.unsplash\.com\//,'Remote photo auto-loads before preferences: '+page);
+}
+const saver=read('assets/data-mode.js');assert.ok(saver.includes('sirai-low-data-v1'),'Persistent low-data preference missing');
+assert.ok(saver.includes('data-sirai-remote-photo'),'Photo opt-in not implemented');
+for(const locale of ['en','ar','fr','de'])assert.ok(saver.includes(locale+':{'),'Missing data-mode translation '+locale);
+assert.ok(read('assets/data-mode.css').includes('html[dir=rtl]'),'RTL rules missing');
+assert.ok(sw.includes("'assets/data-mode.js'")&&sw.includes("'assets/data-mode.css'"),'Offline package missing data saver');
+assert.ok(read('RELEASE-VERIFICATION.md').includes('Field validation'),'Verification documentation missing');
+console.log('Low-bandwidth, RTL, privacy and release-integrity checks passed.');
