@@ -188,7 +188,12 @@ const siraiTemplates={
 document.getElementById('sirai-project-template')?.addEventListener('change',event=>{
  const template=siraiTemplates[event.target.value];if(!template)return;
  if(!window.confirm('Replace the current planning draft with this example? / هل تريد استبدال المسودة الحالية؟')){event.target.value='';return}
- state={...defaultState(),...template};
+ state={...defaultState(),...template,
+ costs:[{item:'Sample materials (fictional)',qty:'10',unit:'1500'},{item:'Local transport (fictional)',qty:'2',unit:'2500'}],
+ roles:[{role:'Community coordination',responsibility:'Gather anonymous feedback and seek consent'},{role:'Safety and logistics',responsibility:'Review availability and practical risks'}],
+ milestones:[{task:'Discuss priorities with participants',when:'Week 1',owner:'Local participants'},{task:'Verify resources and revise plan',when:'Week 2',owner:'Project team'}],
+ risks:[{risk:'Resources are unavailable',level:'high',response:'Reassess feasibility; do not promise delivery'},{risk:'Some participants are excluded',level:'medium',response:'Ask who is missing and adapt access safely'}],
+ funding:'0',fundingNotes:'Funding is not secured. These costs are made-up teaching figures, not local prices.'};
  syncFields();renderLanguage();setStep(0);
  message('Example loaded. Enter verified local details and review safety before using.');
  event.target.value='';
