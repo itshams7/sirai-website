@@ -25,7 +25,7 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
 assert.ok(homepage.includes('assets/app.js?v=20261105-hub1'),'Homepage uses a stale language script URL');
-assert.ok(read('sw.js').includes('sirai-offline-v14-icon-shortcuts-20261105'),'Service worker cache not refreshed');
+assert.ok(read('sw.js').includes('sirai-offline-v15-data-mode-20261105'),'Service worker cache not refreshed');
 console.log('Homepage translation regression checks passed.');
 
 // Mobile iPhone header: connection status must live outside the header controls.
