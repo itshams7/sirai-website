@@ -200,8 +200,6 @@ document.getElementById('sirai-project-template')?.addEventListener('change',eve
 });
 
 document.getElementById('ps-example')?.addEventListener('click',()=>{
- const prompt={en:'Replace your current plan with a fictional community water-coordination example?',ar:'هل تريد استبدال خطتك بمثال افتراضي لتنسيق توزيع المياه؟',fr:'Remplacer votre plan par un exemple fictif de coordination de l’eau ?',de:'Plan durch ein fiktives Beispiel zur Wasserkoordination ersetzen?'};
- if(!window.confirm(prompt[lang()]))return;
  document.getElementById('sirai-project-template').value='water';
  document.getElementById('sirai-project-template').dispatchEvent(new Event('change'));
 });
