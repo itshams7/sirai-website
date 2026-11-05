@@ -1,5 +1,5 @@
 /* SIRAI pre-launch offline shell. Does not cache personal drafts or feedback submissions. */
-const VERSION='sirai-offline-v12-practical-20261105';
+const VERSION='sirai-offline-v13-practical-final-20261105';
 const ROOT=new URL('./',self.registration.scope).pathname;
 const ASSETS=[
  'index.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html','transparency.html','start-here.html','resources.html','faq.html','updates.html','get-involved.html','practical-guide.html','issues.html',
