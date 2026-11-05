@@ -24,8 +24,8 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(homepage.includes('data-i18n="'+key+'"'),'Guide markup missing '+key);
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
-assert.ok(homepage.includes('assets/app.js?v=20261105-stat-redesign-2'),'Homepage uses a stale language script URL');
-assert.ok(read('sw.js').includes('sirai-offline-v20-interactive-stats-20261105'),'Service worker cache not refreshed');
+assert.ok(homepage.includes('assets/app.js?v=20261105-map-insight-1'),'Homepage uses a stale language script URL');
+assert.ok(read('sw.js').includes('sirai-offline-v21-map-story-20261105'),'Service worker cache not refreshed');
 console.log('Homepage translation regression checks passed.');
 
 // Mobile iPhone header: connection status must live outside the header controls.
@@ -34,7 +34,7 @@ const accessibleCss=read('assets/launch-quality.css');
 assert.ok(offlineScript.includes("header.insertAdjacentElement('afterend',el)"),'Status indicator must be placed outside sticky header');
 assert.ok(accessibleCss.includes('#sirai-offline-indicator.sirai-offline-indicator{position:static!important'),'Status must not float over iPhone controls');
 assert.ok(accessibleCss.includes('background:#e7efe8'),'Language control must use the distinctive sage style');
-assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-stat-redesign-2'),'Mobile CSS cache version not refreshed');
+assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-map-insight-1'),'Mobile CSS cache version not refreshed');
 console.log('Mobile header regression checks passed.');
 
 // Community information hub integrity.
@@ -149,3 +149,19 @@ assert.ok(statScript.includes('data-sirai-stat'),'Statistics selector code missi
 const statsCss=read('assets/launch-quality.css');
 assert.ok(statsCss.includes('.sirai-statistics-map')&&statsCss.includes('.sirai-stat-choices'),'Interactive stats styling missing');
 console.log('Interactive 3-stat map, source, a11y and four-language checks passed.');
+
+// The map must convey data without inventing state-level values or displacement routes.
+const mapHome=read('index.html');
+const mapSection=mapHome.slice(mapHome.indexOf('<section class="sirai-statistics"'),mapHome.indexOf('<section class="sirai-home-guide">'));
+for(const id of ['sirai-stats-map','sirai-map-overlay-number','sirai-map-heading','sirai-map-explainer','sirai-map-compare'])assert.ok(mapSection.includes('id="'+id+'"'),'Missing meaningful data map element: '+id);
+assert.ok(mapSection.includes('17.3M of 33.7M'),'No truthful national comparison in children mode');
+assert.ok(mapSection.includes('id="sirai-map-compare" hidden'),'Comparison must be initially hidden');
+assert.ok(!mapSection.includes('state-level hotspots')&&!mapSection.includes('migration routes'),'Unverified geography markers');
+const mapJs=read('assets/app.js');
+for(const key of ['stats.mapNeedTitle','stats.mapChildrenTitle','stats.mapDisplacedTitle','stats.mapChildrenCompare','stats.mapDisplacedText'])assert.ok(mapJs.includes(key),'Missing multilingual map key '+key);
+assert.ok(mapJs.includes("comparison.hidden=key!=='children'"),'Child share comparison must only appear for child indicator');
+assert.ok(mapJs.includes("map.dataset.statMode=key"),'Map must respond to selected statistic');
+const mapCss=read('assets/launch-quality.css');
+assert.ok(mapCss.includes('.sirai-map-visual-layer')&&mapCss.includes('.sirai-map-overlay')&&mapCss.includes('.sirai-map-compare-fill'),'Responsive map infographic styling missing');
+assert.ok(mapCss.includes('width:51.3%'),'Children national-share bar not aligned with 17.3 / 33.7');
+console.log('Data-bearing map, source integrity, interaction and offline release checks passed.');
