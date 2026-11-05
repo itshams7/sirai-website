@@ -1,0 +1,28 @@
+/* SIRAI / Motion system. Quiet, editorial movement rather than decorative noise. */
+@media (prefers-reduced-motion:no-preference) {
+  html{scroll-behavior:smooth;scroll-padding-top:92px}
+  .motion-ready .motion-reveal{
+    opacity:0;
+    transform:translate3d(0,22px,0);
+    transition:opacity .72s cubic-bezier(.22,1,.36,1),transform .72s cubic-bezier(.22,1,.36,1);
+    transition-delay:var(--reveal-delay,0ms);
+    will-change:opacity,transform;
+  }
+  .motion-ready .motion-reveal.motion-visible{opacity:1;transform:none;will-change:auto}
+  .motion-ready .motion-reveal.motion-from-left{transform:translate3d(-22px,12px,0)}
+  .motion-ready .motion-reveal.motion-from-right{transform:translate3d(22px,12px,0)}
+  .motion-ready .motion-reveal.motion-visible:is(.motion-from-left,.motion-from-right){transform:none}
+  .motion-ready .motion-photo{overflow:hidden}
+  .motion-ready .motion-photo img{transition:transform 1.1s cubic-bezier(.22,1,.36,1)}
+  .motion-ready .motion-photo.motion-visible img{transform:scale(1.018)}
+  .btn,.ps-hero-link,.tq-primary-link,.sf-start,.sf-inline-link{transition:transform .25s ease,background-color .25s ease,box-shadow .25s ease}
+  .btn:hover,.ps-hero-link:hover,.tq-primary-link:hover,.sf-start:hover,.sf-inline-link:hover{box-shadow:0 9px 24px rgba(15,45,33,.13)}
+}
+@media (prefers-reduced-motion:reduce) {
+  html{scroll-behavior:auto!important}
+  .motion-reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .motion-photo img{transform:none!important;transition:none!important}
+}
+@media(max-width:650px) and (prefers-reduced-motion:no-preference){
+  .motion-ready .motion-reveal{transform:translate3d(0,14px,0);transition-duration:.58s}
+}
