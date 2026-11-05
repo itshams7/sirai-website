@@ -17,3 +17,13 @@ for(const [page,button,asset] of [['water-toolkit.html','ws-example','assets/wat
 assert.match(read('start-here.html'),/sirai-guide-grid/,'Start guide missing');
 assert.ok(read('assets/phase2-guide.js').includes('"ar":'),'Arabic guide missing');
 console.log('Phase 2 example and tutorial wiring passed.');
+
+// Translation regression: the homepage guide must have locale keys and a cache-busted script.
+const homepage=read('index.html');const languageScript=read('assets/app.js');
+for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
+ assert.ok(homepage.includes('data-i18n="'+key+'"'),'Guide markup missing '+key);
+ assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
+}
+assert.ok(homepage.includes('assets/app.js?v=20261105-language-fix-1'),'Homepage uses a stale language script URL');
+assert.ok(read('sw.js').includes('sirai-offline-v9-translation-20261105'),'Service worker cache not refreshed');
+console.log('Homepage translation regression checks passed.');
