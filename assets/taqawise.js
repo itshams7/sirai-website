@@ -41,11 +41,11 @@ function getData(){
  }
  const settings={};for(const [k,min,max] of [['battery',100,1000000],['dod',10,100],['eff',40,100],['outage',.5,72],['psh',1,9],['pr',40,95]]){settings[k]=numeric(model.settings[k],min,max);if(settings[k]===null)valid=false}
  if(connected>1e8||daily>1e9)valid=false;
- const factor=settings.dod!==null&&settings.eff!==null?(settings.dod/100)*(settings.eff/100):null;
- const usable=factor===null||settings.battery===null?null:settings.battery*factor;
- const runtime=essentialW>0&&usable!==null?usable/essentialW:null;
- const required=essentialW>0&&factor>0&&settings.outage!==null?(essentialW*settings.outage/factor):null;
- const pv=daily>0&&settings.psh>0&&settings.pr>0?daily/(settings.psh*settings.pr/100):null;
+ const result=valid?window.SIRAI_MATH.energyReport(rows,settings):null;
+ const usable=result?.usable??null;
+ const runtime=result?.runtime??null;
+ const required=result?.required??null;
+ const pv=result?.pv??null;
  return {valid,rows,connected,daily,essentialW,essentialDaily,usable,runtime,required,pv,settings,any};
 }
 function renderItems(){
