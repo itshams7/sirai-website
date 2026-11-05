@@ -123,7 +123,7 @@ for(const p of ['privacy.html','terms.html']){
  assert.ok(html.includes('href="feedback.html"'),'Feedback path missing from '+p);
 }
 const legal=read('assets/policies.js');
-for(const code of ['ar','fr','de'])assert.ok(legal.includes(code+':{'),'Legal translation missing for '+code);
+for(const code of ['ar','fr','de'])assert.ok(legal.includes('"'+code+'":{'),'Legal translation missing for '+code);
 assert.ok(legal.includes('Formspree')&&legal.includes('GitHub Pages')&&legal.includes('Unsplash'),'Privacy disclosures incomplete');
 assert.ok(read('index.html').includes('assets/sudan-overview.svg'),'Sudan Explorer preview is not geographic');
 for(const asset of ['privacy.html','terms.html','assets/policies.css','assets/policies.js','assets/sudan-overview.svg'])assert.ok(sw.includes("'"+asset+"'"),'Offline release missing '+asset);
