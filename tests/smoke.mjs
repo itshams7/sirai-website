@@ -24,8 +24,8 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(homepage.includes('data-i18n="'+key+'"'),'Guide markup missing '+key);
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
-assert.ok(homepage.includes('assets/app.js?v=20261105-map-insight-1'),'Homepage uses a stale language script URL');
-assert.ok(read('sw.js').includes('sirai-offline-v21-map-story-20261105'),'Service worker cache not refreshed');
+assert.ok(homepage.includes('assets/app.js?v=20261105-idp-state-map-2'),'Homepage uses a stale language script URL');
+assert.ok(read('sw.js').includes('sirai-offline-v22-state-choropleth-20261105'),'Service worker cache not refreshed');
 console.log('Homepage translation regression checks passed.');
 
 // Mobile iPhone header: connection status must live outside the header controls.
@@ -34,7 +34,7 @@ const accessibleCss=read('assets/launch-quality.css');
 assert.ok(offlineScript.includes("header.insertAdjacentElement('afterend',el)"),'Status indicator must be placed outside sticky header');
 assert.ok(accessibleCss.includes('#sirai-offline-indicator.sirai-offline-indicator{position:static!important'),'Status must not float over iPhone controls');
 assert.ok(accessibleCss.includes('background:#e7efe8'),'Language control must use the distinctive sage style');
-assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-map-insight-1'),'Mobile CSS cache version not refreshed');
+assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-idp-state-map-2'),'Mobile CSS cache version not refreshed');
 console.log('Mobile header regression checks passed.');
 
 // Community information hub integrity.
@@ -165,3 +165,24 @@ const mapCss=read('assets/launch-quality.css');
 assert.ok(mapCss.includes('.sirai-map-visual-layer')&&mapCss.includes('.sirai-map-overlay')&&mapCss.includes('.sirai-map-compare-fill'),'Responsive map infographic styling missing');
 assert.ok(mapCss.includes('width:51.3%'),'Children national-share bar not aligned with 17.3 / 33.7');
 console.log('Data-bearing map, source integrity, interaction and offline release checks passed.');
+
+// Source-grounded 18-state IOM DTM June 2026 hosted-IDP map.
+const idpMapHtml=read('index.html');
+for(const marker of ['id="sirai-idp-map"','id="sirai-idp-svg"','id="sirai-idp-select"','id="sirai-idp-panel"','id="sirai-idp-name"','id="sirai-idp-value"'])assert.ok(idpMapHtml.includes(marker),'Missing state map UI: '+marker);
+assert.ok(idpMapHtml.includes('assets/state-displacement.js?v=20261105-idp-state-map-2'),'State map not loaded on homepage');
+assert.ok(idpMapHtml.includes('2026 IOM DTM'),'Missing geographic data date');
+assert.ok(idpMapHtml.includes('published June total differs'),'Missing disclosed source table discrepancy');
+const idpScript=read('assets/state-displacement.js');
+const idpRows=[...idpScript.slice(idpScript.indexOf('const entries=['),idpScript.indexOf('];',idpScript.indexOf('const entries=['))).matchAll(/\['(SD-[A-Z]{2})','[^']+','[^']+','[^']+','[^']+',([0-9]+)\]/g)];
+assert.equal(idpRows.length,18,'Expected 18 sourced state displacement counts');
+assert.equal(new Set(idpRows.map(x=>x[1])).size,18,'Duplicate state in IDP dataset');
+assert.equal(idpRows.reduce((sum,x)=>sum+Number(x[2]),0),8685253,'IOM state table changed, recheck source before publishing');
+const geoIds=new Set(JSON.parse(read('assets/sudan-states.geojson')).features.map(f=>f.properties.id));
+assert.deepEqual(new Set(idpRows.map(x=>x[1])),geoIds,'Choropleth does not cover exactly the 18 map states');
+assert.ok(idpScript.includes('host.hidden=!visible')&&idpScript.includes("map.dataset.statMode==='displaced'"),'State map must only appear for displaced indicator');
+assert.ok(idpScript.includes("event.key==='Enter'"),'State keyboard selection missing');
+assert.ok(idpScript.includes("role','button'"),'Interactive state accessibility missing');
+assert.ok(read('sw.js').includes("'assets/state-displacement.js'"),'State map not available offline');
+const idpCss=read('assets/launch-quality.css');
+assert.ok(idpCss.includes('.sirai-idp-map path.is-selected')&&idpCss.includes('.sirai-idp-key'),'State highlighting and legend missing');
+console.log('IOM June 2026 18-state data, geographic coverage, offline and accessibility checks passed.');
