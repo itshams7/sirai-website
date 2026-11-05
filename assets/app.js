@@ -25,7 +25,7 @@ for(const [locale,entries] of Object.entries({"en":{"photos.note":"Photographs a
 /* Editorial naming across all four languages: practical tools, not catalogue numbers. */
 const siraiEditorial={
  en:{
-  'nav.resources':'Tools','nav.projects':'Tools',
+  'nav.resources':'Tools','nav.projects':'Tools','resource.2.art':'COMMUNITY','resource.3.art':'ENERGY',
   'hero.cta':'Explore our tools',
   'project.art.tiny':'WATERSHARE / WATER PLANNING',
   'project.kicker':'COMMUNITY WATER PLANNING',
@@ -37,7 +37,7 @@ const siraiEditorial={
   'roadmap.1.text':'Publish the website and accessible community-planning tools in multiple languages.'
  },
  ar:{
-  'nav.resources':'الأدوات','nav.projects':'الأدوات',
+  'nav.resources':'الأدوات','nav.projects':'الأدوات','resource.2.art':'المجتمع','resource.3.art':'الطاقة',
   'hero.cta':'استكشف أدواتنا',
   'project.art.tiny':'WATERSHARE / تخطيط المياه',
   'project.kicker':'تخطيط المياه المجتمعية',
@@ -48,7 +48,7 @@ const siraiEditorial={
   'roadmap.1.text':'نشر الموقع وأدوات التخطيط المجتمعي بلغات متعددة.'
  },
  fr:{
-  'nav.resources':'Outils','nav.projects':'Outils',
+  'nav.resources':'Outils','nav.projects':'Outils','resource.2.art':'COMMUNAUTÉ','resource.3.art':'ÉNERGIE',
   'hero.cta':'Découvrir nos outils',
   'project.art.tiny':'WATERSHARE / PLANIFICATION DE L’EAU',
   'project.kicker':'PLANIFICATION COMMUNAUTAIRE DE L’EAU',
@@ -59,7 +59,7 @@ const siraiEditorial={
   'roadmap.1.text':'Publier le site et des outils de planification communautaire en plusieurs langues.'
  },
  de:{
-  'nav.resources':'Tools','nav.projects':'Tools',
+  'nav.resources':'Tools','nav.projects':'Tools','resource.2.art':'GEMEINSCHAFT','resource.3.art':'ENERGIE',
   'hero.cta':'Unsere Tools entdecken',
   'project.art.tiny':'WATERSHARE / WASSERPLANUNG',
   'project.kicker':'GEMEINSCHAFTLICHE WASSERPLANUNG',
