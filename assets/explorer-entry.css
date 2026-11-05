@@ -3,14 +3,19 @@
 .sirai-explorer-home-grid{display:grid;grid-template-columns:1.14fr .86fr;align-items:center;gap:clamp(26px,6vw,86px)}
 .sirai-explorer-home h2{font-size:clamp(32px,4.5vw,59px);letter-spacing:-.052em;line-height:1.13;color:#123e30;margin:15px 0 19px;max-width:670px}
 .sirai-explorer-home p:not(.section-kicker){color:#4a604f;font-size:clamp(15px,1.7vw,18px);line-height:1.75;max-width:600px;margin:0 0 25px}
-.sirai-explorer-home-preview{min-height:330px;background:linear-gradient(140deg,#1a2721,#33443a);color:#f8edca;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between;padding:27px;border:1px solid #485b4e;box-shadow:0 14px 35px rgba(23,62,53,.12)}
+.sirai-explorer-home-preview{min-height:330px;background:#182e25;color:#f8edca;border-radius:16px;display:flex;flex-direction:column;justify-content:space-between;padding:27px;border:1px solid #485b4e;box-shadow:none}
 .sirai-explorer-home-preview span:first-child{font-size:11px;letter-spacing:.17em;color:#d4c69b;font-weight:800}
 .sirai-explorer-home-preview span:last-child{font-size:11px;letter-spacing:.1em;color:#dee4d9}
 .sirai-explorer-home-map-symbol{display:grid;place-items:center;align-self:center;width:165px;height:165px;border-radius:50%;border:2px solid #dcb77a;color:#f5d393;font-size:75px;font-weight:700;letter-spacing:-.06em;line-height:1}
-.sirai-explorer-home-preview:hover{border-color:#a8be9d;background:linear-gradient(140deg,#1a3529,#3d5040)}
+.sirai-explorer-home-preview:hover{border-color:#a8be9d;background:#204132}
 .sirai-hub-explorer-feature{background:#e7ebdf;border:1px solid #cad8c7;border-radius:13px;padding:clamp(22px,4vw,36px);margin:0 0 28px;display:flex;align-items:center;justify-content:space-between;gap:27px}
 .sirai-hub-explorer-feature h2{font-size:clamp(25px,3vw,36px);color:#133d2f;margin:0 0 10px;letter-spacing:-.04em;line-height:1.2}
 .sirai-hub-explorer-feature p{color:#46604d;line-height:1.7;max-width:650px;margin:0}
 .sirai-hub-explorer-feature .btn{white-space:nowrap}
 [dir=rtl] .sirai-explorer-home h2{letter-spacing:0}
 @media(max-width:760px){.sirai-explorer-home-grid{grid-template-columns:1fr}.sirai-explorer-home-preview{min-height:225px}.sirai-explorer-home-map-symbol{width:110px;height:110px;font-size:50px}.sirai-hub-explorer-feature{flex-direction:column;align-items:stretch}.sirai-hub-explorer-feature .btn{text-align:center}}
+
+/* Geographic preview replaces decorative stat badge. */
+.sirai-explorer-home-map{display:block;width:min(79%,320px);height:auto;max-height:235px;object-fit:contain;align-self:center;filter:none}
+.sirai-explorer-home-preview:focus-visible{outline:3px solid #e3c88d;outline-offset:4px}
+@media(max-width:760px){.sirai-explorer-home-map{max-height:155px;width:min(60%,220px)}}
