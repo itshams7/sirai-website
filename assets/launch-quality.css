@@ -110,3 +110,23 @@
 @media(max-width:570px){.sirai-statistics-map[data-stat-mode="displaced"] .sirai-map-visual-layer{min-height:230px}.sirai-idp-map svg{max-height:245px}.sirai-idp-key{gap:7px 9px}.sirai-idp-result strong{font-size:22px}}
 @media(prefers-reduced-motion:reduce){.sirai-idp-map path{transition:none}}
 @media print{.sirai-idp-map path{filter:none!important}}
+
+/* National humanitarian scale: each circle is an abstract, proportional one-million-person unit, never a map marker. */
+.sirai-national-visual[hidden]{display:none!important}
+.sirai-national-visual{position:absolute;z-index:2;inset:2% 3%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:15px;text-align:center;padding:20px 14px;border:1px solid #e6d8b54b;border-radius:19px;background:linear-gradient(145deg,#092e25e9,#0e3c2fdb);box-shadow:0 18px 45px #09291b66;backdrop-filter:blur(3px)}
+.sirai-national-visual-top{display:flex;flex-direction:column;gap:6px;align-items:center}
+.sirai-national-visual-top>span{font-size:10px;letter-spacing:.13em;color:#f1cf95;font-weight:850;line-height:1.4}
+.sirai-national-visual-top>strong{font-size:clamp(25px,3.1vw,41px);line-height:1;font-weight:900;letter-spacing:-.05em;color:#fff8e6;font-variant-numeric:tabular-nums}
+.sirai-national-dots{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:clamp(7px,.95vw,12px);width:min(100%,288px);margin:3px auto}
+.sirai-national-dot{display:block;aspect-ratio:1;border-radius:50%;background:linear-gradient(90deg,#efc589 var(--dot-fill),#426859 var(--dot-fill));border:1px solid #e5e8d23b;box-shadow:inset 0 1px 2px #ffffff29;min-width:0}
+.sirai-national-visual-legend{display:flex;align-items:center;justify-content:center;gap:8px;color:#f8f1db;font-size:12px;font-weight:750;max-width:310px;line-height:1.45}
+.sirai-national-legend-marker{width:11px;height:11px;flex:none;border-radius:50%;background:#efc589}
+.sirai-national-scale-note{font-size:11px!important;line-height:1.5!important;color:#d1dcca!important;max-width:330px;margin:0!important}
+.sirai-statistics-map[data-stat-mode="need"] .sirai-map-overlay,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-overlay{display:none}
+.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer>img,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer>img{opacity:.25}
+.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer{min-height:335px}
+.sirai-statistics-map[data-stat-mode="children"] .sirai-national-visual{background:linear-gradient(145deg,#133f31ea,#23493be6)}
+@media(max-width:990px){.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer{min-height:330px}}
+@media(max-width:570px){.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer{min-height:310px}.sirai-national-visual{inset:1% 0;padding:17px 10px;gap:12px}.sirai-national-dots{width:min(100%,258px);gap:8px}.sirai-national-visual-top>strong{font-size:29px}.sirai-national-visual-legend{font-size:11px}.sirai-national-scale-note{font-size:10px!important}}
+@media(max-width:350px){.sirai-national-dots{width:min(100%,225px);gap:6px}.sirai-national-visual{padding:12px 8px}}
+@media print{.sirai-national-visual{background:#143b30!important;box-shadow:none}}
