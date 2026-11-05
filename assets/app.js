@@ -21,6 +21,57 @@ for(const [locale,entries] of Object.entries({"en":{"nav.energy":"Energy toolkit
 for(const [locale,entries] of Object.entries({"en":{"nav.resources":"Resources","nav.feedback":"Give feedback","feedback.inviteTitle":"Help us improve this resource.","feedback.inviteText":"Found a problem, a confusing instruction, or a better approach? Tell SIRAI.","feedback.inviteAction":"Share feedback ↗"},"ar":{"nav.resources":"الموارد","nav.feedback":"أرسل ملاحظاتك","feedback.inviteTitle":"ساعدنا في تحسين هذا المورد.","feedback.inviteText":"وجدت مشكلة أو تعليمات غير واضحة أو طريقة أفضل؟ شارك ملاحظتك مع SIRAI.","feedback.inviteAction":"أرسل ملاحظتك ←"},"fr":{"nav.resources":"Ressources","nav.feedback":"Donner mon avis","feedback.inviteTitle":"Aidez-nous à améliorer cette ressource.","feedback.inviteText":"Un problème, une consigne peu claire ou une meilleure idée ? Faites-le savoir à SIRAI.","feedback.inviteAction":"Partager mon avis ↗"},"de":{"nav.resources":"Ressourcen","nav.feedback":"Feedback geben","feedback.inviteTitle":"Helfen Sie uns, diese Ressource zu verbessern.","feedback.inviteText":"Problem, unklare Erklärung oder bessere Idee? Teilen Sie es SIRAI mit.","feedback.inviteAction":"Feedback senden ↗"}})){Object.assign(strings[locale],entries)}
 // Original photographs and attribution
 for(const [locale,entries] of Object.entries({"en":{"photos.note":"Photographs are illustrative and do not depict SIRAI projects.","photos.by":"Photography:","photos.source":"via Unsplash"},"ar":{"photos.note":"صور توضيحية حقيقية ولا توثق مشاريع نفذتها SIRAI.","photos.by":"التصوير:","photos.source":"عبر Unsplash"},"fr":{"photos.note":"Ces photographies sont illustratives et ne montrent pas des projets de SIRAI.","photos.by":"Photographies :","photos.source":"via Unsplash"},"de":{"photos.note":"Diese Fotografien dienen zur Illustration und zeigen keine SIRAI-Projekte.","photos.by":"Fotografie:","photos.source":"über Unsplash"}})){Object.assign(strings[locale],entries)}
+
+/* Editorial naming across all four languages: practical tools, not catalogue numbers. */
+const siraiEditorial={
+ en:{
+  'nav.resources':'Tools','nav.projects':'Tools',
+  'hero.cta':'Explore our tools',
+  'project.art.tiny':'WATERSHARE / WATER PLANNING',
+  'project.kicker':'COMMUNITY WATER PLANNING',
+  'project.text':'WaterShare is a simple, multilingual tool to help communities discuss shared water collection and daily needs. It draws on earlier community experience, but is not a claim that SIRAI has already delivered a field project.',
+  'resource.2.kicker':'COMMUNITY PROJECT PLANNING',
+  'resource.3.kicker':'HOUSEHOLD ENERGY PLANNING',
+  'feedback.inviteTitle':'Help us improve these tools.',
+  'founder.p1':"I was born in Port Sudan, and no matter where life has taken me, Sudan has always felt like home. The time I've spent there taught me something I've never forgotten. People look out for each other, even when they have very little to spare. That spirit is what I want SIRAI to build on.",
+  'roadmap.1.text':'Publish the website and accessible community-planning tools in multiple languages.'
+ },
+ ar:{
+  'nav.resources':'الأدوات','nav.projects':'الأدوات',
+  'hero.cta':'استكشف أدواتنا',
+  'project.art.tiny':'WATERSHARE / تخطيط المياه',
+  'project.kicker':'تخطيط المياه المجتمعية',
+  'project.text':'WaterShare أداة بسيطة متعددة اللغات تساعد المجتمعات على مناقشة تنظيم جمع المياه والاحتياجات اليومية. تستلهم تجربة مجتمعية سابقة ولا تعني أن SIRAI نفّذت مشروعًا ميدانيًا بالفعل.',
+  'resource.2.kicker':'تخطيط المشاريع المجتمعية',
+  'resource.3.kicker':'تخطيط الطاقة المنزلية',
+  'feedback.inviteTitle':'ساعدنا في تحسين هذه الأدوات.',
+  'roadmap.1.text':'نشر الموقع وأدوات التخطيط المجتمعي بلغات متعددة.'
+ },
+ fr:{
+  'nav.resources':'Outils','nav.projects':'Outils',
+  'hero.cta':'Découvrir nos outils',
+  'project.art.tiny':'WATERSHARE / PLANIFICATION DE L’EAU',
+  'project.kicker':'PLANIFICATION COMMUNAUTAIRE DE L’EAU',
+  'project.text':'WaterShare est un outil multilingue pour discuter de la collecte commune de l’eau et des besoins quotidiens. Il s’inspire d’une expérience antérieure, sans prétendre que SIRAI a déjà mené un projet sur le terrain.',
+  'resource.2.kicker':'PLANIFICATION DE PROJETS COMMUNAUTAIRES',
+  'resource.3.kicker':'PLANIFICATION ÉNERGÉTIQUE DOMESTIQUE',
+  'feedback.inviteTitle':'Aidez-nous à améliorer ces outils.',
+  'roadmap.1.text':'Publier le site et des outils de planification communautaire en plusieurs langues.'
+ },
+ de:{
+  'nav.resources':'Tools','nav.projects':'Tools',
+  'hero.cta':'Unsere Tools entdecken',
+  'project.art.tiny':'WATERSHARE / WASSERPLANUNG',
+  'project.kicker':'GEMEINSCHAFTLICHE WASSERPLANUNG',
+  'project.text':'WaterShare ist ein mehrsprachiges Tool zur gemeinsamen Planung der Wasserversorgung. Es knüpft an frühere Erfahrungen an, ohne zu behaupten, dass SIRAI bereits ein Feldprojekt durchgeführt hat.',
+  'resource.2.kicker':'PLANUNG VON GEMEINSCHAFTSPROJEKTEN',
+  'resource.3.kicker':'ENERGIEPLANUNG FÜR HAUSHALTE',
+  'feedback.inviteTitle':'Helfen Sie uns, diese Tools zu verbessern.',
+  'roadmap.1.text':'Website und mehrsprachige Planungstools für Gemeinschaften veröffentlichen.'
+ }
+};
+for(const [locale,values] of Object.entries(siraiEditorial))Object.assign(strings[locale],values);
+
 const browserArabic=(navigator.languages||[navigator.language||'']).some(code=>String(code).toLowerCase().startsWith('ar'));
 let storedLang=null;try{storedLang=localStorage.getItem('sirai-lang')}catch(e){}
 for(const [locale,entries] of Object.entries({"en":{"offline.guide.title":"Built for intermittent connectivity","offline.guide.body":"Open each tool while online to save the lightweight pages for later offline use. Calculators can work without internet after the files load successfully. Sending feedback and loading photos still need a connection. Test this on your own device before relying on it."},"ar":{"offline.guide.title":"مصمم للعمل مع ضعف الاتصال","offline.guide.body":"افتح كل أداة مرة واحدة أثناء توفر الإنترنت لحفظ صفحاتها الخفيفة للاستخدام لاحقاً دون اتصال. يمكن للحاسبات العمل دون إنترنت بعد اكتمال تحميل الملفات، لكن إرسال الملاحظات وعرض الصور يحتاجان اتصالاً. اختبر الأدوات على جهازك قبل الاعتماد عليها."},"fr":{"offline.guide.title":"Conçu pour les connexions intermittentes","offline.guide.body":"Ouvrez chaque outil une fois en ligne pour préparer les pages légères à une utilisation hors connexion. Les calculatrices peuvent ensuite fonctionner sans internet. L’envoi des commentaires et les photos nécessitent toujours une connexion. Testez sur votre appareil avant de vous y fier."},"de":{"offline.guide.title":"Für unzuverlässige Verbindungen ausgelegt","offline.guide.body":"Öffnen Sie jedes Tool zunächst online, damit die schlanken Seiten für die Offline-Nutzung bereitstehen. Rechner können dann ohne Internet funktionieren. Feedback und Fotos benötigen weiterhin eine Verbindung. Testen Sie die Tools vor der Nutzung auf Ihrem Gerät."}}))Object.assign(strings[locale],entries);
