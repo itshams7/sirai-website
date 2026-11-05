@@ -99,6 +99,8 @@ for(const [locale,entries] of Object.entries({"en":{"stats.mapScope":"SUDAN-WIDE
 for(const [locale,entries] of Object.entries({"en":{"stats.mapDisplacedTitle":"Tap a state to explore where displaced people were hosted.","stats.mapDisplacedText":"The interactive map uses IOM's June 2026 state-level estimates. The 8.58M headline reflects the later August 2026 national total."},"ar":{"stats.mapDisplacedTitle":"المس أي ولاية لمعرفة عدد النازحين الموجودين فيها.","stats.mapDisplacedText":"تعرض الخريطة تقديرات الولايات في يونيو ٢٠٢٦ من المنظمة الدولية للهجرة. أما الرقم الرئيسي ٨٫٥٨ مليون فيعود إلى أغسطس ٢٠٢٦."},"fr":{"stats.mapDisplacedTitle":"Touchez un État pour découvrir où les personnes déplacées étaient accueillies.","stats.mapDisplacedText":"La carte utilise les estimations de l’OIM par État en juin 2026. Le total principal de 8,58M date d’août 2026."},"de":{"stats.mapDisplacedTitle":"Bundesstaat wählen, um die dort aufgenommenen Vertriebenen zu sehen.","stats.mapDisplacedText":"Die Karte verwendet die IOM-Schätzungen nach Bundesstaat für Juni 2026. Die große Zahl 8,58 Mio. ist der spätere nationale Stand von August 2026."}})){Object.assign(strings[locale],entries)}
 // National dot-matrix legend: proportional people counts, not geolocated markers.
 for(const [locale,entries] of Object.entries({"en":{"stats.visualKicker":"ONE DOT ≈ ONE MILLION PEOPLE","stats.visualScale":"Each circle represents about one million people nationwide. These are not map locations.","stats.visualNeedLegend":"33.7 million people estimated to need assistance","stats.visualChildrenLegend":"17.3 million children among the 33.7 million people in need"},"ar":{"stats.visualKicker":"كل دائرة ≈ مليون شخص","stats.visualScale":"تمثل كل دائرة نحو مليون شخص على مستوى السودان، وليست موقعاً على الخريطة.","stats.visualNeedLegend":"نحو ٣٣٫٧ مليون شخص يحتاجون إلى المساعدة","stats.visualChildrenLegend":"١٧٫٣ مليون طفل من بين ٣٣٫٧ مليون شخص يحتاجون إلى المساعدة"},"fr":{"stats.visualKicker":"UN POINT ≈ UN MILLION DE PERSONNES","stats.visualScale":"Chaque cercle représente environ un million de personnes à l’échelle nationale, et non leur emplacement.","stats.visualNeedLegend":"33,7 millions de personnes auraient besoin d’aide","stats.visualChildrenLegend":"17,3 millions d’enfants parmi les 33,7 millions de personnes ayant besoin d’aide"},"de":{"stats.visualKicker":"EIN PUNKT ≈ EINE MILLION MENSCHEN","stats.visualScale":"Jeder Kreis steht für rund eine Million Menschen landesweit und stellt keinen Standort dar.","stats.visualNeedLegend":"Geschätzte 33,7 Millionen Menschen benötigen Hilfe","stats.visualChildrenLegend":"17,3 Millionen Kinder unter 33,7 Millionen Hilfsbedürftigen"}})){Object.assign(strings[locale],entries)}
+// 2026 national response comparisons, dates and sources for each locale.
+for(const [locale,entries] of Object.entries({"en":{"stats.visualKicker":"HUMANITARIAN RESPONSE / 2026","stats.visualNeedHeadline":"FROM NEED TO REACH","stats.visualNeed":"People in need","stats.visualTargeted":"Targeted for assistance","stats.visualReached":"Reached by June 2026","stats.visualNeedInsight":"By June 2026, partners had reached about 31.5% of the 33.7 million people estimated to need assistance.","stats.visualChildrenHeadline":"OF PEOPLE IN NEED ARE CHILDREN","stats.visualChildrenLabel":"Children","stats.visualOtherLabel":"Other people in need","stats.visualChildrenInsight":"An estimated 17.3 million of 33.7 million people needing assistance are children.","stats.visualSourceDate":"Published estimates. Not a live counter.","stats.visualReadSource":"View source ↗","stats.mapNeedTitle":"More people need help than assistance has reached.","stats.mapNeedText":"The 2026 response planned to target 20.4M of the 33.7M people in need. About 10.6M had been reached by June. These are nationwide figures.","stats.mapChildrenTitle":"Children account for about half of those in need.","stats.mapChildrenText":"17.3 million children are included among 33.7 million people needing humanitarian assistance. The split below is national, not a state-level estimate."},"ar":{"stats.visualKicker":"الاستجابة الإنسانية / ٢٠٢٦","stats.visualNeedHeadline":"من الاحتياج إلى الوصول","stats.visualNeed":"المحتاجون للمساعدة","stats.visualTargeted":"المستهدفون بالمساعدة","stats.visualReached":"وصلتهم المساعدة حتى يونيو ٢٠٢٦","stats.visualNeedInsight":"بحلول يونيو ٢٠٢٦، وصلت الاستجابة إلى نحو ٣١٫٥٪ من الأشخاص المقدّر احتياجهم للمساعدة والبالغ عددهم ٣٣٫٧ مليوناً.","stats.visualChildrenHeadline":"من المحتاجين للمساعدة أطفال","stats.visualChildrenLabel":"الأطفال","stats.visualOtherLabel":"بقية المحتاجين للمساعدة","stats.visualChildrenInsight":"يُقدّر عدد الأطفال المحتاجين للمساعدة بـ١٧٫٣ مليوناً من أصل ٣٣٫٧ مليون شخص.","stats.visualSourceDate":"تقديرات منشورة وليست عداداً مباشراً.","stats.visualReadSource":"عرض المصدر ↗","stats.mapNeedTitle":"الاحتياج أكبر من نطاق المساعدة المقدمة.","stats.mapNeedText":"استهدفت خطة الاستجابة ٢٠٫٤ مليوناً من أصل ٣٣٫٧ مليون محتاج خلال ٢٠٢٦. ووصلت المساعدة إلى نحو ١٠٫٦ مليون حتى يونيو. هذه أرقام على مستوى السودان.","stats.mapChildrenTitle":"الأطفال يشكلون نحو نصف المحتاجين للمساعدة.","stats.mapChildrenText":"يشكل ١٧٫٣ مليون طفل جزءاً من ٣٣٫٧ مليون شخص بحاجة للمساعدة. المقارنة وطنية وليست تقديراً لكل ولاية."},"fr":{"stats.visualKicker":"RÉPONSE HUMANITAIRE / 2026","stats.visualNeedHeadline":"DES BESOINS À L'AIDE REÇUE","stats.visualNeed":"Personnes dans le besoin","stats.visualTargeted":"Personnes ciblées","stats.visualReached":"Personnes atteintes en juin 2026","stats.visualNeedInsight":"En juin 2026, l'aide avait atteint environ 31,5 % des 33,7 millions de personnes ayant besoin d'assistance.","stats.visualChildrenHeadline":"DES PERSONNES DANS LE BESOIN SONT DES ENFANTS","stats.visualChildrenLabel":"Enfants","stats.visualOtherLabel":"Autres personnes dans le besoin","stats.visualChildrenInsight":"On estime à 17,3 millions les enfants parmi les 33,7 millions de personnes ayant besoin d'aide.","stats.visualSourceDate":"Estimations publiées, pas de compteur en direct.","stats.visualReadSource":"Voir la source ↗","stats.mapNeedTitle":"Les besoins dépassent largement l'aide fournie.","stats.mapNeedText":"Le plan 2026 visait 20,4 millions des 33,7 millions de personnes dans le besoin. Environ 10,6 millions avaient été atteints en juin. Données nationales.","stats.mapChildrenTitle":"Les enfants représentent environ la moitié des besoins.","stats.mapChildrenText":"Les 17,3 millions d'enfants font partie des 33,7 millions de personnes ayant besoin d'aide. Cette proportion est nationale, pas régionale."},"de":{"stats.visualKicker":"HUMANITÄRE HILFE / 2026","stats.visualNeedHeadline":"VOM BEDARF ZUR ERREICHTEN HILFE","stats.visualNeed":"Menschen mit Hilfsbedarf","stats.visualTargeted":"Für Hilfe vorgesehen","stats.visualReached":"Bis Juni 2026 erreicht","stats.visualNeedInsight":"Bis Juni 2026 hatten Helfer etwa 31,5 % der geschätzten 33,7 Millionen Menschen mit Hilfsbedarf erreicht.","stats.visualChildrenHeadline":"DER HILFSBEDÜRFTIGEN SIND KINDER","stats.visualChildrenLabel":"Kinder","stats.visualOtherLabel":"Andere Menschen mit Hilfsbedarf","stats.visualChildrenInsight":"Schätzungsweise 17,3 von 33,7 Millionen Hilfsbedürftigen sind Kinder.","stats.visualSourceDate":"Veröffentlichte Schätzungen, kein Live-Zähler.","stats.visualReadSource":"Quelle ansehen ↗","stats.mapNeedTitle":"Der Hilfsbedarf übersteigt die bisherige Reichweite.","stats.mapNeedText":"2026 wurden 20,4 der 33,7 Millionen Bedürftigen als Zielgruppe festgelegt. Bis Juni wurden etwa 10,6 Millionen erreicht. Landesweite Angaben.","stats.mapChildrenTitle":"Etwa die Hälfte der Hilfsbedürftigen sind Kinder.","stats.mapChildrenText":"17,3 von 33,7 Millionen Menschen mit Hilfsbedarf sind Kinder. Die Verteilung gilt national, nicht für einzelne Bundesstaaten."}})){Object.assign(strings[locale],entries)}
 let lang=['en','ar','fr','de'].includes(storedLang)?storedLang:(browserArabic?'ar':'en');
 function render(){document.documentElement.lang=lang;document.documentElement.dir=lang==='ar'?'rtl':'ltr';document.body.dir=document.documentElement.dir;document.querySelectorAll('[data-i18n]').forEach(el=>{const v=strings[lang][el.dataset.i18n];if(v!==undefined)el.textContent=v});document.querySelectorAll('[data-i18n-html]').forEach(el=>{const v=strings[lang][el.dataset.i18nHtml];if(v!==undefined)el.innerHTML=v});document.querySelectorAll('[data-lang-select]').forEach(el=>{el.value=lang;el.setAttribute('aria-label','Website language / لغة الموقع')}); if(typeof updateCalculator==='function')updateCalculator();}
 function toggleLang(){lang=lang==='en'?'ar':'en';localStorage.setItem('sirai-lang',lang);render()}
@@ -141,35 +143,35 @@ if(statsRoot){
    mapTitle.dataset.i18n=keys[0];mapTitle.textContent=strings[lang][keys[0]]||strings.en[keys[0]];
    mapText.dataset.i18n=keys[1];mapText.textContent=strings[lang][keys[1]]||strings.en[keys[1]];
    comparison.hidden=key!=='children';
-   const national=statsRoot.querySelector('#sirai-national-visual'),dots=statsRoot.querySelector('#sirai-national-dots');
-   if(national&&dots){
-    national.hidden=key==='displaced';
-    if(key!=='displaced'){
-     const chosen=key==='children'?17.3:33.7;
-     const vals=Array.from({length:34},(_,i)=>Math.max(0,Math.min(1,chosen-i)));
-     dots.replaceChildren();
-     vals.forEach((share,i)=>{
-      const dot=document.createElement('span');
-      dot.className='sirai-national-dot';
-      dot.style.setProperty('--dot-fill',Math.round(share*100)+'%');
-      dot.setAttribute('aria-hidden','true');
-      dots.append(dot);
-     });
-     const labelKey=key==='children'?'stats.visualChildrenLegend':'stats.visualNeedLegend';
-     const legend=statsRoot.querySelector('#sirai-national-legend-label');
-     legend.dataset.i18n=labelKey;legend.textContent=strings[lang][labelKey]||strings.en[labelKey];
-     statsRoot.querySelector('#sirai-national-share').textContent=key==='children'?'17.3M / 33.7M':'33.7M';
-     const explanation=key==='children'?'17.3 million of 33.7 million, approximately 51.3%, are children in need. Circles are proportional symbols, not locations.':'About 33.7 million people in need represented by 33 full circles and one 70% filled circle. Not a geographic distribution.';
-     const accessible={
-      en:explanation,
-      ar:key==='children'?'١٧٫٣ مليون طفل من بين ٣٣٫٧ مليون محتاج للمساعدة، أي نحو ٥١٫٣٪. الدوائر لا تمثل مواقع.':'٣٣ دائرة كاملة ودائرة بنسبة ٧٠٪ تمثل نحو ٣٣٫٧ مليون محتاج للمساعدة، وليس توزيعاً جغرافياً.',
-      fr:key==='children'?'17,3 millions d’enfants parmi 33,7 millions de personnes dans le besoin, environ 51,3 %. Les cercles ne sont pas des lieux.':'33 cercles entiers et 70 % d’un cercle représentent 33,7 millions de personnes, sans répartition géographique.',
-      de:key==='children'?'17,3 von 33,7 Millionen Menschen sind Kinder, etwa 51,3 %. Kreise sind keine Ortsangaben.':'33 volle Kreise und 70 % eines weiteren stehen für 33,7 Millionen Menschen, nicht für eine geografische Verteilung.'
+   const national=statsRoot.querySelector('#sirai-national-visual');
+   if(national){
+    const showing=key!=='displaced';
+    national.hidden=!showing;
+    const needView=statsRoot.querySelector('#sirai-national-need');
+    const childView=statsRoot.querySelector('#sirai-national-children');
+    needView.hidden=key!=='need';
+    childView.hidden=key!=='children';
+    if(showing){
+     const headline=statsRoot.querySelector('#sirai-national-share');
+     const headlineKey=key==='children'?'stats.visualChildrenHeadline':'stats.visualNeedHeadline';
+     headline.dataset.i18n=headlineKey;
+     headline.textContent=strings[lang][headlineKey]||strings.en[headlineKey];
+     const sourceLink=statsRoot.querySelector('#sirai-national-source');
+     sourceLink.href=key==='children'?'https://www.unicef.org/sudan/reports/unicef-sudan-humanitarian-mid-year-situation-report-2026':'https://www.gov.uk/government/publications/sudan-country-policy-and-information-notes/country-policy-and-information-note-humanitarian-situation-sudan-september-2026-accessible';
+     const parentLabels={
+      en:key==='children'?'17.3 million children and 16.4 million other people among 33.7 million needing aid':'2026 people in need: 33.7 million. Targeted: 20.4 million. Reached by June: 10.6 million.',
+      ar:key==='children'?'١٧٫٣ مليون طفل و١٦٫٤ مليون من بقية المحتاجين من أصل ٣٣٫٧ مليوناً':'المحتاجون ٣٣٫٧ مليوناً، المستهدفون ٢٠٫٤ مليوناً، وصلتهم المساعدة حتى يونيو ١٠٫٦ مليون.',
+      fr:key==='children'?'17,3 millions d’enfants et 16,4 millions d’autres personnes parmi 33,7 millions':'33,7 millions dans le besoin, 20,4 millions ciblés, 10,6 millions atteints en juin 2026.',
+      de:key==='children'?'17,3 Millionen Kinder und 16,4 Millionen andere Personen bei 33,7 Millionen Hilfsbedürftigen':'33,7 Millionen Hilfsbedürftige, 20,4 Millionen vorgesehen, 10,6 Millionen bis Juni erreicht.'
      };
-     dots.setAttribute('aria-label',accessible[lang]||explanation);
+     national.setAttribute('aria-label',parentLabels[lang]||parentLabels.en);
+     // Animate only in response to a selection; never invent continuously updated counts.
+     needView.querySelectorAll('[data-bar-value]').forEach(bar=>{bar.style.width='0%';});
+     if(key==='need'){
+      requestAnimationFrame(()=>{needView.querySelectorAll('[data-bar-value]').forEach(bar=>{bar.style.width=bar.dataset.barValue+'%';});});
+     }
     }
    }
-
    const ratio=statsRoot.querySelector('.sirai-map-compare-track');
    if(ratio)ratio.setAttribute('aria-label',lang==='ar'?'١٧٫٣ مليون طفل من أصل ٣٣٫٧ مليون محتاج للمساعدة':lang==='fr'?'17,3 millions d’enfants parmi 33,7 millions de personnes ayant besoin d’aide':lang==='de'?'17,3 Millionen Kinder unter 33,7 Millionen Menschen mit Hilfsbedarf':'17.3 million children out of 33.7 million people needing humanitarian assistance');
   }
