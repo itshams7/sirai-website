@@ -111,22 +111,43 @@
 @media(prefers-reduced-motion:reduce){.sirai-idp-map path{transition:none}}
 @media print{.sirai-idp-map path{filter:none!important}}
 
-/* National humanitarian scale: each circle is an abstract, proportional one-million-person unit, never a map marker. */
-.sirai-national-visual[hidden]{display:none!important}
-.sirai-national-visual{position:absolute;z-index:2;inset:2% 3%;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:15px;text-align:center;padding:20px 14px;border:1px solid #e6d8b54b;border-radius:19px;background:linear-gradient(145deg,#092e25e9,#0e3c2fdb);box-shadow:0 18px 45px #09291b66;backdrop-filter:blur(3px)}
-.sirai-national-visual-top{display:flex;flex-direction:column;gap:6px;align-items:center}
-.sirai-national-visual-top>span{font-size:10px;letter-spacing:.13em;color:#f1cf95;font-weight:850;line-height:1.4}
-.sirai-national-visual-top>strong{font-size:clamp(25px,3.1vw,41px);line-height:1;font-weight:900;letter-spacing:-.05em;color:#fff8e6;font-variant-numeric:tabular-nums}
-.sirai-national-dots{display:grid;grid-template-columns:repeat(9,minmax(0,1fr));gap:clamp(7px,.95vw,12px);width:min(100%,288px);margin:3px auto}
-.sirai-national-dot{display:block;aspect-ratio:1;border-radius:50%;background:linear-gradient(90deg,#efc589 var(--dot-fill),#426859 var(--dot-fill));border:1px solid #e5e8d23b;box-shadow:inset 0 1px 2px #ffffff29;min-width:0}
-.sirai-national-visual-legend{display:flex;align-items:center;justify-content:center;gap:8px;color:#f8f1db;font-size:12px;font-weight:750;max-width:310px;line-height:1.45}
-.sirai-national-legend-marker{width:11px;height:11px;flex:none;border-radius:50%;background:#efc589}
-.sirai-national-scale-note{font-size:11px!important;line-height:1.5!important;color:#d1dcca!important;max-width:330px;margin:0!important}
+/* Interactive and dated humanitarian figures: no artificial "live" counter. */
+.sirai-national-visual[hidden],.sirai-national-need[hidden],.sirai-national-children[hidden]{display:none!important}
+.sirai-national-visual{position:absolute;z-index:2;inset:1.5% 2%;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:clamp(17px,2vw,28px);border:1px solid #e6d8b559;border-radius:19px;background:linear-gradient(145deg,#082c23f2,#0f3c2fee);box-shadow:0 18px 45px #09291b50;color:#fff9ec;text-align:start}
+.sirai-national-visual-top{display:flex;flex-direction:column;gap:7px}
+.sirai-national-visual-top>span{font-size:10px;letter-spacing:.11em;color:#f2c78d;font-weight:850;line-height:1.45}
+.sirai-national-visual-top>strong{font-size:clamp(17px,1.9vw,24px);line-height:1.2;font-weight:850;letter-spacing:-.015em;color:#fffaf0}
+.sirai-national-need{display:flex;flex-direction:column;gap:14px}
+.sirai-national-bar-row{display:grid;gap:7px}
+.sirai-national-bar-label{display:flex;justify-content:space-between;gap:12px;align-items:center;line-height:1.3;font-size:13px;color:#edf4eb}
+.sirai-national-bar-label strong{font-size:clamp(17px,2vw,23px);font-weight:850;font-variant-numeric:tabular-nums;color:#fff4de;white-space:nowrap}
+.sirai-national-bar-track{height:15px;background:#eef3e72c;border-radius:30px;overflow:hidden;border:1px solid #ffffff18}
+.sirai-national-bar-fill{display:block;height:100%;width:0;border-radius:30px;transition:width .65s cubic-bezier(.2,.65,.2,1)}
+.sirai-national-bar-fill.fill-need{background:linear-gradient(90deg,#d6b894,#f2d5aa)}
+.sirai-national-bar-fill.fill-target{background:linear-gradient(90deg,#7faa9a,#b3d4bd)}
+.sirai-national-bar-fill.fill-reached{background:linear-gradient(90deg,#e08a48,#ffc07b)}
+.sirai-national-insight{margin:2px 0 0!important;max-width:470px;font-size:12px!important;line-height:1.65!important;color:#d7e3d7!important}
+.sirai-national-footer{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px 12px;border-top:1px solid #f1dfb22f;padding-top:12px;font-size:10px;color:#d1ddca;line-height:1.5}
+.sirai-national-footer a{color:#ffdfa7;font-weight:850;text-decoration:underline;text-underline-offset:3px}
+.sirai-national-children{display:flex;flex-direction:column;gap:18px}
+.sirai-children-big{display:flex;flex-direction:column;gap:8px}
+.sirai-children-big strong{font-size:clamp(66px,8vw,112px);line-height:.9;font-weight:900;letter-spacing:-.08em;color:#f2c78d;font-variant-numeric:tabular-nums}
+.sirai-children-big span{font-size:11px;line-height:1.4;font-weight:850;color:#f6ebd4;letter-spacing:.065em}
+.sirai-children-split{display:flex;width:100%;height:31px;border-radius:8px;overflow:hidden;border:1px solid #ffffff45;background:#e6eadb25}
+.sirai-children-split-child{display:block;flex:0 0 51.3353%;background:linear-gradient(90deg,#e4ac6d,#f4d297)}
+.sirai-children-split-other{display:block;flex:1;background:linear-gradient(90deg,#719e8c,#a4c6b0)}
+.sirai-children-breakdown{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sirai-children-breakdown>div{display:grid;grid-template-columns:12px 1fr;column-gap:8px;row-gap:3px;align-items:center}
+.sirai-children-breakdown i{width:11px;height:11px;border-radius:2px;background:#eab87a}
+.sirai-children-breakdown .sirai-other-swatch{background:#94bda6}
+.sirai-children-breakdown strong{font-size:clamp(19px,2.5vw,28px);font-weight:850;color:#fff9e8;font-variant-numeric:tabular-nums}
+.sirai-children-breakdown span{grid-column:2;font-size:11px;line-height:1.4;color:#dce6d8}
 .sirai-statistics-map[data-stat-mode="need"] .sirai-map-overlay,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-overlay{display:none}
-.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer>img,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer>img{opacity:.25}
-.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer{min-height:335px}
-.sirai-statistics-map[data-stat-mode="children"] .sirai-national-visual{background:linear-gradient(145deg,#133f31ea,#23493be6)}
-@media(max-width:990px){.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer{min-height:330px}}
-@media(max-width:570px){.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer{min-height:310px}.sirai-national-visual{inset:1% 0;padding:17px 10px;gap:12px}.sirai-national-dots{width:min(100%,258px);gap:8px}.sirai-national-visual-top>strong{font-size:29px}.sirai-national-visual-legend{font-size:11px}.sirai-national-scale-note{font-size:10px!important}}
-@media(max-width:350px){.sirai-national-dots{width:min(100%,225px);gap:6px}.sirai-national-visual{padding:12px 8px}}
-@media print{.sirai-national-visual{background:#143b30!important;box-shadow:none}}
+.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer>img,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer>img{opacity:.13;filter:grayscale(1) brightness(0) invert(.94) sepia(.15)}
+.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer{min-height:400px}
+.sirai-statistics-map[data-stat-mode="children"] .sirai-national-visual{background:linear-gradient(145deg,#113d32f2,#244b3def)}
+@media(max-width:990px){.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer{min-height:400px}}
+@media(max-width:570px){.sirai-statistics-map[data-stat-mode="need"] .sirai-map-visual-layer,.sirai-statistics-map[data-stat-mode="children"] .sirai-map-visual-layer{min-height:400px}.sirai-national-visual{inset:0;padding:18px 15px;gap:15px}.sirai-national-bar-label{font-size:12px}.sirai-national-bar-row{gap:5px}.sirai-national-need{gap:12px}.sirai-children-big strong{font-size:clamp(59px,16vw,88px)}.sirai-children-breakdown strong{font-size:19px}.sirai-children-split{height:26px}.sirai-national-insight{font-size:11px!important}}
+@media(max-width:350px){.sirai-national-visual{padding:15px 10px;gap:12px}.sirai-national-footer{font-size:9px}.sirai-children-breakdown{gap:8px}}
+@media(prefers-reduced-motion:reduce){.sirai-national-bar-fill{transition:none}}
+@media print{.sirai-national-visual{box-shadow:none;background:#143b30!important}}
