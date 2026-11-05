@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
-const pages=['index.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html','transparency.html'];
+const pages=['index.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html','transparency.html','start-here.html','resources.html','faq.html','updates.html','get-involved.html'];
 for(const page of pages){const html=read(page);assert.match(html,/<main[^>]*id="main"/,'Main landmark missing in '+page);assert.match(html,/assets\/launch-quality\.css/,'Accessibility stylesheet missing in '+page);assert.match(html,/assets\/launch-quality\.js/,'Navigation script missing in '+page);assert.match(html,/property="og:title"/,'Sharing metadata missing in '+page);assert.match(html,/href="transparency\.html"/,'Transparency link missing in '+page);assert.doesNotMatch(html,/My earlier community experience is personal and should not be counted as SIRAI project work/,'Removed copy found in '+page);}
 const sw=read('sw.js');const offline=read('assets/offline-share.js');const version=sw.match(/const VERSION='([^']+)'/)?.[1];assert.ok(version,'Service worker cache version missing');assert.ok(offline.includes(`keys.includes('${version}')`),'Offline status and worker versions differ');for(const asset of [...sw.matchAll(/'([^']+\.(?:html|css|js|webmanifest|svg))'/g)].map(m=>m[1]))assert.ok(fs.existsSync(new URL('../'+asset,import.meta.url)),'Missing cached asset: '+asset);
 assert.ok(read('assets/app.js').includes("strings[locale]['nav.transparency']=value"),'Missing translated navigation label');
@@ -24,8 +24,8 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(homepage.includes('data-i18n="'+key+'"'),'Guide markup missing '+key);
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
-assert.ok(homepage.includes('assets/app.js?v=20261105-language-fix-1'),'Homepage uses a stale language script URL');
-assert.ok(read('sw.js').includes('sirai-offline-v10-mobile-header-20261105'),'Service worker cache not refreshed');
+assert.ok(homepage.includes('assets/app.js?v=20261105-hub1'),'Homepage uses a stale language script URL');
+assert.ok(read('sw.js').includes('sirai-offline-v11-community-hub-20261105'),'Service worker cache not refreshed');
 console.log('Homepage translation regression checks passed.');
 
 // Mobile iPhone header: connection status must live outside the header controls.
@@ -36,3 +36,13 @@ assert.ok(accessibleCss.includes('#sirai-offline-indicator.sirai-offline-indicat
 assert.ok(accessibleCss.includes('background:#e7efe8'),'Language control must use the distinctive sage style');
 assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-mobile-header-2'),'Mobile CSS cache version not refreshed');
 console.log('Mobile header regression checks passed.');
+
+// Community information hub integrity.
+for(const page of pages){const html=read(page);for(const dest of ['resources.html','updates.html','get-involved.html','faq.html'])assert.ok(html.includes('href="'+dest+'"'),'Missing community navigation link to '+dest+' in '+page);}
+for(const page of ['resources.html','faq.html','updates.html','get-involved.html']){const html=read(page);assert.ok(html.includes('assets/community-hub.js'),'Hub translations missing on '+page);assert.ok(html.includes('assets/community-hub.css'),'Hub stylesheet missing on '+page);}
+const hubJs=read('assets/community-hub.js');for(const locale of ['en','ar','fr','de'])assert.ok(hubJs.includes('"'+locale+'":{'),'Missing hub locale '+locale);
+for(const key of ['nav.updates','nav.involved','nav.faq'])assert.ok(read('assets/app.js').includes("'"+key+"'"),'Missing nav translation '+key);
+const updates=read('updates.html');assert.ok(updates.includes('5 November 2026'),'Missing dated development log');
+const faq=read('faq.html');assert.equal((faq.match(/class="sirai-hub-question"/g)||[]).length,8,'Expected eight FAQs');
+assert.ok(read('get-involved.html').includes('feedback.html'),'No feedback route for participation');
+console.log('Community hub integrity, language and transparency checks passed.');
