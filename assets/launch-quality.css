@@ -9,3 +9,6 @@
 .site-header .lang-select:focus-visible{outline:3px solid #7562b5!important;outline-offset:3px}
 @media(max-width:760px){.site-header .header-inner{gap:10px}.site-header .lang-select{min-width:100px;max-width:115px;font-size:12px;padding:8px 7px}#sirai-offline-indicator.sirai-offline-indicator{font-size:10px;margin-top:6px;margin-bottom:7px}}
 @media print{#sirai-offline-indicator.sirai-offline-indicator{display:none!important}}
+
+/* Keep six primary links clear on mid-size tablets without squeezing the logo. */
+@media(min-width:901px) and (max-width:1200px){.site-header .nav{display:none;position:absolute;top:100%;inset-inline:0;padding:20px 30px;background:#f3ede0;border-bottom:1px solid #d9d1bd;box-shadow:0 15px 25px rgba(15,42,29,.10);flex-direction:column;align-items:stretch;gap:14px}.site-header .nav.open{display:flex}.site-header .menu-toggle{display:block}}
