@@ -53,3 +53,29 @@
 @media(max-width:350px){.sirai-stat-choices{grid-template-columns:1fr}.sirai-stat-choice{flex-direction:row;gap:14px;align-items:center}}
 @media(prefers-reduced-motion:reduce){.sirai-stat-choice{transition:none}}
 @media print{.sirai-statistics{background:white}.sirai-statistics-map{box-shadow:none}.sirai-stat-choices{display:none}}
+
+/* Map storytelling: the geography locates Sudan; the overlay explains national totals. */
+.sirai-statistics-map{gap:14px;min-height:0;padding-bottom:25px}
+.sirai-map-visual-layer{position:relative;flex:1;display:grid;place-items:center;width:100%;min-height:215px;margin:0}
+.sirai-map-visual-layer img{width:100%;max-width:390px;max-height:300px;margin:0 auto;display:block;filter:grayscale(1) brightness(0) invert(.94) sepia(.15);opacity:.87;transform:scale(1.04)}
+.sirai-map-overlay{position:absolute;inset:auto 7% 4% auto;display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:12px 15px;max-width:85%;border-radius:13px;background:#f6efe0;color:#103d30;box-shadow:0 10px 28px #09281d55;border:1px solid #ffffff66}
+.sirai-map-scope{font-size:10px;line-height:1.3;font-weight:850;letter-spacing:.09em;color:#6a694e}
+.sirai-map-overlay-number{font-size:clamp(32px,4vw,51px);font-weight:900;line-height:1;letter-spacing:-.055em;font-variant-numeric:tabular-nums}
+.sirai-map-insight{position:relative;z-index:1;width:100%;padding:20px 0 0;margin:3px 0 0;border-top:1px solid #ffffff38;text-align:start}
+.sirai-map-insight-kicker{font-size:10px;letter-spacing:.16em;color:#d6bb86;font-weight:850;margin:0 0 9px}
+.sirai-map-insight h3{font-size:clamp(17px,1.65vw,21px);line-height:1.3;color:#fff7e5;margin:0 0 8px;font-weight:820}
+.sirai-map-insight>p:not(.sirai-map-insight-kicker){font-size:13px;line-height:1.65;color:#d5e1d8;margin:0}
+.sirai-map-compare{margin-top:17px}
+.sirai-map-compare[hidden]{display:none!important}
+.sirai-map-compare-label{display:flex;justify-content:space-between;align-items:end;gap:12px;color:#faf3e6;font-size:12px;line-height:1.4;font-weight:750}
+.sirai-map-compare-label strong{font-size:23px;line-height:1;font-weight:900;color:#f4ca89;white-space:nowrap}
+.sirai-map-compare-track{height:12px;border-radius:40px;background:#f0e7d127;margin:10px 0;overflow:hidden}
+.sirai-map-compare-fill{display:block;width:51.3%;height:100%;border-radius:40px;background:linear-gradient(90deg,#e6b874,#f1d5a7)}
+.sirai-map-compare>p{margin:0;font-size:11px;line-height:1.5;color:#d9e4d9}
+.sirai-statistics-map[data-stat-mode="children"]{background:radial-gradient(circle at 49% 33%,#386557 0,#1e5040 54%,#103528 100%)}
+.sirai-statistics-map[data-stat-mode="displaced"]{background:radial-gradient(circle at 49% 33%,#3e5a53 0,#23463d 54%,#103528 100%)}
+.sirai-statistics-map[data-stat-mode="displaced"] .sirai-map-overlay{border-color:#e5bb8266}
+.sirai-statistics-map[data-stat-mode="children"] .sirai-map-overlay{background:#f4e8ce}
+@media(max-width:990px){.sirai-map-visual-layer img{max-height:300px}.sirai-statistics-map{max-height:none}}
+@media(max-width:570px){.sirai-statistics-map{max-height:none;gap:12px}.sirai-map-visual-layer{min-height:190px}.sirai-map-visual-layer img{max-height:255px}.sirai-map-overlay{inset:auto 2% 0 auto;padding:9px 12px}.sirai-map-overlay-number{font-size:35px}.sirai-map-insight{padding-top:17px}.sirai-map-insight h3{font-size:18px}.sirai-map-insight>p:not(.sirai-map-insight-kicker){font-size:12px}}
+@media print{.sirai-map-overlay{box-shadow:none;border-color:#999}}
