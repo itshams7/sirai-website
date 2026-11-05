@@ -23,3 +23,28 @@ const zero=m.energyReport([],{battery:2400,dod:50,eff:80,outage:6,psh:4.5,pr:70}
 assert.throws(()=>m.energyReport([{watts:10,qty:1,hours:25,essential:true}],{battery:2400,dod:50,eff:80,outage:6,psh:4.5,pr:70}));
 for(const file of ['watershare.js','projectstarter.js','taqawise.js'])assert.ok(readFileSync(new URL('../assets/'+file,import.meta.url),'utf8').includes('window.SIRAI_MATH.'),'Tool does not use tested math: '+file);
 console.log('Independent SIRAI water, project budget and energy math tests passed.');
+
+// Deterministic edge-case/property checks: no sampling of real households.
+for(let households=1;households<=120;households+=7){
+ for(let windows=1;windows<=Math.min(12,households);windows++){
+  const groups=m.waterGroups(households,windows,37);
+  assert.equal(groups.reduce((n,g)=>n+g.count,0),households);
+  assert.equal(groups.reduce((n,g)=>n+g.litres,0),m.waterDemand(households,37));
+  assert.ok(groups.every(g=>g.count>=1));
+ }
+}
+for(const rate of [0,5,10,25,50]){
+ const result=m.projectBudget([{qty:3,unit:1200},{qty:7,unit:350}],rate,1000);
+ near(result.total,result.subtotal*(1+rate/100));
+ near(result.gap,Math.max(0,result.total-1000));
+}
+for(const dod of [20,40,50,80,100]){
+ const base={battery:2400,dod,eff:80,outage:6,psh:4.5,pr:70};
+ const report=m.energyReport([{watts:60,qty:1,hours:5,essential:true}],base);
+ near(report.usable,2400*dod/100*.8);
+ near(report.runtime,report.usable/60);
+ near(report.required,60*6/(dod/100*.8));
+}
+assert.throws(()=>m.energyReport([{watts:-2,qty:1,hours:2,essential:true}],{battery:2400,dod:50,eff:80,outage:6,psh:4.5,pr:70}));
+assert.throws(()=>m.energyReport([], {battery:2400,dod:0,eff:80,outage:6,psh:4.5,pr:70}));
+console.log('Deterministic boundary and conservation checks passed.');
