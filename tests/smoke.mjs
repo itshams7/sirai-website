@@ -24,7 +24,7 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(homepage.includes('data-i18n="'+key+'"'),'Guide markup missing '+key);
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
-assert.ok(homepage.includes('assets/app.js?v=20261105-hub1'),'Homepage uses a stale language script URL');
+assert.ok(homepage.includes('assets/app.js?v=20261105-sudan-statistics-1'),'Homepage uses a stale language script URL');
 assert.ok(read('sw.js').includes('sirai-offline-v19-trust-refinement-20261105'),'Service worker cache not refreshed');
 console.log('Homepage translation regression checks passed.');
 
@@ -34,7 +34,7 @@ const accessibleCss=read('assets/launch-quality.css');
 assert.ok(offlineScript.includes("header.insertAdjacentElement('afterend',el)"),'Status indicator must be placed outside sticky header');
 assert.ok(accessibleCss.includes('#sirai-offline-indicator.sirai-offline-indicator{position:static!important'),'Status must not float over iPhone controls');
 assert.ok(accessibleCss.includes('background:#e7efe8'),'Language control must use the distinctive sage style');
-assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-mobile-header-2'),'Mobile CSS cache version not refreshed');
+assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-sudan-statistics-1'),'Mobile CSS cache version not refreshed');
 console.log('Mobile header regression checks passed.');
 
 // Community information hub integrity.
