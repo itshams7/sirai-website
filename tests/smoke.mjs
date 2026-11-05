@@ -24,8 +24,8 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(homepage.includes('data-i18n="'+key+'"'),'Guide markup missing '+key);
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
-assert.ok(homepage.includes('assets/app.js?v=20261105-idp-state-map-2'),'Homepage uses a stale language script URL');
-assert.ok(read('sw.js').includes('sirai-offline-v22-state-choropleth-20261105'),'Service worker cache not refreshed');
+assert.ok(homepage.includes('assets/app.js?v=20261105-national-viz-2'),'Homepage uses a stale language script URL');
+assert.ok(read('sw.js').includes('sirai-offline-v23-national-viz-20261105'),'Service worker cache not refreshed');
 console.log('Homepage translation regression checks passed.');
 
 // Mobile iPhone header: connection status must live outside the header controls.
@@ -34,7 +34,7 @@ const accessibleCss=read('assets/launch-quality.css');
 assert.ok(offlineScript.includes("header.insertAdjacentElement('afterend',el)"),'Status indicator must be placed outside sticky header');
 assert.ok(accessibleCss.includes('#sirai-offline-indicator.sirai-offline-indicator{position:static!important'),'Status must not float over iPhone controls');
 assert.ok(accessibleCss.includes('background:#e7efe8'),'Language control must use the distinctive sage style');
-assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-idp-state-map-2'),'Mobile CSS cache version not refreshed');
+assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-national-viz-2'),'Mobile CSS cache version not refreshed');
 console.log('Mobile header regression checks passed.');
 
 // Community information hub integrity.
@@ -186,3 +186,17 @@ assert.ok(read('sw.js').includes("'assets/state-displacement.js'"),'State map no
 const idpCss=read('assets/launch-quality.css');
 assert.ok(idpCss.includes('.sirai-idp-map path.is-selected')&&idpCss.includes('.sirai-idp-key'),'State highlighting and legend missing');
 console.log('IOM June 2026 18-state data, geographic coverage, offline and accessibility checks passed.');
+
+// Nationwide UNICEF charts must communicate quantities without invented local geography.
+const nationalHome=read('index.html');
+for(const id of ['sirai-national-visual','sirai-national-dots','sirai-national-share','sirai-national-legend-label'])assert.ok(nationalHome.includes('id="'+id+'"'),'National chart markup missing '+id);
+const nationalJs=read('assets/app.js');
+assert.ok(nationalJs.includes("Array.from({length:34}"),'National scale must represent 33.7 million using 34 proportional units');
+assert.ok(nationalJs.includes("key==='children'?17.3:33.7"),'UNICEF comparison is not wired to the selector');
+assert.ok(nationalJs.includes("national.hidden=key==='displaced'"),'Nationwide abstraction should not cover the real geographic displacement map');
+for(const language of ['"en":{','"ar":{','"fr":{','"de":{'])assert.ok(nationalJs.includes(language+'"stats.visualKicker"'),'National chart localization missing: '+language);
+assert.ok(nationalJs.includes("Each circle represents")&&nationalJs.includes('not locations'),'Symbolic, not geographic, unit explanation absent');
+const nationalCss=read('assets/launch-quality.css');
+assert.ok(nationalCss.includes('.sirai-national-dots')&&nationalCss.includes('.sirai-national-dot'),'National visual scale styles missing');
+assert.ok(nationalCss.includes('.sirai-statistics-map[data-stat-mode="children"] .sirai-national-visual'),'Children mode distinct treatment missing');
+console.log('National aid and children proportional visualizations are wired, labeled and localized.');
