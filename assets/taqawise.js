@@ -173,6 +173,14 @@ function safeImport(doc){
 function reset(){if(!confirm(T('confirmReset')))return;model=fresh();nextId=5;for(const input of document.querySelectorAll('[data-setting]'))input.value=model.settings[input.dataset.setting];renderLanguage();go(0);showMessage(T('resetDone'))}
 for(const s of document.querySelectorAll('[data-setting]'))s.addEventListener('input',()=>{model.settings[s.dataset.setting]=s.value;refresh()});
 $('tq-add').addEventListener('click',addItem);
+$('tq-example')?.addEventListener('click',()=>{
+ const ask={en:'Replace the current plan with fictional household example values?',ar:'هل تريد استبدال الخطة الحالية بقيم افتراضية لمنزل؟',fr:'Remplacer le plan par un exemple fictif de foyer ?',de:'Aktuellen Plan durch fiktives Haushaltsbeispiel ersetzen?'};
+ if(!window.confirm(ask[locale()]))return;
+ model={items:[{...template.led,id:1},{...template.fan,id:2},{...template.phone,id:3},{...template.fridge,id:4},{...template.tv,id:5}],settings:{battery:'2400',dod:'50',eff:'80',outage:'6',psh:'4.5',pr:'70'}};nextId=6;
+ for(const input of document.querySelectorAll('[data-setting]'))input.value=model.settings[input.dataset.setting];
+ renderLanguage();go(0);
+ showMessage(({en:'Fictional example loaded. These are teaching assumptions, not appliance measurements or equipment recommendations.',ar:'تم تحميل مثال افتراضي. الأرقام تعليمية وليست قياسات لأجهزة أو توصيات شراء.',fr:'Exemple fictif chargé. Les valeurs ne sont ni des mesures réelles ni des recommandations d’équipement.',de:'Fiktives Beispiel geladen. Diese Werte sind keine Messungen oder Kaufempfehlungen.'})[locale()]);
+});
 document.querySelectorAll('[data-step]').forEach(s=>s.addEventListener('click',()=>go(Number(s.dataset.step))));
 $('tq-prev').addEventListener('click',()=>go(step-1));$('tq-next').addEventListener('click',()=>go(step+1));
 $('tq-reset').addEventListener('click',reset);
