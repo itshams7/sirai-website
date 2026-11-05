@@ -43,3 +43,18 @@
 - Document changes and update the service-worker cache version when cached assets change.
 - Confirm final Pages deployment **success** after the latest commit.
 - Separate functional usability tests from humanitarian efficacy evaluations.
+
+## Consent-based usability measurement framework (proposed, not collected)
+- **Task completion:** Can a tester open the correct tool, load a fictional example, change one value, and explain the result without assistance?
+- **Comprehension:** Can they explain that the results are estimates, not guaranteed availability or engineering instructions?
+- **Language:** Can an Arabic-language tester understand buttons, warnings, numbers, and units without interpretation?
+- **Offline access:** After initial online visit, can they reopen the tools without internet?
+- **Safety:** Does the user understand that sharing real names, locations, collection schedules, or sensitive circumstances is discouraged?
+
+Record only aggregated totals after explicit informed consent and with no user-identifying metadata. Do not add hidden analytics or session tracking. Log problems by task and device category only, and suppress categories where small samples might be identifying. Never publish fictitious success rates.
+
+## Priority for a supervised release review
+1. Validate each survey-derived claim and engineering assumption independently.
+2. Use a small, voluntary pilot with Sudanese Arabic speakers and inexpensive phones. Obtain consent without collecting precise addresses or vulnerable users' identities.
+3. Correct usability findings and re-test offline reliability.
+4. Only then consider a controlled public launch, with qualified local review of any safety-sensitive guidance.
