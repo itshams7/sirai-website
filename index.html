@@ -35,6 +35,24 @@
 <p class="sirai-map-insight-kicker" data-i18n="stats.mapReading">HOW TO READ THIS</p>
 <h3 id="sirai-map-heading" data-i18n="stats.mapNeedTitle">A national estimate, not a state-by-state count.</h3>
 <p id="sirai-map-explainer" data-i18n="stats.mapNeedText">The silhouette locates Sudan. The 33.7 million figure applies to the country as a whole, not evenly across its states.</p>
+<section class="sirai-idp-panel" id="sirai-idp-panel" hidden>
+<p class="sirai-idp-heading" data-idp="heading">INTERNALLY DISPLACED PEOPLE BY HOST STATE</p>
+<div class="sirai-idp-key" aria-label="Map legend">
+<span><i style="--shade:#477c69"></i><span data-idp="level1">Under 100k</span></span>
+<span><i style="--shade:#8db3a4"></i><span data-idp="level2">100k to 349k</span></span>
+<span><i style="--shade:#e6c68b"></i><span data-idp="level3">350k to 699k</span></span>
+<span><i style="--shade:#dca363"></i><span data-idp="level4">700k to 999k</span></span>
+<span><i style="--shade:#d8753e"></i><span data-idp="level5">1 million+</span></span>
+</div>
+<label for="sirai-idp-select" data-idp="select">Select a state or tap the map</label>
+<select id="sirai-idp-select"><option value="" data-idp="prompt">Choose a state</option></select>
+<div class="sirai-idp-result" aria-live="polite">
+<span id="sirai-idp-name" data-idp="prompt">Choose a state</span>
+<strong id="sirai-idp-value" dir="ltr">—</strong>
+<small data-idp="definition">Displaced people hosted in this state, not those originating there</small>
+</div>
+<p class="sirai-idp-footnote"><span data-idp="footnote">Map: June 2026 IOM DTM state estimates. The main 8.58M is from August 2026. The published June total differs from the state table sum by 20.</span> <a href="https://www.gov.uk/government/publications/sudan-country-policy-and-information-notes/country-policy-and-information-note-humanitarian-situation-sudan-september-2026-accessible" target="_blank" rel="noopener noreferrer" data-idp="source">View state data</a></p>
+</section>
 <div class="sirai-map-compare" id="sirai-map-compare" hidden>
 <div class="sirai-map-compare-label"><span data-i18n="stats.mapChildrenCompare">Children as a share of everyone needing aid</span><strong dir="ltr">51%</strong></div>
 <div class="sirai-map-compare-track" role="img" aria-label="17.3 million of 33.7 million people needing humanitarian assistance are children"><span class="sirai-map-compare-fill"></span></div>
