@@ -128,3 +128,18 @@ assert.ok(legal.includes('Formspree')&&legal.includes('GitHub Pages')&&legal.inc
 assert.ok(read('index.html').includes('assets/sudan-overview.svg'),'Sudan Explorer preview is not geographic');
 for(const asset of ['privacy.html','terms.html','assets/policies.css','assets/policies.js','assets/sudan-overview.svg'])assert.ok(sw.includes("'"+asset+"'"),'Offline release missing '+asset);
 console.log('Trust and design refinement tests passed.');
+
+
+// Source-backed Sudan humanitarian context on the homepage.
+const statsHome=read('index.html');
+assert.match(statsHome,/class="sirai-statistics-grid"/,'Homepage statistics grid missing');
+for(const figure of ['33.7','17.3','8.58','19.5'])assert.ok(statsHome.includes('>'+figure+'<span>M</span>'),'Missing humanitarian figure '+figure);
+for(const label of ['stats.need','stats.children','stats.displaced','stats.food','stats.note'])assert.ok(statsHome.includes('data-i18n="'+label+'"'),'Missing translatable statistics label '+label);
+assert.ok(statsHome.includes('unicef.org/sudan/reports/'),'UNICEF source link missing');
+assert.ok(statsHome.includes('dtm.iom.int/'),'IOM displacement source link missing');
+assert.ok(statsHome.includes('gov.uk/government/publications/sudan-country'),'Food insecurity reference missing');
+assert.ok(statsHome.includes('5 November 2026'),'Statistics review date missing');
+const statScript=read('assets/app.js');
+for(const locale of ['"en":{','"ar":{','"fr":{','"de":{'])assert.ok(statScript.includes(locale+'"stats.kicker"'),'Statistics translation missing for '+locale);
+assert.ok(read('assets/launch-quality.css').includes('.sirai-statistics-grid'),'Responsive statistics styling missing');
+console.log('Homepage source, reporting date, and 4-language statistics checks passed.');
