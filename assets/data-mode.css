@@ -1,0 +1,16 @@
+/* Lightweight, accessible connection preference and RTL polish. */
+.sirai-data-settings{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:24px 0 14px;padding:14px 0;border-top:1px solid rgba(181,204,183,.35)}
+.sirai-data-toggle{min-height:44px;padding:10px 16px;border:1.5px solid #9ec2ab;border-radius:11px;background:#e7efe8;color:#173b2e;font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.sirai-data-toggle[aria-pressed=true]{background:#234a3a;color:#fff;border-color:#b9d2bd}
+.sirai-data-note{font-size:12px;line-height:1.6;max-width:600px;color:inherit;opacity:.9}
+.sirai-data-toggle:focus-visible{outline:3px solid #b69d65;outline-offset:3px}
+.sirai-low-data *, .sirai-low-data *::before,.sirai-low-data *::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+.sirai-low-data .hero:before{display:none!important}
+html[dir=rtl] .sirai-result-head{direction:rtl}
+html[dir=rtl] .sirai-bar-track{direction:ltr}
+html[dir=rtl] .sirai-hub-question summary{text-align:start}
+html[dir=rtl] .sirai-data-settings{direction:rtl}
+html[lang=ar] body{font-family:Tahoma,"Arial",sans-serif;line-height:1.7}
+html[lang=ar] .brand-word{font-family:inherit}
+@media(max-width:600px){.sirai-data-settings{align-items:stretch;flex-direction:column}.sirai-data-toggle{align-self:start}}
+@media print{.sirai-data-settings{display:none!important}}
