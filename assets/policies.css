@@ -1,0 +1,15 @@
+/* SIRAI policy pages: typography-led documents, no decorative cards. */
+.sirai-policy{background:#f3ede0;color:#182e25;min-height:60vh}
+.sirai-policy-head{background:#123e30;color:#f8f1df;padding:clamp(43px,6vw,78px) 0}
+.sirai-policy-head .policy-kicker{font-size:11px;letter-spacing:.14em;color:#e3c88d;text-transform:uppercase;font-weight:800}
+.sirai-policy-head h1{font-size:clamp(38px,5.5vw,66px);line-height:1.1;letter-spacing:-.035em;margin:12px 0 18px;max-width:900px;color:#fff7e5}
+.sirai-policy-head p{font-size:17px;line-height:1.7;max-width:790px;color:#e4e8d8}
+.sirai-policy-body{width:min(900px,calc(100% - 48px));margin:auto;padding:clamp(37px,6vw,80px) 0 90px}
+.sirai-policy-body .policy-updated{font-size:12px;font-weight:700;color:#56705c;margin-bottom:36px}
+.sirai-policy-body section{padding:22px 0 27px;border-top:1px solid #d7d2c5}
+.sirai-policy-body h2{font-size:clamp(22px,2.7vw,30px);line-height:1.22;letter-spacing:-.02em;color:#123e30;margin:0 0 13px}
+.sirai-policy-body p{line-height:1.83;color:#36503e;margin:0 0 12px;font-size:16px}
+.sirai-policy-body a{color:#1d5b3e;font-weight:750;text-decoration:underline;text-underline-offset:4px}
+.sirai-policy-body .policy-links{display:flex;flex-wrap:wrap;gap:17px;margin-top:25px}
+[dir=rtl] .sirai-policy-head h1{letter-spacing:0}
+@media(max-width:600px){.sirai-policy-body{width:calc(100% - 34px)}.sirai-policy-body section{padding:22px 0}}
