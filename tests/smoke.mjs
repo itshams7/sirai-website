@@ -133,7 +133,7 @@ console.log('Trust and design refinement tests passed.');
 // Interactive Sudan in Numbers regression.
 const statsHome=read('index.html');
 const statsSection=statsHome.slice(statsHome.indexOf('<section class="sirai-statistics"'),statsHome.indexOf('<section class="sirai-home-guide">'));
-assert.ok(statsSection.includes('class="sirai-statistics-layout"'),'Editorial statistics layout missing');
+assert.ok(statsSection.includes('class="container sirai-statistics-layout"'),'Editorial statistics layout missing');
 assert.ok(statsSection.includes('assets/sudan-overview.svg'),'Sudan map missing from statistics feature');
 assert.equal((statsSection.match(/data-sirai-stat="/g)||[]).length,3,'Expected three interactive statistic options');
 for(const figure of ['33.7M','17.3M','8.58M'])assert.ok(statsSection.includes('>'+figure+'</span>'),'Missing select option: '+figure);
@@ -143,7 +143,7 @@ assert.ok(statsSection.includes('unicef.org/sudan/reports/'),'UNICEF report link
 assert.ok(statsSection.includes('5 November 2026'),'Statistics source review date missing');
 assert.ok(statsSection.includes('data-i18n="stats.note"'),'Statistics disclosure translation missing');
 const statScript=read('assets/app.js');
-for(const locale of ['"en":{','"ar":{','"fr":{','"de":{'])assert.ok(statScript.includes(locale+'"stats.detail1"'),'Interactive stats translation missing for '+locale);
+for(const locale of ['"en":{','"ar":{','"fr":{','"de":{'])assert.ok(statScript.includes(locale+'"stats.kicker"'),'Interactive stats translation missing for '+locale);
 for(const key of ['stats.detail1','stats.detail2','stats.detail3'])assert.ok(statScript.includes(key),'Missing selected statistic explanation: '+key);
 assert.ok(statScript.includes('data-sirai-stat'),'Statistics selector code missing');
 const statsCss=read('assets/launch-quality.css');
