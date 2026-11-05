@@ -25,7 +25,7 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
 assert.ok(homepage.includes('assets/app.js?v=20261105-hub1'),'Homepage uses a stale language script URL');
-assert.ok(read('sw.js').includes('sirai-offline-v13-practical-final-20261105'),'Service worker cache not refreshed');
+assert.ok(read('sw.js').includes('sirai-offline-v14-icon-shortcuts-20261105'),'Service worker cache not refreshed');
 console.log('Homepage translation regression checks passed.');
 
 // Mobile iPhone header: connection status must live outside the header controls.
@@ -59,3 +59,8 @@ const resources=read('resources.html');assert.ok(resources.includes('practical-g
 assert.ok(read('sw.js').includes('assets/offline-images.js'),'Image fallback missing from cache');
 assert.ok(read('issues.html').includes('feedback.html'),'Public issue register must support safe private reports');
 console.log('Practical resources, offline fallback, printable guides and issue register passed.');
+
+// Offline illustration and install shortcut regression checks.
+for(const illustration of ['assets/watershare-resource-art.svg','assets/projectstarter-resource-art.svg','assets/taqawise-resource-art.svg']) assert.ok(sw.includes("'"+illustration+"'"),'Fallback image not cached: '+illustration);
+const manifest=JSON.parse(read('manifest.webmanifest'));assert.equal(manifest.shortcuts.length,3,'Missing direct access to three tools');
+console.log('Offline image fallback and home-screen shortcut checks passed.');
