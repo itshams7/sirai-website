@@ -44,7 +44,7 @@ function calculate(){
  if(windows>households)throw Error(t('tooManyWindows'));
  if(spacing<duration)throw Error(t('overlap'));
  if(start+(windows-1)*spacing+duration>1440)throw Error(t('pastMidnight'));
- const total=households*litres,base=Math.floor(households/windows),extra=households%windows;
+ const total=window.SIRAI_MATH.waterDemand(households,litres),base=Math.floor(households/windows),extra=households%windows;
  const rows=[];let offset=0;
  for(let i=0;i<windows;i++){
    const count=base+(i<extra?1:0);
