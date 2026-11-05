@@ -7,3 +7,13 @@ for(const page of pages){const html=read(page);assert.match(html,/<main[^>]*id="
 const sw=read('sw.js');const offline=read('assets/offline-share.js');const version=sw.match(/const VERSION='([^']+)'/)?.[1];assert.ok(version,'Service worker cache version missing');assert.ok(offline.includes(`keys.includes('${version}')`),'Offline status and worker versions differ');for(const asset of [...sw.matchAll(/'([^']+\.(?:html|css|js|webmanifest|svg))'/g)].map(m=>m[1]))assert.ok(fs.existsSync(new URL('../'+asset,import.meta.url)),'Missing cached asset: '+asset);
 assert.ok(read('assets/app.js').includes("strings[locale]['nav.transparency']=value"),'Missing translated navigation label');
 console.log('SIRAI smoke checks passed: 6 pages, cache manifest, disclosure, language navigation and metadata.');
+
+// Phase 2: ensure the examples and tutorials remain connected after updates.
+for(const [page,button,asset] of [['water-toolkit.html','ws-example','assets/watershare.js'],['projectstarter.html','ps-example','assets/projectstarter.js'],['taqawise.html','tq-example','assets/taqawise.js']]){
+ assert.match(read(page),new RegExp('id="'+button+'"'),'Missing example button '+page);
+ assert.ok(read(asset).includes("'"+button+"'"),'Missing example handler '+asset);
+ assert.match(read(page),/assets\\/phase2\\.js/,'Missing multilingual example UI '+page);
+}
+assert.match(read('start-here.html'),/sirai-guide-grid/,'Start guide missing');
+assert.match(read('assets/phase2-guide.js'),/ar:/,'Arabic guide missing');
+console.log('Phase 2 example and tutorial wiring passed.');
