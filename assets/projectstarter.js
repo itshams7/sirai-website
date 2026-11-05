@@ -31,7 +31,8 @@ function totals(){
  for(const c of state.costs){if(!(c.item||'').trim()){if(String(c.qty||'1')!=='1'||String(c.unit||'0')!=='0')invalid=true;continue}const q=limitNumber(c.qty,1000000),u=limitNumber(c.unit,1e12);if(!Number.isFinite(q)||!Number.isFinite(u)){invalid=true;continue}subtotal+=q*u;}
  const contingency=limitNumber(state.contingency,50),funding=limitNumber(state.funding,1e15);
  if(!Number.isFinite(contingency)||!Number.isFinite(funding)||subtotal>1e15)invalid=true;
- const reserve=subtotal*(Number.isFinite(contingency)?contingency:0)/100,grand=subtotal+reserve;
+ const checked=!invalid?window.SIRAI_MATH.projectBudget(state.costs.filter(c=>(c.item||'').trim()).map(c=>({qty:Number(c.qty),unit:Number(c.unit)})),contingency,funding):null;
+ const reserve=checked?.reserve??0,grand=checked?.total??0;
  return {subtotal,reserve,grand,funding:Number.isFinite(funding)?funding:0,gap:Math.max(0,grand-(Number.isFinite(funding)?funding:0)),invalid};
 }
 const filled=value=>String(value||'').trim().length>0;
