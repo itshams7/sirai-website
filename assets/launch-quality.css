@@ -13,21 +13,43 @@
 /* Keep six primary links clear on mid-size tablets without squeezing the logo. */
 @media(min-width:901px) and (max-width:1200px){.site-header .nav{display:none;position:absolute;top:100%;inset-inline:0;padding:20px 30px;background:#f3ede0;border-bottom:1px solid #d9d1bd;box-shadow:0 15px 25px rgba(15,42,29,.10);flex-direction:column;align-items:stretch;gap:14px}.site-header .nav.open{display:flex}.site-header .menu-toggle{display:block}}
 
-/* Humanitarian context: source-led, low-data, no animated counters. */
-.sirai-statistics{padding:clamp(48px,6vw,78px) 0;background:#e9eee8;color:#173e32;border-bottom:1px solid #d0dcd3}
-.sirai-statistics-heading{display:flex;align-items:end;justify-content:space-between;gap:22px;margin-bottom:30px}
-.sirai-statistics-kicker{font-size:11px;font-weight:850;letter-spacing:.15em;color:#325e49;margin:0 0 12px}
-.sirai-statistics h2{font-size:clamp(30px,4vw,48px);line-height:1.12;letter-spacing:-.035em;color:#173e32;margin:0 0 12px}
-.sirai-statistics-heading p:not(.sirai-statistics-kicker){max-width:660px;line-height:1.65;color:#41584b;margin:0}
-.sirai-stats-source-action{font-weight:800;font-size:13px;color:#1d513c;white-space:nowrap;text-decoration:underline;text-underline-offset:4px}
-.sirai-statistics-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
-.sirai-stat-card{display:flex;flex-direction:column;align-items:flex-start;padding:clamp(19px,2vw,27px);border:1px solid #d3ded2;background:#fffdf7;border-radius:16px;min-height:225px}
-.sirai-stat-value{font-size:clamp(37px,4.7vw,58px);font-weight:850;line-height:1.05;letter-spacing:-.065em;color:#184f39;white-space:nowrap;font-variant-numeric:tabular-nums}
-.sirai-stat-value span{font-size:.47em;letter-spacing:-.02em;margin-inline-start:3px;color:#517861}
-.sirai-stat-card h3{font-size:clamp(14px,1.55vw,17px);font-weight:800;line-height:1.45;color:#173e32;margin:15px 0 7px}
-.sirai-stat-card p{color:#576b5e;font-size:12px;line-height:1.55;margin:0 0 17px}
-.sirai-stat-card a{margin-top:auto;font-size:12px;font-weight:800;color:#245b43;text-decoration:underline;text-underline-offset:3px}
-.sirai-statistics-disclosure{font-size:12px;line-height:1.7;color:#456052;max-width:980px;margin:19px 0 0}
-@media(max-width:960px){.sirai-statistics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sirai-statistics-heading{align-items:start;flex-direction:column}}
-@media(max-width:540px){.sirai-statistics-grid{gap:10px}.sirai-stat-card{padding:16px;min-height:205px}.sirai-stat-value{font-size:clamp(33px,8.5vw,43px)}.sirai-stat-card h3{font-size:13px}.sirai-stat-card p{font-size:11px}.sirai-statistics-disclosure{font-size:11px}}
-@media(max-width:350px){.sirai-statistics-grid{grid-template-columns:1fr}.sirai-stat-card{min-height:0}}
+/* Sudan in Numbers: editorial, interactive and low bandwidth. */
+.sirai-statistics{position:relative;overflow:hidden;background:#f3ede0;color:#123e30;padding:clamp(60px,7.6vw,108px) 0 29px}
+.sirai-statistics-layout{display:grid;grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr);align-items:center;gap:clamp(24px,5vw,80px)}
+.sirai-statistics-content{min-width:0}
+.sirai-statistics-kicker{margin:0 0 19px;color:#7f5940;font-size:11px;line-height:1.6;font-weight:850;letter-spacing:.17em;text-transform:uppercase}
+.sirai-statistics-kicker span{margin:0 5px;color:#547462}
+.sirai-statistics h2{font-size:clamp(32px,4.2vw,57px);line-height:1.1;letter-spacing:-.045em;color:#123e30;margin:0 0 17px;max-width:680px}
+.sirai-statistics-intro{font-size:clamp(15px,1.6vw,18px);line-height:1.7;color:#4c6254;max-width:605px;margin:0 0 clamp(23px,3vw,34px)}
+.sirai-stat-feature{border-inline-start:3px solid #c58b56;padding:4px 0 4px clamp(18px,2.5vw,29px);margin:0 0 27px;min-height:214px}
+.sirai-stat-feature-number{font-size:clamp(76px,10vw,136px);line-height:.88;font-weight:850;letter-spacing:-.09em;color:#123e30;font-variant-numeric:tabular-nums;white-space:nowrap;margin:0 0 18px}
+.sirai-stat-feature-number span{font-size:.38em;letter-spacing:-.025em;margin-inline-start:6px;color:#b36d3e;vertical-align:12%}
+.sirai-stat-feature h3{font-size:clamp(17px,2vw,24px);font-weight:850;line-height:1.35;color:#123e30;max-width:510px;margin:0 0 10px}
+.sirai-stat-feature>p{font-size:14px;color:#486155;line-height:1.7;max-width:530px;margin:0 0 14px}
+.sirai-stat-provenance{display:flex;align-items:center;flex-wrap:wrap;gap:8px 17px;font-size:12px;line-height:1.5;color:#536b5c}
+.sirai-stat-provenance a{color:#164e3a;font-size:12px;font-weight:800;text-decoration:underline;text-underline-offset:4px}
+.sirai-stat-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:640px}
+.sirai-stat-choice{min-width:0;text-align:start;display:flex;flex-direction:column;align-items:flex-start;gap:5px;padding:14px 16px;background:rgba(255,255,255,.52);border:1px solid #d3d2c6;border-radius:13px;color:#305442;cursor:pointer;transition:background .18s,border-color .18s,transform .18s}
+.sirai-stat-choice:hover{background:#ffffffd9;border-color:#789680}
+.sirai-stat-choice.is-active,.sirai-stat-choice[aria-pressed="true"]{background:#123e30;color:#fff7e9;border-color:#123e30;box-shadow:0 7px 20px #123e301d}
+.sirai-stat-choice-number{font-size:clamp(20px,2.4vw,28px);font-weight:850;letter-spacing:-.04em;line-height:1.1}
+.sirai-stat-choice span:last-child{font-size:12px;font-weight:700;line-height:1.3}
+.sirai-stat-choice:focus-visible{outline:3px solid #ac703a;outline-offset:3px}
+.sirai-statistics-visual{min-width:0;align-self:stretch;display:grid;place-items:center}
+.sirai-statistics-map{width:100%;min-height:445px;max-width:550px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;padding:clamp(20px,3vw,34px);background:radial-gradient(circle at 50% 35%,#34614f 0,#204c3d 52%,#103528 100%);border:1px solid #416b56;border-radius:24px;box-shadow:0 24px 60px #1a392a24;color:#f9f1dc}
+.sirai-statistics-map::before{content:"";position:absolute;inset:18px;border:1px solid #ffffff21;border-radius:17px;pointer-events:none}
+.sirai-statistics-map-top,.sirai-statistics-map-bottom{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:11px;font-weight:800;letter-spacing:.15em;line-height:1.4}
+.sirai-stat-map-slash{color:#c9a078;margin:0 4px}
+.sirai-stat-map-year{color:#d3bd94}
+.sirai-statistics-map img{display:block;position:relative;max-width:100%;width:100%;height:auto;max-height:390px;object-fit:contain;margin:auto;filter:grayscale(1) brightness(0) invert(.94) sepia(.15);opacity:.88;transform:scale(1.08);pointer-events:none}
+.sirai-statistics-map-bottom{align-items:end;color:#f2dfbc;font-size:10px}
+.sirai-statistics-map-dot{display:block;width:9px;height:9px;border-radius:50%;background:#ddad72;box-shadow:0 0 0 6px #d3ae7229;flex-shrink:0}
+.sirai-statistics-disclosure{margin:30px 0 0;font-size:12px;color:#667267;max-width:1030px;line-height:1.75}
+[dir="rtl"] .sirai-stat-choice{text-align:start}
+[dir="rtl"] .sirai-statistics-kicker{letter-spacing:0}
+[dir="rtl"] .sirai-stat-feature-number,[dir="rtl"] .sirai-stat-choice-number{direction:ltr}
+@media(max-width:990px){.sirai-statistics-layout{grid-template-columns:1fr;gap:30px}.sirai-statistics-map{min-height:300px;max-width:none}.sirai-statistics-map img{max-height:300px;transform:none}.sirai-stat-feature{min-height:0}}
+@media(max-width:570px){.sirai-statistics{padding:49px 0 26px}.sirai-statistics h2{font-size:clamp(32px,9vw,42px)}.sirai-stat-feature-number{font-size:clamp(72px,19vw,112px)}.sirai-stat-feature{padding-inline-start:18px;margin-bottom:20px}.sirai-stat-choices{gap:7px}.sirai-stat-choice{padding:12px 10px;border-radius:10px}.sirai-stat-choice-number{font-size:clamp(19px,5.1vw,26px)}.sirai-stat-choice span:last-child{font-size:11px}.sirai-statistics-map{min-height:265px;padding:22px;max-height:370px}.sirai-statistics-map img{max-height:250px}.sirai-statistics-disclosure{font-size:11px;margin-top:21px}}
+@media(max-width:350px){.sirai-stat-choices{grid-template-columns:1fr}.sirai-stat-choice{flex-direction:row;gap:14px;align-items:center}}
+@media(prefers-reduced-motion:reduce){.sirai-stat-choice{transition:none}}
+@media print{.sirai-statistics{background:white}.sirai-statistics-map{box-shadow:none}.sirai-stat-choices{display:none}}
