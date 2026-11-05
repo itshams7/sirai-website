@@ -9,7 +9,7 @@ const tr={
 const l=()=>tr[document.documentElement.lang]||tr.en;
 function badge(status){
  let el=document.getElementById('sirai-offline-indicator');
- if(!el){const root=document.querySelector('.header-inner');if(!root)return;el=document.createElement('span');el.id='sirai-offline-indicator';el.className='sirai-offline-indicator';root.appendChild(el)}
+ if(!el){const header=document.querySelector('.site-header');if(!header)return;el=document.createElement('div');el.id='sirai-offline-indicator';el.className='sirai-offline-indicator';el.setAttribute('role','status');el.setAttribute('aria-live','polite');header.insertAdjacentElement('afterend',el)}
  el.dataset.status=status;el.textContent= status==='offline'?l().offline:status==='ready'?l().online:status==='failed'?l().failed:l().loading;
 }
 async function share(text){
@@ -66,7 +66,7 @@ document.querySelectorAll('[data-lang-select]').forEach(el=>el.addEventListener(
   await navigator.serviceWorker.register('./sw.js',{scope:'./'});
   await navigator.serviceWorker.ready;
   const keys=await caches.keys();
-  offlineReady=keys.includes('sirai-offline-v9-translation-20261105');
+  offlineReady=keys.includes('sirai-offline-v10-mobile-header-20261105');
   failed=!offlineReady;
  }catch(e){failed=true}
  update();
