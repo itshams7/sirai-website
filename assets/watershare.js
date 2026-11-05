@@ -45,9 +45,10 @@ function calculate(){
  if(spacing<duration)throw Error(t('overlap'));
  if(start+(windows-1)*spacing+duration>1440)throw Error(t('pastMidnight'));
  const total=window.SIRAI_MATH.waterDemand(households,litres),base=Math.floor(households/windows),extra=households%windows;
+ const groups=window.SIRAI_MATH.waterGroups(households,windows,litres);
  const rows=[];let offset=0;
  for(let i=0;i<windows;i++){
-   const count=base+(i<extra?1:0);
+   const count=groups[i].count;
    const from=offset+1,to=offset+count;
    rows.push({number:i+1,count,from,to,volume:count*litres,start:clock(start+i*spacing),end:clock(start+i*spacing+duration)});
    offset+=count;
