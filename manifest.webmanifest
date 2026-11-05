@@ -14,5 +14,25 @@
       "type": "image/svg+xml",
       "purpose": "any"
     }
+  ],
+  "shortcuts": [
+    {
+      "name": "WaterShare",
+      "short_name": "Water",
+      "url": "./water-toolkit.html",
+      "description": "Community water planning"
+    },
+    {
+      "name": "ProjectStarter",
+      "short_name": "Projects",
+      "url": "./projectstarter.html",
+      "description": "Community project plans"
+    },
+    {
+      "name": "TaqaWise",
+      "short_name": "Energy",
+      "url": "./taqawise.html",
+      "description": "Household energy estimates"
+    }
   ]
 }
