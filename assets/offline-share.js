@@ -66,7 +66,7 @@ document.querySelectorAll('[data-lang-select]').forEach(el=>el.addEventListener(
   await navigator.serviceWorker.register('./sw.js',{scope:'./'});
   await navigator.serviceWorker.ready;
   const keys=await caches.keys();
-  offlineReady=keys.includes('sirai-offline-v12-practical-20261105');
+  offlineReady=keys.includes('sirai-offline-v13-practical-final-20261105');
   failed=!offlineReady;
  }catch(e){failed=true}
  update();
