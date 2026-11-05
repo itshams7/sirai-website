@@ -79,3 +79,34 @@
 @media(max-width:990px){.sirai-map-visual-layer img{max-height:300px}.sirai-statistics-map{max-height:none}}
 @media(max-width:570px){.sirai-statistics-map{max-height:none;gap:12px}.sirai-map-visual-layer{min-height:190px}.sirai-map-visual-layer img{max-height:255px}.sirai-map-overlay{inset:auto 2% 0 auto;padding:9px 12px}.sirai-map-overlay-number{font-size:35px}.sirai-map-insight{padding-top:17px}.sirai-map-insight h3{font-size:18px}.sirai-map-insight>p:not(.sirai-map-insight-kicker){font-size:12px}}
 @media print{.sirai-map-overlay{box-shadow:none;border-color:#999}}
+
+/* IOM-hosted displacement by state, June 2026. No speculative hotspot locations. */
+.sirai-idp-map[hidden],.sirai-idp-panel[hidden]{display:none!important}
+.sirai-statistics-map[data-stat-mode="displaced"] .sirai-map-visual-layer>img,
+.sirai-statistics-map[data-stat-mode="displaced"] .sirai-map-overlay{display:none}
+.sirai-idp-map{position:absolute;inset:0;display:grid;place-items:center;min-width:0;z-index:1}
+.sirai-idp-map svg{height:100%;width:100%;max-height:335px;overflow:visible}
+.sirai-idp-map path{stroke:#133e32;stroke-width:1.1;cursor:pointer;transition:fill .2s,stroke .2s,stroke-width .2s;vector-effect:non-scaling-stroke}
+.sirai-idp-map path:hover{stroke:#fff8e2;stroke-width:2.8;filter:brightness(1.12)}
+.sirai-idp-map path:focus-visible{outline:none;stroke:#fff8e2;stroke-width:3.2;filter:brightness(1.15)}
+.sirai-idp-map path.is-selected{stroke:#fff6d8;stroke-width:3.3;filter:drop-shadow(0 0 4px #e7d9a5)}
+.sirai-idp-loading{color:#fff1d8;font-size:13px;text-align:center;padding:25px}
+.sirai-idp-panel{margin-top:16px;padding-top:17px;border-top:1px solid #ffffff36;text-align:start;color:#fff4e3}
+.sirai-idp-heading{font-size:10px!important;font-weight:850;letter-spacing:.09em;color:#eac78b!important;line-height:1.4;margin:0 0 13px!important}
+.sirai-idp-key{display:flex;flex-wrap:wrap;gap:8px 13px;margin-bottom:16px;font-size:10px;line-height:1.25;color:#e6eadd}
+.sirai-idp-key>span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.sirai-idp-key i{display:inline-block;width:12px;height:12px;border-radius:3px;flex:none;background:var(--shade);border:1px solid #ffffff65}
+.sirai-idp-panel label{display:block;font-size:12px;font-weight:750;color:#f5ebd5;margin:0 0 7px;line-height:1.4}
+.sirai-idp-panel select{appearance:auto;max-width:100%;width:100%;min-height:42px;border-radius:9px;border:1px solid #92ac9b;padding:10px 12px;color:#133f30;background:#fffaf0;font-size:14px;font-weight:750}
+.sirai-idp-panel select:focus-visible{outline:3px solid #e2b878;outline-offset:2px}
+.sirai-idp-result{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;border:1px solid #c9a47475;border-radius:12px;background:#ffffff13;padding:11px 13px;margin-top:11px}
+.sirai-idp-result>span{font-size:14px;font-weight:800;color:#fff6e6;min-width:0}
+.sirai-idp-result strong{font-size:clamp(20px,2.5vw,27px);font-weight:900;letter-spacing:-.025em;color:#f2c98d;font-variant-numeric:tabular-nums}
+.sirai-idp-result small{grid-column:1/-1;font-size:10px;line-height:1.5;color:#d8e1d7}
+.sirai-idp-footnote{font-size:10px!important;color:#c9d9cd!important;line-height:1.65!important;margin:13px 0 0!important}
+.sirai-idp-footnote a{color:#ffe3aa!important;text-decoration:underline;text-underline-offset:3px}
+.sirai-statistics-map[data-stat-mode="displaced"] .sirai-map-insight{padding-top:12px}
+.sirai-statistics-map[data-stat-mode="displaced"] .sirai-map-visual-layer{min-height:285px}
+@media(max-width:570px){.sirai-statistics-map[data-stat-mode="displaced"] .sirai-map-visual-layer{min-height:230px}.sirai-idp-map svg{max-height:245px}.sirai-idp-key{gap:7px 9px}.sirai-idp-result strong{font-size:22px}}
+@media(prefers-reduced-motion:reduce){.sirai-idp-map path{transition:none}}
+@media print{.sirai-idp-map path{filter:none!important}}
