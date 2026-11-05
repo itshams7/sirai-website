@@ -15,5 +15,7 @@ jobs:
       - name: Check JavaScript syntax
         run: |
           for file in assets/*.js sw.js; do node --check "$file"; done
+      - name: Verify planning calculations
+        run: node tests/math-check.mjs
       - name: Verify site integrity
         run: node tests/smoke.mjs
