@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
-const pages=['index.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html','transparency.html','start-here.html','resources.html','faq.html','updates.html','get-involved.html','practical-guide.html','issues.html'];
+const pages=['index.html','about.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html','transparency.html','start-here.html','resources.html','faq.html','updates.html','get-involved.html','practical-guide.html','issues.html'];
 for(const page of pages){const html=read(page);assert.match(html,/<main[^>]*id="main"/,'Main landmark missing in '+page);assert.match(html,/assets\/launch-quality\.css/,'Accessibility stylesheet missing in '+page);assert.match(html,/assets\/launch-quality\.js/,'Navigation script missing in '+page);assert.match(html,/property="og:title"/,'Sharing metadata missing in '+page);assert.match(html,/href="transparency\.html"/,'Transparency link missing in '+page);assert.doesNotMatch(html,/My earlier community experience is personal and should not be counted as SIRAI project work/,'Removed copy found in '+page);}
 const sw=read('sw.js');const offline=read('assets/offline-share.js');const version=sw.match(/const VERSION='([^']+)'/)?.[1];assert.ok(version,'Service worker cache version missing');assert.ok(offline.includes(`keys.includes('${version}')`),'Offline status and worker versions differ');for(const asset of [...sw.matchAll(/'([^']+\.(?:html|css|js|webmanifest|svg))'/g)].map(m=>m[1]))assert.ok(fs.existsSync(new URL('../'+asset,import.meta.url)),'Missing cached asset: '+asset);
 assert.ok(read('assets/app.js').includes("strings[locale]['nav.transparency']=value"),'Missing translated navigation label');
@@ -25,7 +25,7 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
 assert.ok(homepage.includes('assets/app.js?v=20261105-hub1'),'Homepage uses a stale language script URL');
-assert.ok(read('sw.js').includes('sirai-offline-v15-data-mode-20261105'),'Service worker cache not refreshed');
+assert.ok(read('sw.js').includes('sirai-offline-v16-modern-humanitarian-20261105'),'Service worker cache not refreshed');
 console.log('Homepage translation regression checks passed.');
 
 // Mobile iPhone header: connection status must live outside the header controls.
@@ -78,3 +78,11 @@ assert.ok(read('assets/data-mode.css').includes('html[dir=rtl]'),'RTL rules miss
 assert.ok(sw.includes("'assets/data-mode.js'")&&sw.includes("'assets/data-mode.css'"),'Offline package missing data saver');
 assert.ok(read('RELEASE-VERIFICATION.md').includes('Field validation'),'Verification documentation missing');
 console.log('Low-bandwidth, RTL, privacy and release-integrity checks passed.');
+
+// Modern Humanitarian visual system and content invariants.
+for(const page of pages){const html=read(page);assert.ok(html.includes('assets/modern-humanitarian.css'),'Modern design missing on '+page);assert.ok(html.includes('href="about.html"'),'About link missing on '+page);assert.ok(html.includes('href="https://joinsirai.org"'),'Official domain absent in footer on '+page);const headerNav=html.match(/<nav class="nav" id="navigation"[\s\S]*?<\/nav>/)?.[0]||'';assert.equal((headerNav.match(/<a /g)||[]).length,5,'Primary navigation must have five links on '+page);}
+const home=read('index.html');assert.ok(home.includes('data-i18n="hero.photoDisclosure"'),'Photography disclaimer missing');
+for(const locale of ['en','ar','fr','de'])assert.ok(read('assets/app.js').includes(`strings[locale]['hero.photoDisclosure']`),'Photo disclosure not multilingual');
+const visualCss=read('assets/modern-humanitarian.css');assert.ok(visualCss.includes('--mh-deep:#123d35'),'Modern color system missing');assert.ok(visualCss.includes('prefers-reduced-motion'),'Reduced motion not supported');
+assert.ok(sw.includes("'assets/modern-humanitarian.css'")&&sw.includes("'about.html'"),'Offline package missing redesigned assets');
+console.log('Modern Humanitarian navigation, palette, photo disclosure, offline and accessibility tests passed.');
