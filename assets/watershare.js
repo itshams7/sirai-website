@@ -106,6 +106,12 @@ function printPlan(){if(!current)return;window.print()}
 function reset(){for(const k of keys)pick('ws-'+k).value=defaults[k];set('ws-action-message','');calculate()}
 for(const k of keys)pick('ws-'+k).addEventListener('input',calculate);
 pick('ws-reset').addEventListener('click',reset);
+pick('ws-example')?.addEventListener('click',()=>{
+ if(!window.confirm(({en:'Replace the current numbers with a fictional example? No real household data is used.',ar:'هل تريد استبدال الأرقام الحالية بمثال افتراضي؟ لا تُستخدم بيانات أسر حقيقية.',fr:'Remplacer les valeurs par un exemple fictif ? Aucune donnée réelle.',de:'Werte durch ein fiktives Beispiel ersetzen? Keine echten Haushaltsdaten.'})[locale()]))return;
+ const demo={households:'24',litres:'35',windows:'3',start:'07:00',duration:'60',spacing:'150',tank:'1000',supply:'900'};
+ for(const [k,v] of Object.entries(demo))pick('ws-'+k).value=v;
+ calculate();set('ws-action-message',({en:'Fictional example loaded. The schedule requires local agreement and a verified water supply.',ar:'تم تحميل مثال افتراضي. يتطلب الجدول اتفاق المشاركين والتحقق من مصدر المياه.',fr:'Exemple fictif chargé. Vérifiez l’approvisionnement et obtenez un accord local.',de:'Fiktives Beispiel geladen. Versorgung prüfen und vor Ort abstimmen.'})[locale()]);
+});
 pick('ws-csv').addEventListener('click',download);
 pick('ws-copy').addEventListener('click',copy);
 pick('ws-share').addEventListener('click',()=>{
