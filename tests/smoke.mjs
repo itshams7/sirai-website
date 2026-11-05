@@ -154,7 +154,7 @@ console.log('Interactive 3-stat map, source, a11y and four-language checks passe
 const mapHome=read('index.html');
 const mapSection=mapHome.slice(mapHome.indexOf('<section class="sirai-statistics"'),mapHome.indexOf('<section class="sirai-home-guide">'));
 for(const id of ['sirai-stats-map','sirai-map-overlay-number','sirai-map-heading','sirai-map-explainer','sirai-map-compare'])assert.ok(mapSection.includes('id="'+id+'"'),'Missing meaningful data map element: '+id);
-assert.ok(mapSection.includes('17.3M of 33.7M'),'No truthful national comparison in children mode');
+assert.ok(mapSection.includes('17.3M children out of 33.7M people'),'No truthful national comparison in children mode');
 assert.ok(mapSection.includes('id="sirai-map-compare" hidden'),'Comparison must be initially hidden');
 assert.ok(!mapSection.includes('state-level hotspots')&&!mapSection.includes('migration routes'),'Unverified geography markers');
 const mapJs=read('assets/app.js');
