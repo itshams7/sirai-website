@@ -199,7 +199,7 @@ const nationalJs=read('assets/app.js');
 assert.ok(nationalJs.includes("national.hidden=!showing"),'National comparison not tied to the selected statistic');
 assert.ok(nationalJs.includes("needView.hidden=key!=='need'")&&nationalJs.includes("childView.hidden=key!=='children'"),'Unique national views not isolated');
 assert.ok(nationalJs.includes("sourceLink.href=key==='children'"),'Mode-specific source link missing');
-for(const language of ['"en":{','"ar":{','"fr":{','"de":{'])assert.ok(nationalJs.includes(language+'"stats.visualNeedHeadline"'),'Comparison translations incomplete for '+language);
+for(const language of ['"en":{','"ar":{','"fr":{','"de":{'])assert.ok(nationalJs.includes(language+'"stats.visualKicker"'),'Comparison translations incomplete for '+language);
 const nationalCss=read('assets/launch-quality.css');
 assert.ok(nationalCss.includes('.sirai-national-bar-fill')&&nationalCss.includes('.sirai-children-split'),'Interactive comparison CSS missing');
 assert.ok(nationalCss.includes('prefers-reduced-motion'),'Reduced motion fallback missing');
