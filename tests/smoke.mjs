@@ -12,8 +12,8 @@ console.log('SIRAI smoke checks passed: 6 pages, cache manifest, disclosure, lan
 for(const [page,button,asset] of [['water-toolkit.html','ws-example','assets/watershare.js'],['projectstarter.html','ps-example','assets/projectstarter.js'],['taqawise.html','tq-example','assets/taqawise.js']]){
  assert.match(read(page),new RegExp('id="'+button+'"'),'Missing example button '+page);
  assert.ok(read(asset).includes("'"+button+"'"),'Missing example handler '+asset);
- assert.match(read(page),/assets\\/phase2\\.js/,'Missing multilingual example UI '+page);
+ assert.ok(read(page).includes('assets/phase2.js'),'Missing multilingual example UI '+page);
 }
 assert.match(read('start-here.html'),/sirai-guide-grid/,'Start guide missing');
-assert.match(read('assets/phase2-guide.js'),/ar:/,'Arabic guide missing');
+assert.ok(read('assets/phase2-guide.js').includes('"ar":'),'Arabic guide missing');
 console.log('Phase 2 example and tutorial wiring passed.');
