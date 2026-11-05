@@ -24,8 +24,8 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(homepage.includes('data-i18n="'+key+'"'),'Guide markup missing '+key);
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
-assert.ok(homepage.includes('assets/app.js?v=20261105-sudan-statistics-1'),'Homepage uses a stale language script URL');
-assert.ok(read('sw.js').includes('sirai-offline-v19-trust-refinement-20261105'),'Service worker cache not refreshed');
+assert.ok(homepage.includes('assets/app.js?v=20261105-stat-redesign-2'),'Homepage uses a stale language script URL');
+assert.ok(read('sw.js').includes('sirai-offline-v20-interactive-stats-20261105'),'Service worker cache not refreshed');
 console.log('Homepage translation regression checks passed.');
 
 // Mobile iPhone header: connection status must live outside the header controls.
@@ -34,7 +34,7 @@ const accessibleCss=read('assets/launch-quality.css');
 assert.ok(offlineScript.includes("header.insertAdjacentElement('afterend',el)"),'Status indicator must be placed outside sticky header');
 assert.ok(accessibleCss.includes('#sirai-offline-indicator.sirai-offline-indicator{position:static!important'),'Status must not float over iPhone controls');
 assert.ok(accessibleCss.includes('background:#e7efe8'),'Language control must use the distinctive sage style');
-assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-sudan-statistics-1'),'Mobile CSS cache version not refreshed');
+assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-stat-redesign-2'),'Mobile CSS cache version not refreshed');
 console.log('Mobile header regression checks passed.');
 
 // Community information hub integrity.
@@ -130,16 +130,22 @@ for(const asset of ['privacy.html','terms.html','assets/policies.css','assets/po
 console.log('Trust and design refinement tests passed.');
 
 
-// Source-backed Sudan humanitarian context on the homepage.
+// Interactive Sudan in Numbers regression.
 const statsHome=read('index.html');
-assert.match(statsHome,/class="sirai-statistics-grid"/,'Homepage statistics grid missing');
-for(const figure of ['33.7','17.3','8.58','19.5'])assert.ok(statsHome.includes('>'+figure+'<span>M</span>'),'Missing humanitarian figure '+figure);
-for(const label of ['stats.need','stats.children','stats.displaced','stats.food','stats.note'])assert.ok(statsHome.includes('data-i18n="'+label+'"'),'Missing translatable statistics label '+label);
-assert.ok(statsHome.includes('unicef.org/sudan/reports/'),'UNICEF source link missing');
-assert.ok(statsHome.includes('dtm.iom.int/'),'IOM displacement source link missing');
-assert.ok(statsHome.includes('gov.uk/government/publications/sudan-country'),'Food insecurity reference missing');
-assert.ok(statsHome.includes('5 November 2026'),'Statistics review date missing');
+const statsSection=statsHome.slice(statsHome.indexOf('<section class="sirai-statistics"'),statsHome.indexOf('<section class="sirai-home-guide">'));
+assert.ok(statsSection.includes('class="sirai-statistics-layout"'),'Editorial statistics layout missing');
+assert.ok(statsSection.includes('assets/sudan-overview.svg'),'Sudan map missing from statistics feature');
+assert.equal((statsSection.match(/data-sirai-stat="/g)||[]).length,3,'Expected three interactive statistic options');
+for(const figure of ['33.7M','17.3M','8.58M'])assert.ok(statsSection.includes('>'+figure+'</span>'),'Missing select option: '+figure);
+assert.ok(!statsSection.includes('19.5'),'Removed fourth statistic reappeared');
+assert.ok(statsSection.includes('aria-live="polite"')&&statsSection.includes('aria-pressed="true"'),'Accessible selected statistic missing');
+assert.ok(statsSection.includes('unicef.org/sudan/reports/'),'UNICEF report link missing');
+assert.ok(statsSection.includes('5 November 2026'),'Statistics source review date missing');
+assert.ok(statsSection.includes('data-i18n="stats.note"'),'Statistics disclosure translation missing');
 const statScript=read('assets/app.js');
-for(const locale of ['"en":{','"ar":{','"fr":{','"de":{'])assert.ok(statScript.includes(locale+'"stats.kicker"'),'Statistics translation missing for '+locale);
-assert.ok(read('assets/launch-quality.css').includes('.sirai-statistics-grid'),'Responsive statistics styling missing');
-console.log('Homepage source, reporting date, and 4-language statistics checks passed.');
+for(const locale of ['"en":{','"ar":{','"fr":{','"de":{'])assert.ok(statScript.includes(locale+'"stats.detail1"'),'Interactive stats translation missing for '+locale);
+for(const key of ['stats.detail1','stats.detail2','stats.detail3'])assert.ok(statScript.includes(key),'Missing selected statistic explanation: '+key);
+assert.ok(statScript.includes('data-sirai-stat'),'Statistics selector code missing');
+const statsCss=read('assets/launch-quality.css');
+assert.ok(statsCss.includes('.sirai-statistics-map')&&statsCss.includes('.sirai-stat-choices'),'Interactive stats styling missing');
+console.log('Interactive 3-stat map, source, a11y and four-language checks passed.');
