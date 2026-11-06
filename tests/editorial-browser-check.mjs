@@ -67,6 +67,7 @@ try{
   await northern.click();
   check(await northern.evaluate(node=>node.classList.contains('is-selected')),preset.name+': selected state not highlighted');
   await northern.focus();
+  await page.waitForTimeout(300); // allow the accessible border transition to finish
   const mapFocus=await northern.evaluate(node=>({outline:getComputedStyle(node).outlineStyle,stroke:getComputedStyle(node).strokeWidth,tabindex:node.getAttribute('tabindex')}));
   check(mapFocus.outline==='none',preset.name+': native rectangular SVG outline persists '+JSON.stringify(mapFocus));
   check(mapFocus.tabindex==='0',preset.name+': keyboard state selection lost');
