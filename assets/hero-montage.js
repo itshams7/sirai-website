@@ -61,6 +61,7 @@
    const fail=()=>{
      if(id!==token)return;
      if(scene.tagName==='VIDEO')scene.pause();
+     selected=index; // Skip unavailable media instead of retrying indefinitely.
      countdown(650);
    };
    if(scene.tagName==='VIDEO'){
