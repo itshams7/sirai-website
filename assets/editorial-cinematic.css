@@ -1,0 +1,80 @@
+/* SIRAI | Editorial Cinematic homepage, 6 November 2026.
+   A progressive visual layer. No changes to maps, calculators, translations or source data.
+   Fonts have system fallbacks; core content remains usable without external requests. */
+:root{--editorial-ink:#0f172a;--editorial-muted:#475569;--editorial-navy:#082b37;--editorial-paper:#f8f8f5}
+body{background:var(--editorial-paper);color:var(--editorial-ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+body:not([dir="rtl"]) :is(.hero h1,.section-heading h2,.feature-copy h2,.sirai-statistics h2,.sirai-explorer-home h2,.sirai-home-guide h2,.quote-band blockquote,.founder-copy h2,.ps-resource-home-copy h3,.tq-resource-home-copy h3){font-family:"Instrument Serif",Georgia,"Times New Roman",serif!important;font-weight:400!important;letter-spacing:-.038em!important}
+.site-header{background:rgba(250,250,247,.97)!important;border-bottom:1px solid rgba(15,23,42,.09)!important;box-shadow:none!important}
+.site-header .header-inner{width:min(1280px,calc(100% - 64px));min-height:86px;display:grid;grid-template-columns:minmax(230px,1fr) auto minmax(215px,1fr);column-gap:32px;align-items:center}
+.site-header .brand{justify-self:start}
+.site-header .brand-symbol{background:#0b3440;border-radius:50%;width:42px;height:42px}
+.site-header .brand-word{font-family:"Instrument Serif",Georgia,serif;font-size:31px;font-weight:400;letter-spacing:-.035em;color:var(--editorial-ink)}
+.site-header .brand-caption{color:#526476}
+.site-header .nav{gap:clamp(16px,2.4vw,40px);font-size:14px;font-weight:500}
+.site-header .nav a{color:#0f172a}
+.site-header .lang-select{justify-self:end;border-radius:999px!important;font-size:13px!important;font-weight:500!important;min-height:44px!important;background:#fff!important;border:1px solid #c6cdd1!important;color:#0f172a!important}
+.site-header .menu-toggle{justify-self:end}
+.container{width:min(1200px,calc(100% - 64px))}
+.hero{position:relative;isolation:isolate;overflow:hidden;background:#082b37!important;color:#fff;min-height:min(850px,calc(100svh - 86px));display:flex;align-items:center}
+.hero:before{display:none!important}
+.hero .hero-grid{position:static;display:flex!important;align-items:center;justify-content:center;text-align:center;width:min(1280px,calc(100% - 64px));min-height:min(850px,calc(100svh - 86px));padding:110px 0 130px!important;gap:0}
+.hero .hero-grid>div:first-child{position:relative;z-index:3;max-width:880px;margin-inline:auto}
+.hero .eyebrow{color:#e7e8e4!important;font-size:12px;letter-spacing:.16em;font-weight:500;margin-bottom:24px}
+.hero .eyebrow:before{background:#e2bb82}
+body:not([dir="rtl"]) .hero h1{font-size:clamp(48px,7.1vw,80px)!important;line-height:.95!important;letter-spacing:-2.46px!important;font-weight:400!important;margin:0 auto 29px;max-width:900px;color:#fff;text-wrap:balance}
+.hero h1 em{font-style:normal;color:#f4e6cf!important}
+.hero .hero-lead{font-size:clamp(16px,1.55vw,18px);font-weight:400;line-height:1.625;max-width:670px;margin:0 auto;color:#f0f2f3!important;text-wrap:pretty}
+.hero-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;margin-top:45px}
+.hero-actions .btn{border-radius:9999px!important;min-height:56px;padding:17px 32px;font-size:14px;font-weight:500;box-shadow:none!important;transition:transform .3s ease,background-color .3s ease,border-color .3s ease}
+.hero-actions .btn-light{background:#fff!important;color:#0f172a!important;border:1px solid #fff}
+.hero-actions .btn-ghost{color:#fff!important;border:1px solid rgba(255,255,255,.72)!important;background:rgba(5,19,30,.28)!important}
+.hero-actions .btn:hover{transform:scale(1.03)}
+.hero .hero-art.sudan-hero-art.sirai-photo-hero{position:absolute!important;z-index:-2;inset:0!important;width:100%!important;max-width:none!important;height:100%!important;margin:0!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:linear-gradient(120deg,#07313d,#184a51)}
+.hero .hero-art.sudan-hero-art.sirai-photo-hero:after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(4,22,33,.74),rgba(4,22,33,.54) 52%,rgba(4,22,33,.65))}
+.hero .sirai-photo-hero img{position:absolute!important;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:center 47%;filter:saturate(.75) contrast(1.04)!important;transform:none!important}
+.hero .sirai-photo-caption{position:absolute;bottom:16px;right:clamp(24px,4vw,60px);z-index:2;color:#fff;font-size:11px;text-align:right;background:rgba(4,22,33,.38);padding:5px 10px;border-radius:3px}
+.status-strip{background:#edf1ef;color:#1c3d47;border-bottom:1px solid #dee4e3}
+.status-inner{min-height:62px}
+.sirai-statistics{background:#f8f8f5}
+.sirai-statistics h2{color:var(--editorial-ink)!important;font-size:clamp(40px,4.8vw,65px)!important;line-height:1.04!important}
+.sirai-statistics-intro,.section-heading p{color:var(--editorial-muted)}
+.section{padding-block:clamp(72px,9vw,132px)}
+.section-heading h2,.feature-copy h2,.founder-copy h2{font-size:clamp(39px,5vw,68px)!important;line-height:1.06!important;color:var(--editorial-ink)}
+.sirai-home-guide{background:#fff;padding-block:clamp(65px,8vw,108px)}
+.sirai-home-guide h2{font-size:clamp(38px,4.5vw,60px)!important;line-height:1.08!important;color:var(--editorial-ink)}
+.sirai-explorer-home h2{font-size:clamp(40px,4.5vw,64px)!important;line-height:1.06!important}
+.light-section{background:#f1f3f1}
+.btn-green,.sirai-demo-button{border-radius:999px!important;background:#0f172a!important;border-color:#0f172a!important;color:#fff!important;padding-inline:27px;font-weight:500}
+.btn-green:hover,.sirai-demo-button:hover{background:#243650!important;border-color:#243650!important}
+.panel,.pillar,.phase{border-radius:7px!important}
+.site-footer{background:#091e29!important}
+.site-footer .footer-links a{font-weight:500}
+@media (prefers-reduced-motion:no-preference){
+ .hero .eyebrow,.hero h1,.hero .hero-lead,.hero .hero-actions{animation:sirai-editorial-rise .8s ease-out both}
+ .hero h1{animation-delay:0s}
+ .hero .hero-lead{animation-delay:.2s}
+ .hero .hero-actions{animation-delay:.4s}
+ @keyframes sirai-editorial-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+}
+@media(max-width:1200px){.site-header .header-inner{display:flex;justify-content:space-between;gap:16px}.site-header .nav{gap:19px}}
+@media(max-width:900px){.site-header .nav{display:none}.site-header .nav.open{display:flex}.site-header .menu-toggle{display:block}.site-header .header-inner{width:min(100% - 36px,1200px)}}
+@media(max-width:650px){
+ .container{width:calc(100% - 36px)}
+ .site-header .header-inner{min-height:74px}
+ .site-header .brand-word{font-size:28px}
+ .site-header .brand-caption{max-width:165px;font-size:8px}
+ .hero{min-height:610px}
+ .hero .hero-grid{width:calc(100% - 42px);min-height:610px;padding:94px 0 102px!important}
+ body:not([dir="rtl"]) .hero h1{font-size:clamp(46px,11vw,60px)!important;line-height:.98!important;letter-spacing:-2.46px!important}
+ .hero .hero-lead{font-size:16px;line-height:1.65}
+ .hero-actions{margin-top:32px;gap:12px}
+ .hero-actions .btn{width:100%;max-width:320px;padding:15px 22px;min-height:52px}
+ .hero .sirai-photo-caption{right:15px;bottom:12px;font-size:10px}
+ .sirai-statistics h2{font-size:clamp(36px,9vw,49px)!important}
+ .section-heading h2,.feature-copy h2,.founder-copy h2{font-size:clamp(36px,9vw,50px)!important}
+}
+[dir="rtl"] .hero .hero-grid{direction:rtl}
+[dir="rtl"] .hero h1{font-size:clamp(40px,6vw,70px);line-height:1.18;letter-spacing:0!important}
+[dir="rtl"] .site-header .brand{direction:ltr}
+@media(prefers-reduced-motion:reduce){.hero :is(.eyebrow,h1,.hero-lead,.hero-actions){animation:none!important}.hero-actions .btn{transition:none!important}}
+@media print{.hero{min-height:0;background:#fff!important;color:#0f172a}.hero .hero-grid{min-height:0}.hero .hero-art.sudan-hero-art.sirai-photo-hero{display:none!important}.hero h1,.hero .hero-lead{color:#0f172a!important}}
