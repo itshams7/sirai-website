@@ -8,6 +8,21 @@
  const title=showcase.querySelector('.sirai-focus-showcase-title');
  const detail=showcase.querySelector('.sirai-focus-showcase-summary');
  const number=showcase.querySelector('[data-focus-number]');
+ // Keep the built-in vector art as a reliable fallback. A photograph appears
+ // only once its remote URL has loaded, and disappears if data saving is enabled.
+ visual.forEach(card=>{
+   const img=card.querySelector('.sirai-focus-photo');
+   if(!img)return;
+   const refresh=()=>{
+     const url=img.currentSrc||img.src;
+     const ready=img.complete&&img.naturalWidth>0&&/^https:\/\/images\.unsplash\.com\//.test(url);
+     card.classList.toggle('has-photo',ready);
+   };
+   img.addEventListener('load',refresh);
+   img.addEventListener('error',()=>card.classList.remove('has-photo'));
+   refresh();
+ });
+
  let current=0;
  const labels={
   en:['Practical approaches to everyday challenges, shaped by people who know their communities.','Sharing accessible information, practical skills and opportunities to learn from one another.','Considering local resources and livelihood needs alongside environmental care.'],
