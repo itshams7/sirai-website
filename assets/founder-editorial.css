@@ -238,3 +238,56 @@ body:not([dir="rtl"]) .sirai-founder-letter h3{
    min-width:0;
  }
 }
+
+/* Precision alignment: reset browser default figure margin, which shifted the
+   portrait horizontally and down relative to both the quote and letter. */
+.sirai-founder-editorial .sirai-founder-grid{
+ align-items:stretch!important;
+}
+.sirai-founder-editorial figure.sirai-founder-portrait{
+ margin:0!important;
+ box-sizing:border-box;
+ width:100%!important;
+ max-width:100%!important;
+}
+.sirai-founder-editorial .sirai-founder-visual{
+ width:100%;
+ min-width:0;
+}
+.sirai-founder-editorial .sirai-founder-quote{
+ margin:0!important;
+ width:100%!important;
+ box-sizing:border-box;
+ align-self:stretch;
+}
+.sirai-founder-editorial .sirai-founder-letter{
+ box-sizing:border-box;
+ margin:0!important;
+ min-width:0;
+}
+@media(min-width:851px){
+ .sirai-founder-editorial .sirai-founder-grid{
+  display:grid!important;
+  grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;
+  align-items:stretch!important;
+ }
+ .sirai-founder-editorial .sirai-founder-visual{
+  align-self:stretch!important;
+  height:100%!important;
+  min-height:0;
+ }
+ .sirai-founder-editorial figure.sirai-founder-portrait{
+  flex:1 1 0!important;
+  height:auto!important;
+  min-height:420px;
+ }
+ .sirai-founder-editorial .sirai-founder-letter{
+  align-self:stretch!important;
+ }
+}
+@media(max-width:850px){
+ .sirai-founder-editorial figure.sirai-founder-portrait{
+  margin:0!important;
+  width:100%!important;
+ }
+}
