@@ -52,7 +52,10 @@
    const id=++token;
    const reveal=()=>{
      if(id!==token||!canRun())return false;
-     for(const s of sources)s.classList.toggle('is-visible',s===scene);
+     for(const s of sources){
+       s.classList.toggle('is-visible',s===scene);
+       if(s!==scene && s.tagName==='VIDEO')s.pause();
+     }
      selected=index;reel.dataset.scene=String(index);
      stage.classList.add('is-playing');label();
      countdown(index===2?4600:5600);
