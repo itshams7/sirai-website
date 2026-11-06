@@ -12,7 +12,7 @@ const check=(condition,message)=>assert.ok(condition,message);
 try{
  await mkdir('test-artifacts',{recursive:true});
  await sleep(1500);
- browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+ browser=await chromium.launch({headless:true,executablePath:process.env.CI?'/usr/bin/google-chrome':undefined,args:['--no-sandbox']});
  for(const preset of [
   {name:'desktop',viewport:{width:1440,height:900},mobile:false},
   {name:'tablet',viewport:{width:748,height:1100},mobile:false},
