@@ -154,6 +154,17 @@ try{
   check(focusGeom.left>=-2&&focusGeom.right<=focusGeom.viewport+2,preset.name+': focus preview overflowing viewport '+JSON.stringify(focusGeom));
   check(focusGeom.height<1100,preset.name+': excessive focus section height '+JSON.stringify(focusGeom));
   await focusSection.screenshot({path:'test-artifacts/focus-'+preset.name+'.png',animations:'disabled'});
+  // Purpose sections: compact objective cards remain contained at all breakpoints.
+  const obj=page.locator('#about .sirai-objectives');
+  check(await obj.count()===1,preset.name+': objectives not shown under mission and vision');
+  check(await obj.locator('.sirai-objective-card').count()===3,preset.name+': objectives card count wrong');
+  const objGeom=await obj.evaluate(el=>{
+    const rects=[...el.querySelectorAll('.sirai-objective-card')].map(x=>x.getBoundingClientRect());
+    return {left:Math.min(...rects.map(x=>x.left)),right:Math.max(...rects.map(x=>x.right)),width:innerWidth,top:rects.map(x=>x.top)};
+  });
+  check(objGeom.left>=-2 && objGeom.right<=objGeom.width+2,preset.name+': objective cards overflow '+JSON.stringify(objGeom));
+  if(preset.name==='desktop')check(Math.max(...objGeom.top)-Math.min(...objGeom.top)<3,preset.name+': objective cards not aligned');
+  await obj.screenshot({path:'test-artifacts/objectives-'+preset.name+'.png',animations:'disabled'});
   // Founder editorial regression: proper portrait, complete letter, accessible layout.
   const founder=page.locator('#founder');
   await founder.scrollIntoViewIfNeeded();
@@ -205,6 +216,7 @@ try{
   await page.waitForTimeout(300);
   check(await page.locator('html').getAttribute('dir')==='rtl',preset.name+': Arabic RTL did not activate');
   check((await page.locator('.sirai-founder-letter h3').innerText()).includes('قليل'),preset.name+': Arabic founder heading not translated');
+  check((await page.locator('#about .sirai-objectives-heading h3').innerText()).includes('أهدافنا'),preset.name+': Arabic objectives heading not translated');
   check((await page.locator('.sirai-2028-heading h2').innerText()).includes('الأفكار'),preset.name+': Arabic goal not translated');
   await page.locator('[data-focus-choice="2"]').click();
   check((await page.locator('.sirai-focus-showcase-title').innerText()).includes('البيئة'),preset.name+': Arabic focus preview not translated');
