@@ -24,9 +24,11 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(homepage.includes('data-i18n="'+key+'"'),'Guide markup missing '+key);
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
-assert.ok(homepage.includes('assets/app.js?v=20261106-founder-1'),'Homepage uses a stale language script URL');
+assert.ok(homepage.includes('assets/app.js?v=20261106-focus-1'),'Homepage uses a stale language script URL');
 assert.ok(sw.includes("'assets/editorial-cinematic.css'"),'Editorial design is absent from offline cache');
 for(const file of ['assets/founder-editorial.css','assets/founder-editorial.js'])assert.ok(sw.includes("'"+file+"'"),'Founder feature missing from offline assets: '+file);
+for(const file of ['assets/focus-refined.css','assets/focus-refined.js'])assert.ok(sw.includes("'"+file+"'"),'Focus section missing from offline assets: '+file);
+assert.ok(homepage.includes('sirai-focus-showcase') && homepage.includes('data-focus-choice="2"'),'Interactive priorities markup missing');
 assert.ok(homepage.includes('sirai-founder-letter') && homepage.includes('founder-portrait-new.png'),'Founder letter or portrait missing');
 console.log('Homepage translation regression checks passed.');
 
