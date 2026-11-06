@@ -68,3 +68,6 @@
  .sirai-share-dialog-actions button{flex:1}
 }
 @media print{.sirai-share-dialog{display:none!important}}
+
+/* Offline capabilities remain active, without persistent readiness badges. */
+#sirai-offline-indicator.sirai-offline-indicator{display:none!important}
