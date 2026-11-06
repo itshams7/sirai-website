@@ -1,0 +1,18 @@
+/* SIRAI / objectives below mission & vision, no extra homepage section. */
+.sirai-objectives{margin-top:clamp(34px,5vw,65px);padding-top:clamp(26px,3.5vw,43px);border-top:1px solid #d7e1d8}
+.sirai-objectives-heading{max-width:770px;margin-bottom:25px}
+.sirai-objectives-eyebrow{font-size:10px;letter-spacing:.18em;color:#557466;font-weight:700}
+.sirai-objectives-heading h3{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(36px,4vw,52px);font-weight:400;letter-spacing:-.03em;line-height:1.12;color:#162f37;margin:11px 0}
+.sirai-objectives-heading p{font-size:15px;line-height:1.6;color:#566a66;max-width:58ch;margin:0}
+.sirai-objectives-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.sirai-objective-card{position:relative;background:#f7f8f5;border:1px solid #d7e1da;border-radius:10px;padding:clamp(21px,2.5vw,32px);min-width:0;display:flex;flex-direction:column;align-items:flex-start;min-height:245px;transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+.sirai-objective-card::before{content:"";position:absolute;top:-1px;left:24px;width:42px;height:2px;background:#bc9c70}
+.sirai-objective-number{display:block;font-family:"Instrument Serif",Georgia,serif;font-size:27px;line-height:1;color:#809b88;margin-bottom:25px}
+.sirai-objective-card h4{font-size:clamp(16px,1.55vw,20px);font-weight:650;line-height:1.3;color:#1a3840;margin:0 0 12px;letter-spacing:-.012em}
+.sirai-objective-card p{font-size:14px;line-height:1.7;color:#526761;margin:0}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){.sirai-objective-card:hover{transform:translateY(-4px);border-color:#9cb9a9;box-shadow:0 10px 28px rgba(15,56,44,.07)}}
+@media(max-width:870px){.sirai-objectives-grid{grid-template-columns:1fr;gap:12px}.sirai-objective-card{min-height:0;padding:22px 24px}.sirai-objective-number{margin-bottom:14px}}
+@media(max-width:570px){.sirai-objectives{margin-top:30px;padding-top:25px}.sirai-objectives-heading h3{font-size:39px}.sirai-objectives-grid{gap:10px}}
+[dir="rtl"] .sirai-objective-card::before{left:auto;right:24px}
+[dir="rtl"] .sirai-objectives-heading h3{font-family:Tahoma,"Segoe UI",Arial,sans-serif;font-size:clamp(29px,4vw,42px);font-weight:650;letter-spacing:0;line-height:1.4}
+@media(prefers-reduced-motion:reduce){.sirai-objective-card{transition:none!important;transform:none!important}}
