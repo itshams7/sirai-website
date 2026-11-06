@@ -90,6 +90,22 @@ try{
     const visual=page.locator('.sirai-focus-showcase-title');
     check((await visual.innerText()).trim()===(await b.locator('strong').innerText()).trim(),preset.name+': focus preview title mismatch');
   }
+  // Real photographs replace the primary artwork when online, while
+  // existing offline/low-data preferences retain local illustrations.
+  const photos=page.locator('.sirai-focus-visual .sirai-focus-photo');
+  check(await photos.count()===3,preset.name+': priorities are missing photographic assets');
+  for(const photo of await photos.all()){
+    const source=await photo.getAttribute('data-sirai-remote-photo');
+    const fallback=await photo.getAttribute('data-sirai-local-photo');
+    check(source?.startsWith('https://images.unsplash.com/photo-'),preset.name+': real image source missing');
+    check(fallback?.endsWith('.svg'),preset.name+': local offline fallback missing');
+  }
+  const dataToggle=page.locator('.sirai-data-toggle');
+  await dataToggle.click();
+  check(await page.locator('html.sirai-low-data').count()===1,preset.name+': data saving toggle failed');
+  const fallbackSources=await photos.evaluateAll(imgs=>imgs.map(img=>img.getAttribute('src')));
+  check(fallbackSources.every(src=>src?.endsWith('.svg')),preset.name+': illustrations not restored in low-data mode '+fallbackSources.join(', '));
+  await dataToggle.click();
   await page.locator('[data-focus-choice="0"]').click();
   const focusGeom=await focusSection.evaluate(el=>{const r=el.getBoundingClientRect(),s=el.querySelector('.sirai-focus-showcase').getBoundingClientRect();return {left:s.left,right:s.right,viewport:innerWidth,height:r.height}});
   check(focusGeom.left>=-2&&focusGeom.right<=focusGeom.viewport+2,preset.name+': focus preview overflowing viewport '+JSON.stringify(focusGeom));

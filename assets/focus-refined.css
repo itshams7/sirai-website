@@ -71,3 +71,41 @@ body:not([dir="rtl"]) .sirai-focus-header h2{font-family:"Instrument Serif",Geor
  .sirai-focus-visual svg{max-height:180px}
  .sirai-focus-showcase-copy{min-height:138px;padding:19px 20px}
 }
+
+/* Real photography with local illustrations as offline and low-data fallbacks. */
+.sirai-focus-visual .sirai-focus-photo{
+ position:absolute;
+ inset:0;
+ width:100%;
+ height:100%;
+ max-width:none;
+ max-height:none;
+ object-fit:cover;
+ object-position:center 48%;
+ opacity:0;
+ z-index:0;
+ filter:saturate(.85) contrast(1.04);
+ transition:opacity .45s ease,transform .8s ease;
+}
+.sirai-focus-visual-learning .sirai-focus-photo{object-position:center 43%}
+.sirai-focus-visual-earth .sirai-focus-photo{object-position:center 52%}
+.sirai-focus-visual.has-photo .sirai-focus-photo{opacity:1}
+.sirai-focus-visual.has-photo::after{
+ content:"";position:absolute;z-index:1;inset:0;pointer-events:none;
+ background:linear-gradient(180deg,rgba(9,25,24,.07) 10%,rgba(9,25,24,.04) 45%,rgba(9,25,24,.42) 100%);
+}
+.sirai-focus-visual.has-photo>svg{display:none}
+.sirai-focus-visual.has-photo .sirai-focus-photo-credit{display:block}
+.sirai-focus-photo-credit{
+ position:absolute;z-index:2;bottom:13px;inset-inline-end:17px;
+ display:none;background:rgba(11,28,28,.53);border-radius:3px;
+ color:#fffaf0;font-size:10px;line-height:1.35;letter-spacing:.015em;
+ padding:5px 8px;max-width:calc(100% - 26px);text-align:end;
+}
+.sirai-focus-showcase:hover .sirai-focus-visual.has-photo .sirai-focus-photo{
+ transform:scale(1.035);
+}
+@media(prefers-reduced-motion:reduce){
+ .sirai-focus-visual .sirai-focus-photo{transition:none!important}
+ .sirai-focus-showcase:hover .sirai-focus-visual.has-photo .sirai-focus-photo{transform:none!important}
+}
