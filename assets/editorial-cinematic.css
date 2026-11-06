@@ -111,3 +111,66 @@ body:not([dir="rtl"]) .hero h1{font-size:clamp(48px,7.1vw,80px)!important;line-h
  .site-footer .footer-grid{flex-direction:column;align-items:stretch;gap:26px}
  .site-footer .footer-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 24px;width:100%;min-width:0}
 }
+
+
+/* SIRAI / geographic selection: no rectangular native SVG focus outline.
+   Selected and keyboard-focused states remain clearly discernible by their true boundary. */
+.sirai-idp-map svg path[data-idp-state]:focus,
+.sirai-idp-map svg path[data-idp-state]:focus-visible{
+ outline:none!important;
+ outline-offset:0!important;
+ stroke:#fff5dd;
+ stroke-width:3.4;
+ filter:drop-shadow(0 0 3px rgba(255,231,175,.55));
+}
+.sirai-idp-map svg path[data-idp-state].is-selected{
+ outline:none!important;
+ stroke:#fff2d5;
+ stroke-width:3;
+ filter:drop-shadow(0 0 4px rgba(255,225,157,.5));
+}
+.sirai-idp-map svg path[data-idp-state].is-selected:focus-visible{
+ stroke:#fff;
+ stroke-width:3.8;
+ filter:drop-shadow(0 0 5px rgba(255,247,217,.7));
+}
+
+/* Adapt the LightBeam idea without React dependencies.
+   A subtle gold/sage rotating border marks the Sudan Explorer action.
+   Motion starts only on hover/focus, and respects reduced-motion settings. */
+@property --sirai-beam-angle{
+ syntax:"<angle>";
+ initial-value:0deg;
+ inherits:false;
+}
+@keyframes sirai-beam-rotate{
+ to{--sirai-beam-angle:360deg}
+}
+.sirai-explorer-home .sirai-lightbeam{
+ --sirai-beam-angle:0deg;
+ display:inline-flex;
+ position:relative;
+ isolation:isolate;
+ overflow:hidden;
+ border:1px solid transparent!important;
+ border-radius:999px!important;
+ background:linear-gradient(#0f172a,#0f172a) padding-box,
+   conic-gradient(from var(--sirai-beam-angle),#cfbb89 0%,#cfbb89 7%,#84b9a4 19%,#f4dba6 30%,#334e5a 43%,#334e5a 100%) border-box!important;
+ color:#fff!important;
+ box-shadow:0 6px 23px rgba(10,46,39,.14)!important;
+ transition:transform .25s ease,box-shadow .25s ease!important;
+}
+.sirai-explorer-home .sirai-lightbeam:hover,
+.sirai-explorer-home .sirai-lightbeam:focus-visible{
+ background:linear-gradient(#142a38,#142a38) padding-box,
+   conic-gradient(from var(--sirai-beam-angle),#cfbb89 0%,#cfbb89 7%,#84b9a4 19%,#f4dba6 30%,#334e5a 43%,#334e5a 100%) border-box!important;
+ box-shadow:0 0 0 3px rgba(181,211,195,.12),0 10px 28px rgba(10,46,39,.22)!important;
+ transform:translateY(-1px) scale(1.02);
+}
+@media(prefers-reduced-motion:no-preference){
+ .sirai-explorer-home .sirai-lightbeam:hover,
+ .sirai-explorer-home .sirai-lightbeam:focus-visible{animation:sirai-beam-rotate 2.8s linear infinite}
+}
+@media(prefers-reduced-motion:reduce){
+ .sirai-explorer-home .sirai-lightbeam{animation:none!important;transform:none!important}
+}
