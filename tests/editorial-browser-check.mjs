@@ -70,7 +70,7 @@ try{
   const mapFocus=await northern.evaluate(node=>({outline:getComputedStyle(node).outlineStyle,stroke:getComputedStyle(node).strokeWidth,tabindex:node.getAttribute('tabindex')}));
   check(mapFocus.outline==='none',preset.name+': native rectangular SVG outline persists '+JSON.stringify(mapFocus));
   check(mapFocus.tabindex==='0',preset.name+': keyboard state selection lost');
-  check(Number.parseFloat(mapFocus.stroke)>=3,preset.name+': selected focus ring too subtle');
+  check(Number.parseFloat(mapFocus.stroke)>=3,preset.name+': selected focus ring too subtle '+JSON.stringify(mapFocus));
   const explorer=page.locator('.sirai-explorer-home .sirai-lightbeam');
   check(await explorer.getAttribute('href')==='explorer.html',preset.name+': explorer CTA destination changed');
   const beam=await explorer.evaluate(el=>({border:getComputedStyle(el).borderRadius,background:getComputedStyle(el).backgroundImage}));
