@@ -35,7 +35,8 @@ try{
   check(dims.hero.height>500,preset.name+': missing tall hero');
   check(Math.abs(dims.figure.width-dims.hero.width)<5,preset.name+': hero figure is not full bleed');
   check(dims.h1.x>=0 && dims.h1.x+dims.h1.width<=dims.viewport+2,preset.name+': h1 outside viewport');
-  check(dims.scrollWidth<=dims.viewport+3,preset.name+': horizontal overflow');
+  if(dims.scrollWidth>dims.viewport+3){const overflow=await page.evaluate(()=>[...document.querySelectorAll('*')].map(e=>({tag:e.tagName,cls:(typeof e.className==='string'?e.className:'').slice(0,90),right:Math.round(e.getBoundingClientRect().right),left:Math.round(e.getBoundingClientRect().left),width:Math.round(e.getBoundingClientRect().width)})).filter(x=>x.right>innerWidth+3||x.left< -3).sort((a,b)=>b.right-a.right).slice(0,15));console.log('OVERFLOW '+preset.name,JSON.stringify(overflow));}
+  check(dims.scrollWidth<=dims.viewport+3,preset.name+': horizontal overflow '+dims.scrollWidth+' > '+dims.viewport);
   check(dims.font.includes('Instrument Serif'),preset.name+': editorial heading font missing');
   check(dims.letterSpacing==='-2.46px',preset.name+': letter spacing mismatch: '+dims.letterSpacing);
   check(await page.locator('#sirai-stat-number').count()===1,preset.name+': statistics missing');
