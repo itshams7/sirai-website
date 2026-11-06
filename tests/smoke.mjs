@@ -24,11 +24,14 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(homepage.includes('data-i18n="'+key+'"'),'Guide markup missing '+key);
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
-assert.ok(homepage.includes('assets/app.js?v=20261106-focus-1'),'Homepage uses a stale language script URL');
+assert.ok(homepage.includes('assets/app.js?v=20261106-goal-1'),'Homepage uses a stale language script URL');
 assert.ok(sw.includes("'assets/editorial-cinematic.css'"),'Editorial design is absent from offline cache');
 for(const file of ['assets/founder-editorial.css','assets/founder-editorial.js'])assert.ok(sw.includes("'"+file+"'"),'Founder feature missing from offline assets: '+file);
 for(const file of ['assets/focus-refined.css','assets/focus-refined.js'])assert.ok(sw.includes("'"+file+"'"),'Focus section missing from offline assets: '+file);
 assert.ok(homepage.includes('sirai-focus-showcase') && homepage.includes('data-focus-choice="2"'),'Interactive priorities markup missing');
+assert.ok(homepage.includes('id="sirai-2028-title"') && homepage.includes('data-i18n="goal.2028.title"'),'Missing public 2028 goal');
+assert.ok(sw.includes("'assets/goal-2028.css'"),'Goal styles missing from offline cache');
+for(const key of ['goal.title','goal.lead','goal.condition','goal.2027.title','goal.2028.title','goal.report.title'])assert.ok(languageScript.includes('"'+key+'"'),'Missing goal translation '+key);
 assert.ok(homepage.includes('sirai-founder-letter') && homepage.includes('founder-portrait-new.png'),'Founder letter or portrait missing');
 console.log('Homepage translation regression checks passed.');
 
