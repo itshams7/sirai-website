@@ -1,9 +1,9 @@
 /* SIRAI pre-launch offline shell. Does not cache personal drafts or feedback submissions. */
-const VERSION='sirai-offline-v24-impact-bars-20261105';
+const VERSION='sirai-offline-v25-editorial-20261106';
 const ROOT=new URL('./',self.registration.scope).pathname;
 const ASSETS=[
  'index.html','explorer.html','about.html','privacy.html','terms.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html','transparency.html','start-here.html','resources.html','faq.html','updates.html','get-involved.html','practical-guide.html','issues.html',
- 'manifest.webmanifest','assets/favicon.svg','assets/watershare-resource-art.svg','assets/projectstarter-resource-art.svg','assets/taqawise-resource-art.svg','assets/styles.css','assets/premium-palette.css','assets/site-motion.css','assets/site-motion.js',
+ 'manifest.webmanifest','assets/favicon.svg','assets/watershare-resource-art.svg','assets/projectstarter-resource-art.svg','assets/taqawise-resource-art.svg','assets/styles.css','assets/premium-palette.css','assets/site-motion.css','assets/site-motion.js','assets/editorial-cinematic.css',
  'assets/state-displacement.js','assets/explorer.js','assets/explorer.css','assets/explorer-entry.css','assets/sudan-overview.svg','assets/sudan-states.geojson','assets/policies.css','assets/policies.js','assets/app.js','assets/offline-share.js','assets/offline-share.css','assets/data-mode.js','assets/data-mode.css','assets/launch-quality.css','assets/launch-quality.js','assets/transparency.js','assets/phase2.css','assets/phase2.js','assets/phase2-guide.js','assets/community-hub.css','assets/community-hub.js','assets/sirai-math.js','assets/practical.css','assets/practical.js','assets/practical-guide.js','assets/issues.js','assets/resource-pack.js','assets/offline-images.js',
  'assets/feedback.css','assets/feedback.js',
  'assets/ws-locales.js','assets/ws-ar.js','assets/ws-fr.js','assets/ws-de.js','assets/watershare.js',
