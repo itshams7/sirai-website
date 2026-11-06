@@ -61,6 +61,22 @@ try{
   check((await page.locator('#sirai-stat-number').innerText()).includes('17.3'),preset.name+': humanitarian indicator not responding');
   await page.locator('[data-sirai-stat="displaced"]').click();
   check(await page.locator('#sirai-idp-panel').isVisible(),preset.name+': displacement map UI not shown');
+  // Selected states must follow the state boundary, not draw a rectangular SVG focus box.
+  await page.locator('#sirai-idp-svg path[data-idp-state="SD-NO"]').waitFor({state:'visible',timeout:15000});
+  const northern=page.locator('#sirai-idp-svg path[data-idp-state="SD-NO"]');
+  await northern.click();
+  check(await northern.evaluate(node=>node.classList.contains('is-selected')),preset.name+': selected state not highlighted');
+  await northern.focus();
+  await page.waitForTimeout(300); // allow the accessible border transition to finish
+  const mapFocus=await northern.evaluate(node=>({outline:getComputedStyle(node).outlineStyle,stroke:getComputedStyle(node).strokeWidth,tabindex:node.getAttribute('tabindex')}));
+  check(mapFocus.outline==='none',preset.name+': native rectangular SVG outline persists '+JSON.stringify(mapFocus));
+  check(mapFocus.tabindex==='0',preset.name+': keyboard state selection lost');
+  check(Number.parseFloat(mapFocus.stroke)>=3,preset.name+': selected focus ring too subtle '+JSON.stringify(mapFocus));
+  const explorer=page.locator('.sirai-explorer-home .sirai-lightbeam');
+  check(await explorer.getAttribute('href')==='explorer.html',preset.name+': explorer CTA destination changed');
+  const beam=await explorer.evaluate(el=>({border:getComputedStyle(el).borderRadius,background:getComputedStyle(el).backgroundImage}));
+  check(beam.border==='999px',preset.name+': beam button shape not applied');
+  check(beam.background.includes('conic-gradient'),preset.name+': beam gradient missing');
   if(preset.mobile){
     await page.locator('[data-menu]').click();
     check(await page.locator('#navigation').isVisible(),'mobile: menu did not open');

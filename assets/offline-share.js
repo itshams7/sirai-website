@@ -66,7 +66,7 @@ document.querySelectorAll('[data-lang-select]').forEach(el=>el.addEventListener(
   await navigator.serviceWorker.register('./sw.js',{scope:'./'});
   await navigator.serviceWorker.ready;
   const keys=await caches.keys();
-  offlineReady=keys.includes('sirai-offline-v26-editorial-mapfix-20261106');
+  offlineReady=keys.includes('sirai-offline-v27-sudan-beam-20261106');
   failed=!offlineReady;
  }catch(e){failed=true}
  update();
