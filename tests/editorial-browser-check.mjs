@@ -54,6 +54,13 @@ try{
   check((await pause.innerText()).includes('Play motion'),preset.name+': pause button did not change label');
   await pause.click();
   check(await pause.getAttribute('aria-pressed')==='false',preset.name+': montage resume failed');
+  if(preset.name==='desktop'){
+    // Diagnostic only: third-party video networks may be blocked in CI,
+    // but this reveals any invalid clip URLs without compromising the still fallback.
+    await page.waitForTimeout(7200);
+    const media=await page.locator('[data-reel-video]').evaluateAll(v=>v.map(x=>({clip:x.dataset.reelVideo,readyState:x.readyState,error:x.error?.code||null,networkState:x.networkState})));
+    console.log('MONTAGE_MEDIA '+JSON.stringify(media));
+  }
   const photoFallback=await page.locator('.sirai-cinematic-hero>img').evaluate(img=>({src:img.getAttribute('src'),complete:img.complete}));
   check(photoFallback.src?.endsWith('.svg'),preset.name+': missing locally served hero fallback '+JSON.stringify(photoFallback));
   const prevStatus=await reel.getAttribute('data-scene');
