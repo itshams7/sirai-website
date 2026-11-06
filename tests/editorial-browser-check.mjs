@@ -59,6 +59,24 @@ try{
     console.log('MONTAGE_MEDIA '+JSON.stringify(media));
     check(media[0].readyState>=2 && !media[0].error,'First Sudan footage clip did not load in Chromium');
     check(await reel.getAttribute('data-scene')==='1','First video scene did not become active');
+    // Validate every actual remote documentary source, not only its URL syntax.
+    const verified=await page.locator('.sirai-hero-reel video').evaluateAll(async clips=>
+      Promise.all(clips.map(video=>new Promise(resolve=>{
+        const finish=()=>{
+          clearTimeout(watchdog);
+          video.removeEventListener('loadedmetadata',finish);
+          video.removeEventListener('error',finish);
+          resolve({readyState:video.readyState,error:video.error?.code||null,clip:video.dataset.reelVideo});
+        };
+        const watchdog=setTimeout(finish,18000);
+        video.addEventListener('loadedmetadata',finish,{once:true});
+        video.addEventListener('error',finish,{once:true});
+        if(!video.getAttribute('src')){video.src=video.dataset.reelVideo;video.preload='metadata';video.load();}
+        if(video.readyState>=1||video.error)finish();
+      })))
+    );
+    console.log('MONTAGE_VERIFIED '+JSON.stringify(verified));
+    check(verified.every(v=>v.readyState>=1&&!v.error),'One or more archival video sources failed to load '+JSON.stringify(verified));
   }
   check(await page.locator('#sirai-stat-number').count()===1,preset.name+': statistics missing');
   for (const mode of ['need','children']) {
