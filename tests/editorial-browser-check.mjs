@@ -78,6 +78,23 @@ try{
   const beam=await explorer.evaluate(el=>({border:getComputedStyle(el).borderRadius,background:getComputedStyle(el).backgroundImage}));
   check(beam.border==='999px',preset.name+': beam button shape not applied');
   check(beam.background.includes('conic-gradient'),preset.name+': beam gradient missing');
+  // Priorities: every option must update the illustration, heading and accessible state.
+  const focusSection=page.locator('#focus');
+  await focusSection.scrollIntoViewIfNeeded();
+  for(let i=0;i<3;i++){
+    const b=page.locator('[data-focus-choice="'+i+'"]');
+    await b.click();
+    check(await b.getAttribute('aria-pressed')==='true',preset.name+': focus priority '+i+' is not active');
+    check(await page.locator('.sirai-focus-visual:not([hidden])').count()===1,preset.name+': focus illustrations not synchronized');
+    check(await page.locator('#sirai-focus-showcase').getAttribute('data-focus-active')===String(i),preset.name+': focus showcase not updated');
+    const visual=page.locator('.sirai-focus-showcase-title');
+    check((await visual.innerText()).trim()===(await b.locator('strong').innerText()).trim(),preset.name+': focus preview title mismatch');
+  }
+  await page.locator('[data-focus-choice="0"]').click();
+  const focusGeom=await focusSection.evaluate(el=>{const r=el.getBoundingClientRect(),s=el.querySelector('.sirai-focus-showcase').getBoundingClientRect();return {left:s.left,right:s.right,viewport:innerWidth,height:r.height}});
+  check(focusGeom.left>=-2&&focusGeom.right<=focusGeom.viewport+2,preset.name+': focus preview overflowing viewport '+JSON.stringify(focusGeom));
+  check(focusGeom.height<1100,preset.name+': excessive focus section height '+JSON.stringify(focusGeom));
+  await focusSection.screenshot({path:'test-artifacts/focus-'+preset.name+'.png',animations:'disabled'});
   // Founder editorial regression: proper portrait, complete letter, accessible layout.
   const founder=page.locator('#founder');
   await founder.scrollIntoViewIfNeeded();
@@ -88,7 +105,7 @@ try{
     const portrait=root.querySelector('.sirai-founder-portrait');
     const quote=root.querySelector('.sirai-founder-quote');
     const rr=root.getBoundingClientRect(),lr=letter.getBoundingClientRect(),pr=portrait.getBoundingClientRect(),qr=quote.getBoundingClientRect();
-    return {background:getComputedStyle(root).backgroundColor,paper:getComputedStyle(letter).backgroundColor,rootWidth:rr.width,letterRight:lr.right,letterLeft:lr.left,portraitRight:pr.right,quoteBottom:qr.bottom,letterBottom:lr.bottom,rootBottom:rr.bottom,viewport:innerWidth};
+    return {background:getComputedStyle(root).backgroundColor,paper:getComputedStyle(letter).backgroundColor,rootWidth:rr.width,letterRight:lr.right,letterLeft:lr.left,portraitLeft:pr.left,portraitTop:pr.top,portraitRight:pr.right,quoteLeft:qr.left,quoteRight:qr.right,quoteBottom:qr.bottom,letterTop:lr.top,letterBottom:lr.bottom,rootBottom:rr.bottom,viewport:innerWidth};
   });
   check(founderGeometry.background==='rgb(72, 31, 48)',preset.name+': incorrect burgundy founder background');
   check(founderGeometry.paper==='rgb(248, 240, 230)',preset.name+': incorrect champagne letter');
@@ -98,6 +115,9 @@ try{
   check((await page.locator('.sirai-letter-signature').innerText()).trim()==='Shamseldin Abdelrahim',preset.name+': founder signature missing');
   if(dims.viewport>=851){
     check(Math.abs(founderGeometry.quoteBottom-founderGeometry.letterBottom)<=4,preset.name+': portrait column and letter bottoms do not align '+JSON.stringify(founderGeometry));
+    check(Math.abs(founderGeometry.portraitTop-founderGeometry.letterTop)<=3,preset.name+': portrait top and letter top do not align '+JSON.stringify(founderGeometry));
+    check(Math.abs(founderGeometry.portraitLeft-founderGeometry.quoteLeft)<=3,preset.name+': portrait and quote left edges do not align '+JSON.stringify(founderGeometry));
+    check(Math.abs(founderGeometry.portraitRight-founderGeometry.quoteRight)<=3,preset.name+': portrait and quote right edges do not align '+JSON.stringify(founderGeometry));
   }
   check(await page.locator('.sirai-founder-letter .sirai-letter-body p').count()===3,preset.name+': missing founder story paragraphs');
   check((await page.locator('.sirai-founder-letter .sirai-letter-body p').first().innerText()).includes('Port Sudan'),preset.name+': original story has changed');
@@ -111,6 +131,8 @@ try{
   await page.waitForTimeout(300);
   check(await page.locator('html').getAttribute('dir')==='rtl',preset.name+': Arabic RTL did not activate');
   check((await page.locator('.sirai-founder-letter h3').innerText()).includes('قليل'),preset.name+': Arabic founder heading not translated');
+  await page.locator('[data-focus-choice="2"]').click();
+  check((await page.locator('.sirai-focus-showcase-title').innerText()).includes('البيئة'),preset.name+': Arabic focus preview not translated');
   await page.screenshot({path:'test-artifacts/arabic-'+preset.name+'.png',fullPage:false,animations:'disabled'});
   await page.locator('[data-lang-select]').selectOption('en');
   check(pageErrors.length===0,preset.name+': JavaScript errors: '+pageErrors.join(' | '));
