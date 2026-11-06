@@ -1,0 +1,95 @@
+/* SIRAI / cinematic Sudan hero montage. Static hero photo stays visible as a fallback.
+   Motion never blocks the hero text, and videos never run on Save-Data or reduced motion. */
+.hero .hero-art.sudan-hero-art.sirai-photo-hero.sirai-cinematic-hero{
+  z-index:0!important;
+  pointer-events:none;
+}
+.hero .sirai-cinematic-hero:after{
+  z-index:2!important;
+  background:linear-gradient(90deg,rgba(4,22,33,.77),rgba(4,22,33,.57) 52%,rgba(4,22,33,.71))!important;
+}
+.sirai-hero-reel{position:absolute;inset:0;overflow:hidden;z-index:1;pointer-events:none}
+.sirai-hero-reel .sirai-reel-scene{
+  position:absolute!important;inset:0!important;display:block;
+  width:100%!important;height:100%!important;
+  opacity:0;object-fit:cover;object-position:center 46%;
+  transition:opacity 1.35s ease;
+  filter:saturate(.86) contrast(1.03);
+  pointer-events:none;
+}
+.sirai-hero-reel .sirai-reel-scene.is-visible{opacity:1}
+.sirai-hero-reel .sirai-reel-scene[data-reel-scene="2"]{object-position:center 51%}
+.sirai-hero-reel .sirai-reel-scene[data-reel-scene="4"]{object-position:center 44%}
+.sirai-hero-reel .sirai-reel-photo{overflow:hidden}
+.sirai-hero-reel .sirai-reel-photo>img{
+  position:absolute;inset:0;object-fit:cover;
+  object-position:center 32%!important;width:100%;height:100%;
+  transform:scale(1.04)!important;
+}
+.sirai-hero-reel .sirai-reel-photo.is-visible>img{
+  animation:sirai-water-photo-pan 7s linear both;
+}
+@keyframes sirai-water-photo-pan{
+  from{transform:scale(1.065)!important}to{transform:scale(1.005)!important}
+}
+.sirai-reel-tools{
+  position:absolute;inset-inline-start:clamp(20px,4vw,58px);
+  bottom:20px;z-index:4;
+  display:flex;align-items:flex-end;gap:11px;pointer-events:auto;
+}
+.sirai-reel-toggle,.sirai-reel-credits>summary{
+  border:1px solid rgba(255,255,255,.5);
+  background:rgba(8,30,37,.58);
+  color:#fff;font:500 12px/1.35 Inter,system-ui,sans-serif;
+  border-radius:999px;min-height:36px;
+  padding:9px 13px;
+  backdrop-filter:blur(7px);
+  transition:background-color .2s,border-color .2s;
+}
+.sirai-reel-toggle{display:flex;gap:8px;align-items:center;cursor:pointer}
+.sirai-reel-toggle-icon{font-size:13px;line-height:1;min-width:13px;text-align:center}
+.sirai-reel-credits{position:relative;font-family:Inter,system-ui,sans-serif;}
+.sirai-reel-credits>summary{display:flex;align-items:center;cursor:pointer;list-style:none}
+.sirai-reel-credits>summary::-webkit-details-marker{display:none}
+.sirai-reel-toggle:hover,.sirai-reel-credits>summary:hover{
+  background:rgba(8,30,37,.84);border-color:#f1d6aa;
+}
+.sirai-reel-toggle:focus-visible,.sirai-reel-credits>summary:focus-visible,
+.sirai-reel-credits-list a:focus-visible{
+  outline:3px solid #f2d7a9!important;outline-offset:3px;
+}
+.sirai-reel-credits-list{
+  position:absolute;bottom:44px;inset-inline-start:0;
+  width:min(330px,calc(100vw - 44px));
+  max-height:min(58vh,290px);overflow-y:auto;
+  display:flex;flex-direction:column;gap:10px;
+  padding:17px 18px;border-radius:9px;
+  background:rgba(7,28,36,.97);border:1px solid rgba(235,215,180,.45);
+  color:#f8eada;box-shadow:0 8px 36px rgba(0,0,0,.3);
+  font-size:11px;line-height:1.55;
+}
+.sirai-reel-credits-list a{color:#f8eada;text-decoration:underline;text-underline-offset:3px}
+.sirai-reel-credits:not([open]) .sirai-reel-credits-list{display:none}
+.hero .sirai-cinematic-hero .sirai-photo-caption{
+  bottom:21px;inset-inline-end:clamp(20px,4vw,58px);
+  color:#f3f7f6;font-size:11px;max-width:300px;
+  pointer-events:none;
+}
+.sirai-cinematic-hero:not(.is-playing) .sirai-reel-toggle{display:none}
+@media(max-width:700px){
+ .sirai-reel-tools{bottom:14px;inset-inline-start:14px;gap:7px}
+ .sirai-reel-toggle,.sirai-reel-credits>summary{font-size:11px;padding:8px 10px;min-height:34px}
+ .hero .sirai-cinematic-hero .sirai-photo-caption{font-size:10px;max-width:140px;bottom:12px;inset-inline-end:12px;text-align:end}
+}
+@media(max-width:430px){
+ .sirai-reel-tools{flex-direction:column;align-items:flex-start}
+ .sirai-reel-credits-list{bottom:44px}
+ .hero .sirai-cinematic-hero .sirai-photo-caption{max-width:120px}
+}
+@media(prefers-reduced-motion:reduce){
+ .sirai-hero-reel{display:none!important}
+ .sirai-reel-tools{display:none!important}
+}
+html.sirai-low-data .sirai-hero-reel,
+html.sirai-low-data .sirai-reel-tools{display:none!important}
+@media print{.sirai-hero-reel,.sirai-reel-tools{display:none!important}}
