@@ -58,3 +58,16 @@ body:not([dir="rtl"]) .sirai-focus-header h2{font-family:"Instrument Serif",Geor
 [dir="rtl"] .sirai-focus-choice:hover{transform:translateX(-3px)}
 [dir="rtl"] .sirai-focus-showcase-title{font-family:Tahoma,"Segoe UI",Arial,sans-serif!important;letter-spacing:0!important;line-height:1.4!important;font-size:clamp(23px,3vw,32px)!important}
 @media(prefers-reduced-motion:reduce){.sirai-focus-section *, .sirai-focus-section *::before,.sirai-focus-section *::after{transition:none!important;animation:none!important;transform:none!important}}
+
+/* Compact phone rhythm: use viewport height for content, not blank rows. */
+@media(max-width:620px){
+ .sirai-focus-section{padding:46px 0!important}
+ .sirai-focus-header{margin-bottom:18px!important}
+ body:not([dir="rtl"]) .sirai-focus-header h2{font-size:clamp(38px,10vw,48px)!important}
+ .sirai-focus-choice{padding:10px 13px!important;gap:4px 10px}
+ .sirai-focus-index{font-size:9px;line-height:1.4}
+ .sirai-focus-choice-copy{gap:2px}
+ .sirai-focus-visual{min-height:165px}
+ .sirai-focus-visual svg{max-height:180px}
+ .sirai-focus-showcase-copy{min-height:138px;padding:19px 20px}
+}
