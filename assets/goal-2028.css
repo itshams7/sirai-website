@@ -1,0 +1,60 @@
+/* SIRAI's 2028 ambition: an explicitly aspirational public milestone. */
+.sirai-2028-section{
+ --goal-ink:#142d35;--goal-blue:#113d43;--goal-cream:#f4efe5;
+ --goal-gold:#dcc291;--goal-border:#d9dcd8;
+ background:#f5f5f1!important;padding:clamp(76px,8.5vw,124px) 0!important;
+}
+.sirai-2028-container{width:min(1200px,calc(100% - 64px))}
+.sirai-2028-feature{border-radius:14px;overflow:hidden;box-shadow:0 22px 60px rgba(12,45,41,.10);border:1px solid rgba(17,61,67,.12)}
+.sirai-2028-hero{background:radial-gradient(ellipse at 94% 10%,rgba(213,187,132,.16),transparent 45%),linear-gradient(120deg,#143b40,#173b3b 60%,#263c3c);color:#fff8eb;padding:clamp(28px,4vw,52px)}
+.sirai-2028-headerline{display:flex;justify-content:space-between;gap:15px;align-items:center;font-size:11px;letter-spacing:.15em;font-weight:650;color:var(--goal-gold)}
+.sirai-2028-horizon{color:#e4e8df;letter-spacing:.06em}
+.sirai-2028-main{display:grid;grid-template-columns:minmax(0,.83fr) minmax(0,1.17fr);align-items:center;gap:clamp(25px,5vw,76px);padding:clamp(27px,4vw,55px) 0 15px}
+.sirai-2028-year{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(110px,18vw,245px);line-height:.75;letter-spacing:-.085em;color:#e4d3ae;white-space:nowrap;align-self:center}
+.sirai-2028-year>span:first-child{color:#fff6df}
+.sirai-2028-year-mark{color:#bf9167;font-size:.4em;letter-spacing:0}
+.sirai-2028-heading{min-width:0}
+.sirai-2028-micro{font-size:11px;letter-spacing:.17em;color:#e0be83;font-weight:650}
+body:not([dir="rtl"]) .sirai-2028-heading h2{font-family:"Instrument Serif",Georgia,serif!important;color:#fff8ed!important;font-size:clamp(41px,4.4vw,65px)!important;font-weight:400!important;letter-spacing:-.037em!important;line-height:1.07!important;margin:15px 0 18px}
+.sirai-2028-heading p{font-size:clamp(16px,1.55vw,19px);line-height:1.65;color:#edf2ed;margin:0 0 21px;max-width:54ch}
+.sirai-2028-conditional{display:block;font-size:12px;line-height:1.6;color:#e6d4ba;max-width:58ch;border-inline-start:2px solid #cba46d;padding-inline-start:15px}
+.sirai-2028-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--goal-cream)}
+.sirai-2028-step{padding:clamp(24px,3.2vw,39px);min-width:0;border-inline-end:1px solid #dddacf}
+.sirai-2028-step:last-child{border-inline-end:0}
+.sirai-2028-step-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:20px}
+.sirai-2028-step-year{color:#3e6b61;font-size:11px;letter-spacing:.14em;font-weight:750}
+.sirai-2028-step-always{font-size:10px}
+.sirai-2028-step-num{color:#baa98c;font-family:"Instrument Serif",Georgia,serif;font-size:25px;line-height:1}
+.sirai-2028-step h3{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(26px,2.35vw,34px)!important;font-weight:400!important;line-height:1.12!important;letter-spacing:-.02em!important;color:#233940!important;margin:0 0 10px}
+.sirai-2028-step p{font-size:14px;line-height:1.68;color:#526263;margin:0;max-width:39ch}
+.sirai-2028-bottom{background:#e9ebe4;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;padding:19px clamp(24px,3.2vw,39px);border-top:1px solid #d8ded4}
+.sirai-2028-bottom>span{font-size:12px;line-height:1.6;color:#4a6460}
+.sirai-2028-link{color:#184a44!important;text-decoration:none!important;font-size:13px;font-weight:700;border-bottom:1px solid #517b6e;padding-bottom:3px;white-space:nowrap}
+.sirai-2028-link:hover{color:#0f302e!important;border-color:#0f302e}
+.sirai-2028-link:focus-visible{outline:3px solid #527969;outline-offset:5px;border-radius:2px}
+@media(max-width:850px){
+ .sirai-2028-main{grid-template-columns:1fr;gap:34px}
+ .sirai-2028-year{font-size:clamp(115px,21vw,200px)}
+ .sirai-2028-steps{grid-template-columns:1fr}
+ .sirai-2028-step{border-inline-end:0;border-bottom:1px solid #dddacf;padding:24px 30px}
+ .sirai-2028-step:last-child{border-bottom:0}
+ .sirai-2028-step-top{margin-bottom:9px}
+}
+@media(max-width:570px){
+ .sirai-2028-section{padding:65px 0!important}
+ .sirai-2028-container{width:calc(100% - 36px)}
+ .sirai-2028-hero{padding:25px 24px 33px}
+ .sirai-2028-headerline{font-size:9px;letter-spacing:.09em}
+ .sirai-2028-main{padding:36px 0 0;gap:35px}
+ .sirai-2028-year{font-size:clamp(110px,26vw,155px)}
+ body:not([dir="rtl"]) .sirai-2028-heading h2{font-size:clamp(40px,10vw,54px)!important}
+ .sirai-2028-step{padding:22px 24px}
+ .sirai-2028-bottom{padding:20px 24px}
+}
+[dir="rtl"] .sirai-2028-heading h2,[dir="rtl"] .sirai-2028-step h3{font-family:Tahoma,"Segoe UI",Arial,sans-serif!important;letter-spacing:0!important;line-height:1.4!important;font-size:clamp(26px,3.4vw,43px)!important}
+[dir="rtl"] .sirai-2028-year{direction:ltr;text-align:start}
+@media(prefers-reduced-motion:no-preference){
+ .sirai-2028-feature{animation:sirai-goal-reveal .8s ease-out both}
+ @keyframes sirai-goal-reveal{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+}
+@media(prefers-reduced-motion:reduce){.sirai-2028-feature{animation:none!important;transform:none!important}}
