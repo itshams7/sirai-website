@@ -165,6 +165,25 @@ try{
   check(objGeom.left>=-2 && objGeom.right<=objGeom.width+2,preset.name+': objective cards overflow '+JSON.stringify(objGeom));
   if(preset.name==='desktop')check(Math.max(...objGeom.top)-Math.min(...objGeom.top)<3,preset.name+': objective cards not aligned');
   await obj.screenshot({path:'test-artifacts/objectives-'+preset.name+'.png',animations:'disabled'});
+  // Footer paragraph must have enough width to wrap naturally, without
+  // crowding navigation or creating horizontal scroll at any breakpoint.
+  const footer=page.locator('.sirai-footer-refined');
+  const footGeo=await footer.evaluate(root=>{
+    const rect=el=>el.getBoundingClientRect();
+    const brand=rect(root.querySelector('.sirai-footer-brand'));
+    const para=rect(root.querySelector('.sirai-footer-brand p'));
+    const nav=rect(root.querySelector('.sirai-footer-nav'));
+    const groups=[...root.querySelectorAll('.sirai-footer-group')].map(rect);
+    return {brandWidth:brand.width,paraWidth:para.width,navLeft:nav.left,navRight:nav.right,navTop:nav.top,brandBottom:brand.bottom,groupCount:groups.length,footerScroll:document.documentElement.scrollWidth,viewport:innerWidth};
+  });
+  check(footGeo.paraWidth>=190,preset.name+': footer description squeezed into narrow column '+JSON.stringify(footGeo));
+  check(footGeo.groupCount===3,preset.name+': footer link groups missing');
+  check(footGeo.navLeft>=-2 && footGeo.navRight<=footGeo.viewport+2,preset.name+': footer links overflow '+JSON.stringify(footGeo));
+  check(footGeo.footerScroll<=footGeo.viewport+3,preset.name+': footer creates horizontal scrolling');
+  if(preset.name==='desktop'||preset.name==='small-desktop'){
+    check(footGeo.navTop<footGeo.brandBottom,preset.name+': desktop footer links not placed beside description');
+  }
+  await footer.screenshot({path:'test-artifacts/footer-'+preset.name+'.png',animations:'disabled'});
   // Founder editorial regression: proper portrait, complete letter, accessible layout.
   const founder=page.locator('#founder');
   await founder.scrollIntoViewIfNeeded();
@@ -217,6 +236,7 @@ try{
   check(await page.locator('html').getAttribute('dir')==='rtl',preset.name+': Arabic RTL did not activate');
   check((await page.locator('.sirai-founder-letter h3').innerText()).includes('قليل'),preset.name+': Arabic founder heading not translated');
   check((await page.locator('#about .sirai-objectives-heading h3').innerText()).includes('أهدافنا'),preset.name+': Arabic objectives heading not translated');
+  check((await page.locator('.sirai-footer-group h2').first().innerText()).includes('استكشف'),preset.name+': Arabic footer headings not translated');
   check((await page.locator('.sirai-2028-heading h2').innerText()).includes('الأفكار'),preset.name+': Arabic goal not translated');
   await page.locator('[data-focus-choice="2"]').click();
   check((await page.locator('.sirai-focus-showcase-title').innerText()).includes('البيئة'),preset.name+': Arabic focus preview not translated');

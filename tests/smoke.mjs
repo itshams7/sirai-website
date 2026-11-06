@@ -24,7 +24,7 @@ for(const key of ['guide.kicker','guide.title','guide.text','guide.action']){
  assert.ok(homepage.includes('data-i18n="'+key+'"'),'Guide markup missing '+key);
  assert.ok(languageScript.includes("'"+key+"'"),'Guide translations missing '+key);
 }
-assert.ok(homepage.includes('assets/app.js?v=20261106-objectives-1'),'Homepage uses a stale language script URL');
+assert.ok(homepage.includes('assets/app.js?v=20261106-footer-1'),'Homepage uses a stale language script URL');
 assert.ok(sw.includes("'assets/editorial-cinematic.css'"),'Editorial design is absent from offline cache');
 for(const file of ['assets/founder-editorial.css','assets/founder-editorial.js'])assert.ok(sw.includes("'"+file+"'"),'Founder feature missing from offline assets: '+file);
 for(const file of ['assets/focus-refined.css','assets/focus-refined.js'])assert.ok(sw.includes("'"+file+"'"),'Focus section missing from offline assets: '+file);
@@ -32,12 +32,19 @@ assert.ok(homepage.includes('sirai-focus-showcase') && homepage.includes('data-f
 assert.ok(homepage.includes('id="sirai-2028-title"') && homepage.includes('data-i18n="goal.2028.title"'),'Missing public 2028 goal');
 assert.ok(sw.includes("'assets/goal-2028.css'"),'Goal styles missing from offline cache');
 assert.ok(sw.includes("'assets/objectives.css'"),'Objectives stylesheet not available offline');
+assert.ok(sw.includes("'assets/footer-refined.css'"),'Footer stylesheet not cached');
+assert.ok(homepage.includes('class="footer-grid sirai-footer-layout"'),'Footer columns missing');
+assert.ok(homepage.includes('class="sirai-footer-brand"'),'Readable SIRAI brand paragraph missing');
+assert.equal((homepage.match(/class="sirai-footer-group"/g)||[]).length,3,'Expected three navigation groups in footer');
+assert.ok(homepage.includes('assets/footer-refined.css?v=20261106-1'),'Footer cache bust missing');
+for(const key of ['footer.group.explore','footer.group.tools','footer.group.information'])assert.ok(languageScript.includes('"'+key+'"'),'Footer heading translation missing: '+key);
+
 for(const pg of ['index.html','about.html']){
  const html=read(pg);
  assert.ok(html.includes('class="sirai-objectives"'),'Missing objectives section in '+pg);
  assert.equal((html.match(/class="sirai-objective-card"/g)||[]).length,3,'Expected three objectives in '+pg);
  assert.ok(html.includes('assets/objectives.css'),'Objectives stylesheet missing in '+pg);
- assert.ok(html.includes('assets/app.js?v=20261106-objectives-1'),'Objective localization cache-bust missing in '+pg);
+ assert.ok(html.includes('assets/app.js?v=20261106-'+(pg==='index.html'?'footer':'objectives')+'-1'),'Objective localization cache-bust missing in '+pg);
 }
 for(const key of ['about.objectives.title','about.objectives.1.title','about.objectives.2.title','about.objectives.3.title'])assert.ok(languageScript.includes('"'+key+'"'),'Objective translation missing '+key);
 
