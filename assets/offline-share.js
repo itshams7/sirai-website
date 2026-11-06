@@ -7,10 +7,10 @@ const tr={
  de:{online:'Tools offline verfügbar',offline:'Offline-Modus',loading:'Offline-Tools werden vorbereitet',failed:'Offline-Modus nicht verfügbar',share:'Per WhatsApp / SMS teilen',review:'Bitte Nachricht prüfen: Namen, Orte, Bewegungszeiten und sensible Angaben entfernen. Fortfahren?',copied:'Zusammenfassung kopiert. In WhatsApp oder SMS einfügen.',copyFailed:'Kopieren nicht verfügbar. Text manuell kopieren.',open:'Text teilen',safety:'Keine Wasserstellen, Bewegungszeiten oder Namen von Freiwilligen veröffentlichen.'}
 };
 const l=()=>tr[document.documentElement.lang]||tr.en;
-function badge(status){
- let el=document.getElementById('sirai-offline-indicator');
- if(!el){const header=document.querySelector('.site-header');if(!header)return;el=document.createElement('div');el.id='sirai-offline-indicator';el.className='sirai-offline-indicator';el.setAttribute('role','status');el.setAttribute('aria-live','polite');header.insertAdjacentElement('afterend',el)}
- el.dataset.status=status;el.textContent= status==='offline'?l().offline:status==='ready'?l().online:status==='failed'?l().failed:l().loading;
+// Offline caching and sharing remain active without a persistent status chip.
+// Remove a chip left by an earlier cached script, then never recreate one.
+function badge(){
+ document.getElementById('sirai-offline-indicator')?.remove();
 }
 async function share(text){
  if(!text||!text.trim())return false;
@@ -66,7 +66,7 @@ document.querySelectorAll('[data-lang-select]').forEach(el=>el.addEventListener(
   await navigator.serviceWorker.register('./sw.js',{scope:'./'});
   await navigator.serviceWorker.ready;
   const keys=await caches.keys();
-  offlineReady=keys.includes('sirai-offline-v33-people-video-20261106');
+  offlineReady=keys.includes('sirai-offline-v34-clean-header-20261106');
   failed=!offlineReady;
  }catch(e){failed=true}
  update();
