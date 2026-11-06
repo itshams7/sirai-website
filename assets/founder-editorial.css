@@ -221,3 +221,20 @@ body:not([dir="rtl"]) .sirai-founder-letter h3{
    flex:none;
  }
 }
+
+/* Keep the shared homepage footer within intermediate laptop widths. */
+@media(min-width:901px) and (max-width:1200px){
+ .site-footer .footer-grid{
+   display:flex;
+   flex-direction:column;
+   align-items:stretch;
+   gap:26px;
+ }
+ .site-footer .footer-links{
+   display:grid;
+   grid-template-columns:repeat(3,minmax(0,1fr));
+   gap:12px 24px;
+   width:100%;
+   min-width:0;
+ }
+}
