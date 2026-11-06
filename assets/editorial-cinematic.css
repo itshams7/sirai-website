@@ -81,7 +81,7 @@ body:not([dir="rtl"]) .hero h1{font-size:clamp(48px,7.1vw,80px)!important;line-h
 
 /* Statistical panels: content must determine height, not overlap the map header
    or the explanation beneath it. All three indicator modes retain their controls. */
-.sirai-statistics-map .sirai-map-visual-layer{
+.sirai-statistics-map:is([data-stat-mode="need"],[data-stat-mode="children"]) .sirai-map-visual-layer{
   display:block;
   flex:0 0 auto;
   min-height:0!important;
