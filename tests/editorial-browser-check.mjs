@@ -139,6 +139,21 @@ try{
   check((await page.locator('.sirai-founder-letter .sirai-letter-body p').first().innerText()).includes('Port Sudan'),preset.name+': original story has changed');
   check(await page.locator('.sirai-founder-portrait img').evaluate(img=>img.complete && img.naturalWidth>0),preset.name+': founder portrait did not load');
   await founder.screenshot({path:'test-artifacts/founder-'+preset.name+'.png',animations:'disabled'});
+  // Verify the goal is explicit, conditional and usable at every breakpoint.
+  const goal=page.locator('#roadmap.sirai-2028-section');
+  await goal.scrollIntoViewIfNeeded();
+  const metrics=await goal.evaluate(root=>{
+    const card=root.querySelector('.sirai-2028-feature').getBoundingClientRect();
+    const year=root.querySelector('.sirai-2028-year').getBoundingClientRect();
+    return {cardLeft:card.left,cardRight:card.right,yearLeft:year.left,yearRight:year.right,viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth};
+  });
+  check(metrics.cardLeft>=-2 && metrics.cardRight<=metrics.viewport+2,preset.name+': goal card overflows '+JSON.stringify(metrics));
+  check(metrics.scrollWidth<=metrics.viewport+3,preset.name+': 2028 goal causes horizontal overflow '+JSON.stringify(metrics));
+  check(await page.locator('.sirai-2028-step').count()===3,preset.name+': milestones missing');
+  check((await page.locator('.sirai-2028-heading p').innerText()).includes('By the end of 2028'),preset.name+': target wording missing');
+  check((await page.locator('.sirai-2028-conditional').innerText()).includes('depends on safety'),preset.name+': fieldwork caveat missing');
+  check(await page.locator('.sirai-2028-link').getAttribute('href')==='updates.html',preset.name+': progress link broken');
+  await goal.screenshot({path:'test-artifacts/goal-'+preset.name+'.png',animations:'disabled'});
   if(preset.mobile){
     await page.locator('[data-menu]').click();
     check(await page.locator('#navigation').isVisible(),'mobile: menu did not open');
@@ -147,6 +162,7 @@ try{
   await page.waitForTimeout(300);
   check(await page.locator('html').getAttribute('dir')==='rtl',preset.name+': Arabic RTL did not activate');
   check((await page.locator('.sirai-founder-letter h3').innerText()).includes('قليل'),preset.name+': Arabic founder heading not translated');
+  check((await page.locator('.sirai-2028-heading h2').innerText()).includes('الأفكار'),preset.name+': Arabic goal not translated');
   await page.locator('[data-focus-choice="2"]').click();
   check((await page.locator('.sirai-focus-showcase-title').innerText()).includes('البيئة'),preset.name+': Arabic focus preview not translated');
   await page.screenshot({path:'test-artifacts/arabic-'+preset.name+'.png',fullPage:false,animations:'disabled'});
