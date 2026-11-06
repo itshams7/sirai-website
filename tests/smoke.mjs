@@ -44,7 +44,7 @@ for(const pg of ['index.html','about.html']){
  assert.ok(html.includes('class="sirai-objectives"'),'Missing objectives section in '+pg);
  assert.equal((html.match(/class="sirai-objective-card"/g)||[]).length,3,'Expected three objectives in '+pg);
  assert.ok(html.includes('assets/objectives.css'),'Objectives stylesheet missing in '+pg);
- assert.ok(html.includes('assets/app.js?v=20261106-objectives-1'),'Objective localization cache-bust missing in '+pg);
+ assert.ok(html.includes('assets/app.js?v=20261106-'+(pg==='index.html'?'footer':'objectives')+'-1'),'Objective localization cache-bust missing in '+pg);
 }
 for(const key of ['about.objectives.title','about.objectives.1.title','about.objectives.2.title','about.objectives.3.title'])assert.ok(languageScript.includes('"'+key+'"'),'Objective translation missing '+key);
 
