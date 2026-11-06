@@ -78,6 +78,11 @@ try{
     console.log('MONTAGE_VERIFIED '+JSON.stringify(verified));
     check(verified.every(v=>v.readyState>=1&&!v.error),'One or more archival video sources failed to load '+JSON.stringify(verified));
   }
+  // Offline capability remains; no persistent readiness/status UI in the header.
+  await page.waitForTimeout(300);
+  check(await page.locator('#sirai-offline-indicator').count()===0,preset.name+': offline readiness badge still appears');
+  check(!(await page.locator('body').innerText()).includes('Offline tools ready'),preset.name+': offline ready text visible');
+  check(!(await page.locator('body').innerText()).includes('Preparing offline tools'),preset.name+': offline setup text visible');
   check(await page.locator('#sirai-stat-number').count()===1,preset.name+': statistics missing');
   for (const mode of ['need','children']) {
     await page.locator('[data-sirai-stat="'+mode+'"]').click();
