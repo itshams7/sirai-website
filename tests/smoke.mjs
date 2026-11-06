@@ -32,10 +32,16 @@ assert.ok(homepage.includes('sirai-focus-showcase') && homepage.includes('data-f
 assert.ok(homepage.includes('id="sirai-2028-title"') && homepage.includes('data-i18n="goal.2028.title"'),'Missing public 2028 goal');
 assert.ok(sw.includes("'assets/goal-2028.css'"),'Goal styles missing from offline cache');
 for(const file of ['assets/hero-montage.css','assets/hero-montage.js'])assert.ok(sw.includes("'"+file+"'"),'Cinematic montage not cached: '+file);
-assert.ok(homepage.includes('data-sirai-hero-reel') && homepage.includes('data-reel-toggle'),'Cinematic hero or playback control missing');
-assert.equal((homepage.match(/data-reel-video="/g)||[]).length,3,'Expected three authentic Sudan video clips');
-assert.ok(homepage.includes('data-reel-photo='),'Darfur photograph scene missing');
-assert.ok(homepage.includes('commons.wikimedia.org/wiki/File:Girls_playing_football.webm'),'Attribution missing from Sudan footage');
+assert.ok(homepage.includes('data-sirai-hero-reel'),'Video hero missing');
+assert.equal((homepage.match(/data-reel-video="/g)||[]).length,3,'Expected three archival documentary videos');
+assert.ok(!homepage.includes('data-reel-photo='),'Still images must not be part of the montage');
+assert.ok(!homepage.includes('data-reel-toggle'),'Visible playback button remains');
+assert.ok(!homepage.includes('sirai-reel-credits'),'Visible source button remains');
+assert.ok(!homepage.includes('sirai-photo-caption'),'Hero overlay caption remains');
+assert.ok(!homepage.includes('Girls_playing_football.webm'),'Football scene remains');
+assert.ok(homepage.includes('footage-credits.html'),'Footage sources must be linked from footer');
+assert.ok(read('footage-credits.html').includes('Jawaher') && read('footage-credits.html').includes('Voice of America'),'Missing off-hero footage credits');
+assert.ok(sw.includes("'footage-credits.html'"),'Video sources page not cached for offline use');
 
 for(const key of ['goal.title','goal.lead','goal.condition','goal.2027.title','goal.2028.title','goal.report.title'])assert.ok(languageScript.includes('"'+key+'"'),'Missing goal translation '+key);
 assert.ok(homepage.includes('sirai-founder-letter') && homepage.includes('founder-portrait-new.png'),'Founder letter or portrait missing');
