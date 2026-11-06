@@ -40,6 +40,24 @@ try{
   check(dims.scrollWidth<=dims.viewport+3,preset.name+': horizontal overflow '+dims.scrollWidth+' > '+dims.viewport);
   check(dims.font.includes('Instrument Serif'),preset.name+': editorial heading font missing');
   check(dims.letterSpacing==='-2.46px',preset.name+': letter spacing mismatch: '+dims.letterSpacing);
+  // Documentary montage must not alter hero typography or navigation.
+  const reel=page.locator('[data-sirai-hero-reel]');
+  check(await reel.count()===1,preset.name+': missing hero montage');
+  check(await page.locator('[data-reel-video]').count()===3,preset.name+': missing video scenes');
+  check(await page.locator('[data-reel-photo]').count()===1,preset.name+': missing water photograph');
+  check((await page.locator('.sirai-reel-credits-list a').count())===4,preset.name+': missing attribution links');
+  const pause=page.locator('[data-reel-toggle]');
+  await pause.waitFor({state:'visible'});
+  check(await pause.getAttribute('aria-pressed')==='false',preset.name+': playback is not enabled initially');
+  await pause.click();
+  check(await pause.getAttribute('aria-pressed')==='true',preset.name+': montage pause failed');
+  check((await pause.innerText()).includes('Play motion'),preset.name+': pause button did not change label');
+  await pause.click();
+  check(await pause.getAttribute('aria-pressed')==='false',preset.name+': montage resume failed');
+  const photoFallback=await page.locator('.sirai-cinematic-hero>img').evaluate(img=>({src:img.getAttribute('src'),complete:img.complete}));
+  check(photoFallback.src?.endsWith('.svg'),preset.name+': missing locally served hero fallback '+JSON.stringify(photoFallback));
+  const prevStatus=await reel.getAttribute('data-scene');
+  check(['0','1','2','3','4'].includes(prevStatus),preset.name+': montage state is invalid');
   check(await page.locator('#sirai-stat-number').count()===1,preset.name+': statistics missing');
   for (const mode of ['need','children']) {
     await page.locator('[data-sirai-stat="'+mode+'"]').click();
@@ -176,6 +194,9 @@ try{
  await page.goto(base+'/index.html',{waitUntil:'domcontentloaded'});
  const animation=await page.locator('.hero h1').evaluate(x=>getComputedStyle(x).animationName);
  check(animation==='none','reduced motion fails: '+animation);
+ check(await page.locator('.sirai-hero-reel').evaluate(el=>getComputedStyle(el).display)==='none','reduced motion should hide hero video');
+ check(await page.locator('[data-reel-video]').evaluateAll(videos=>videos.every(v=>!v.getAttribute('src'))),'reduced motion must not request video clips');
+
  const founderLetterMotion=await page.locator('.sirai-letter-body p').first().evaluate(el=>({transition:getComputedStyle(el).transitionDuration,opacity:getComputedStyle(el).opacity}));
  check(founderLetterMotion.opacity==='1','reduced motion founder text hidden');
  console.log('PASS reduced motion');
