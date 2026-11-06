@@ -15,6 +15,7 @@ try{
  browser=await chromium.launch({headless:true,args:['--no-sandbox']});
  for(const preset of [
   {name:'desktop',viewport:{width:1440,height:900},mobile:false},
+  {name:'tablet',viewport:{width:748,height:1100},mobile:false},
   {name:'mobile',...devices['iPhone 13'],mobile:true}
  ]){
   const context=await browser.newContext({viewport:preset.viewport,deviceScaleFactor:1,isMobile:preset.mobile,hasTouch:preset.mobile,locale:'en-US'});
@@ -38,6 +39,23 @@ try{
   check(dims.font.includes('Instrument Serif'),preset.name+': editorial heading font missing');
   check(dims.letterSpacing==='-2.46px',preset.name+': letter spacing mismatch: '+dims.letterSpacing);
   check(await page.locator('#sirai-stat-number').count()===1,preset.name+': statistics missing');
+  for (const mode of ['need','children']) {
+    await page.locator('[data-sirai-stat="'+mode+'"]').click();
+    const geometry=await page.evaluate(()=>{
+      const box=selector=>document.querySelector(selector).getBoundingClientRect();
+      const top=box('.sirai-statistics-map-top');
+      const panel=box('.sirai-national-visual');
+      const foot=box('.sirai-national-footer');
+      const insight=box('.sirai-map-insight');
+      const visualHeader=box('.sirai-national-visual-top');
+      return {topBottom:top.bottom,panelTop:panel.top,panelBottom:panel.bottom,footBottom:foot.bottom,insightTop:insight.top,visualHeaderTop:visualHeader.top,scroll:document.documentElement.scrollWidth,viewport:innerWidth};
+    });
+    check(geometry.panelTop>=geometry.topBottom-2,preset.name+' '+mode+': indicator panel overlaps map heading '+JSON.stringify(geometry));
+    check(geometry.visualHeaderTop>=geometry.panelTop-1,preset.name+' '+mode+': indicator header overlaps');
+    check(geometry.footBottom<=geometry.panelBottom+2,preset.name+' '+mode+': source footer escapes indicator panel');
+    check(geometry.panelBottom<=geometry.insightTop+2,preset.name+' '+mode+': indicator overlaps explainer '+JSON.stringify(geometry));
+    check(geometry.scroll<=geometry.viewport+3,preset.name+' '+mode+': indicator causes horizontal overflow');
+  }
   await page.locator('[data-sirai-stat="children"]').click();
   check((await page.locator('#sirai-stat-number').innerText()).includes('17.3'),preset.name+': humanitarian indicator not responding');
   await page.locator('[data-sirai-stat="displaced"]').click();
