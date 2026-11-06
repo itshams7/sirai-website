@@ -15,6 +15,7 @@ try{
  browser=await chromium.launch({headless:true,executablePath:process.env.CI?'/usr/bin/google-chrome':undefined,args:['--no-sandbox']});
  for(const preset of [
   {name:'desktop',viewport:{width:1440,height:900},mobile:false},
+  {name:'small-desktop',viewport:{width:1024,height:850},mobile:false},
   {name:'tablet',viewport:{width:748,height:1100},mobile:false},
   {name:'mobile',...devices['iPhone 13'],mobile:true}
  ]){
@@ -93,6 +94,11 @@ try{
   check(founderGeometry.paper==='rgb(248, 240, 230)',preset.name+': incorrect champagne letter');
   check(founderGeometry.letterLeft>=-2&&founderGeometry.letterRight<=founderGeometry.viewport+2,preset.name+': founder letter overflows viewport '+JSON.stringify(founderGeometry));
   check(founderGeometry.letterBottom<=founderGeometry.rootBottom+2,preset.name+': founder letter extends outside its section');
+  check(!(await page.locator('.sirai-founder-badge').innerText()).includes('Shamseldin Abdelrahim'),preset.name+': duplicate founder name remains on portrait');
+  check((await page.locator('.sirai-letter-signature').innerText()).trim()==='Shamseldin Abdelrahim',preset.name+': founder signature missing');
+  if(dims.viewport>=851){
+    check(Math.abs(founderGeometry.quoteBottom-founderGeometry.letterBottom)<=4,preset.name+': portrait column and letter bottoms do not align '+JSON.stringify(founderGeometry));
+  }
   check(await page.locator('.sirai-founder-letter .sirai-letter-body p').count()===3,preset.name+': missing founder story paragraphs');
   check((await page.locator('.sirai-founder-letter .sirai-letter-body p').first().innerText()).includes('Port Sudan'),preset.name+': original story has changed');
   check(await page.locator('.sirai-founder-portrait img').evaluate(img=>img.complete && img.naturalWidth>0),preset.name+': founder portrait did not load');
