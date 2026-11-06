@@ -61,8 +61,8 @@ try{
     const media=await page.locator('[data-reel-video]').evaluateAll(v=>v.map(x=>({clip:x.dataset.reelVideo,readyState:x.readyState,error:x.error?.code||null,networkState:x.networkState})));
     console.log('MONTAGE_MEDIA '+JSON.stringify(media));
   }
-  const photoFallback=await page.locator('.sirai-cinematic-hero>img').evaluate(img=>({src:img.getAttribute('src'),complete:img.complete}));
-  check(photoFallback.src?.endsWith('.svg'),preset.name+': missing locally served hero fallback '+JSON.stringify(photoFallback));
+  const photoFallback=await page.locator('.sirai-cinematic-hero>img').evaluate(img=>({src:img.getAttribute('src'),local:img.dataset.siraiLocalPhoto,complete:img.complete}));
+  check(photoFallback.local?.endsWith('.svg'),preset.name+': missing locally served hero fallback '+JSON.stringify(photoFallback));
   const prevStatus=await reel.getAttribute('data-scene');
   check(['0','1','2','3','4'].includes(prevStatus),preset.name+': montage state is invalid');
   check(await page.locator('#sirai-stat-number').count()===1,preset.name+': statistics missing');
