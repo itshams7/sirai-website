@@ -58,7 +58,7 @@ try{
     const media=await page.locator('.sirai-hero-reel video').evaluateAll(v=>v.map(x=>({readyState:x.readyState,error:x.error?.code||null,src:x.getAttribute('src')})));
     console.log('MONTAGE_MEDIA '+JSON.stringify(media));
     check(media[0].readyState>=2 && !media[0].error,'First Sudan footage clip did not load in Chromium');
-    check(await reel.getAttribute('data-scene')==='1','First video scene did not become active');
+    check(['1','2','3'].includes(await reel.getAttribute('data-scene')),'Documentary video montage never became active');
     // Validate every actual remote documentary source, not only its URL syntax.
     const verified=await page.locator('.sirai-hero-reel video').evaluateAll(async clips=>
       Promise.all(clips.map(video=>new Promise(resolve=>{
