@@ -77,6 +77,26 @@ try{
   const beam=await explorer.evaluate(el=>({border:getComputedStyle(el).borderRadius,background:getComputedStyle(el).backgroundImage}));
   check(beam.border==='999px',preset.name+': beam button shape not applied');
   check(beam.background.includes('conic-gradient'),preset.name+': beam gradient missing');
+  // Founder editorial regression: proper portrait, complete letter, accessible layout.
+  const founder=page.locator('#founder');
+  await founder.scrollIntoViewIfNeeded();
+  await page.waitForTimeout(850);
+  const founderGeometry=await page.evaluate(()=>{
+    const root=document.querySelector('.sirai-founder-editorial');
+    const letter=root.querySelector('.sirai-founder-letter');
+    const portrait=root.querySelector('.sirai-founder-portrait');
+    const quote=root.querySelector('.sirai-founder-quote');
+    const rr=root.getBoundingClientRect(),lr=letter.getBoundingClientRect(),pr=portrait.getBoundingClientRect(),qr=quote.getBoundingClientRect();
+    return {background:getComputedStyle(root).backgroundColor,paper:getComputedStyle(letter).backgroundColor,rootWidth:rr.width,letterRight:lr.right,letterLeft:lr.left,portraitRight:pr.right,quoteBottom:qr.bottom,letterBottom:lr.bottom,rootBottom:rr.bottom,viewport:innerWidth};
+  });
+  check(founderGeometry.background==='rgb(72, 31, 48)',preset.name+': incorrect burgundy founder background');
+  check(founderGeometry.paper==='rgb(248, 240, 230)',preset.name+': incorrect champagne letter');
+  check(founderGeometry.letterLeft>=-2&&founderGeometry.letterRight<=founderGeometry.viewport+2,preset.name+': founder letter overflows viewport '+JSON.stringify(founderGeometry));
+  check(founderGeometry.letterBottom<=founderGeometry.rootBottom+2,preset.name+': founder letter extends outside its section');
+  check(await page.locator('.sirai-founder-letter .sirai-letter-body p').count()===3,preset.name+': missing founder story paragraphs');
+  check((await page.locator('.sirai-founder-letter .sirai-letter-body p').first().innerText()).includes('Port Sudan'),preset.name+': original story has changed');
+  check(await page.locator('.sirai-founder-portrait img').evaluate(img=>img.complete && img.naturalWidth>0),preset.name+': founder portrait did not load');
+  await founder.screenshot({path:'test-artifacts/founder-'+preset.name+'.png',animations:'disabled'});
   if(preset.mobile){
     await page.locator('[data-menu]').click();
     check(await page.locator('#navigation').isVisible(),'mobile: menu did not open');
@@ -84,6 +104,7 @@ try{
   await page.locator('[data-lang-select]').selectOption('ar');
   await page.waitForTimeout(300);
   check(await page.locator('html').getAttribute('dir')==='rtl',preset.name+': Arabic RTL did not activate');
+  check((await page.locator('.sirai-founder-letter h3').innerText()).includes('قليل'),preset.name+': Arabic founder heading not translated');
   await page.screenshot({path:'test-artifacts/arabic-'+preset.name+'.png',fullPage:false,animations:'disabled'});
   await page.locator('[data-lang-select]').selectOption('en');
   check(pageErrors.length===0,preset.name+': JavaScript errors: '+pageErrors.join(' | '));
@@ -95,6 +116,8 @@ try{
  await page.goto(base+'/index.html',{waitUntil:'domcontentloaded'});
  const animation=await page.locator('.hero h1').evaluate(x=>getComputedStyle(x).animationName);
  check(animation==='none','reduced motion fails: '+animation);
+ const founderLetterMotion=await page.locator('.sirai-letter-body p').first().evaluate(el=>({transition:getComputedStyle(el).transitionDuration,opacity:getComputedStyle(el).opacity}));
+ check(founderLetterMotion.opacity==='1','reduced motion founder text hidden');
  console.log('PASS reduced motion');
  await context.close();
  console.log('ALL BROWSER TESTS PASSED');
