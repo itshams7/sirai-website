@@ -50,7 +50,7 @@ console.log('Homepage translation regression checks passed.');
 // Mobile iPhone header: connection status must live outside the header controls.
 const offlineScript=read('assets/offline-share.js');
 const accessibleCss=read('assets/launch-quality.css');
-assert.ok(offlineScript.includes("header.insertAdjacentElement('afterend',el)"),'Status indicator must be placed outside sticky header');
+assert.ok(offlineScript.includes("document.getElementById('sirai-offline-indicator')?.remove()"),'Offline readiness badge must be removed');
 assert.ok(accessibleCss.includes('#sirai-offline-indicator.sirai-offline-indicator{position:static!important'),'Status must not float over iPhone controls');
 assert.ok(accessibleCss.includes('background:#e7efe8'),'Language control must use the distinctive sage style');
 assert.ok(homepage.includes('assets/launch-quality.css?v=20261105-impact-bars-1'),'Mobile CSS cache version not refreshed');
