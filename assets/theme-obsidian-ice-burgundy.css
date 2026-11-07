@@ -1,0 +1,161 @@
+/* SIRAI | reversible experimental palette
+   Obsidian Black #111116 · Ice Grey #E9EDF2 · Light Burgundy #B7758C
+   Keep this stylesheet last. Remove its link to revert the experiment.
+   No layout, content, imagery, or calculations are changed. */
+:root{
+ --obsidian:#111116;--obsidian-soft:#1B1B23;
+ --ice:#E9EDF2;--ice-light:#F5F7FA;--ice-border:#CBD1DA;
+ --burgundy:#B7758C;--burgundy-dark:#84465E;--burgundy-soft:#F1E0E6;
+ --green:#111116;--green2:#84465E;--cream:#E9EDF2;
+ --paper:#F5F7FA;--mint:#E3E5EC;--ink:#19191F;--muted:#5E6270;
+ --line:#CBD1DA;--orange:#B7758C;
+ --sirai-forest:#111116;--sirai-deep:#0D0D12;
+ --sirai-beige:#E9EDF2;--sirai-ivory:#F5F7FA;
+ --sirai-purple:#B7758C;--sirai-purple-deep:#84465E;
+ --sirai-lime:#D6A9B9;
+ --shadow:0 15px 42px rgba(15,15,25,.10);
+}
+html,body{background:var(--ice)!important;color:var(--obsidian)!important}
+body .site-header{
+ background:rgba(245,247,250,.97)!important;
+ border-bottom:1px solid #d5d8e0!important;
+}
+body .site-header .brand-symbol{background:var(--obsidian)!important}
+body .site-header .brand-word,
+body .site-header .nav a{color:var(--obsidian)!important}
+body .site-header .brand-caption{color:#636777!important}
+body .site-header .nav a[aria-current="page"]{color:var(--burgundy-dark)!important}
+body .site-header .nav a:hover{
+ border-color:var(--burgundy)!important;
+ color:var(--burgundy-dark)!important;
+ background:var(--burgundy-soft)!important;
+}
+body .site-header .nav.open{background:var(--ice-light)!important;border-color:var(--ice-border)!important}
+body .site-header .lang-toggle,body .site-header .lang-select{
+ background:#fff!important;color:var(--obsidian)!important;border-color:var(--ice-border)!important;
+}
+body .site-header .menu-toggle{color:var(--obsidian)!important}
+/* Main landing hero, decorative photos and video remain intact. */
+body .hero{
+ background:var(--obsidian)!important;color:var(--ice-light)!important;
+}
+body .hero .hero-lead,body .hero .eyebrow{color:#E0E1E9!important}
+body .hero h1 em{color:#D7A0B4!important}
+body .hero .btn-light{
+ background:var(--ice)!important;color:var(--obsidian)!important;border-color:var(--ice)!important;
+}
+body .hero .btn-light:hover{background:#fff!important;color:var(--obsidian)!important}
+body .hero .btn-ghost{border-color:#CEB4C0!important;color:#fff!important}
+body .hero .btn-ghost:hover{background:rgba(183,117,140,.21)!important}
+body .sirai-quick-tools{background:var(--ice-light)!important;border-color:var(--ice-border)!important}
+body .sirai-quick-label{color:var(--burgundy-dark)!important}
+body .sirai-quick-tools a{
+ background:#fff!important;border-color:var(--ice-border)!important;color:var(--obsidian)!important;
+}
+body .sirai-quick-tools a:hover{background:var(--burgundy-soft)!important;border-color:var(--burgundy)!important}
+body .sirai-quick-tools a span:first-child,body .sirai-quick-tools a span:last-child{color:var(--burgundy-dark)!important}
+/* Cards, guides, statistics, map chrome, and informational sections. */
+body .section,body .light-section,body .sirai-home-guide,body .sirai-explorer-home,
+body .sirai-statistics,body .sirai-hub,body .sirai-hub-content,
+body .sirai-2028-section,body .sirai-development-alignment,
+body .sirai-guide,body .sirai-focus-section{
+ background:var(--ice)!important;color:var(--obsidian)!important;
+}
+body :is(.panel,.pillar,.phase,.sirai-hub-card,.sirai-hub-feature,.sirai-hub-event,
+ .sirai-objective-card,.sirai-alignment-item,.sirai-guide-card,.sirai-statistics-card,
+ .sirai-idea-section){
+ background:var(--ice-light)!important;border-color:var(--ice-border)!important;
+}
+body :is(.section-kicker,.sirai-objectives-eyebrow,.sirai-hub-index,
+ .sirai-alignment-kicker,.sirai-alignment-tag,.sirai-hub-date,
+ .sirai-guide .sirai-demo-eyebrow){color:var(--burgundy-dark)!important}
+body :is(.panel h2,.panel h3,.pillar h3,.sirai-hub-card h2,
+ .sirai-hub-feature h2,.sirai-objective-card h4,.sirai-guide-card h2,
+ .sirai-alignment-intro h2,.sirai-alignment-item h3,
+ .sirai-statistics h2){color:var(--obsidian)!important}
+body :is(.sirai-hub-card p,.sirai-hub-feature p,.sirai-objective-card p,
+ .sirai-alignment-intro p,.sirai-alignment-item p){color:#555965!important}
+body :is(.btn-green,.sirai-demo-button,.sf-inline-link,.sirai-idea-submit button){
+ background:var(--burgundy-dark)!important;border-color:var(--burgundy-dark)!important;color:#fff!important;
+}
+body :is(.btn-green,.sirai-demo-button,.sf-inline-link,.sirai-idea-submit button):hover{
+ background:#6D344B!important;border-color:#6D344B!important;color:#fff!important;
+}
+body :is(.sirai-hub-action,.sirai-hub-links a,.sirai-alignment-item a,
+ .sirai-guide-card a){color:var(--burgundy-dark)!important}
+body :is(a,button,input,select,textarea):focus-visible{
+ outline-color:var(--burgundy)!important;
+}
+/* Editorial roadside: roadmap keeps the existing graphic hierarchy. */
+body .sirai-2028-hero{
+ background:radial-gradient(ellipse at 88% 12%,rgba(183,117,140,.20),transparent 47%),
+ linear-gradient(120deg,#111116,#24202A 62%,#50313E)!important;
+}
+body .sirai-2028-year,body .sirai-2028-year>span:first-child{color:var(--ice)!important}
+body .sirai-2028-year-mark,body .sirai-2028-micro,body .sirai-2028-headerline{color:#D5A1B4!important}
+body .sirai-2028-heading h2,body .sirai-2028-heading p{color:#F5F2F5!important}
+body .sirai-2028-step{background:var(--ice-light)!important;border-color:var(--ice-border)!important}
+body .sirai-2028-step h3{color:var(--obsidian)!important}
+/* The founder editorial area becomes a deep obsidian feature, with burgundy cards. */
+body .sirai-founder-editorial{
+ --sf-burgundy:#111116;--sf-wine:#84465E;
+ --sf-champagne:#D59DB1;--sf-paper:#F1F3F7;--sf-dark:#20202A;--sf-muted:#646472;
+ background:var(--obsidian)!important;color:var(--ice)!important;
+}
+body .sirai-founder-editorial .sirai-founder-intro h2{color:#FCF9FB!important}
+body .sirai-founder-editorial .sirai-founder-intro .section-kicker{color:#D59DB1!important}
+body .sirai-founder-editorial .sirai-founder-quote{background:#30202C!important;border-color:#7F5164!important}
+body .sirai-founder-editorial .sirai-founder-letter{
+ background:#F1F3F7!important;border-color:#D1CCD6!important;
+}
+body .sirai-founder-editorial .sirai-founder-letter h3{color:#532B3C!important}
+body .sirai-founder-editorial .sirai-letter-body p{color:#4E4B55!important}
+/* Page photography remains visible; only green-tinted overlays become neutral burgundy-black. */
+body .sirai-involved-photo-hero::after{
+ background:linear-gradient(90deg,rgba(17,17,22,.94),rgba(25,21,28,.80) 48%,rgba(73,41,56,.42))!important;
+}
+body .sirai-about-photo-hero,
+body .sirai-resources-photo-hero,
+body .sirai-updates-photo-hero{
+ background-color:var(--obsidian)!important;
+}
+body .sirai-hub .sirai-about-photo-hero{
+ background-image:linear-gradient(90deg,rgba(17,17,22,.92),rgba(17,17,22,.81) 38%,rgba(92,45,65,.39)),
+ url("https://images.unsplash.com/photo-1761666520015-5675ff0795b8?auto=format&fit=crop&w=1900&q=85")!important;
+}
+body .sirai-hub .sirai-resources-photo-hero{
+ background-image:linear-gradient(90deg,rgba(17,17,22,.94),rgba(17,17,22,.79) 42%,rgba(92,45,65,.42)),
+ url("https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1900&q=85")!important;
+}
+body .sirai-hub .sirai-updates-photo-hero{
+ background-image:linear-gradient(90deg,rgba(17,17,22,.93),rgba(17,17,22,.80) 40%,rgba(92,45,65,.37)),
+ url("https://images.unsplash.com/photo-1758873269320-372f7ad170f0?auto=format&fit=crop&w=1900&q=82")!important;
+}
+body .sirai-hub .sirai-hub-hero h1,body .sirai-hub .sirai-hub-hero .sirai-hub-lead{
+ color:#F5F6F9!important;
+}
+body .sirai-hub .sirai-hub-hero .sirai-hub-kicker{color:#D7A6B9!important}
+body .sirai-hub .sirai-hub-status{border-color:rgba(211,171,186,.55)!important;background:rgba(17,17,22,.45)!important}
+/* Tool examples and safety information retain high contrast. */
+body .sirai-demo-banner,body .sirai-prelaunch-guide,
+body .sirai-statistics-map,body .sirai-map-insight{
+ background-color:#DFE3EA!important;border-color:var(--ice-border)!important;
+}
+body .sirai-idea-form textarea,body .sirai-idea-form input[type=email]{
+ background:#fff!important;color:var(--obsidian)!important;border-color:var(--ice-border)!important;
+}
+body .site-footer,body .sirai-footer-refined{
+ background:#111116!important;color:var(--ice)!important;
+}
+body .site-footer :is(a,p,strong),body .sirai-footer-refined :is(a,p,strong){color:#DEE0E7!important}
+body .site-footer a:hover,body .sirai-footer-refined a:hover{color:#E5AFC3!important}
+@media(max-width:760px){
+ body .sirai-hub .sirai-about-photo-hero{
+  background-image:linear-gradient(90deg,rgba(17,17,22,.93),rgba(74,39,53,.72)),
+  url("https://images.unsplash.com/photo-1761666520015-5675ff0795b8?auto=format&fit=crop&w=1000&q=80")!important;
+ }
+ body .sirai-hub .sirai-resources-photo-hero{
+  background-image:linear-gradient(90deg,rgba(17,17,22,.93),rgba(74,39,53,.72)),
+  url("https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80")!important;
+ }
+}
