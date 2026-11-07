@@ -92,3 +92,37 @@
 
 /* In reduced-data mode the locally bundled placeholder remains, without fetching Commons. */
 html.sirai-low-data .ce-hero-photo{object-fit:contain;padding:18px;box-sizing:border-box;filter:none}
+
+/* User-selected documentary photograph: substantial 45% hero visual,
+   natural landscape crop with cooking pot, fire and subject in frame. */
+.ce-hero .container{width:min(1560px,calc(100% - clamp(36px,7vw,148px)))}
+.ce-hero{padding:clamp(68px,6.7vw,106px) 0}
+.ce-hero-layout{
+  grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);
+  gap:clamp(32px,4vw,84px);
+  align-items:center;
+}
+.ce-hero h1{font-size:clamp(49px,5vw,81px);max-width:850px}
+.ce-hero-art{
+  width:100%;
+  max-width:none;
+  min-height:clamp(440px,42vw,655px);
+  aspect-ratio:1.05;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.26);
+  box-shadow:0 24px 68px rgba(0,13,20,.30)
+}
+.ce-hero-photo{height:100%;width:100%;object-fit:cover;object-position:58% 50%;filter:none}
+.ce-hero-art:after{inset:58% 0 0;background:linear-gradient(0deg,rgba(8,28,32,.68),transparent)}
+.ce-hero-photo-credit{font-size:11px;bottom:16px;left:19px;right:19px}
+@media(max-width:990px){
+ .ce-hero-layout{grid-template-columns:1fr;gap:35px}
+ .ce-hero-art{max-width:none;min-height:0;aspect-ratio:1.55}
+ .ce-hero-photo{object-position:50% 44%}
+}
+@media(max-width:640px){
+ .ce-hero .container{width:calc(100% - 34px)}
+ .ce-hero-art{min-height:0;aspect-ratio:1.05}
+ .ce-hero-photo{object-position:57% 50%}
+ .ce-hero-photo-credit{font-size:10px}
+}
