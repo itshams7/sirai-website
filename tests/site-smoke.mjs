@@ -1,5 +1,6 @@
 import { readFileSync, existsSync } from 'node:fs';
 import assert from 'node:assert/strict';
+import vm from 'node:vm';
 const read = path => readFileSync(path,'utf8');
 const home=read('index.html'),about=read('about.html');
 const resources=read('resources.html'),updates=read('updates.html'),involved=read('get-involved.html');
@@ -35,4 +36,29 @@ expect(sw.includes('assets/unified-header.css'),'Offline cache missing global he
 expect(involved.includes('https://formspree.io/f/mnpplgae'),'Existing feedback endpoint missing');
 expect(involved.includes('name="consent"'),'Consent input missing');
 expect(css.includes('photo-1531482615713-2afd69097998'),'Lagos resources photograph missing');
-console.log('SIRAI static smoke checks passed. This is NOT real-device, offline, or email-delivery validation.');
+// Deterministic unit checks of the pure calculation primitives.
+const ctx={};
+vm.runInNewContext(read('assets/sirai-math.js'),ctx);
+const math=ctx.SIRAI_MATH;
+expect(math,'Math module did not initialize');
+assert.equal(math.waterDemand(20,40),800);
+const groups=math.waterGroups(20,2,40);
+assert.equal(groups.length,2);
+assert.equal(groups[0].count,10);
+assert.equal(groups[1].litres,400);
+const budget=math.projectBudget([{qty:2,unit:100}],10,50);
+assert.equal(budget.total,220);
+assert.equal(budget.gap,170);
+const energy=math.energyReport([{watts:100,qty:1,hours:2,essential:true}],{
+ battery:2400,dod:50,eff:80,outage:3,psh:4,pr:75
+});
+assert.equal(energy.usable,960);
+assert.equal(energy.daily,200);
+assert.equal(energy.connected,100);
+assert.equal(energy.runtime,9.6);
+assert.throws(()=>math.waterDemand(0,40));
+assert.throws(()=>math.projectBudget([{qty:-1,unit:100}],10,0));
+for(const key of ['quick.water','quick.project','quick.energy','quick.sudan']){
+ expect(locales.includes(key),'Homepage shortcut translation missing: '+key);
+}
+console.log('SIRAI static and calculation checks passed. This is NOT real-device, offline, or email-delivery validation.');
