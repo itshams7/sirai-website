@@ -1,0 +1,17 @@
+/* SIRAI: factual development context, not a partnership claim. */
+.sirai-development-alignment{padding:clamp(46px,6.5vw,84px) 0;background:#f6f4ee;border-top:1px solid #dce2d8;border-bottom:1px solid #dce2d8}
+.sirai-alignment-inner{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,5vw,70px);align-items:start}
+.sirai-alignment-intro{max-width:540px}
+.sirai-alignment-kicker{font:750 11px/1.5 Inter,system-ui,sans-serif;color:#4e775e;letter-spacing:.16em}
+.sirai-alignment-intro h2{font:400 clamp(35px,4.8vw,57px)/1.08 "Instrument Serif",Georgia,serif!important;letter-spacing:-.035em;color:#183e34;margin:15px 0 22px}
+.sirai-alignment-intro p{font-size:15px;line-height:1.75;color:#455c52;max-width:58ch;margin:0 0 16px}
+.sirai-alignment-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.sirai-alignment-item{padding:23px 21px;border:1px solid #d4dfd3;background:#fffdfa;border-radius:12px;min-width:0}
+.sirai-alignment-tag{display:block;color:#547c61;font:750 11px/1.4 Inter,system-ui,sans-serif;letter-spacing:.12em}
+.sirai-alignment-item h3{color:#183a30;font-size:19px;line-height:1.25;margin:14px 0 11px}
+.sirai-alignment-item p{color:#4c6155;font-size:13px;line-height:1.7;margin:0 0 17px}
+.sirai-alignment-item a{display:inline-block;color:#205d44;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:4px}
+.sirai-alignment-disclaimer{grid-column:1/-1;margin:0;color:#5b6b63;font-size:12px;line-height:1.6}
+@media(max-width:900px){.sirai-alignment-inner{grid-template-columns:1fr}.sirai-alignment-intro{max-width:720px}}
+@media(max-width:570px){.sirai-alignment-links{grid-template-columns:1fr}.sirai-alignment-item{padding:19px}.sirai-development-alignment{padding-block:42px}}
+[dir="rtl"] .sirai-alignment-intro h2{font-family:Tahoma,Arial,sans-serif!important;font-size:clamp(27px,4vw,42px)!important;line-height:1.4;letter-spacing:0}
