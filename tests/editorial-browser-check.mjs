@@ -255,13 +255,16 @@ try{
   check(await documentary.getAttribute('alt')!==null,preset.name+': documentary photo needs alt text');
   const native=await documentary.evaluate(img=>({width:img.naturalWidth,height:img.naturalHeight,ratio:img.naturalWidth/img.naturalHeight,renderedRatio:img.getBoundingClientRect().width/img.getBoundingClientRect().height}));
   check(native.width>=950 && native.ratio>1.4,preset.name+': source photo is a cropped thumbnail '+JSON.stringify(native));
-  check(native.renderedRatio>1.4,preset.name+': displayed photo loses landscape proportions '+JSON.stringify(native));
+  check(native.renderedRatio>=.9 && native.renderedRatio<=1.65,preset.name+': documentary photo panel has unexpected proportions '+JSON.stringify(native));
+  check(await documentary.evaluate(img=>getComputedStyle(img).objectFit)==='cover',preset.name+': documentary photo should fill the entire large panel');
 
   check(await page.locator('.ce-hero-photo-credit a').count()===1,preset.name+': FAO photo credit absent');
   const heroImageGeometry=await documentary.evaluate(img=>{
     const r=img.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width,height:r.height,viewport:innerWidth}
   });
   check(heroImageGeometry.width>=220&&heroImageGeometry.right<=heroImageGeometry.viewport+2,preset.name+': hero photo not visible or overflow '+JSON.stringify(heroImageGeometry));
+  if(preset.name==='desktop')check(heroImageGeometry.width>=500&&heroImageGeometry.height>=550,preset.name+': cooking photo must fill large right hero area '+JSON.stringify(heroImageGeometry));
+  if(preset.name==='small-desktop')check(heroImageGeometry.width>=550&&heroImageGeometry.height>=400,preset.name+': cooking photo must remain large on laptop '+JSON.stringify(heroImageGeometry));
   if(preset.name==='desktop'||preset.name==='small-desktop')check(heroImageGeometry.height>=410,preset.name+': hero photo remains too small '+JSON.stringify(heroImageGeometry));
 
   check(await page.locator('#ce-watts').inputValue()==='1500',preset.name+': illustrative cooker power missing');
