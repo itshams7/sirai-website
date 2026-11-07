@@ -27,7 +27,7 @@ de:{heading:'BINNENVERTRIEBENE NACH AUFNAHMEBUNDESSTAAT',level1:'Unter 100 Tsd.'
 const l=()=>document.documentElement.lang in messages?document.documentElement.lang:'en';
 const localName=x=>x[names[l()]]||x[1];
 const fmt=n=>new Intl.NumberFormat(l()).format(n);
-const color=n=>n>=1000000?'#8b405e':n>=700000?'#b97e99':n>=350000?'#c6a0b2':n>=100000?'#96758d':'#6a526b';
+const color=n=>n>=1000000?'#e3b5ca':n>=700000?'#bf90a8':n>=350000?'#98718c':n>=100000?'#76566e':'#544253';
 let selected='SD-DS',loaded=false,loading=false;
 const ns='http://www.w3.org/2000/svg';
 function selectState(id){
