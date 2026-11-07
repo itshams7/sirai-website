@@ -63,4 +63,34 @@ assert.throws(()=>math.projectBudget([{qty:-1,unit:100}],10,0));
 for(const key of ['quick.water','quick.project','quick.energy','quick.sudan']){
  expect(locales.includes(key),'Homepage shortcut translation missing: '+key);
 }
+// Full-site palette and static navigation integrity checks.
+const styledPages=[
+ 'index.html','about.html','resources.html','updates.html','get-involved.html',
+ 'explorer.html','water-toolkit.html','projectstarter.html','taqawise.html',
+ 'feedback.html','start-here.html','faq.html','transparency.html',
+ 'privacy.html','terms.html','cooking-energy.html','issues.html',
+ 'practical-guide.html','footage-credits.html'
+];
+const theme=read('assets/theme-obsidian-ice-burgundy.css');
+assert.equal((theme.match(/\\{/g)||[]).length,(theme.match(/\\}/g)||[]).length,'Unbalanced premium CSS');
+for(const file of styledPages){
+ const markup=read(file);
+ expect(markup.includes('assets/theme-obsidian-ice-burgundy.css'),'Missing premium theme: '+file);
+ expect(markup.includes('audit-20261108-5'),'Outdated palette cache key: '+file);
+ expect(markup.includes('name="viewport"'),'Missing responsive viewport: '+file);
+}
+for(const name of ['.sirai-statistics-map','.sirai-map-insight',
+ '.sirai-page-resources','.sirai-page-updates','.sirai-page-involved',
+ '.sirai-page-about','.ps-sidebar','.tq-sidebar','.explorer-map-panel']){
+ expect(theme.includes(name),'Missing theme override: '+name);
+}
+expect(theme.includes('background:radial-gradient(ellipse at 82% 8%,#382934'),'Legacy map shell not overridden');
+expect(theme.includes('background:#29272f!important'),'Map insight panel not recolored');
+expect(theme.includes('body .site-header .nav.open'),'Obsidian mobile navigation absent');
+const statMap=read('assets/state-displacement.js');
+for(const shade of ['#6a526b','#96758d','#c6a0b2','#b97e99','#8b405e']){
+ expect(statMap.includes(shade),'Missing burgundy data scale color: '+shade);
+ expect(home.includes('--shade:'+shade),'Legend and map scale mismatch: '+shade);
+}
+expect(sw.includes('assets/theme-obsidian-ice-burgundy.css'),'Theme not cached offline');
 console.log('SIRAI static and calculation checks passed. This is NOT real-device, offline, or email-delivery validation.');
