@@ -531,3 +531,28 @@ html[dir=rtl] .ws-critical{border-radius:12px 0 0 12px}
    border-radius:44% 44% 18px 18px;
  }
 }
+
+
+/* SIRAI navigation: outlined hover with a restrained 20% scale.
+   Transform does not reflow neighboring links. Mobile remains stable. */
+@media (hover:hover) and (pointer:fine) and (min-width:901px){
+  .site-header .nav{overflow:visible}
+  .site-header .nav a{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:9px 13px;border:1px solid transparent;border-radius:999px;
+    transform:scale(1);transform-origin:center;
+    transition:transform .2s ease,border-color .2s ease,background-color .2s ease,color .2s ease;
+    white-space:nowrap;
+  }
+  .site-header .nav a:hover,
+  .site-header .nav a:focus-visible{
+    transform:scale(1.2);
+    border-color:currentColor;
+    background:rgba(42,96,77,.055);
+    position:relative;z-index:2;
+  }
+}
+@media (prefers-reduced-motion:reduce){
+ .site-header .nav a{transition:none!important}
+ .site-header .nav a:hover,.site-header .nav a:focus-visible{transform:none!important}
+}
