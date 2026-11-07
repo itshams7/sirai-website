@@ -105,6 +105,13 @@ try{
   check((await page.locator('#sirai-stat-number').innerText()).includes('17.3'),preset.name+': humanitarian indicator not responding');
   await page.locator('[data-sirai-stat="displaced"]').click();
   check(await page.locator('#sirai-idp-panel').isVisible(),preset.name+': displacement map UI not shown');
+  const mapSeparation=await page.evaluate(()=>{
+    const stage=document.querySelector('.sirai-statistics-map .sirai-map-visual-layer').getBoundingClientRect();
+    const guide=document.querySelector('.sirai-statistics-map .sirai-map-insight').getBoundingClientRect();
+    return {mapBottom:stage.bottom,guideTop:guide.top,scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth};
+  });
+  check(mapSeparation.guideTop>=mapSeparation.mapBottom+12,preset.name+': map overlaps the reading guide '+JSON.stringify(mapSeparation));
+
   // Selected states must follow the state boundary, not draw a rectangular SVG focus box.
   await page.locator('#sirai-idp-svg path[data-idp-state="SD-NO"]').waitFor({state:'visible',timeout:15000});
   const northern=page.locator('#sirai-idp-svg path[data-idp-state="SD-NO"]');
@@ -243,6 +250,27 @@ try{
   await page.screenshot({path:'test-artifacts/arabic-'+preset.name+'.png',fullPage:false,animations:'disabled'});
   await page.locator('[data-lang-select]').selectOption('en');
   check(pageErrors.length===0,preset.name+': JavaScript errors: '+pageErrors.join(' | '));
+
+  // Community resources: substantial topic SVGs without excessive width.
+  await page.goto(base+'/resources.html',{waitUntil:'domcontentloaded',timeout:30000});
+  check(await page.locator('.sirai-hub-grid .sirai-hub-card').count()===4,preset.name+': expected four tools in resource library');
+  check(await page.locator('.sirai-hub-icon svg').count()===4,preset.name+': missing resource illustrations');
+  const iconSize=await page.locator('.sirai-hub-icon').first().evaluate(el=>el.getBoundingClientRect().width);
+  check(iconSize>=60,preset.name+': resources illustrations remain too small '+iconSize);
+  check(await page.locator('.sirai-hub-grid .sirai-hub-action').count()===4,preset.name+': missing tool actions');
+  check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+3),preset.name+': resource library causes horizontal overflow');
+  await page.screenshot({path:'test-artifacts/resources-'+preset.name+'.png',fullPage:true,animations:'disabled'});
+  // Sudan Explorer: visitors choose from the actual list, not a redundant search box.
+  await page.goto(base+'/explorer.html',{waitUntil:'domcontentloaded',timeout:30000});
+  check(await page.locator('#explorer-search').count()===0,preset.name+': redundant state search remains');
+  await page.locator('#explorer-select option').nth(18).waitFor({state:'attached',timeout:15000});
+  check(await page.locator('#explorer-select option').count()===19,preset.name+': expected all 18 Sudanese states');
+  await page.locator('#explorer-select').selectOption('SD-KH');
+  check((await page.locator('#explorer-state-title').innerText()).includes('Khartoum'),preset.name+': state dropdown not working');
+  check(await page.locator('#explorer-actions a[href="cooking-energy.html"]').count()===1,preset.name+': fourth tool missing from selected state');
+  check((await page.locator('.explorer-counts').innerText()).includes('4'),preset.name+': Explorer counts not updated');
+  check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+3),preset.name+': Explorer causes horizontal overflow');
+  await page.screenshot({path:'test-artifacts/explorer-'+preset.name+'.png',fullPage:true,animations:'disabled'});
   // Cooking & Energy Explorer: source-labeled calculations and access constraints.
   await page.goto(base+'/cooking-energy.html',{waitUntil:'domcontentloaded',timeout:30000});
   await page.locator('#ce-status').waitFor({state:'visible'});
