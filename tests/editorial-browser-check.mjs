@@ -253,6 +253,10 @@ try{
     return img?.complete && img.naturalWidth>0 && img.currentSrc.includes('/02s.jpg');
   },{timeout:18000});
   check(await documentary.getAttribute('alt')!==null,preset.name+': documentary photo needs alt text');
+  const native=await documentary.evaluate(img=>({width:img.naturalWidth,height:img.naturalHeight,ratio:img.naturalWidth/img.naturalHeight,renderedRatio:img.getBoundingClientRect().width/img.getBoundingClientRect().height}));
+  check(native.width>=950 && native.ratio>1.4,preset.name+': source photo is a cropped thumbnail '+JSON.stringify(native));
+  check(native.renderedRatio>1.4,preset.name+': displayed photo loses landscape proportions '+JSON.stringify(native));
+
   check(await page.locator('.ce-hero-photo-credit a').count()===1,preset.name+': FAO photo credit absent');
   const heroImageGeometry=await documentary.evaluate(img=>{
     const r=img.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width,height:r.height,viewport:innerWidth}
