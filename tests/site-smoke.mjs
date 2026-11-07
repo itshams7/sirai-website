@@ -35,6 +35,8 @@ expect(sw.includes('assets/sirai-alignment.css'),'Offline cache missing context 
 expect(sw.includes('assets/unified-header.css'),'Offline cache missing global header');
 expect(involved.includes('https://formspree.io/f/mnpplgae'),'Existing feedback endpoint missing');
 expect(involved.includes('name="consent"'),'Consent input missing');
+expect(involved.includes('assets/idea-form.js'),'Idea submission feedback script missing');
+expect(sw.includes('assets/idea-form.js'),'Offline cache missing idea submission feedback script');
 expect(css.includes('photo-1531482615713-2afd69097998'),'Lagos resources photograph missing');
 // Deterministic unit checks of the pure calculation primitives.
 const ctx={};
