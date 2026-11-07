@@ -590,3 +590,273 @@ body main:not(.sirai-page-resources):not(.sirai-page-updates) > :is(.sirai-guide
  }
  body .site-header .nav.open{display:none!important}
 }
+
+
+/* SIRAI COLOR CONSISTENCY AUDIT | final scoped refinements
+   Obsidian / silver / muted rose. Preserve warning semantics and data meaning. */
+
+/* Homepage map: remove the legacy forest-green shell visible on mobile.
+   Keep chart, caption, map, legends and sources within one coherent surface. */
+body .sirai-statistics .sirai-statistics-map,
+body .sirai-statistics .sirai-statistics-map[data-stat-mode="children"],
+body .sirai-statistics .sirai-statistics-map[data-stat-mode="displaced"]{
+ background:radial-gradient(ellipse at 82% 8%,#382934 0%,#22212a 47%,#15151c 100%)!important;
+ color:#f3f0f5!important;
+ border:1px solid #62525f!important;
+ border-radius:clamp(18px,3vw,26px)!important;
+ box-shadow:0 25px 65px rgba(16,14,23,.17)!important;
+ padding:clamp(17px,3vw,28px)!important;
+ gap:clamp(14px,2.5vw,23px)!important;
+}
+body .sirai-statistics-map::before{
+ border-color:rgba(226,205,218,.18)!important;
+ inset:12px!important;
+ border-radius:clamp(11px,2.5vw,20px)!important;
+}
+body .sirai-statistics .sirai-statistics-map .sirai-map-insight{
+ display:block!important;
+ width:100%!important;
+ max-width:100%!important;
+ min-width:0!important;
+ box-sizing:border-box!important;
+ margin:clamp(15px,2vw,22px) 0 0!important;
+ padding:clamp(17px,2.7vw,26px)!important;
+ background:#29272f!important;
+ border:1px solid #524553!important;
+ border-top:2px solid #ae7a91!important;
+ border-radius:14px!important;
+ box-shadow:0 10px 28px rgba(8,7,13,.12)!important;
+ color:#f3f0f5!important;
+}
+body .sirai-statistics .sirai-map-insight-kicker{
+ color:#d8a4b8!important;
+ letter-spacing:.16em!important;
+}
+body .sirai-statistics .sirai-map-insight h3{
+ color:#f7f4f8!important;
+ line-height:1.32!important;
+ font-size:clamp(18px,2.2vw,24px)!important;
+ font-weight:720!important;
+ overflow-wrap:break-word!important;
+}
+body .sirai-statistics .sirai-map-insight>p:not(.sirai-map-insight-kicker){
+ color:#d5d3dc!important;line-height:1.62!important;
+}
+body .sirai-statistics .sirai-statistics-map-top,
+body .sirai-statistics .sirai-statistics-map-bottom,
+body .sirai-statistics .sirai-stat-map-year{color:#d7cbd6!important}
+body .sirai-statistics .sirai-stat-map-slash,
+body .sirai-statistics .sirai-statistics-map-dot{color:#d4a0b5!important}
+body .sirai-statistics .sirai-statistics-map-dot{background:#b7758c!important;box-shadow:0 0 0 6px rgba(183,117,140,.16)!important}
+body .sirai-statistics .sirai-map-overlay{
+ background:#eeeef3!important;color:#22202a!important;
+ border:1px solid #d2c6d2!important;
+ box-shadow:0 12px 28px rgba(5,5,10,.19)!important;
+}
+body .sirai-statistics .sirai-map-overlay :is(strong,span,b){color:#25202a!important}
+body .sirai-statistics .sirai-idp-panel{color:#ece7ee!important;border-top-color:#615362!important}
+body .sirai-statistics .sirai-idp-heading{color:#dfa7bc!important}
+body .sirai-statistics .sirai-idp-key{color:#ddd7e0!important}
+body .sirai-statistics .sirai-idp-panel select{
+ background:#f2f3f7!important;color:#202029!important;
+ border:1px solid #bbb4c0!important;
+}
+body .sirai-statistics .sirai-idp-panel label{color:#ede7ef!important}
+body .sirai-statistics .sirai-idp-result{
+ background:rgba(238,232,244,.07)!important;
+ border-color:#756075!important;
+ color:#f3eef4!important;
+}
+body .sirai-statistics .sirai-idp-result :is(strong,span,small){color:#f3eef4!important}
+body .sirai-statistics .sirai-idp-footnote{color:#d0cbd4!important}
+body .sirai-statistics .sirai-idp-footnote a{color:#efbbce!important}
+body .sirai-statistics .sirai-map-compare-label{color:#f3eaf3!important}
+body .sirai-statistics .sirai-map-compare-track{background:#403640!important}
+body .sirai-statistics .sirai-map-compare-fill{
+ background:linear-gradient(90deg,#89526a,#cf9aaf)!important;
+}
+body .sirai-statistics .sirai-national-visual{
+ background:linear-gradient(155deg,#27262e,#1c1b24)!important;
+ border-color:#524557!important;color:#f0ecf2!important;
+}
+body .sirai-statistics .sirai-national-visual :is(h3,p,span,small,strong){color:inherit}
+body .sirai-statistics .sirai-national-bar-track{background:#4a404c!important}
+body .sirai-statistics .sirai-national-bar-fill.fill-need{
+ background:linear-gradient(90deg,#b7758c,#d6a5b9)!important;
+}
+body .sirai-statistics .sirai-national-bar-fill.fill-target{
+ background:linear-gradient(90deg,#9da4b6,#d8dce7)!important;
+}
+body .sirai-statistics .sirai-national-bar-fill.fill-reached{
+ background:linear-gradient(90deg,#846174,#be9aaa)!important;
+}
+body .sirai-statistics .sirai-children-split-child{
+ background:linear-gradient(90deg,#9d637b,#d7a3b8)!important;
+}
+body .sirai-statistics .sirai-children-split-other{
+ background:linear-gradient(90deg,#9299aa,#c7ccd8)!important;
+}
+body .sirai-statistics .sirai-children-breakdown i{background:#c4879e!important}
+body .sirai-statistics .sirai-children-breakdown .sirai-other-swatch{background:#9ca3b4!important}
+body .sirai-statistics .sirai-stat-choice[aria-pressed="true"],
+body .sirai-statistics .sirai-stat-choice.is-active{
+ background:#2a232e!important;border-color:#9b6a80!important;
+ color:#f5ecf2!important;
+}
+body .sirai-statistics .sirai-stat-choice[aria-pressed="true"] :is(b,span,strong),
+body .sirai-statistics .sirai-stat-choice.is-active :is(b,span,strong){color:#f4e8ef!important}
+body .sirai-statistics .sirai-stat-choice:hover{border-color:#ac8195!important}
+@media(max-width:570px){
+ body .sirai-statistics .sirai-statistics-map{
+  padding:17px!important;
+  gap:12px!important;
+ }
+ body .sirai-statistics .sirai-statistics-map .sirai-map-insight{
+  margin-top:13px!important;padding:17px 16px 19px!important;
+  border-radius:12px!important;
+ }
+ body .sirai-statistics .sirai-map-insight h3{font-size:18px!important}
+ body .sirai-statistics .sirai-map-insight>p:not(.sirai-map-insight-kicker){font-size:13px!important}
+}
+
+/* Sudan Explorer: replace the old forest-green map frame without losing
+   the distinct shade scale used for humanitarian data. */
+body .explorer{
+ background:#e9edf2!important;color:#201f29!important;
+}
+body .explorer-hero{
+ background:linear-gradient(130deg,#17171e,#33232f)!important;
+}
+body .explorer-map-panel{
+ background:#1f1e27!important;
+ border-color:#625062!important;
+ box-shadow:0 22px 55px rgba(20,16,26,.14)!important;
+}
+body .explorer-map{
+ background:radial-gradient(ellipse at 65% 35%,#433240,#24222c 60%,#1a1a23)!important;
+}
+body .explorer-map-foot{background:#25212c!important;border-color:#594857!important}
+body .explorer-panel,body .explorer-info article{
+ background:#f7f8fb!important;border-color:#cbd0da!important;
+}
+body .explorer-select,body .explorer-search{
+ background:#fff!important;color:#22212c!important;border-color:#c4c8d2!important;
+}
+body .explorer-actions .explorer-primary{
+ background:#79445d!important;border-color:#79445d!important;color:#fff!important;
+}
+body .explorer-actions .explorer-primary:hover{background:#63364d!important}
+body .explorer-actions a,body .explorer-actions button{
+ border-color:#c5c4cf!important;
+}
+body .explorer-actions a:hover,body .explorer-actions button:hover{
+ background:#f0e6ed!important;border-color:#a98395!important;
+}
+body .explorer-info{background:#e3e6ee!important}
+body .explorer-warning{background:#f3ecf0!important;border-color:#d4bac8!important;color:#5a374b!important}
+
+/* Tool backgrounds: consistent silver work areas, obsidian sidebars,
+   soft sheets for inputs. Do not modify computation or app behavior. */
+body :is(.ps,.tq,.sf){
+ background:#e9edf2!important;color:#23222b!important;
+}
+body :is(.ps-hero,.tq-hero,.sf-hero){
+ background:radial-gradient(ellipse at 78% 12%,#503245 0%,#22212b 48%,#14141a 100%)!important;
+ color:#f8f5fa!important;
+}
+body :is(.ps-meta,.tq-strip,.sf-notice){
+ background:#e4e7ee!important;border-color:#cbd0da!important;
+}
+body :is(.ps-intro,.tq-intro,.ps-workspace-section,.tq-workspace-section,
+ .ps-guidance,.tq-guidance,.sf-workspace,.sf-form-section){
+ background:#e9edf2!important;
+}
+body :is(.ps-main,.tq-main,.sf-form-wrap,.ps-proposal,.tq-load-row,
+ .tq-result-feature,.tq-guard-grid article,.ps-repeat,.ps-financial,
+ .sf-privacy,.ps-privacy,.tq-privacy,.tq-presets,.tq-solar-card){
+ background:#f8f9fb!important;border-color:#d1d5de!important;
+ color:#272530!important;
+}
+body :is(.ps-sidebar,.tq-sidebar,.sf-aside){
+ background:linear-gradient(165deg,#25222d,#17171e)!important;
+ border-color:#5d4555!important;color:#edf0f4!important;
+}
+body :is(.ps-step.active,.tq-step.active){
+ background:#f0e8ee!important;color:#432838!important;
+}
+body :is(.ps-step:hover,.tq-step:hover){
+ background:#4c3443!important;color:#fff!important;
+}
+body :is(.ps-progress,.tq-progress){background:#4e3a49!important}
+body :is(.ps-progress span,.tq-progress span){background:#dca8bc!important}
+body :is(.ps-add,.tq-add,.ps-primary,.tq-primary){
+ background:#754059!important;border-color:#754059!important;color:#fff!important;
+}
+body :is(.ps-add:hover,.tq-add:hover){background:#613449!important}
+body :is(.ps-tip,.tq-tip,.tq-callout,.tq-essential-summary>div,
+ .tq-solar-card.major,.ps-quality-item,.tq-report-stat,.sirai-tool-guide){
+ background:#eff0f5!important;border-color:#d4d7e0!important;
+}
+body :is(.ps-footer-callout,.tq-end,.sf-end){
+ background:linear-gradient(120deg,#191820,#382632)!important;
+}
+body :is(.ps-field input,.ps-field select,.ps-field textarea,
+ .ps-repeat input,.ps-repeat select,.ps-repeat textarea,
+ .tq-field input,.tq-load-field input,.sf-field input,
+ .sf-field select,.sf-field textarea){
+ background:#fff!important;color:#22212a!important;
+ border-color:#bec4cf!important;
+}
+body :is(.ps-form-help,.tq-muted,.sf-privacy){color:#565360!important}
+body :is(.ps-hero-link,.tq-primary-link,.sf-start){
+ background:#edf0f5!important;color:#211d27!important;
+}
+body :is(.ps-hero-link,.tq-primary-link,.sf-start):hover{background:#fff!important}
+body :is(.sirai-resource-pack,.sirai-tool-guide,.sirai-issue){
+ background:#f7f8fb!important;border-color:#cbd1da!important;color:#23212a!important;
+}
+body .sirai-template-links button{
+ background:#f1e8ee!important;border-color:#ae8597!important;color:#5b3248!important;
+}
+body .sirai-issue-chip{
+ background:#eee6ed!important;color:#59394d!important;border-color:#b49bac!important;
+}
+body .sirai-results{
+ background:#e9edf2!important;color:#23212a!important;
+}
+body .sirai-bar-track{background:#dadce5!important}
+body .sirai-bar-fill{background:#a26980!important}
+body .sirai-bar-fill[data-kind="amber"]{background:#9a8595!important}
+body .sirai-bar-fill[data-kind="purple"]{background:#6c576e!important}
+
+/* Respect warning meaning rather than repainting danger/success identically. */
+body .tq-callout.warning,body .ps-quality-item.missing{
+ background:#fbf0e7!important;border-color:#e3bc99!important;color:#67432a!important;
+}
+body .sf-result.error{background:#fff0ed!important;border-color:#d7a8a1!important;color:#7d3331!important}
+
+/* User guide and policy pages: prevent white-page flash or green callouts. */
+body :is(.sirai-guide,.sirai-transparency,.sirai-policies,.sirai-policy,.sirai-issues){
+ background:#e9edf2!important;
+}
+body :is(.sirai-guide-callout,.sirai-policy-callout,.sirai-transparency-callout){
+ background:#1f1d26!important;border-color:#5d4758!important;color:#f6f2f7!important;
+}
+body .sirai-guide-callout :is(h2,h3,p,li){color:#eeeaf1!important}
+body :is(.sirai-guide-card,.sirai-transparency-card,.sirai-issue-card){
+ background:#f8f9fb!important;border-color:#d0d5de!important;
+}
+/* Restrain light floating panels in all secondary sections. */
+body main.sirai-hub .sirai-hub-feature{
+ border-radius:16px!important;
+}
+body main.sirai-page-updates .sirai-hub-event{
+ padding:clamp(22px,3vw,29px)!important;
+}
+body main.sirai-page-resources .sirai-hub-content,
+body main.sirai-page-updates .sirai-hub-content{
+ color:#f0edf3!important;
+}
+@media(prefers-reduced-motion:reduce){
+ body .sirai-statistics .sirai-statistics-map{scroll-behavior:auto!important}
+}
