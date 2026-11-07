@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#123e30">
+<meta name="description" content="Explore electricity reliability, cooking energy demand and user-entered fuel costs in Sudan. Clear separation between official statistics and household assumptions.">
+<title>Cooking & Energy Explorer | SIRAI</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/premium-palette.css">
+<link rel="stylesheet" href="assets/launch-quality.css">
+<link rel="stylesheet" href="assets/phase2.css">
+<link rel="stylesheet" href="assets/cooking-energy.css?v=1">
+</head>
+<body>
+<a class="skip" href="#main" data-ce="skip">Skip to content</a>
+<header class="site-header">
+ <div class="container header-inner">
+  <a class="brand" href="index.html" aria-label="SIRAI home"><span class="brand-symbol" aria-hidden="true"><svg width="27" height="27" viewBox="0 0 28 28" fill="none"><path d="M3 19c4-7 7-8 11-2s7 5 11-4" stroke="white" stroke-width="2.2" stroke-linecap="round"/><path d="M3 12c4-7 7-8 11-2s7 5 11-4" stroke="#b6d4bc" stroke-width="2.2" stroke-linecap="round"/></svg></span><span><span class="brand-word">SIRAI</span><span class="brand-caption" style="display:block">Sudan Initiative for Resilience &amp; Inclusive Action</span></span></a>
+  <nav class="nav" id="navigation" aria-label="Main navigation"><a href="index.html" data-ce="navHome">Home</a><a href="about.html" data-ce="navAbout">About</a><a href="resources.html" data-ce="navResources">Resources</a><a href="taqawise.html">TaqaWise</a></nav>
+  <select id="ce-lang" class="lang-toggle lang-select" aria-label="Website language"><option value="en">English</option><option value="ar">العربية</option><option value="fr">Français</option><option value="de">Deutsch</option></select>
+  <button class="menu-toggle" data-menu aria-label="Toggle menu" aria-controls="navigation" aria-expanded="false">☰</button>
+ </div>
+</header>
+<main id="main" class="ce">
+ <section class="ce-hero">
+  <div class="container ce-hero-layout">
+   <div><p class="ce-eyebrow" data-ce="eyebrow">SIRAI / HOUSEHOLD RESILIENCE</p><h1 data-ce="title">Can electricity work for your cooking?</h1><p class="ce-lead" data-ce="lead">Start with access and reliability. Then compare energy needs and costs using prices you know locally.</p><div class="ce-hero-links"><a href="#ce-tool" class="ce-action" data-ce="start">Explore your situation ↓</a><span class="ce-data-label" data-ce="privacy">No account · Runs in your browser</span></div></div>
+   <div class="ce-hero-art" aria-hidden="true"><svg viewBox="0 0 470 290" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="270" cy="135" r="115" stroke="#9ed2bc" stroke-opacity=".3"/><circle cx="270" cy="135" r="76" stroke="#9ed2bc" stroke-opacity=".45"/><path d="M245 57l-40 92h59l-25 82 91-117h-65l24-57z" fill="#e9c48a"/><path d="M86 245h302M105 220h263M124 194h224" stroke="#9ed2bc" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/><circle cx="100" cy="75" r="9" fill="#9ed2bc"/><circle cx="391" cy="206" r="7" fill="#e9c48a"/></svg><div class="ce-art-words">ACCESS <span>·</span> AFFORDABILITY <span>·</span> CHOICE</div></div>
+  </div>
+ </section>
+ <section class="ce-evidence"><div class="container ce-evidence-grid">
+   <div class="ce-evidence-intro"><span data-ce="evidence">VERIFIED NATIONAL CONTEXT</span><h2 data-ce="context">National access is not local reliability.</h2><p data-ce="contextNote">Figures describe Sudan in 2024. They do not tell us whether a particular home has working electricity or affordable cooking fuel today.</p></div>
+   <div class="ce-stat"><strong>66%</strong><span data-ce="statElec">Population with access to electricity, 2024</span><a href="https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS?locations=SD" target="_blank" rel="noopener noreferrer">World Bank ↗</a></div>
+   <div class="ce-stat"><strong>47%</strong><span data-ce="statCook">Population with access to clean cooking, 2024</span><a href="https://data.worldbank.org/indicator/EG.CFT.ACCS.ZS?locations=SD" target="_blank" rel="noopener noreferrer">World Bank ↗</a></div>
+  </div></section>
+ <section class="ce-workspace" id="ce-tool"><div class="container">
+ <div class="ce-workspace-head"><p class="ce-eyebrow" data-ce="calculatorKicker">HOUSEHOLD PLANNING WORKSHEET</p><h2 data-ce="calculatorTitle">Access first. Prices second.</h2><p data-ce="calculatorLead">Choose the situation that matches your home. All numeric inputs are editable examples or values entered by you, not verified Sudan market prices.</p></div>
+ <div class="ce-grid">
+  <form class="ce-inputs" id="ce-form" novalidate>
+   <fieldset><legend><span class="ce-step">01</span><span data-ce="accessTitle">Electricity access</span></legend>
+    <label for="ce-supply" data-ce="supply">Where would the electricity come from?</label>
+    <select id="ce-supply" name="supply"><option value="grid" data-ce="grid">Grid</option><option value="solar" data-ce="solar">Solar or battery system</option><option value="generator" data-ce="generator">Generator</option><option value="none" data-ce="none">No usable electricity</option></select>
+    <label for="ce-reliability" data-ce="reliability">Is power available when you need to cook?</label>
+    <select id="ce-reliability" name="reliability"><option value="uncertain" data-ce="uncertain">Sometimes / unpredictable</option><option value="yes" data-ce="yes">Usually yes, for the cooking period</option><option value="no" data-ce="no">Usually no</option><option value="unknown" data-ce="unknown">Not sure</option></select>
+    <label for="ce-capacity" data-ce="capacity">Verified usable capacity at the cooking outlet (watts)</label>
+    <input id="ce-capacity" name="capacity" type="number" min="1" max="100000" step="any" placeholder="Unknown" inputmode="decimal">
+    <p class="ce-help" data-ce="capacityHelp">Leave blank if unknown. Do not assume an outlet or backup system can run an electric cooker.</p>
+   </fieldset>
+   <fieldset><legend><span class="ce-step">02</span><span data-ce="demandTitle">Electric cooking scenario</span></legend>
+    <div class="ce-field-pair"><div><label for="ce-watts" data-ce="watts">Appliance rated power (W)</label><input id="ce-watts" name="watts" type="number" value="1500" min="100" max="6000" step="50" inputmode="decimal"></div><div><label for="ce-minutes" data-ce="minutes">Minutes per cooking session</label><input id="ce-minutes" name="minutes" type="number" value="60" min="1" max="600" step="1" inputmode="numeric"></div></div>
+    <label for="ce-sessions" data-ce="sessions">Cooking sessions per day</label><input id="ce-sessions" name="sessions" type="number" value="1" min="1" max="12" step="1" inputmode="numeric">
+    <p class="ce-help" data-ce="exampleNote">The prefilled appliance scenario is illustrative, not a measurement of Sudanese cooking habits. The calculation assumes full rated power throughout the session and may overestimate actual consumption.</p>
+   </fieldset>
+   <fieldset><legend><span class="ce-step">03</span><span data-ce="costTitle">Optional local prices, SDG</span></legend>
+    <p class="ce-help" data-ce="priceIntro">No Sudan tariff or fuel price is prefilled. Enter a recent local price only if you know it. Blank entries stay unavailable.</p>
+    <label for="ce-kwh-price" data-ce="kwhPrice">Effective electricity price (SDG/kWh)</label><input id="ce-kwh-price" name="kwhPrice" type="number" min="0" max="100000000" step="any" placeholder="Not provided" inputmode="decimal">
+    <div class="ce-field-pair"><div><label for="ce-lpg-price" data-ce="lpgPrice">LPG refill price (SDG)</label><input id="ce-lpg-price" name="lpgPrice" type="number" min="0" max="1000000000" step="any" placeholder="Not provided" inputmode="decimal"></div><div><label for="ce-lpg-days" data-ce="lpgDays">Days a refill lasts</label><input id="ce-lpg-days" name="lpgDays" type="number" min="0.1" max="365" step="any" placeholder="Not provided" inputmode="decimal"></div></div>
+    <label for="ce-charcoal" data-ce="charcoalPrice">Charcoal or firewood spending (SDG/month)</label><input id="ce-charcoal" name="charcoal" type="number" min="0" max="1000000000" step="any" placeholder="Not provided" inputmode="decimal">
+    <p class="ce-help" data-ce="priceHelp">Costs exclude stove purchases, repairs, fuel collection time, generator fuel and battery replacement unless included in your own entries. Prices are not sent anywhere.</p>
+   </fieldset>
+   <div class="ce-form-actions"><button type="reset" class="ce-reset" data-ce="reset">Reset worksheet</button><button type="button" id="ce-print" class="ce-print" data-ce="print">Print this scenario ↗</button></div>
+  </form>
+  <div class="ce-results" aria-label="Live household scenario results">
+   <div class="ce-results-heading"><span data-ce="resultKicker">YOUR SCENARIO · NOT A NATIONAL FORECAST</span><h3 data-ce="resultTitle">Electric cooking feasibility</h3></div>
+   <div class="ce-feasibility" aria-live="polite"><span class="ce-indicator" id="ce-indicator"></span><div><strong id="ce-status">Needs a reliability check</strong><p id="ce-explanation">Power is intermittent, so the appliance may not be available at cooking time.</p></div></div>
+   <div class="ce-metrics"><div><span data-ce="dayEnergy">Illustrative energy per day</span><strong id="ce-kwh-day">1.50 kWh</strong></div><div><span data-ce="monthEnergy">Illustrative energy per 30 days</span><strong id="ce-kwh-month">45.0 kWh</strong></div></div>
+   <h4 data-ce="compareTitle">Monthly running-cost comparison</h4>
+   <div class="ce-cost-row"><span data-ce="electricLabel">Electricity</span><strong id="ce-electric-cost">Local price needed</strong></div>
+   <div class="ce-cost-row"><span data-ce="lpgLabel">LPG</span><strong id="ce-lpg-cost">Local price needed</strong></div>
+   <div class="ce-cost-row"><span data-ce="solidLabel">Charcoal / firewood</span><strong id="ce-solid-cost">Local price needed</strong></div>
+   <p class="ce-result-note" data-ce="costCaution">Only user-entered prices appear here. Different fuels may not provide identical cooking performance. An energy-cost comparison does not establish total household cost or safety.</p>
+   <div class="ce-question"><span data-ce="accessCheck">Before considering electric cooking</span><ul id="ce-checks"></ul></div>
+   <p class="ce-result-note ce-safety" data-ce="safety">Never overload wiring, bypass protection or use indoor charcoal and fuel-burning devices without appropriate ventilation. Have wiring and inverter/battery installations assessed by a qualified professional.</p>
+  </div>
+ </div>
+ </div></section>
+ <section class="ce-method"><div class="container"><div class="ce-method-grid">
+   <div><p class="ce-eyebrow" data-ce="methodKicker">HOW TO INTERPRET THE RESULTS</p><h2 data-ce="methodTitle">What is verified, modelled or still unknown?</h2></div>
+   <div><div class="ce-method-item"><span class="ce-method-tag" data-ce="verified">Verified external data</span><p data-ce="verifiedText">The two national access percentages above are World Bank 2024 observations. WHO identifies electricity and LPG as clean cooking options at the point of use.</p></div><div class="ce-method-item"><span class="ce-method-tag" data-ce="modelled">Modelled estimate</span><p data-ce="modelText">Electric consumption = rated power (kW) × session hours × sessions per day; monthly energy assumes 30 days. It is a scenario, not a measured meter reading.</p></div><div class="ce-method-item"><span class="ce-method-tag" data-ce="unknownData">Missing or user-supplied data</span><p data-ce="missingText">Current local Sudan tariffs, cylinder and charcoal prices, outage schedules, device efficiency, backup capacity and fuel stock are not automatically verified or updated.</p></div></div>
+ </div>
+ <div class="ce-source-links"><a href="https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS?locations=SD" target="_blank" rel="noopener noreferrer">World Bank: electricity access ↗</a><a href="https://data.worldbank.org/indicator/EG.CFT.ACCS.ZS?locations=SD" target="_blank" rel="noopener noreferrer">World Bank: clean cooking ↗</a><a href="https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health" target="_blank" rel="noopener noreferrer">WHO: household air pollution ↗</a><a href="https://www.gov.uk/government/publications/sudan-country-policy-and-information-notes/country-policy-and-information-note-humanitarian-situation-sudan-september-2026-accessible" target="_blank" rel="noopener noreferrer">Sudan electricity disruptions, September 2026 ↗</a></div>
+ </div></section>
+</main>
+<footer class="ce-footer"><div class="container"><strong>SIRAI</strong><p data-ce="footer">An independent initiative in development. This is a planning tool, not a safety certification or verified market-price service.</p><div><a href="index.html" data-ce="back">Home</a><a href="taqawise.html">TaqaWise</a><a href="transparency.html" data-ce="transparency">Transparency</a><a href="privacy.html" data-ce="privacyLink">Privacy</a></div></div></footer>
+<script src="assets/cooking-energy.js?v=1" defer></script>
+<script src="assets/launch-quality.js?v=20261105-1" defer></script>
+</body></html>
