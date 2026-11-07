@@ -338,3 +338,255 @@ body .sirai-hub .sirai-hub-hero .sirai-hero-photo-note{color:#d9d4db!important}
 @media(prefers-reduced-motion:reduce){
  body .site-footer a{transition:none!important}
 }
+
+
+/* SIRAI / seamless dark editorial navigation and secondary pages.
+   Final layer intentionally overrides old white hub surfaces. */
+/* Navigation: mobile dropdown is part of the same obsidian design system. */
+@media(max-width:900px){
+ body .site-header{overflow:visible!important}
+ body .site-header .header-inner{position:relative}
+ body .site-header .menu-toggle{
+  color:#18151d!important;
+  background:#eff0f5!important;
+  border:1px solid #cbd0da!important;
+  border-radius:13px!important;
+  width:44px!important;height:44px!important;
+  display:grid!important;place-items:center!important;
+  padding:5px!important;
+  transition:background-color .2s,border-color .2s,color .2s;
+ }
+ body .site-header .menu-toggle[aria-expanded="true"]{
+  background:#211922!important;
+  border-color:#b7758c!important;
+  color:#f6edf3!important;
+ }
+ body .site-header .nav.open{
+  position:absolute!important;
+  top:calc(100% + 1px)!important;left:0!important;right:0!important;
+  width:100%!important;
+  display:flex!important;flex-direction:column!important;
+  align-items:stretch!important;gap:5px!important;
+  padding:17px max(22px,calc((100% - 680px)/2)) 23px!important;
+  max-height:calc(100dvh - 82px)!important;
+  overflow-y:auto!important;
+  border-top:1px solid #45323e!important;
+  border-bottom:1px solid #6b4758!important;
+  background:linear-gradient(145deg,#16151c,#25202a 65%,#33222d)!important;
+  box-shadow:0 26px 50px rgba(10,8,15,.3)!important;
+  z-index:150!important;
+ }
+ body .site-header .nav.open a{
+  display:flex!important;justify-content:space-between!important;
+  align-items:center!important;width:100%!important;
+  min-height:51px!important;
+  padding:14px 18px!important;
+  color:#eef0f5!important;
+  background:rgba(255,255,255,.035)!important;
+  border:1px solid rgba(238,231,241,.10)!important;
+  border-radius:12px!important;
+  font-size:15px!important;letter-spacing:.005em!important;
+  transform:none!important;
+ }
+ body .site-header .nav.open a::after{
+  content:"↗";color:#caa0b0;font-weight:400;font-size:17px;
+  margin-inline-start:12px;
+ }
+ body .site-header .nav.open a:hover,
+ body .site-header .nav.open a:focus-visible{
+  background:rgba(183,117,140,.19)!important;
+  border-color:#a9778b!important;
+  color:#fff!important;
+ }
+ body .site-header .nav.open a[aria-current="page"]{
+  background:rgba(183,117,140,.23)!important;
+  border-color:#b7758c!important;
+  color:#f9d9e6!important;
+ }
+ body .site-header .nav.open a:focus-visible{
+  outline:2px solid #e8bace!important;outline-offset:2px!important;
+ }
+}
+@media(max-width:540px){
+ body .site-header .nav.open{max-height:calc(100dvh - 74px)!important;padding:14px 16px 22px!important}
+ body .site-header .nav.open a{min-height:50px!important}
+}
+
+/* Secondary pages: intentional dark/light rhythm, no leftover stark-white wall. */
+body main.sirai-hub{
+ background:#e6eaf0!important;
+ color:#211e27!important;
+}
+body main.sirai-hub .sirai-hub-hero{
+ border-bottom:1px solid #4d3948!important;
+}
+/* Keep photo transparency and high-contrast content above every image. */
+body main.sirai-hub .sirai-hub-hero .sirai-hub-status{
+ background:rgba(17,15,20,.6)!important;
+ border-color:rgba(220,179,196,.55)!important;
+ color:#f4eaf0!important;
+}
+body main.sirai-hub .sirai-hub-hero .sirai-hub-kicker{color:#e8b5c7!important}
+/* About: dark mission gallery, silver priorities, distinct alternating sections. */
+body main.sirai-page-about > section.section:not(.light-section):first-of-type{
+ background:#e9edf2!important;
+}
+body main.sirai-page-about > section.section:nth-of-type(2){
+ background:#1b1a22!important;color:#f0f0f5!important;
+ border-block:1px solid #363039!important;
+}
+body main.sirai-page-about > section.section:nth-of-type(2) .section-kicker{
+ color:#dfadbf!important;
+}
+body main.sirai-page-about > section.section:nth-of-type(2) .panel,
+body main.sirai-page-about > section.section:nth-of-type(2) .sirai-objective-card{
+ background:#29252e!important;
+ border:1px solid #4c3c4a!important;
+ box-shadow:0 15px 35px rgba(0,0,0,.14)!important;
+}
+body main.sirai-page-about > section.section:nth-of-type(2) :is(h2,h3,h4){
+ color:#f7f5f8!important;
+}
+body main.sirai-page-about > section.section:nth-of-type(2) :is(p,.sirai-objective-card p){
+ color:#d0cdd6!important;
+}
+body main.sirai-page-about > section.section:nth-of-type(2) :is(.sirai-objective-number,.sirai-objectives-eyebrow){
+ color:#e0a7bc!important;
+}
+body main.sirai-page-about > .sirai-about-priorities{
+ background:linear-gradient(165deg,#eef1f5,#dfe4eb)!important;
+}
+body main.sirai-page-about > .sirai-about-priorities .pillar{
+ background:#f7f8fb!important;border-color:#cbd0d9!important;
+ box-shadow:0 14px 30px rgba(20,16,28,.055)!important;
+}
+body main.sirai-page-about > .sirai-about-priorities :is(h2,h3){color:#191821!important}
+body main.sirai-page-about > section.section:last-child{
+ background:linear-gradient(180deg,#e7ebf1,#f2f4f7)!important;
+}
+body main.sirai-page-about > section.section:last-child .phase{
+ background:#fafbfc!important;border:1px solid #d1d5dd!important;
+}
+/* Resources: obsidian page canvas with gallery-like light tool rows. */
+body main.sirai-page-resources{
+ background:linear-gradient(155deg,#18171e 0%,#28212c 52%,#191820 100%)!important;
+ color:#f0eef3!important;
+}
+body main.sirai-page-resources > .sirai-hub-content{
+ background:transparent!important;
+ padding-top:clamp(38px,5vw,64px)!important;
+ padding-bottom:clamp(55px,7vw,100px)!important;
+}
+body main.sirai-page-resources .sirai-hub-explorer-feature{
+ background:#edeef3!important;
+ border:1px solid #c9c9d3!important;
+ border-radius:18px!important;
+ padding:clamp(24px,4vw,38px)!important;
+ box-shadow:0 20px 55px rgba(8,7,13,.17)!important;
+}
+body main.sirai-page-resources .sirai-hub-explorer-feature :is(h2,p){color:#23202a!important}
+body main.sirai-page-resources .sirai-hub-card{
+ border-top:1px solid #514453!important;
+ border-bottom:0!important;
+ background:transparent!important;
+ color:#e5e3eb!important;
+ padding-block:clamp(24px,3vw,37px)!important;
+}
+body main.sirai-page-resources .sirai-hub-card:last-child{border-bottom:1px solid #514453!important}
+body main.sirai-page-resources .sirai-hub-card h2{color:#fbf9fc!important}
+body main.sirai-page-resources .sirai-hub-card p{color:#d0cbd6!important}
+body main.sirai-page-resources .sirai-hub-card .sirai-hub-action{
+ color:#edbfd0!important;
+ text-decoration-color:#a47086!important;
+}
+body main.sirai-page-resources .sirai-hub-card .sirai-hub-icon{
+ background:#342a36!important;color:#e4b4c6!important;border-color:#705263!important;
+}
+body main.sirai-page-resources .sirai-resource-pack{
+ background:#eeeff4!important;color:#29252e!important;
+ border:1px solid #cacdd6!important;
+ border-radius:18px!important;
+ padding:clamp(24px,4vw,40px)!important;
+}
+body main.sirai-page-resources .sirai-resource-pack :is(h2,h3){color:#24212b!important}
+body main.sirai-page-resources .sirai-resource-pack p{color:#55515d!important}
+/* Updates: premium dark paper timeline rather than a flat white sheet. */
+body main.sirai-page-updates{
+ background:linear-gradient(160deg,#1a1921 0%,#27212c 50%,#191821 100%)!important;
+ color:#eef0f5!important;
+}
+body main.sirai-page-updates .sirai-hub-content{
+ background:transparent!important;
+ padding-top:clamp(38px,5vw,62px)!important;
+}
+body main.sirai-page-updates .sirai-hub-feature{
+ background:#30303a!important;
+ border:1px solid #574857!important;
+ box-shadow:0 20px 42px rgba(5,5,9,.14)!important;
+ border-radius:16px!important;
+}
+body main.sirai-page-updates .sirai-hub-feature h2{color:#f7f6f9!important}
+body main.sirai-page-updates .sirai-hub-feature p{color:#d1ced8!important}
+body main.sirai-page-updates .sirai-hub-feature a{color:#e6b4c7!important}
+body main.sirai-page-updates .sirai-hub-event{
+ background:#f2f3f7!important;
+ border:1px solid #d1cad3!important;
+ border-inline-start:4px solid #a66f86!important;
+ border-radius:12px!important;
+ box-shadow:0 12px 30px rgba(4,3,8,.11)!important;
+}
+body main.sirai-page-updates .sirai-hub-event h2{color:#28222d!important}
+body main.sirai-page-updates .sirai-hub-event p{color:#53515d!important}
+body main.sirai-page-updates .sirai-hub-event .sirai-hub-date{color:#82465f!important}
+body main.sirai-page-updates .sirai-outcome-note a{color:#e3afc3!important}
+/* Get involved: ice-grey entry, dark participation features, pearl form. */
+body main.sirai-page-involved{
+ background:linear-gradient(180deg,#e6e9f0 0%,#eff1f5 100%)!important;
+}
+body main.sirai-page-involved .sirai-hub-content{background:transparent!important}
+body main.sirai-page-involved .sirai-hub-grid{
+ padding:clamp(26px,3vw,36px)!important;
+ border-radius:18px!important;
+ background:#1c1a23!important;
+ border:1px solid #43313f!important;
+ gap:clamp(12px,2vw,22px)!important;
+ box-shadow:0 20px 54px rgba(17,14,23,.10)!important;
+}
+body main.sirai-page-involved .sirai-hub-grid .sirai-hub-card{
+ border-color:#594456!important;
+ border-radius:13px!important;
+ background:#29232e!important;
+ padding:clamp(18px,2vw,26px)!important;
+}
+body main.sirai-page-involved .sirai-hub-grid .sirai-hub-card h2{color:#faf7fb!important}
+body main.sirai-page-involved .sirai-hub-grid .sirai-hub-card p{color:#cecbd5!important}
+body main.sirai-page-involved .sirai-hub-grid .sirai-hub-index{color:#e6b3c6!important}
+body main.sirai-page-involved .sirai-hub-feature{
+ background:#f5f6f9!important;border-color:#cfd2dc!important;
+ box-shadow:0 10px 27px rgba(22,17,29,.045)!important;
+}
+body main.sirai-page-involved .sirai-idea-section{
+ background:#f9f9fb!important;border:1px solid #cfd1db!important;
+ box-shadow:0 20px 55px rgba(20,15,24,.08)!important;
+}
+body main.sirai-page-involved .sirai-idea-section :is(h2,h3){color:#2a1d29!important}
+body main.sirai-page-involved .sirai-idea-section .sirai-idea-kicker{color:#8b4d65!important}
+body main.sirai-page-involved .sirai-idea-form button[type="submit"]{
+ background:#80465f!important;color:#fff!important;border-color:#80465f!important;
+}
+/* Other content routes: coherent ice-grey base, not browser-white. */
+body main:not(.sirai-page-resources):not(.sirai-page-updates) > :is(.sirai-guide,.sirai-hub-content,.light-section){
+ background-color:#e9edf2!important;
+}
+@media(max-width:820px){
+ body main.sirai-page-involved .sirai-hub-grid{padding:18px!important}
+ body main.sirai-page-resources .sirai-resource-pack{padding:20px!important}
+ body main.sirai-page-updates .sirai-hub-event{padding:19px!important}
+}
+@media print{
+ body main.sirai-page-resources,body main.sirai-page-updates,
+ body main.sirai-page-involved,body main.sirai-page-about > section.section:nth-of-type(2){
+  background:#fff!important;color:#111!important;
+ }
+ body .site-header .nav.open{display:none!important}
+}
