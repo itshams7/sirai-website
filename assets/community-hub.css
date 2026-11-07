@@ -108,8 +108,8 @@
 /* Real illustrative photography in the About and Resources hero sections.
    About: Random Institute, community gathering in Kenema, Sierra Leone
    https://unsplash.com/photos/group-of-people-standing-together-outdoors-ASLKIrqRJgU
-   Resources: real people collaborating around practical work
-   https://unsplash.com/photos/Hh-PIe3qIug
+   Resources: coding and learning together in Lagos, Nigeria, Desola Lanre-Ologun
+   https://unsplash.com/photos/woman-and-man-sitting-in-front-of-monitor-IgUR1iX0mqM
    These images do not depict SIRAI projects, volunteers or beneficiaries. */
 .sirai-hub .sirai-about-photo-hero,
 .sirai-hub .sirai-resources-photo-hero{
@@ -130,7 +130,7 @@
 .sirai-hub .sirai-resources-photo-hero{
  background-image:
   linear-gradient(90deg,rgba(9,42,32,.94) 0%,rgba(9,42,32,.86) 40%,rgba(9,42,32,.54) 77%,rgba(9,42,32,.4) 100%),
-  url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1900&q=85")!important;
+  url("https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1900&q=85")!important;
  background-position:center,center 45%!important;
 }
 .sirai-hub :is(.sirai-about-photo-hero,.sirai-resources-photo-hero) .container{position:relative;z-index:1}
@@ -152,7 +152,7 @@
  }
  .sirai-hub .sirai-resources-photo-hero{
   background-image:linear-gradient(90deg,rgba(9,42,32,.92),rgba(9,42,32,.7)),
-   url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80")!important;
+   url("https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80")!important;
   background-position:center,58% center!important;
  }
 }
@@ -161,3 +161,8 @@
   background-image:none!important;
  }
 }
+
+/* Editorial transparency: photographs are not project records. */
+.sirai-hub .sirai-hero-photo-note{display:block;max-width:650px;margin-top:15px;
+ color:#f1eadb;font:500 11px/1.5 Inter,system-ui,sans-serif;letter-spacing:.01em;
+ text-shadow:0 1px 5px rgba(0,0,0,.2)}
