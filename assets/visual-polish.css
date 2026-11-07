@@ -138,3 +138,43 @@
   .sirai-2028-section{padding-block:48px!important}
   .sirai-2028-main{padding-top:27px!important;gap:23px!important}
 }
+
+
+/* Quick entry: show what visitors can do without scrolling through the homepage. */
+.sirai-quick-tools{
+ background:#f8f8f4;border-bottom:1px solid #dfe5df;
+}
+.sirai-quick-tools-inner{
+ display:grid;grid-template-columns:auto repeat(4,minmax(0,1fr));
+ gap:10px;align-items:center;padding-block:17px;
+}
+.sirai-quick-label{
+ display:block;color:#667e70;font:750 10px/1.4 Inter,system-ui,sans-serif;
+ letter-spacing:.14em;white-space:nowrap;margin-inline-end:11px;
+}
+.sirai-quick-tools a{
+ display:flex;justify-content:space-between;align-items:center;gap:7px;
+ padding:14px 15px;min-height:48px;border:1px solid #d6e0d8;border-radius:12px;
+ background:#fff;color:#193c30;font:650 13px/1.35 Inter,system-ui,sans-serif;
+ text-decoration:none;transition:background-color .2s,border-color .2s,transform .2s;
+}
+.sirai-quick-tools a span:first-child{color:#64937a;font-size:12px}
+.sirai-quick-tools a span:last-child{color:#547765}
+.sirai-quick-tools a:hover{transform:translateY(-2px);background:#edf5ee;border-color:#8eb7a1}
+.sirai-quick-tools a:focus-visible{outline:3px solid #567e67;outline-offset:2px}
+@media(max-width:1050px){
+ .sirai-quick-tools-inner{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .sirai-quick-label{grid-column:1/-1}
+}
+@media(max-width:540px){
+ .sirai-quick-tools-inner{gap:8px;padding-block:14px}
+ .sirai-quick-tools a{font-size:12px;padding:11px 9px;min-height:50px}
+}
+@media(prefers-reduced-motion:reduce){.sirai-quick-tools a{transition:none;transform:none!important}}
+
+/* Less travel between priority sections; keep generous space inside the content. */
+@media(min-width:761px){
+ main>.sirai-statistics{padding-block:clamp(42px,5vw,70px)!important}
+ main>.section#projects{padding-block:52px!important}
+ main>.sirai-2028-section{padding-block:53px!important}
+}
