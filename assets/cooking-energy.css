@@ -126,3 +126,17 @@ html.sirai-low-data .ce-hero-photo{object-fit:contain;padding:18px;box-sizing:bo
  .ce-hero-photo{object-position:57% 50%}
  .ce-hero-photo-credit{font-size:10px}
 }
+
+/* Use the actual FAO landscape photo, without crop or distortion. */
+.ce-hero .ce-hero-layout{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(24px,3vw,54px)}
+.ce-hero .ce-hero-art{min-height:0!important;height:auto!important;aspect-ratio:1.49!important;max-width:none!important;width:100%!important;margin:0!important}
+.ce-hero .ce-hero-photo{height:100%!important;width:100%!important;object-fit:contain!important;object-position:center!important;display:block!important;filter:none!important}
+.ce-hero .ce-hero-photo-credit{inset:auto 16px 14px!important}
+@media(max-width:990px){
+ .ce-hero .ce-hero-layout{grid-template-columns:minmax(0,1fr)}
+ .ce-hero .ce-hero-art{max-width:760px!important;aspect-ratio:1.49!important}
+}
+@media(max-width:640px){
+ .ce-hero .ce-hero-art{aspect-ratio:1.49!important}
+ .ce-hero .ce-hero-photo-credit{font-size:9px!important;inset:auto 10px 10px!important}
+}
