@@ -18,6 +18,8 @@ jobs:
         run: |
           node --check assets/app.js
           node --check assets/community-hub.js
+          node --check assets/idea-form.js
+          node --check assets/sirai-math.js
           node --check assets/offline-images.js
           node --check sw.js
       - name: Check pages, references and disclosures
