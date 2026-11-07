@@ -255,7 +255,8 @@ try{
   check(await documentary.getAttribute('alt')!==null,preset.name+': documentary photo needs alt text');
   const native=await documentary.evaluate(img=>({width:img.naturalWidth,height:img.naturalHeight,ratio:img.naturalWidth/img.naturalHeight,renderedRatio:img.getBoundingClientRect().width/img.getBoundingClientRect().height}));
   check(native.width>=950 && native.ratio>1.4,preset.name+': source photo is a cropped thumbnail '+JSON.stringify(native));
-  check(native.renderedRatio>1.4,preset.name+': displayed photo loses landscape proportions '+JSON.stringify(native));
+  check(native.renderedRatio>=.9 && native.renderedRatio<=1.65,preset.name+': documentary photo panel has unexpected proportions '+JSON.stringify(native));
+  check(await documentary.evaluate(img=>getComputedStyle(img).objectFit)==='cover',preset.name+': documentary photo should fill the entire large panel');
 
   check(await page.locator('.ce-hero-photo-credit a').count()===1,preset.name+': FAO photo credit absent');
   const heroImageGeometry=await documentary.evaluate(img=>{
