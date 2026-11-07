@@ -258,7 +258,8 @@ try{
   check(native.renderedRatio>=.9 && native.renderedRatio<=1.65,preset.name+': documentary photo panel has unexpected proportions '+JSON.stringify(native));
   check(await documentary.evaluate(img=>getComputedStyle(img).objectFit)==='cover',preset.name+': documentary photo should fill the entire large panel');
 
-  check(await page.locator('.ce-hero-photo-credit a').count()===1,preset.name+': FAO photo credit absent');
+  check(await page.locator('.ce-hero-photo-credit').count()===0,preset.name+': photo caption still covers hero');
+  check(await page.locator('.ce-photo-source-note a').count()===1,preset.name+': source credit missing from methodology');
   const heroImageGeometry=await documentary.evaluate(img=>{
     const r=img.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width,height:r.height,viewport:innerWidth}
   });
