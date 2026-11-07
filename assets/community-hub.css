@@ -103,3 +103,61 @@
 @media print{
  .sirai-hub .sirai-updates-photo-hero{background-image:none!important}
 }
+
+
+/* Real illustrative photography in the About and Resources hero sections.
+   About: Hannah Busing, group standing together holding hands
+   https://unsplash.com/photos/FQEYqBdXj2g
+   Resources: real people collaborating around practical work
+   https://unsplash.com/photos/Hh-PIe3qIug
+   These images do not depict SIRAI projects, volunteers or beneficiaries. */
+.sirai-hub .sirai-about-photo-hero,
+.sirai-hub .sirai-resources-photo-hero{
+ position:relative;
+ isolation:isolate;
+ background-color:#153b31!important;
+ background-repeat:no-repeat!important;
+ background-size:cover!important;
+ min-height:clamp(420px,42vw,585px);
+ display:flex;align-items:center;
+}
+.sirai-hub .sirai-about-photo-hero{
+ background-image:
+  linear-gradient(90deg,rgba(9,42,32,.94) 0%,rgba(9,42,32,.87) 34%,rgba(9,42,32,.54) 75%,rgba(9,42,32,.37) 100%),
+  url("https://images.unsplash.com/photo-1721059050924-eaf014837bd1?auto=format&fit=crop&w=1900&q=85")!important;
+ background-position:center,center 47%!important;
+}
+.sirai-hub .sirai-resources-photo-hero{
+ background-image:
+  linear-gradient(90deg,rgba(9,42,32,.94) 0%,rgba(9,42,32,.86) 40%,rgba(9,42,32,.54) 77%,rgba(9,42,32,.4) 100%),
+  url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1900&q=85")!important;
+ background-position:center,center 45%!important;
+}
+.sirai-hub :is(.sirai-about-photo-hero,.sirai-resources-photo-hero) .container{position:relative;z-index:1}
+.sirai-hub :is(.sirai-about-photo-hero,.sirai-resources-photo-hero) h1{
+ color:#fffaf0!important;text-shadow:0 2px 22px rgba(0,0,0,.17);
+}
+.sirai-hub :is(.sirai-about-photo-hero,.sirai-resources-photo-hero) .sirai-hub-lead{
+ color:#f8f5eb!important;text-shadow:0 2px 12px rgba(0,0,0,.15)
+}
+.sirai-hub :is(.sirai-about-photo-hero,.sirai-resources-photo-hero) .sirai-hub-status{
+ background:rgba(13,51,40,.42);border-color:rgba(248,238,213,.42);
+}
+@media(max-width:760px){
+ .sirai-hub :is(.sirai-about-photo-hero,.sirai-resources-photo-hero){min-height:430px}
+ .sirai-hub .sirai-about-photo-hero{
+  background-image:linear-gradient(90deg,rgba(9,42,32,.92),rgba(9,42,32,.7)),
+   url("https://images.unsplash.com/photo-1721059050924-eaf014837bd1?auto=format&fit=crop&w=1000&q=80")!important;
+  background-position:center,60% center!important;
+ }
+ .sirai-hub .sirai-resources-photo-hero{
+  background-image:linear-gradient(90deg,rgba(9,42,32,.92),rgba(9,42,32,.7)),
+   url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1000&q=80")!important;
+  background-position:center,58% center!important;
+ }
+}
+@media print{
+ .sirai-hub :is(.sirai-about-photo-hero,.sirai-resources-photo-hero){
+  background-image:none!important;
+ }
+}
