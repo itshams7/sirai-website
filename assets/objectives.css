@@ -16,3 +16,33 @@
 [dir="rtl"] .sirai-objective-card::before{left:auto;right:24px}
 [dir="rtl"] .sirai-objectives-heading h3{font-family:Tahoma,"Segoe UI",Arial,sans-serif;font-size:clamp(29px,4vw,42px);font-weight:650;letter-spacing:0;line-height:1.4}
 @media(prefers-reduced-motion:reduce){.sirai-objective-card{transition:none!important;transform:none!important}}
+
+
+/* About page: compact three-priority layout instead of excessive empty height. */
+.sirai-hub .sirai-about-priorities{
+ padding-block:clamp(42px,5.5vw,72px)!important;
+}
+.sirai-about-priorities .section-heading{margin-bottom:24px!important}
+.sirai-about-priorities .section-heading h2{margin-bottom:12px}
+.sirai-about-priorities .pillars{
+ display:grid!important;
+ grid-template-columns:repeat(3,minmax(0,1fr))!important;
+ gap:16px!important;
+ align-items:stretch!important;
+}
+.sirai-about-priorities .pillar{
+ box-sizing:border-box!important;min-width:0!important;
+ min-height:0!important;height:auto!important;
+ padding:clamp(18px,2.2vw,27px)!important;
+ margin:0!important;display:flex!important;flex-direction:column!important;
+ gap:9px!important;border:1px solid #d5ded1!important;
+ border-radius:12px!important;background:#fffdf8!important;
+ box-shadow:none!important;
+}
+.sirai-about-priorities .pillar .number{margin:0 0 4px!important;line-height:1.2!important}
+.sirai-about-priorities .pillar h3{margin:0!important;font-size:clamp(18px,1.7vw,22px)!important;line-height:1.25!important}
+.sirai-about-priorities .pillar p{margin:0!important;font-size:14px!important;line-height:1.65!important}
+@media(max-width:760px){
+ .sirai-about-priorities .pillars{grid-template-columns:1fr!important;gap:11px!important}
+ .sirai-about-priorities .pillar{padding:18px!important}
+}
