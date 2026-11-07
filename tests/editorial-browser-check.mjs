@@ -243,6 +243,43 @@ try{
   await page.screenshot({path:'test-artifacts/arabic-'+preset.name+'.png',fullPage:false,animations:'disabled'});
   await page.locator('[data-lang-select]').selectOption('en');
   check(pageErrors.length===0,preset.name+': JavaScript errors: '+pageErrors.join(' | '));
+  // Cooking & Energy Explorer: source-labeled calculations and access constraints.
+  await page.goto(base+'/cooking-energy.html',{waitUntil:'domcontentloaded',timeout:30000});
+  await page.locator('#ce-status').waitFor({state:'visible'});
+  check(await page.locator('#ce-watts').inputValue()==='1500',preset.name+': illustrative cooker power missing');
+  check((await page.locator('#ce-kwh-day').innerText()).includes('1.50'),preset.name+': daily energy estimate incorrect');
+  check((await page.locator('#ce-kwh-month').innerText()).includes('45.0'),preset.name+': 30-day energy estimate incorrect');
+  check((await page.locator('#ce-electric-cost').innerText()).includes('Local price needed'),preset.name+': unverified local price must be blank');
+  await page.locator('#ce-kwh-price').fill('15');
+  check((await page.locator('#ce-electric-cost').innerText()).includes('675'),preset.name+': electricity math incorrect');
+  await page.locator('#ce-lpg-price').fill('3000');
+  await page.locator('#ce-lpg-days').fill('15');
+  check((await page.locator('#ce-lpg-cost').innerText()).includes('6,000'),preset.name+': LPG math incorrect');
+  await page.locator('#ce-charcoal').fill('2000');
+  check((await page.locator('#ce-solid-cost').innerText()).includes('2,000'),preset.name+': charcoal spending missing');
+  await page.locator('#ce-reliability').selectOption('yes');
+  check((await page.locator('#ce-status').innerText()).includes('Supply capacity is not confirmed'),preset.name+': unknown outlet capacity marked as viable');
+  await page.locator('#ce-capacity').fill('1200');
+  check((await page.locator('#ce-status').innerText()).includes('not currently practical'),preset.name+': insufficient capacity not flagged');
+  await page.locator('#ce-capacity').fill('2000');
+  check((await page.locator('#ce-status').innerText()).includes('Potentially workable'),preset.name+': viable conditional outcome missing');
+  await page.locator('#ce-supply').selectOption('none');
+  check((await page.locator('#ce-status').innerText()).includes('not currently practical'),preset.name+': unavailable electricity not flagged');
+  await page.locator('#ce-form').evaluate(form=>form.reset());
+  await page.waitForTimeout(50);
+  check((await page.locator('#ce-electric-cost').innerText()).includes('Local price needed'),preset.name+': reset did not clear local prices');
+  await page.locator('#ce-lang').selectOption('ar');
+  check(await page.locator('html').getAttribute('dir')==='rtl',preset.name+': Arabic cooking explorer not RTL');
+  check((await page.locator('#ce-status').innerText()).includes('انتظام'),preset.name+': Arabic status not translated');
+  const cookingGeometry=await page.evaluate(()=>{
+    const root=document.querySelector('.ce-grid').getBoundingClientRect();
+    const result=document.querySelector('.ce-results').getBoundingClientRect();
+    return {left:root.left,right:root.right,resultLeft:result.left,resultRight:result.right,viewport:innerWidth,scrollWidth:document.documentElement.scrollWidth};
+  });
+  check(cookingGeometry.left>=-2&&cookingGeometry.right<=cookingGeometry.viewport+2,preset.name+': cooking grid overflows viewport '+JSON.stringify(cookingGeometry));
+  check(cookingGeometry.scrollWidth<=cookingGeometry.viewport+3,preset.name+': cooking explorer causes horizontal scroll '+JSON.stringify(cookingGeometry));
+  await page.screenshot({path:'test-artifacts/cooking-energy-'+preset.name+'.png',fullPage:true,animations:'disabled'});
+  await page.locator('#ce-lang').selectOption('en');
   console.log('PASS '+preset.name+' '+JSON.stringify(dims));
   await context.close();
  }
