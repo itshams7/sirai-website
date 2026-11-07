@@ -250,14 +250,15 @@ try{
   await documentary.waitFor({state:'visible'});
   await page.waitForFunction(()=>{
     const img=document.querySelector('.ce-hero-photo');
-    return img?.complete && img.naturalWidth>0 && img.currentSrc.includes('Sudanese_woman_preparing_food.jpg');
+    return img?.complete && img.naturalWidth>0 && img.currentSrc.includes('/02s.jpg');
   },{timeout:18000});
   check(await documentary.getAttribute('alt')!==null,preset.name+': documentary photo needs alt text');
-  check(await page.locator('.ce-hero-photo-credit a').count()===2,preset.name+': photographer and license credit absent');
+  check(await page.locator('.ce-hero-photo-credit a').count()===1,preset.name+': FAO photo credit absent');
   const heroImageGeometry=await documentary.evaluate(img=>{
     const r=img.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width,height:r.height,viewport:innerWidth}
   });
   check(heroImageGeometry.width>=220&&heroImageGeometry.right<=heroImageGeometry.viewport+2,preset.name+': hero photo not visible or overflow '+JSON.stringify(heroImageGeometry));
+  if(preset.name==='desktop'||preset.name==='small-desktop')check(heroImageGeometry.height>=410,preset.name+': hero photo remains too small '+JSON.stringify(heroImageGeometry));
 
   check(await page.locator('#ce-watts').inputValue()==='1500',preset.name+': illustrative cooker power missing');
   check((await page.locator('#ce-kwh-day').innerText()).includes('1.50'),preset.name+': daily energy estimate incorrect');
