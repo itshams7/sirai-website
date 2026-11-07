@@ -140,3 +140,10 @@ html.sirai-low-data .ce-hero-photo{object-fit:contain;padding:18px;box-sizing:bo
  .ce-hero .ce-hero-art{aspect-ratio:1.49!important}
  .ce-hero .ce-hero-photo-credit{font-size:9px!important;inset:auto 10px 10px!important}
 }
+
+/* At laptop widths preserve the full image's scale, rather than squeeze
+   a landscape documentary photo into a narrow side column. */
+@media(min-width:991px) and (max-width:1120px){
+  .ce-hero .ce-hero-layout{grid-template-columns:minmax(0,1fr);gap:35px}
+  .ce-hero .ce-hero-art{width:100%!important;max-width:850px!important;margin-inline:auto!important}
+}
