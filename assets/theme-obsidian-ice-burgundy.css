@@ -860,3 +860,33 @@ body main.sirai-page-updates .sirai-hub-content{
 @media(prefers-reduced-motion:reduce){
  body .sirai-statistics .sirai-statistics-map{scroll-behavior:auto!important}
 }
+
+
+/* The standalone documentary credits route participates in the same design system. */
+body.sirai-credits-page{
+ background:#e9edf2!important;color:#211f2a!important;
+}
+body.sirai-credits-page .credits-header{
+ background:#17171e!important;border-bottom:1px solid #514353!important;
+ box-shadow:0 13px 30px rgba(16,14,24,.10)!important;
+}
+body.sirai-credits-page .credits-header a{color:#f2f0f6!important}
+body.sirai-credits-page .credits-header a:hover{color:#e2adc2!important}
+body.sirai-credits-page .credits-eyebrow{color:#8d4e68!important}
+body.sirai-credits-page .credits-wrap h1{color:#17151d!important}
+body.sirai-credits-page .credits-wrap>p,
+body.sirai-credits-page .credits-item p{color:#4d4a58!important}
+body.sirai-credits-page .credits-list,
+body.sirai-credits-page .credits-item{border-color:#cdd0dc!important}
+body.sirai-credits-page .credits-item h2{color:#28212d!important}
+body.sirai-credits-page .credits-item a{color:#7b405a!important}
+body.sirai-credits-page .credits-note{
+ background:#f4f5f8!important;
+ border:1px solid #d1d3dc!important;
+ border-inline-start:3px solid #ac718a!important;
+ color:#45414e!important;
+}
+body.sirai-credits-page .credits-footer{
+ background:#17171e!important;color:#c7c4d0!important;
+ border-top:1px solid #504455!important;
+}
