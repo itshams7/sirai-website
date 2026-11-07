@@ -1,3 +1,11 @@
+## November 8 visual consistency audit
+
+The site uses the Obsidian Black / Ice Grey / Light Burgundy theme. The repository includes 19-page coverage with the same final stylesheet, including the independent footage-credits route. The homepage map shell and its explanation panel have been explicitly recolored to eliminate the remaining green surround. Sudan Explorer, the principal tool workspaces, feedback pages, and homepage tool previews have matching surfaces.
+
+**Automated regression coverage:** `tests/site-smoke.mjs` checks required page links, core math examples, theme coverage, the five-color choropleth legend, and critical theme selectors. `tests/browser-smoke.mjs` is configured to check 19 pages in headless Chromium at 390px and 1440px viewport widths, report horizontal overflow and JavaScript errors, verify the mobile dropdown, inspect homepage map colors, and save selected screenshots as a workflow artifact.
+
+**Not yet verified:** completion of the headless browser workflow, real iPhone/Safari and Android/Chrome rendering, intermittent-network behavior on physical devices, accessible screen reader navigation, and feedback-form delivery to the intended inbox. These are acceptance tests, not established results. See the checklist below.
+
 ## Priority checks before public launch (7 November 2026)
 
 The repository now includes automated static checks in `tests/site-smoke.mjs`, run by `.github/workflows/sirai-smoke.yml`. They cover JavaScript syntax, the five main navigation pages, resource destinations, translation/disclosure markers, the offline cache manifest, and presence of the existing Formspree endpoint.
@@ -20,7 +28,7 @@ The repository now includes automated static checks in `tests/site-smoke.mjs`, r
 ## 1. Offline functionality (real-device checks required)
 
 1. On an HTTPS connection, visit the homepage and each of WaterShare, ProjectStarter and TaqaWise. Stay online until files finish loading.
-2. Confirm the browser has a controlling service worker and the current `sirai-offline-v48-form-20261107` cache is installed (where browser developer tools are available).
+2. Confirm the browser has a controlling service worker and the current `sirai-offline-v52-elegance-audit-20261108` cache is installed (where browser developer tools are available).
 3. Switch the phone into airplane mode. Open each previously loaded page, change inputs, calculate results, move between steps and download/export local files.
 4. Verify that all four language options function offline after the initial precache. Photographs from Unsplash may be unavailable. Feedback submissions require connectivity.
 5. Verify the homepage root URL (ending in /sirai-website/) works in airplane mode, not just /index.html.\n6. On Android Chrome, test browser install / Add to Home Screen if offered. On iPhone Safari, test Share > Add to Home Screen. Do not claim automatic installation until observed.
