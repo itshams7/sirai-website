@@ -1,2 +1,75 @@
 /* SIRAI community hub: accessible, low-bandwidth pages. */
 .sirai-hub{background:#f6f3ea;color:#163b2e;min-height:65vh}.sirai-hub-hero{background:#173e32;color:#fff9e8;padding:clamp(42px,7vw,88px) 0 clamp(38px,5vw,62px)}.sirai-hub-kicker{font-size:12px;font-weight:850;letter-spacing:.15em;color:#d6d1b7}.sirai-hub-hero h1{max-width:890px;font-size:clamp(36px,6vw,70px);line-height:1.08;margin:16px 0 20px;color:#f8f5e9}.sirai-hub-lead{max-width:800px;font-size:clamp(16px,2vw,21px);line-height:1.65;color:#f0eedf}.sirai-hub-status{display:inline-block;font-size:12px;line-height:1.5;color:#e9e5cc;border:1px solid #668672;padding:10px 13px;border-radius:9px;margin-top:20px}.sirai-hub-content{padding-top:clamp(28px,5vw,56px);padding-bottom:90px}.sirai-hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.sirai-hub-card,.sirai-hub-feature,.sirai-hub-question,.sirai-hub-event{background:#fffdf7;border:1px solid #d9dfd3;border-radius:15px;box-shadow:0 8px 28px rgba(22,48,35,.045)}.sirai-hub-card{padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;align-items:flex-start}.sirai-hub-card h2,.sirai-hub-feature h2,.sirai-hub-event h2{font-size:clamp(20px,2.5vw,27px);line-height:1.3;margin:12px 0;color:#173e32}.sirai-hub-card p,.sirai-hub-feature p,.sirai-hub-event p{color:#40594b;line-height:1.75;margin:0 0 20px}.sirai-hub-card a{margin-top:auto}.sirai-hub-action,.sirai-hub-links a{color:#17553e;font-weight:800;text-decoration:underline;text-underline-offset:5px;line-height:1.6}.sirai-hub-action:hover,.sirai-hub-links a:hover{color:#664b83}.sirai-hub-icon{font-size:27px;color:#285b44}.sirai-hub-index{font-size:12px;letter-spacing:.12em;font-weight:800;color:#496d58}.sirai-hub-feature{display:flex;align-items:start;justify-content:space-between;flex-wrap:wrap;gap:24px;padding:clamp(22px,4vw,34px);margin-top:24px}.sirai-hub-feature>div:first-child{max-width:740px}.sirai-hub-feature h2{margin-top:0}.sirai-hub-muted{font-size:13px}.sirai-hub-links{display:flex;gap:16px;align-items:start;flex-direction:column}.sirai-hub-questions{display:grid;gap:12px;max-width:940px;margin-inline:auto}.sirai-hub-question{padding:0 22px}.sirai-hub-question summary{cursor:pointer;list-style:revert;font-size:clamp(16px,2vw,19px);line-height:1.5;font-weight:800;color:#163f30;padding:20px 0}.sirai-hub-question summary:focus-visible{outline:3px solid #7562b5;outline-offset:3px}.sirai-hub-question p{margin:0 0 22px;line-height:1.75;color:#3b5547}.sirai-hub-timeline{position:relative;display:grid;gap:16px;margin-top:24px}.sirai-hub-event{padding:22px 28px;border-inline-start:4px solid #456f53}.sirai-hub-date{font-size:12px;font-weight:850;letter-spacing:.04em;color:#4f6658}.sirai-hub-event h2{margin:8px 0}.sirai-hub-event p{margin:0}.sirai-hub [id]{scroll-margin-top:100px}[dir=rtl] .sirai-hub{text-align:start}@media(max-width:820px){.sirai-hub-grid{grid-template-columns:1fr}.sirai-hub-hero{padding-block:38px}.sirai-hub-content{padding-bottom:55px}.sirai-hub-feature{flex-direction:column}.sirai-hub-card{min-height:0}}@media print{.sirai-hub-hero{background:white;color:black}.sirai-hub-hero h1,.sirai-hub-lead,.sirai-hub-kicker{color:black}.sirai-hub-card,.sirai-hub-feature,.sirai-hub-event{break-inside:avoid;box-shadow:none}}
+
+
+/* Get involved: real-world illustrative photography, not SIRAI project activity.
+   Hannah Busing, Unsplash: https://unsplash.com/photos/FQEYqBdXj2g */
+.sirai-hub .sirai-involved-photo-hero{
+ position:relative;isolation:isolate;overflow:hidden;
+ background:#173e32!important;
+ padding:clamp(64px,8vw,110px) 0 clamp(55px,7vw,96px)!important;
+}
+.sirai-involved-photo-hero::before{
+ content:"";position:absolute;inset:0;z-index:-2;
+ background-image:url("https://images.unsplash.com/photo-1721059050924-eaf014837bd1?auto=format&fit=crop&w=1900&q=82");
+ background-size:cover;background-position:center 48%;
+}
+.sirai-involved-photo-hero::after{
+ content:"";position:absolute;inset:0;z-index:-1;
+ background:linear-gradient(90deg,rgba(10,41,32,.94) 0%,rgba(10,41,32,.83) 44%,rgba(10,41,32,.48) 100%);
+}
+.sirai-involved-photo-hero .container{position:relative}
+.sirai-involved-photo-hero h1{max-width:900px;text-wrap:balance;text-shadow:0 2px 16px rgba(0,0,0,.19)}
+.sirai-involved-photo-hero .sirai-hub-lead{max-width:730px;color:#f5f3e9}
+.sirai-involved-photo-hero .sirai-hub-status{background:rgba(9,39,32,.4);border-color:rgba(239,232,204,.46)}
+
+/* Compact and accessible idea form. Layout is intentionally light. */
+.sirai-hub .sirai-idea-section{
+ margin:clamp(32px,5vw,65px) 0 0;padding:clamp(24px,4vw,45px);
+ display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);
+ gap:clamp(26px,5vw,65px);border-radius:16px;
+ border:1px solid #d6ded1;background:#fffdf8;
+ box-shadow:0 14px 38px rgba(21,54,41,.045);
+}
+.sirai-idea-kicker{display:block;font-size:11px;font-weight:800;letter-spacing:.17em;color:#4b7965}
+.sirai-idea-intro h2{font-size:clamp(29px,3.1vw,43px);letter-spacing:-.035em;line-height:1.13;color:#173e32;margin:15px 0 18px}
+.sirai-idea-intro p{max-width:35ch;color:#52675c;font-size:15px;line-height:1.7}
+.sirai-idea-form{display:flex;flex-direction:column;gap:10px;min-width:0}
+.sirai-idea-form>label:not(.sirai-idea-consent){font-size:13px;color:#244b3a;font-weight:750;margin-top:4px}
+.sirai-idea-form textarea,.sirai-idea-form input[type="email"]{
+ display:block;box-sizing:border-box;width:100%;
+ border:1px solid #cad7cd;border-radius:10px;
+ background:#fcfdfb;color:#193b2d;font:inherit;font-size:14px;
+ padding:13px 15px;line-height:1.55;
+}
+.sirai-idea-form textarea{resize:vertical;min-height:135px;max-height:340px}
+.sirai-idea-form textarea:focus-visible,.sirai-idea-form input[type="email"]:focus-visible{
+ outline:2px solid #376b55;outline-offset:2px;
+}
+.sirai-idea-form ::placeholder{color:#6b7e74;opacity:1}
+.sirai-idea-consent{display:flex;align-items:flex-start;gap:11px;margin-top:5px;font-size:12px;line-height:1.6;color:#53685b;cursor:pointer}
+.sirai-idea-consent input{width:18px;height:18px;flex:0 0 18px;margin:1px 0;accent-color:#1d5c44}
+.sirai-idea-submit{display:flex;flex-wrap:wrap;align-items:center;gap:13px;margin-top:9px}
+.sirai-idea-submit button{min-height:45px;padding:11px 22px;border:0;border-radius:999px;background:#184c38;color:#fff;font:inherit;font-size:14px;font-weight:750;cursor:pointer}
+.sirai-idea-submit button:hover{background:#0c3526}
+.sirai-idea-submit button:focus-visible{outline:3px solid #c99f60;outline-offset:3px}
+.sirai-idea-submit span{font-size:11px;line-height:1.5;color:#64736b}
+.sirai-idea-trap{position:absolute!important;left:-10000px!important;width:1px;height:1px;overflow:hidden}
+[dir="rtl"] .sirai-idea-trap{left:auto!important;right:-10000px!important}
+@media(max-width:800px){
+ .sirai-hub .sirai-idea-section{grid-template-columns:1fr;gap:16px}
+ .sirai-idea-intro p{max-width:65ch}
+}
+@media(max-width:600px){
+ .sirai-hub .sirai-involved-photo-hero{padding:55px 0 48px!important}
+ .sirai-involved-photo-hero::before{background-position:60% center}
+ .sirai-involved-photo-hero::after{background:linear-gradient(90deg,rgba(10,41,32,.93),rgba(10,41,32,.7))}
+ .sirai-hub .sirai-idea-section{padding:22px 18px;margin-top:32px}
+ .sirai-idea-intro h2{font-size:31px}
+ .sirai-idea-submit button{width:100%}
+}
+@media print{
+ .sirai-involved-photo-hero::before{display:none}
+ .sirai-involved-photo-hero::after{display:none}
+ .sirai-hub .sirai-involved-photo-hero{background:#173e32!important}
+}
