@@ -41,6 +41,11 @@ assert.ok(sw.includes("'cooking-energy.html'"),'Cooking explorer not available o
 for(const asset of ['assets/cooking-energy.css','assets/cooking-energy.js'])assert.ok(sw.includes("'"+asset+"'"),'Cooking explorer asset not cached: '+asset);
 for(const source of ['index.html','taqawise.html','resources.html'])assert.ok(read(source).includes('href="cooking-energy.html"'),'Cooking explorer link missing from '+source);
 const cooking=read('cooking-energy.html');const cookingJs=read('assets/cooking-energy.js');
+assert.ok(cooking.includes('data-sirai-remote-photo="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/51/Sudanese_woman_preparing_food.jpg/960px-Sudanese_woman_preparing_food.jpg"'),'Authentic Sudan cooking photo missing');
+assert.ok(cooking.includes('Rahma Abdalla')&&cooking.includes('creativecommons.org/licenses/by-sa/4.0'),'Documentary photograph attribution missing');
+assert.ok(!cooking.includes('ce-hero-art" aria-hidden="true"'),'Real photo must not be hidden from assistive technologies');
+assert.ok(!cooking.includes('<svg viewBox="0 0 470 290"'),'Illustrative lightning hero remains');
+
 for(const id of ['ce-supply','ce-reliability','ce-capacity','ce-watts','ce-minutes','ce-sessions','ce-kwh-price','ce-lpg-price','ce-lpg-days','ce-charcoal'])assert.ok(cooking.includes('id="'+id+'"'),'Cooking input absent '+id);
 for(const id of ['ce-kwh-day','ce-kwh-month','ce-electric-cost','ce-lpg-cost','ce-solid-cost','ce-status'])assert.ok(cooking.includes('id="'+id+'"'),'Cooking result absent '+id);
 for(const id of ['ce-kwh-price','ce-lpg-price','ce-charcoal'])assert.ok(!new RegExp('id="'+id+'"[^>]*value=').test(cooking),'Cannot prefill unverified local fuel prices: '+id);
