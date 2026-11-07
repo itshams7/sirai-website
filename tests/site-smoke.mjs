@@ -88,7 +88,7 @@ expect(theme.includes('background:radial-gradient(ellipse at 82% 8%,#382934'),'L
 expect(theme.includes('background:#29272f!important'),'Map insight panel not recolored');
 expect(theme.includes('body .site-header .nav.open'),'Obsidian mobile navigation absent');
 const statMap=read('assets/state-displacement.js');
-for(const shade of ['#6a526b','#96758d','#c6a0b2','#b97e99','#8b405e']){
+for(const shade of ['#544253','#76566e','#98718c','#bf90a8','#e3b5ca']){
  expect(statMap.includes(shade),'Missing burgundy data scale color: '+shade);
  expect(home.includes('--shade:'+shade),'Legend and map scale mismatch: '+shade);
 }
