@@ -166,3 +166,10 @@
 .sirai-hub .sirai-hero-photo-note{display:block;max-width:650px;margin-top:15px;
  color:#f1eadb;font:500 11px/1.5 Inter,system-ui,sans-serif;letter-spacing:.01em;
  text-shadow:0 1px 5px rgba(0,0,0,.2)}
+
+/* Clear, accessible response to an attempted community idea submission. */
+.sirai-idea-status{margin:14px 0 0!important;font-size:13px!important;line-height:1.6!important;min-height:0!important}
+.sirai-idea-status:empty{display:none!important}
+.sirai-idea-status[data-state="success"]{color:#176245!important}
+.sirai-idea-status[data-state="error"]{color:#993a33!important}
+.sirai-idea-status[data-state="sending"]{color:#566c5f!important}
