@@ -100,3 +100,10 @@
  .sirai-energy-actions .btn{width:100%;text-align:center}
 }
 @media(prefers-reduced-motion:reduce){.sirai-hub .sirai-hub-card:hover .sirai-hub-icon{transform:none;transition:none}}
+
+/* Older footer navigation used a non-wrapping link row on 1024px laptops. */
+@media(max-width:1150px){
+ .site-footer .footer-grid{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:24px!important}
+ .site-footer .footer-links{display:flex!important;flex-wrap:wrap!important;align-items:flex-start!important;gap:13px 21px!important;width:100%!important;max-width:100%!important;min-width:0!important}
+ .site-footer .footer-links a{max-width:100%;white-space:normal}
+}
