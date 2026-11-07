@@ -1,0 +1,24 @@
+name: SIRAI static smoke checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Check JavaScript syntax
+        run: |
+          node --check assets/app.js
+          node --check assets/community-hub.js
+          node --check assets/offline-images.js
+          node --check sw.js
+      - name: Check pages, references and disclosures
+        run: node tests/site-smoke.mjs
