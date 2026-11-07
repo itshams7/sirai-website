@@ -1,0 +1,109 @@
+/* SIRAI visual polish / 7 November 2026.
+   Lightweight illustrations, legible map reading, accessible responsive controls. */
+
+/* Community tool library: strong, recognisable SVGs instead of tiny glyphs. */
+.sirai-hub .sirai-hub-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
+.sirai-hub .sirai-hub-card{
+ display:grid;grid-template-columns:88px minmax(190px,.65fr) minmax(0,1.5fr) auto;
+ align-items:center;column-gap:clamp(17px,3.2vw,46px);row-gap:12px;
+ min-width:0;padding:clamp(24px,3vw,40px) 4px;
+ border:0;border-top:1px solid #d7d9cc;border-radius:0;background:transparent;
+ box-shadow:none;
+}
+.sirai-hub .sirai-hub-card:last-child{border-bottom:1px solid #d7d9cc}
+.sirai-hub .sirai-hub-icon{
+ display:grid;place-items:center;width:76px;height:76px;line-height:1;
+ padding:18px;border:1px solid #bdd2c4;border-radius:20px;
+ color:#1b6450;background:#e5eee5;font-size:inherit;
+}
+.sirai-hub .sirai-hub-icon svg{display:block;width:100%;height:100%}
+.sirai-hub .sirai-hub-icon-project{background:#f1e9d8;color:#88653d;border-color:#e2d4b9}
+.sirai-hub .sirai-hub-icon-solar{background:#e5ecdc;color:#4b6e40;border-color:#c9d7bb}
+.sirai-hub .sirai-hub-icon-cooking{background:#f4e6d8;color:#965d3b;border-color:#e3ccb5}
+.sirai-hub .sirai-hub-card h2{margin:0;min-width:0;font-size:clamp(21px,2.3vw,31px);letter-spacing:-.035em}
+.sirai-hub .sirai-hub-card p{margin:0;max-width:65ch;font-size:clamp(14px,1.25vw,17px);line-height:1.7}
+.sirai-hub .sirai-hub-card .sirai-hub-action{margin:0;white-space:nowrap;font-size:15px}
+.sirai-hub .sirai-hub-card:hover .sirai-hub-icon{transform:translateY(-2px);border-color:#799f84;transition:transform .15s,border-color .15s}
+@media(max-width:1050px){
+ .sirai-hub .sirai-hub-card{grid-template-columns:76px minmax(0,1fr);width:100%}
+ .sirai-hub .sirai-hub-card h2{grid-column:2;grid-row:1}
+ .sirai-hub .sirai-hub-card p{grid-column:2;grid-row:2;min-width:0}
+ .sirai-hub .sirai-hub-card .sirai-hub-action{grid-column:2;grid-row:3;margin-top:5px;justify-self:start}
+}
+@media(max-width:660px){
+ .sirai-hub .sirai-hub-card{grid-template-columns:66px minmax(0,1fr);gap:8px 17px;padding:23px 2px}
+ .sirai-hub .sirai-hub-icon{width:62px;height:62px;padding:14px;border-radius:15px;grid-row:1 / span 2}
+ .sirai-hub .sirai-hub-card h2{font-size:22px;align-self:end}
+ .sirai-hub .sirai-hub-card p{grid-column:2;grid-row:2;align-self:start;font-size:13px}
+ .sirai-hub .sirai-hub-card .sirai-hub-action{grid-column:2;grid-row:3;margin-top:5px}
+}
+
+/* Sudan map: fixed visual stage prevents geography from crowding the caption.
+   The explanation is a separate reading area, never an overlay on the map. */
+.sirai-statistics-map .sirai-map-insight{
+ display:block;position:relative!important;clear:both;
+ flex:0 0 auto!important;min-width:0;z-index:3;
+ margin-top:clamp(24px,3.2vw,40px)!important;
+ padding-top:clamp(22px,2.7vw,30px)!important;
+ border-top:1px solid rgba(255,255,255,.3);
+}
+.sirai-statistics-map[data-stat-mode="displaced"] .sirai-map-visual-layer{
+ display:block!important;position:relative!important;
+ flex:0 0 355px!important;height:355px!important;min-height:355px!important;
+ max-height:355px!important;overflow:hidden!important;
+}
+.sirai-statistics-map[data-stat-mode="displaced"] .sirai-idp-map{
+ position:absolute;inset:6px 2px 10px;display:grid;place-items:center;overflow:hidden;
+}
+.sirai-statistics-map[data-stat-mode="displaced"] .sirai-idp-map svg{
+ display:block;max-width:100%;max-height:325px!important;height:100%;width:100%;overflow:visible;
+}
+.sirai-map-insight-kicker{display:block;letter-spacing:.15em}
+@media(max-width:570px){
+ .sirai-statistics-map[data-stat-mode="displaced"] .sirai-map-visual-layer{
+ flex-basis:270px!important;height:270px!important;min-height:270px!important;max-height:270px!important
+ }
+ .sirai-statistics-map[data-stat-mode="displaced"] .sirai-idp-map svg{max-height:248px!important}
+ .sirai-statistics-map .sirai-map-insight{margin-top:22px!important}
+}
+
+/* Explorer: one tidy strip of factual navigation counts. */
+.explorer .explorer-counts{display:flex;gap:0;align-items:center;flex-wrap:wrap;margin-top:34px}
+.explorer .explorer-counts>span{
+ display:flex;align-items:baseline;gap:12px;
+ padding:14px clamp(15px,2.3vw,32px);background:transparent;
+ border:0;border-left:1px solid rgba(242,237,218,.27);border-radius:0;
+ color:#e9ede3;min-width:0;
+}
+.explorer .explorer-counts>span:first-child{padding-inline-start:0;border-left:0}
+.explorer .explorer-counts>span>b{
+ font-family:Georgia,serif;font-size:clamp(32px,3.7vw,49px);font-weight:400;
+ line-height:1;color:#f1d7a0;letter-spacing:-.045em;margin:0;font-variant-numeric:tabular-nums;
+}
+.explorer .explorer-counts>span>span{font-size:clamp(12px,1.2vw,15px);font-weight:600;color:#e7eee1}
+.explorer .explorer-select{margin-top:0;min-height:56px;border-radius:12px;font-size:16px;background:#fffefa}
+.explorer .explorer-label{font-size:12px;margin-bottom:13px}
+.explorer .explorer-selected{margin-top:25px}
+@media(max-width:600px){
+ .explorer .explorer-counts{gap:9px 0}
+ .explorer .explorer-counts>span{flex:1 1 auto;padding:8px 15px;gap:8px}
+ .explorer .explorer-counts>span:first-child{padding-inline-start:0}
+ .explorer .explorer-counts>span>b{font-size:32px}
+ .explorer .explorer-counts>span>span{font-size:11px}
+}
+
+/* Home resource feature: real space between two distinct actions. */
+.sirai-energy-actions{display:flex;flex-wrap:wrap;align-items:center;gap:18px 20px;margin-top:26px}
+.sirai-energy-actions .btn{display:inline-flex;align-items:center;justify-content:center;margin:0!important;min-height:48px;white-space:normal}
+@media(max-width:640px){
+ .sirai-energy-actions{flex-direction:column;align-items:stretch;gap:16px}
+ .sirai-energy-actions .btn{width:100%;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){.sirai-hub .sirai-hub-card:hover .sirai-hub-icon{transform:none;transition:none}}
+
+/* Older footer navigation used a non-wrapping link row on 1024px laptops. */
+@media(max-width:1150px){
+ :is(body:has(main.sirai-hub),body:has(main.explorer)) .site-footer .footer-grid{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:24px!important}
+ :is(body:has(main.sirai-hub),body:has(main.explorer)) .site-footer .footer-links{display:flex!important;flex-wrap:wrap!important;align-items:flex-start!important;gap:13px 21px!important;width:100%!important;max-width:100%!important;min-width:0!important}
+ :is(body:has(main.sirai-hub),body:has(main.explorer)) .site-footer .footer-links a{max-width:100%;white-space:normal}
+}
