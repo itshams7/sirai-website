@@ -3,7 +3,7 @@
 
 
 /* Get involved: real-world illustrative photography, not SIRAI project activity.
-   Hannah Busing, Unsplash: https://unsplash.com/photos/FQEYqBdXj2g */
+   Dwayne joe, Nairobi workshop, Kenya: https://unsplash.com/photos/diverse-group-of-men-attentively-listening-2m1lim0MQFQ */
 .sirai-hub .sirai-involved-photo-hero{
  position:relative;isolation:isolate;overflow:hidden;
  background:#173e32!important;
@@ -11,7 +11,7 @@
 }
 .sirai-involved-photo-hero::before{
  content:"";position:absolute;inset:0;z-index:-2;
- background-image:url("https://images.unsplash.com/photo-1721059050924-eaf014837bd1?auto=format&fit=crop&w=1900&q=82");
+ background-image:url("https://images.unsplash.com/photo-1776039325022-d2932dbd5cf2?auto=format&fit=crop&w=1900&q=82");
  background-size:cover;background-position:center 48%;
 }
 .sirai-involved-photo-hero::after{
@@ -106,8 +106,8 @@
 
 
 /* Real illustrative photography in the About and Resources hero sections.
-   About: Hannah Busing, group standing together holding hands
-   https://unsplash.com/photos/FQEYqBdXj2g
+   About: Random Institute, community gathering in Kenema, Sierra Leone
+   https://unsplash.com/photos/group-of-people-standing-together-outdoors-ASLKIrqRJgU
    Resources: real people collaborating around practical work
    https://unsplash.com/photos/Hh-PIe3qIug
    These images do not depict SIRAI projects, volunteers or beneficiaries. */
@@ -124,7 +124,7 @@
 .sirai-hub .sirai-about-photo-hero{
  background-image:
   linear-gradient(90deg,rgba(9,42,32,.94) 0%,rgba(9,42,32,.87) 34%,rgba(9,42,32,.54) 75%,rgba(9,42,32,.37) 100%),
-  url("https://images.unsplash.com/photo-1721059050924-eaf014837bd1?auto=format&fit=crop&w=1900&q=85")!important;
+  url("https://images.unsplash.com/photo-1761666520015-5675ff0795b8?auto=format&fit=crop&w=1900&q=85")!important;
  background-position:center,center 47%!important;
 }
 .sirai-hub .sirai-resources-photo-hero{
@@ -147,7 +147,7 @@
  .sirai-hub :is(.sirai-about-photo-hero,.sirai-resources-photo-hero){min-height:430px}
  .sirai-hub .sirai-about-photo-hero{
   background-image:linear-gradient(90deg,rgba(9,42,32,.92),rgba(9,42,32,.7)),
-   url("https://images.unsplash.com/photo-1721059050924-eaf014837bd1?auto=format&fit=crop&w=1000&q=80")!important;
+   url("https://images.unsplash.com/photo-1761666520015-5675ff0795b8?auto=format&fit=crop&w=1000&q=80")!important;
   background-position:center,60% center!important;
  }
  .sirai-hub .sirai-resources-photo-hero{
