@@ -107,3 +107,34 @@
  :is(body:has(main.sirai-hub),body:has(main.explorer)) .site-footer .footer-links{display:flex!important;flex-wrap:wrap!important;align-items:flex-start!important;gap:13px 21px!important;width:100%!important;max-width:100%!important;min-width:0!important}
  :is(body:has(main.sirai-hub),body:has(main.explorer)) .site-footer .footer-links a{max-width:100%;white-space:normal}
 }
+
+
+/* Homepage editorial rhythm: remove excessive vertical travel while preserving
+   readable sections, map controls, founder letter and responsive layouts. */
+@media screen and (min-width: 761px){
+  .hero{min-height:min(690px,calc(100svh - 86px))!important}
+  .hero .hero-grid{min-height:min(690px,calc(100svh - 86px))!important;padding:75px 0 88px!important}
+  .sirai-home-guide{padding-block:44px!important}
+  .sirai-explorer-home{padding-block:52px!important}
+  main > .section:not(.sirai-founder-editorial):not(.sirai-focus-section):not(.sirai-2028-section){padding-block:66px!important}
+  .sirai-focus-section{padding-block:65px!important}
+  .sirai-founder-editorial{padding-block:72px!important}
+  .sirai-founder-intro{margin-bottom:43px!important}
+  .sirai-founder-editorial .sirai-founder-portrait{height:clamp(435px,40vw,545px)!important}
+  .sirai-2028-section{padding-block:66px!important}
+  .sirai-2028-main{padding-block:29px 12px!important}
+  .sirai-2028-step{padding:25px!important}
+  .sirai-2028-step-top{margin-bottom:12px!important}
+}
+@media screen and (max-width: 760px){
+  .hero,.hero .hero-grid{min-height:525px!important}
+  .hero .hero-grid{padding:76px 0 82px!important}
+  .sirai-home-guide{padding-block:34px!important}
+  .sirai-explorer-home{padding-block:40px!important}
+  main > .section:not(.sirai-founder-editorial):not(.sirai-focus-section):not(.sirai-2028-section){padding-block:48px!important}
+  .sirai-focus-section{padding-block:50px!important}
+  .sirai-founder-editorial{padding-block:54px!important}
+  .sirai-founder-intro{margin-bottom:32px!important}
+  .sirai-2028-section{padding-block:48px!important}
+  .sirai-2028-main{padding-top:27px!important;gap:23px!important}
+}
