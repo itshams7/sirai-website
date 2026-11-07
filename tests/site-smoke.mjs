@@ -72,7 +72,7 @@ const styledPages=[
  'practical-guide.html','footage-credits.html'
 ];
 const theme=read('assets/theme-obsidian-ice-burgundy.css');
-assert.equal((theme.match(/\\{/g)||[]).length,(theme.match(/\\}/g)||[]).length,'Unbalanced premium CSS');
+assert.equal((theme.match(/\{/g)||[]).length,(theme.match(/\}/g)||[]).length,'Unbalanced premium CSS');
 for(const file of styledPages){
  const markup=read(file);
  expect(markup.includes('assets/theme-obsidian-ice-burgundy.css'),'Missing premium theme: '+file);
