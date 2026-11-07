@@ -159,3 +159,182 @@ body .site-footer a:hover,body .sirai-footer-refined a:hover{color:#E5AFC3!impor
   url("https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=1000&q=80")!important;
  }
 }
+
+
+/* PREMIUM EDITORIAL FINISH | Obsidian / Ice / muted burgundy
+   Clear hierarchy: large obsidian moments, cool-grey editorial surfaces,
+   burgundy used for interaction and precise small details. */
+:root{
+ --premium-ink:#111116;--premium-deep:#18171e;
+ --premium-ice:#eef1f5;--premium-silver:#e4e8ef;--premium-pearl:#f8f9fb;
+ --premium-edge:#d3d8e0;--premium-wine:#9d6077;--premium-wine-dark:#754057;
+ --premium-shadow:0 22px 70px rgba(16,16,25,.075);
+ --cream:#eef1f5;--paper:#f8f9fb;--mint:#e5e8ef;--line:#d3d8e0;
+ --sirai-beige:#eef1f5;--sirai-ivory:#f8f9fb;
+}
+html{background:var(--premium-ice)!important}
+body{
+ background:var(--premium-ice)!important;
+ color:var(--premium-ink)!important;
+ -webkit-font-smoothing:antialiased;
+ text-rendering:optimizeLegibility;
+}
+body .site-header{
+ background:rgba(248,249,251,.96)!important;
+ border-bottom-color:rgba(36,32,42,.10)!important;
+ box-shadow:0 1px 0 rgba(255,255,255,.75)!important;
+}
+body .site-header .brand-symbol{
+ background:var(--premium-ink)!important;
+ box-shadow:0 2px 12px rgba(17,17,22,.10)!important;
+}
+body .site-header .nav a[aria-current="page"]{color:var(--premium-wine-dark)!important}
+body .site-header .nav a:hover{
+ border-color:#bc8b9d!important;background:#f3e8ed!important;
+ color:var(--premium-wine-dark)!important;
+}
+body .site-header .lang-select{background:var(--premium-pearl)!important}
+body .hero{
+ background:radial-gradient(ellipse at 72% 20%,#38242f 0%,#181820 46%,#101016 78%)!important;
+}
+body .hero h1 em{color:#e5b3c4!important}
+body .hero .btn-light{background:#eef1f5!important;border-color:#eef1f5!important;color:#19181c!important}
+body .hero .btn-ghost{border-color:rgba(232,196,208,.65)!important}
+body .sirai-quick-tools{
+ background:var(--premium-ice)!important;
+ border-top:1px solid rgba(255,255,255,.7)!important;
+ border-bottom:1px solid var(--premium-edge)!important;
+}
+body .sirai-quick-tools a{
+ background:#f9fafb!important;border-color:#d2d5de!important;
+ border-radius:14px!important;box-shadow:0 5px 16px rgba(15,15,25,.035)!important;
+}
+body .sirai-quick-tools a:hover{
+ background:#f3e9ed!important;border-color:#b88aa0!important;
+ box-shadow:0 12px 28px rgba(60,30,46,.09)!important;
+}
+body .sirai-quick-label{color:var(--premium-wine-dark)!important}
+/* Editorial section rhythm: strong clean contrast rather than a grey wall. */
+body main>.sirai-statistics{
+ background:linear-gradient(180deg,#f3f5f8 0%,#e9edf2 100%)!important;
+}
+body main>#projects{
+ background:var(--premium-pearl)!important;
+ border-block:1px solid #e2e4ea!important;
+}
+body .sirai-hub .sirai-hub-content{
+ background:transparent!important;
+}
+body .sirai-hub .sirai-hub-content>.container{background:transparent}
+body .section.light-section,body .sirai-about-priorities{
+ background:#e7ebf0!important;
+}
+body .sirai-2028-section{
+ background:#e3e8ee!important;
+}
+body .sirai-development-alignment{
+ background:linear-gradient(140deg,#202029 0%,#15151b 70%,#34242d 100%)!important;
+ border-top:1px solid #39313b!important;
+ border-bottom:1px solid #39313b!important;
+ color:#f5f4f7!important;
+}
+body .sirai-development-alignment .sirai-alignment-kicker{color:#e5afc2!important}
+body .sirai-development-alignment .sirai-alignment-intro h2{color:#f8f8fa!important}
+body .sirai-development-alignment .sirai-alignment-intro p{color:#d6d6df!important}
+body .sirai-development-alignment .sirai-alignment-item{
+ background:#f7f8fa!important;border:1px solid rgba(255,255,255,.40)!important;
+ box-shadow:0 18px 38px rgba(0,0,0,.15)!important;
+}
+body .sirai-development-alignment .sirai-alignment-tag{color:#8f506b!important}
+body .sirai-development-alignment .sirai-alignment-item h3{color:#25202b!important}
+body .sirai-development-alignment .sirai-alignment-item p{color:#50515e!important}
+body .sirai-development-alignment .sirai-alignment-disclaimer{color:#d2c9d0!important}
+body .sirai-development-alignment .sirai-alignment-item a{color:#784056!important}
+body .sirai-development-alignment .sirai-alignment-item a:hover{color:#5b2c41!important}
+body .sirai-hub :is(.sirai-hub-card,.sirai-hub-feature,.sirai-hub-event,.sirai-idea-section),
+body :is(.panel,.pillar,.phase,.sirai-objective-card,.sirai-guide-card){
+ border-color:#d7dae1!important;
+ background:#f9fafb!important;
+ box-shadow:0 8px 26px rgba(20,20,28,.035)!important;
+}
+body .sirai-hub .sirai-hub-card{
+ background:transparent!important;
+ box-shadow:none!important;
+ border-radius:0!important;
+}
+body :is(.sirai-hub-card,.sirai-objective-card,.sirai-alignment-item) h2,
+body :is(.sirai-hub-card,.sirai-objective-card,.sirai-alignment-item) h3{letter-spacing:-.025em}
+body :is(.sirai-hub-index,.sirai-hub-kicker,.sirai-objectives-eyebrow,.section-kicker){
+ letter-spacing:.13em;
+}
+body .sirai-hub :is(.sirai-hub-card,.sirai-hub-feature) a:hover,
+body .sirai-alignment-item a:hover{color:#6d304b!important}
+body :is(.btn-green,.sirai-demo-button,.sf-inline-link){
+ background:var(--premium-wine-dark)!important;
+ border-color:var(--premium-wine-dark)!important;
+ color:white!important;
+ box-shadow:0 8px 20px rgba(98,47,70,.12)!important;
+}
+body :is(.btn-green,.sirai-demo-button,.sf-inline-link):hover{
+ background:#603046!important;border-color:#603046!important;
+ box-shadow:0 12px 28px rgba(98,47,70,.17)!important;
+}
+body .sirai-2028-hero{
+ background:
+ radial-gradient(circle at 88% 18%,rgba(194,127,157,.16),transparent 37%),
+ linear-gradient(135deg,#111116 0%,#24202b 64%,#432835 100%)!important;
+ border-color:#343039!important;
+}
+body .sirai-2028-year,body .sirai-2028-year>span:first-child{color:#f7f4f8!important}
+body .sirai-2028-year-mark,body .sirai-2028-headerline,body .sirai-2028-micro{color:#e8b6c8!important}
+body .sirai-2028-heading h2,body .sirai-2028-heading p{color:#f4f4f7!important}
+/* Personal letter reads like a special inset sheet in an obsidian gallery. */
+body .sirai-founder-editorial{
+ background:radial-gradient(ellipse at 10% 14%,#392532 0%,#19171e 45%,#111116 100%)!important;
+}
+body .sirai-founder-editorial .sirai-founder-letter{
+ background:#f5f5f8!important;
+ border-color:#e1d8df!important;
+ box-shadow:0 30px 65px rgba(0,0,0,.22)!important;
+}
+body .sirai-founder-editorial .sirai-founder-quote{background:#3b2533!important}
+body .sirai-founder-editorial .sirai-founder-intro>p{color:#ded6dd!important}
+body .sirai-founder-editorial .sirai-letter-body p{color:#4e4a54!important}
+/* Dark callouts and bottom interaction bridge. */
+body .sf-inline-invite{
+ background:#1b1b23!important;color:#f3f3f7!important;
+ border-top:1px solid #353139!important;
+}
+body .sf-inline-invite strong{color:#f7f6f8!important}
+body .sf-inline-invite p{color:#c8c8d2!important}
+body .sf-inline-invite .sf-inline-link{
+ background:#b7758c!important;border-color:#b7758c!important;color:#141116!important;
+}
+body .sf-inline-invite .sf-inline-link:hover{background:#e0b3c4!important;color:#141116!important}
+body .site-footer{border-top:1px solid #333039!important}
+body .site-footer .footer-bottom{color:#adb0bc!important}
+body .site-footer a{transition:color .18s ease}
+/* Form inputs, tool panels, and explainers stay legible. */
+body :is(input:not([type="checkbox"]),textarea,select){
+ accent-color:var(--premium-wine-dark);
+}
+body :is(input:not([type="checkbox"]),textarea,select):focus-visible{
+ outline:2px solid #9d6077!important;
+ outline-offset:2px!important;
+}
+body .sirai-hub .sirai-hub-status{
+ border-color:rgba(230,181,201,.48)!important;
+ background:rgba(17,17,22,.50)!important;
+}
+body .sirai-hub .sirai-hub-hero .sirai-hero-photo-note{color:#d9d4db!important}
+@media(max-width:760px){
+ body .sirai-development-alignment{
+  background:linear-gradient(170deg,#20202a,#17171e 72%,#30212a)!important;
+ }
+ body .sirai-quick-tools a{box-shadow:none!important}
+ body .sirai-hub .sirai-hub-card{box-shadow:none!important}
+ body .sirai-founder-editorial .sirai-founder-letter{box-shadow:0 15px 34px rgba(0,0,0,.15)!important}
+}
+@media(prefers-reduced-motion:reduce){
+ body .site-footer a{transition:none!important}
+}
