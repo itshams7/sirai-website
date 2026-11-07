@@ -61,7 +61,7 @@
    const tariff=number('ce-kwh-price'),lpg=number('ce-lpg-price'),days=number('ce-lpg-days',true),charcoal=number('ce-charcoal');
    const values=[watts,mins,sessions,capacity,tariff,lpg,days,charcoal];
    const invalid=values.some(Number.isNaN);
-   const energy=invalid?null:watts*mins*sessions/60000;
+   const energy=invalid||watts===null||mins===null||sessions===null?null:watts*mins*sessions/60000;
    const period=energy===null?null:energy*30;
    el('ce-kwh-day').textContent=energy===null?localeText('energyUnknown'):format(energy,2)+' kWh';
    el('ce-kwh-month').textContent=period===null?localeText('energyUnknown'):format(period,1)+' kWh';
@@ -70,7 +70,7 @@
    cost('ce-lpg-cost',lpg!==null&&days!==null&&Number.isFinite(lpg/days)?lpg*30/days:null);
    cost('ce-solid-cost',charcoal);
    let level='caution',title='uncertainStatus',detail='uncertainBody';
-   if(invalid){level='no';title='invalid';detail='invalidBody'}
+   if(invalid||energy===null){level='no';title='invalid';detail='invalidBody'}
    else if(supply==='none'){level='no';title='noStatus';detail='noSupply'}
    else if(reliability==='no'){level='no';title='noStatus';detail='noTime'}
    else if(reliability==='uncertain'||reliability==='unknown'){title='uncertainStatus';detail='uncertainBody'}
