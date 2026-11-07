@@ -262,6 +262,8 @@ try{
     const r=img.getBoundingClientRect();return {left:r.left,right:r.right,width:r.width,height:r.height,viewport:innerWidth}
   });
   check(heroImageGeometry.width>=220&&heroImageGeometry.right<=heroImageGeometry.viewport+2,preset.name+': hero photo not visible or overflow '+JSON.stringify(heroImageGeometry));
+  if(preset.name==='desktop')check(heroImageGeometry.width>=500&&heroImageGeometry.height>=560,preset.name+': cooking photo must fill large right hero area '+JSON.stringify(heroImageGeometry));
+  if(preset.name==='small-desktop')check(heroImageGeometry.width>=550&&heroImageGeometry.height>=400,preset.name+': cooking photo must remain large on laptop '+JSON.stringify(heroImageGeometry));
   if(preset.name==='desktop'||preset.name==='small-desktop')check(heroImageGeometry.height>=410,preset.name+': hero photo remains too small '+JSON.stringify(heroImageGeometry));
 
   check(await page.locator('#ce-watts').inputValue()==='1500',preset.name+': illustrative cooker power missing');
