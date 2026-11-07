@@ -258,7 +258,14 @@ try{
   const iconSize=await page.locator('.sirai-hub-icon').first().evaluate(el=>el.getBoundingClientRect().width);
   check(iconSize>=60,preset.name+': resources illustrations remain too small '+iconSize);
   check(await page.locator('.sirai-hub-grid .sirai-hub-action').count()===4,preset.name+': missing tool actions');
-  check(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+3),preset.name+': resource library causes horizontal overflow');
+  const resourceOverflow=await page.evaluate(()=>({
+    scrollWidth:document.documentElement.scrollWidth,viewport:innerWidth,
+    overflowing:[...document.querySelectorAll('body *')].map(el=>{
+      const r=el.getBoundingClientRect();
+      return {tag:el.tagName,classes:typeof el.className==='string'?el.className.slice(0,75):'svg',right:Math.round(r.right),left:Math.round(r.left),width:Math.round(r.width)}
+    }).filter(x=>x.right>innerWidth+3||x.left< -3).slice(0,12)
+  }));
+  check(resourceOverflow.scrollWidth<=resourceOverflow.viewport+3,preset.name+': resource library causes horizontal overflow '+JSON.stringify(resourceOverflow));
   await page.screenshot({path:'test-artifacts/resources-'+preset.name+'.png',fullPage:true,animations:'disabled'});
   // Sudan Explorer: visitors choose from the actual list, not a redundant search box.
   await page.goto(base+'/explorer.html',{waitUntil:'domcontentloaded',timeout:30000});
