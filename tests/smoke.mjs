@@ -43,7 +43,9 @@ for(const source of ['index.html','taqawise.html','resources.html'])assert.ok(re
 const cooking=read('cooking-energy.html');const cookingJs=read('assets/cooking-energy.js');
 assert.ok(cooking.includes('data-sirai-remote-photo="https://www.fao.org/media/images/newsroomlibraries/default-album/02s.jpg?sfvrsn=9eaf9f90_3"'),'Requested Sudan cooking photograph missing');
 assert.ok(cooking.includes('FAO / Mohamed Ahmed')&&cooking.includes('www.fao.org/newsroom/detail/'),'FAO photographer/source credit missing');
-assert.ok(cooking.includes('assets/cooking-energy.css?v=4'),'Large hero photo styling not loaded');
+assert.ok(cooking.includes('assets/cooking-energy.css?v=5'),'Large hero photo styling not loaded');
+assert.ok(cooking.includes('ce-hero-art ce-hero-art-large'),'Expanded cooking media frame missing');
+assert.ok(read('resources.html').includes('<a class="sirai-hub-action" href="cooking-energy.html"><span data-hub="resources.open">Open tool</span> ↗</a>'),'Cooking explorer label must match other tools');
 assert.ok(!cooking.includes('ce-hero-art" aria-hidden="true"'),'Real photo must not be hidden from assistive technologies');
 assert.ok(!cooking.includes('<svg viewBox="0 0 470 290"'),'Illustrative lightning hero remains');
 
