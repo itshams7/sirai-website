@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import assert from 'node:assert/strict';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
-const pages=['index.html','privacy.html','terms.html','explorer.html','about.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html','transparency.html','start-here.html','resources.html','faq.html','updates.html','get-involved.html','practical-guide.html','issues.html'];
+const pages=['index.html','cooking-energy.html','privacy.html','terms.html','explorer.html','about.html','water-toolkit.html','projectstarter.html','taqawise.html','feedback.html','transparency.html','start-here.html','resources.html','faq.html','updates.html','get-involved.html','practical-guide.html','issues.html'];
 for(const page of pages){const html=read(page);assert.match(html,/<main[^>]*id="main"/,'Main landmark missing in '+page);assert.match(html,/assets\/launch-quality\.css/,'Accessibility stylesheet missing in '+page);assert.match(html,/assets\/launch-quality\.js/,'Navigation script missing in '+page);assert.match(html,/property="og:title"/,'Sharing metadata missing in '+page);assert.match(html,/href="transparency\.html"/,'Transparency link missing in '+page);assert.doesNotMatch(html,/My earlier community experience is personal and should not be counted as SIRAI project work/,'Removed copy found in '+page);}
 const sw=read('sw.js');const offline=read('assets/offline-share.js');const version=sw.match(/const VERSION='([^']+)'/)?.[1];assert.ok(version,'Service worker cache version missing');assert.ok(offline.includes(`keys.includes('${version}')`),'Offline status and worker versions differ');for(const asset of [...sw.matchAll(/'([^']+\.(?:html|css|js|webmanifest|svg))'/g)].map(m=>m[1]))assert.ok(fs.existsSync(new URL('../'+asset,import.meta.url)),'Missing cached asset: '+asset);
 assert.ok(read('assets/app.js').includes("strings[locale]['nav.transparency']=value"),'Missing translated navigation label');
@@ -37,6 +37,17 @@ assert.ok(homepage.includes('class="footer-grid sirai-footer-layout"'),'Footer c
 assert.ok(homepage.includes('class="sirai-footer-brand"'),'Readable SIRAI brand paragraph missing');
 assert.equal((homepage.match(/class="sirai-footer-group"/g)||[]).length,3,'Expected three navigation groups in footer');
 assert.ok(homepage.includes('assets/footer-refined.css?v=20261106-1'),'Footer cache bust missing');
+assert.ok(sw.includes("'cooking-energy.html'"),'Cooking explorer not available offline');
+for(const asset of ['assets/cooking-energy.css','assets/cooking-energy.js'])assert.ok(sw.includes("'"+asset+"'"),'Cooking explorer asset not cached: '+asset);
+for(const source of ['index.html','taqawise.html','resources.html'])assert.ok(read(source).includes('href="cooking-energy.html"'),'Cooking explorer link missing from '+source);
+const cooking=read('cooking-energy.html');const cookingJs=read('assets/cooking-energy.js');
+for(const id of ['ce-supply','ce-reliability','ce-capacity','ce-watts','ce-minutes','ce-sessions','ce-kwh-price','ce-lpg-price','ce-lpg-days','ce-charcoal'])assert.ok(cooking.includes('id="'+id+'"'),'Cooking input absent '+id);
+for(const id of ['ce-kwh-day','ce-kwh-month','ce-electric-cost','ce-lpg-cost','ce-solid-cost','ce-status'])assert.ok(cooking.includes('id="'+id+'"'),'Cooking result absent '+id);
+for(const id of ['ce-kwh-price','ce-lpg-price','ce-charcoal'])assert.ok(!new RegExp('id="'+id+'"[^>]*value=').test(cooking),'Cannot prefill unverified local fuel prices: '+id);
+assert.ok(cookingJs.includes("const energy=invalid||watts===null||mins===null||sessions===null?null:watts*mins*sessions/60000"),'Cooking energy model mismatch');
+assert.ok(cooking.includes('https://data.worldbank.org/indicator/EG.ELC.ACCS.ZS'),'Primary electricity access citation missing');
+assert.ok(cooking.includes('https://www.who.int/news-room/fact-sheets/'),'WHO health citation missing');
+
 for(const key of ['footer.group.explore','footer.group.tools','footer.group.information'])assert.ok(languageScript.includes('"'+key+'"'),'Footer heading translation missing: '+key);
 
 for(const pg of ['index.html','about.html']){
