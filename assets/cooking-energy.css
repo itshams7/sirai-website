@@ -147,3 +147,53 @@ html.sirai-low-data .ce-hero-photo{object-fit:contain;padding:18px;box-sizing:bo
   .ce-hero .ce-hero-layout{grid-template-columns:minmax(0,1fr);gap:35px}
   .ce-hero .ce-hero-art{width:100%!important;max-width:850px!important;margin-inline:auto!important}
 }
+
+/* Precise large-hero image layout requested by site owner.
+   Existing figure is no longer constrained by earlier card max-width. */
+.ce-hero .ce-hero-layout{
+  display:grid!important;
+  grid-template-columns:minmax(0,1.07fr) minmax(0,.93fr)!important;
+  gap:clamp(28px,3.2vw,58px)!important;
+  align-items:center!important;
+}
+.ce-hero .ce-hero-art.ce-hero-art-large{
+  display:block!important;
+  width:100%!important;
+  max-width:none!important;
+  height:clamp(560px,39vw,690px)!important;
+  min-height:560px!important;
+  aspect-ratio:auto!important;
+  margin:0!important;
+  padding:0!important;
+  position:relative!important;
+  overflow:hidden!important;
+  border-radius:15px!important;
+  background:#23483f!important;
+}
+.ce-hero .ce-hero-art-large .ce-hero-photo{
+  display:block!important;
+  width:100%!important;
+  height:100%!important;
+  max-width:none!important;
+  max-height:none!important;
+  object-fit:cover!important;
+  object-position:center!important;
+  padding:0!important;
+  box-sizing:border-box!important;
+  filter:none!important;
+}
+@media(max-width:1100px){
+ .ce-hero .ce-hero-layout{grid-template-columns:1fr!important}
+ .ce-hero .ce-hero-art.ce-hero-art-large{
+   width:100%!important;
+   max-width:900px!important;
+   height:auto!important;
+   min-height:0!important;
+   aspect-ratio:1.3!important;
+   margin:0 auto!important;
+ }
+}
+@media(max-width:620px){
+ .ce-hero .ce-hero-art.ce-hero-art-large{aspect-ratio:1.14!important}
+ .ce-hero .ce-hero-art-large .ce-hero-photo{object-position:53% center!important}
+}
