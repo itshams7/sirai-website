@@ -1,3 +1,18 @@
+## Priority checks before public launch (7 November 2026)
+
+The repository now includes automated static checks in `tests/site-smoke.mjs`, run by `.github/workflows/sirai-smoke.yml`. They cover JavaScript syntax, the five main navigation pages, resource destinations, translation/disclosure markers, the offline cache manifest, and presence of the existing Formspree endpoint.
+
+**These checks do not establish real-device reliability, field validation, or email delivery.** Run the following acceptance tests manually on actual browsers before treating the site as launch-ready:
+
+- **Mobile and RTL:** iPhone Safari and low-end Android Chrome; all four languages, especially Arabic. Check header, state selection, calculator fields, exports, feedback form and orientation changes for overflow.
+- **Offline:** Load all three tools online, then use airplane mode to navigate, calculate and export. Test both the root URL and returning online for a cache update. New illustrative hero photographs may require connectivity.
+- **Calculators:** Verify independent benchmark values, invalid-input handling, clear warnings and downloadable output on at least two devices.
+- **Idea form and feedback:** Use one clearly labelled consented test message through each form. In Formspree, verify the form `mnpplgae` is active, the submission appears in the dashboard, and a notification is actually received at the intended address (`shaamsuni@gmail.com`). Do not assume GitHub Pages sends mail itself.
+- **User feedback:** With consent, ask Sudanese Arabic-first users to attempt a hypothetical planning task; record confusion, loading failures and changes made without collecting operational or identifying data.
+- **Sources:** Review all public statistics and photographs, publication dates, licences and disclaimers. The UN SDG and AU Agenda 2063 references indicate thematic relevance, not formal partnership.
+
+---
+
 # SIRAI | Pre-launch testing checklist
 
 **Status:** Software implementation in progress. These are educational planning aids and have **not** been field-tested or validated under active conflict conditions. The GitHub Pages URL is publicly reachable for testing; purchasing a domain does not itself establish reliability or community impact.
@@ -5,7 +20,7 @@
 ## 1. Offline functionality (real-device checks required)
 
 1. On an HTTPS connection, visit the homepage and each of WaterShare, ProjectStarter and TaqaWise. Stay online until files finish loading.
-2. Confirm the browser has a controlling service worker and that `sirai-offline-v4-20261104` exists in Cache Storage (where browser developer tools are available).
+2. Confirm the browser has a controlling service worker and the current `sirai-offline-v46-lean-home-sdg-20261107` cache is installed (where browser developer tools are available).
 3. Switch the phone into airplane mode. Open each previously loaded page, change inputs, calculate results, move between steps and download/export local files.
 4. Verify that all four language options function offline after the initial precache. Photographs from Unsplash may be unavailable. Feedback submissions require connectivity.
 5. Verify the homepage root URL (ending in /sirai-website/) works in airplane mode, not just /index.html.\n6. On Android Chrome, test browser install / Add to Home Screen if offered. On iPhone Safari, test Share > Add to Home Screen. Do not claim automatic installation until observed.
