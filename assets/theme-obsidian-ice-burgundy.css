@@ -890,3 +890,38 @@ body.sirai-credits-page .credits-footer{
  background:#17171e!important;color:#c7c4d0!important;
  border-top:1px solid #504455!important;
 }
+
+
+/* Homepage resource cards: remove the last visible green illustration backplates. */
+body main #projects .ws-resource-visual,
+body main #projects .feature-visual{
+ background:#211f29!important;
+ border:1px solid #514251!important;
+ box-shadow:0 20px 48px rgba(19,16,26,.10)!important;
+}
+body main #projects .ps-resource-home,
+body main #projects .tq-resource-home{
+ background:#f1f3f7!important;border-color:#cbd0da!important;
+ box-shadow:0 14px 38px rgba(18,17,25,.065)!important;
+}
+body main #projects .ps-resource-home-mark{
+ background:linear-gradient(135deg,#e8dfe9,#d8d5e1)!important;
+ border-inline-end-color:#c6bdce!important;color:#734b65!important;
+}
+body main #projects .tq-resource-home-icon{
+ background:linear-gradient(135deg,#e1dfe9,#c9c6d6)!important;
+ border-inline-end-color:#bcb9cb!important;color:#6c506b!important;
+}
+body main #projects .ps-resource-home-mark::before,
+body main #projects .tq-resource-home-icon::before{
+ border-color:#a98ca0!important;
+ box-shadow:0 0 0 33px rgba(157,96,119,.065),0 0 0 70px rgba(157,96,119,.04)!important;
+}
+body main #projects :is(.ps-resource-home-copy,.tq-resource-home-copy) h3{
+ color:#22202b!important;
+}
+body main #projects :is(.ps-resource-home-copy,.tq-resource-home-copy) p{
+ color:#53515d!important;
+}
+body main #projects .feature-copy h2{color:#24212a!important}
+body main #projects .feature-copy p{color:#58545f!important}
