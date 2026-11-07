@@ -20,7 +20,7 @@ The repository now includes automated static checks in `tests/site-smoke.mjs`, r
 ## 1. Offline functionality (real-device checks required)
 
 1. On an HTTPS connection, visit the homepage and each of WaterShare, ProjectStarter and TaqaWise. Stay online until files finish loading.
-2. Confirm the browser has a controlling service worker and the current `sirai-offline-v47-audit-20261107` cache is installed (where browser developer tools are available).
+2. Confirm the browser has a controlling service worker and the current `sirai-offline-v48-form-20261107` cache is installed (where browser developer tools are available).
 3. Switch the phone into airplane mode. Open each previously loaded page, change inputs, calculate results, move between steps and download/export local files.
 4. Verify that all four language options function offline after the initial precache. Photographs from Unsplash may be unavailable. Feedback submissions require connectivity.
 5. Verify the homepage root URL (ending in /sirai-website/) works in airplane mode, not just /index.html.\n6. On Android Chrome, test browser install / Add to Home Screen if offered. On iPhone Safari, test Share > Add to Home Screen. Do not claim automatic installation until observed.
