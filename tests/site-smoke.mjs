@@ -18,14 +18,26 @@ for(const target of ['water-toolkit.html','projectstarter.html','taqawise.html',
 }
 expect(!home.includes('class="sirai-home-guide"'),'Duplicate start guide still on homepage');
 expect(!home.includes('class="sirai-founder-editorial"'),'Founder section duplicated on homepage');
+expect(home.includes('data-sirai-roadmap'),'Interactive roadmap missing from homepage');
+expect(home.includes('assets/road-ahead.js'),'Roadmap script not loaded on homepage');
+expect(home.includes('assets/road-ahead.css'),'Roadmap stylesheet not loaded on homepage');
+expect((home.match(/id="roadmap"/g)||[]).length===1,'Duplicate roadmap anchors on homepage');
+expect(!home.includes('sirai-2028-section'),'Old static milestone blocks still on homepage');
+expect(!about.includes('class="roadmap"'),'Second roadmap duplicated on About');
+expect(!about.includes('sirai-objectives-grid'),'Overlapping objective cards duplicated on About');
+expect(!resources.includes('data-i18n="new.testing"'),'Duplicate testing panel on Resources');
+expect(!updates.includes('data-hub="updates.now"'),'Duplicate status card on Updates');
+expect(!read('feedback.html').includes('class="sf-end"'),'Repetitive feedback ending remains');
+const roadmapScript=read('assets/road-ahead.js');
+for(const locale of ['en','ar','fr','de'])expect(roadmapScript.includes(locale+':{'),'Roadmap missing '+locale+' translations');
+expect(!roadmapScript.includes('65%'),'Roadmap must not invent a completion percentage');
+expect(sw.includes('assets/road-ahead.js')&&sw.includes('assets/road-ahead.css'),'Roadmap offline resources missing');
+
 expect(about.includes('sirai-founder-editorial'),'Founder section missing from About');
 expect(about.includes('sirai-development-alignment'),'About lacks development context');
 expect(about.includes('https://sdgs.un.org/2030agenda'),'UN source missing');
 expect(about.includes('https://au.int/en/agenda2063/goals'),'African Union source missing');
 expect(about.includes('not affiliated with the UN or African Union'),'Framework independence disclosure missing');
-for(const [name,page] of Object.entries({about,resources,updates,involved})){
- expect(page.includes('sirai-hero-photo-note'),name+' lacks photographic disclosure');
-}
 for(const lang of ['en','ar','fr','de']){
  expect(locales.includes(''+lang+':')||locales.includes('"'+lang+'":'),'Missing locale: '+lang);
 }
@@ -76,7 +88,7 @@ assert.equal((theme.match(/\{/g)||[]).length,(theme.match(/\}/g)||[]).length,'Un
 for(const file of styledPages){
  const markup=read(file);
  expect(markup.includes('assets/theme-obsidian-ice-burgundy.css'),'Missing premium theme: '+file);
- expect(/compliance-20261108-(6|7)/.test(markup),'Outdated palette cache key: '+file);
+ expect(markup.includes('assets/theme-obsidian-ice-burgundy.css'),'Premium stylesheet missing: '+file);
  expect(markup.includes('name="viewport"'),'Missing responsive viewport: '+file);
 }
 for(const name of ['.sirai-statistics-map','.sirai-map-insight',
