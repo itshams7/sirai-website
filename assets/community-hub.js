@@ -7,5 +7,11 @@ for(const [language,age] of Object.entries({
  fr:"Je confirme avoir au moins 18 ans et ne pas transmettre de données personnelles concernant des enfants.",
  de:"Ich bestätige, dass ich mindestens 18 Jahre alt bin und keine personenbezogenen Daten über Kinder übermittle."
 })){locales[language]["idea.ageConsent"]=age}
+for(const [language,label] of Object.entries({
+ en:"Privacy, access and deletion requests",
+ ar:"الخصوصية وطلبات الاطلاع والحذف",
+ fr:"Confidentialité, accès et suppression des données",
+ de:"Datenschutz, Auskunft und Löschungsanfragen"
+})){locales[language]["idea.privacyRequestLink"]=label}
 const ideaPlaceholders={en:["What needs to change, and what would you suggest?","Only if you'd like a possible reply"],ar:["ما الذي يحتاج إلى تغيير، وماذا تقترح؟","فقط إذا رغبت في احتمال تلقي رد"],fr:["Que faudrait-il changer et que proposez-vous ?","Uniquement si vous souhaitez une éventuelle réponse"],de:["Was sollte sich ändern und was schlagen Sie vor?","Nur falls Sie eventuell eine Antwort wünschen"]};
 const english=Object.fromEntries([...document.querySelectorAll('[data-hub]')].map(el=>[el.dataset.hub,el.textContent]));const render=()=>{const language=document.documentElement.lang;const strings=locales[language]||english;document.querySelectorAll('[data-hub]').forEach(el=>{const v=strings[el.dataset.hub];if(typeof v==='string')el.textContent=v;});const placeholders=ideaPlaceholders[language]||ideaPlaceholders.en;document.querySelectorAll('[data-idea-placeholder]').forEach(el=>{el.placeholder=el.dataset.ideaPlaceholder==='message'?placeholders[0]:placeholders[1]});};document.querySelectorAll('[data-lang-select]').forEach(el=>el.addEventListener('change',()=>setTimeout(render,0)));render();})();
