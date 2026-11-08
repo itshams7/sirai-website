@@ -1,0 +1,39 @@
+/* SIRAI / Road Ahead: accessible dark editorial roadmap */
+.sirai-road-ahead{background:#111116;color:#eef0f5;padding:clamp(64px,8vw,116px) 0;position:relative;overflow:hidden}
+.sirai-road-ahead::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse at 90% 0%,rgba(119,64,88,.29),transparent 48%),radial-gradient(ellipse at 4% 94%,rgba(118,69,97,.13),transparent 48%)}
+.sirai-road-ahead .sirai-road-inner{position:relative;max-width:1100px;margin:auto}
+.sirai-road-ahead .sirai-road-intro{max-width:750px;margin-bottom:35px}
+.sirai-road-ahead .sirai-road-kicker{display:block;color:#dca8bc;font-size:11px;font-weight:800;letter-spacing:.17em;text-transform:uppercase;margin-bottom:17px}
+.sirai-road-ahead h2{font-family:"Instrument Serif",Georgia,serif;font-weight:400;font-size:clamp(43px,5.2vw,75px);line-height:1.07;letter-spacing:-.025em;color:#f6f2f7;margin:0 0 19px}
+.sirai-road-ahead .sirai-road-lead{font-size:clamp(15px,1.6vw,18px);line-height:1.75;color:#d6cbd5;margin:0;max-width:640px}
+.sirai-road-ahead .sirai-road-module{background:linear-gradient(135deg,#241c27,#1b1821);border:1px solid #54404e;border-radius:22px;padding:clamp(22px,3.6vw,43px);box-shadow:0 30px 80px rgba(0,0,0,.18)}
+.sirai-road-ahead .sirai-road-module-top{display:flex;align-items:center;justify-content:space-between;gap:15px;margin-bottom:23px}
+.sirai-road-ahead .sirai-road-module-top strong{font-size:12px;letter-spacing:.14em;font-weight:700;color:#d3a2b6}
+.sirai-road-ahead .sirai-road-module-top span{font-size:12px;color:#bcb1c0;font-variant-numeric:tabular-nums}
+.sirai-road-ahead .sirai-road-track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:0 0 25px}
+.sirai-road-ahead .sirai-road-track button{display:flex;flex-direction:column;align-items:stretch;gap:12px;background:none;border:0;border-radius:6px;padding:8px 0;color:#bfb2bd;cursor:pointer;min-width:0;text-align:start}
+.sirai-road-ahead .sirai-road-track button .sirai-road-line{height:6px;background:#433742;border-radius:8px;transition:background .25s ease}
+.sirai-road-ahead .sirai-road-track button[aria-current="step"] .sirai-road-line{background:#d6a0b7;box-shadow:0 0 17px rgba(214,160,183,.26)}
+.sirai-road-ahead .sirai-road-track button[data-roadmap-step="0"] .sirai-road-line{background:#775068}
+.sirai-road-ahead .sirai-road-track button[data-roadmap-step="0"][aria-current="step"] .sirai-road-line{background:#d6a0b7}
+.sirai-road-ahead .sirai-road-track button .sirai-road-number{font-size:11px;letter-spacing:.13em;font-weight:800;color:#b7a3b4}
+.sirai-road-ahead .sirai-road-track button[aria-current="step"] .sirai-road-number{color:#f4c5d6}
+.sirai-road-ahead .sirai-road-track button:focus-visible,.sirai-road-ahead .sirai-road-control:focus-visible,.sirai-road-ahead .sirai-road-updates:focus-visible{outline:3px solid #f0b8ce;outline-offset:4px}
+.sirai-road-ahead .sirai-road-content{min-height:205px}
+.sirai-road-ahead .sirai-road-status{display:inline-flex;border:1px solid #615061;padding:7px 12px;border-radius:30px;color:#dbc7d7;font-size:11px;font-weight:800;letter-spacing:.08em}
+.sirai-road-ahead .sirai-road-status[data-status="now"]{border-color:#c589a5;background:rgba(173,102,133,.2);color:#f4d1de}
+.sirai-road-ahead .sirai-road-status[data-status="completed"]{border-color:#836779;color:#dbbac9}
+.sirai-road-ahead .sirai-road-phase{margin:23px 0 7px;font-size:11px;font-weight:800;letter-spacing:.17em;color:#c28fa7}
+.sirai-road-ahead h3{font-family:"Instrument Serif",Georgia,serif;font-size:clamp(29px,3.4vw,43px);font-weight:400;line-height:1.13;color:#f9f4f8;margin:0 0 14px}
+.sirai-road-ahead .sirai-road-description{max-width:700px;color:#d9cdd9;font-size:15px;line-height:1.75;margin:0}
+.sirai-road-ahead .sirai-road-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:18px;border-top:1px solid #463645;margin-top:24px;padding-top:21px}
+.sirai-road-ahead .sirai-road-controls{display:flex;align-items:center;gap:10px}
+.sirai-road-ahead .sirai-road-control{background:#362b37;border:1px solid #796075;border-radius:10px;color:#f5eaf1;font-size:13px;min-height:42px;padding:10px 16px;cursor:pointer}
+.sirai-road-ahead .sirai-road-control:hover:not(:disabled){background:#584154}
+.sirai-road-ahead .sirai-road-control:disabled{opacity:.35;cursor:not-allowed}
+.sirai-road-ahead .sirai-road-footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:15px;margin-top:21px}
+.sirai-road-ahead .sirai-road-note{font-size:12px;color:#baacb8;line-height:1.6;max-width:530px}
+.sirai-road-ahead .sirai-road-updates{font-size:13px;color:#e6b5c8!important;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:3px}
+.sirai-road-ahead .sirai-road-updates:hover{color:#ffe0ed!important}
+@media(max-width:600px){.sirai-road-ahead{padding:65px 0}.sirai-road-ahead .sirai-road-module{border-radius:17px}.sirai-road-ahead .sirai-road-content{min-height:260px}.sirai-road-ahead .sirai-road-bottom{align-items:stretch}.sirai-road-ahead .sirai-road-controls{width:100%;justify-content:space-between}.sirai-road-ahead .sirai-road-control{min-width:43%}.sirai-road-ahead .sirai-road-module-top strong{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.sirai-road-ahead .sirai-road-track button .sirai-road-line{transition:none}}
