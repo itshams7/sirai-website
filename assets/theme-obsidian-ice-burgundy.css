@@ -461,12 +461,8 @@ body main.sirai-page-about > .sirai-about-priorities .pillar{
  box-shadow:0 14px 30px rgba(20,16,28,.055)!important;
 }
 body main.sirai-page-about > .sirai-about-priorities :is(h2,h3){color:#191821!important}
-body main.sirai-page-about > section.section:last-child{
- background:linear-gradient(180deg,#e7ebf1,#f2f4f7)!important;
-}
-body main.sirai-page-about > section.section:last-child .phase{
- background:#fafbfc!important;border:1px solid #d1d5dd!important;
-}
+/* Removed position-based last-child styling. The final section is
+   now the founder gallery and must never inherit a light roadmap canvas. */
 /* Resources: obsidian page canvas with gallery-like light tool rows. */
 body main.sirai-page-resources{
  background:linear-gradient(155deg,#18171e 0%,#28212c 52%,#191820 100%)!important;
@@ -1055,3 +1051,20 @@ body .sf-hero .sf-photo figcaption{
  body .sf-hero .sf-photo figcaption{inset:auto 15px 14px}
 }
 @media(prefers-reduced-motion:reduce){body .sf-hero .sf-photo img{transition:none}}
+
+/* Founder gallery: explicit section identity survives additions and removals. */
+body main.sirai-page-about > section.sirai-founder-editorial#founder{
+ background:#111116!important;
+ background-image:radial-gradient(ellipse at 10% 14%,#392532 0%,#19171e 45%,#111116 100%)!important;
+ background-color:#111116!important;
+ color:#f6f1f6!important;
+}
+body main.sirai-page-about > section.sirai-founder-editorial#founder .sirai-founder-intro h2{
+ color:#fcf9fb!important;
+}
+body main.sirai-page-about > section.sirai-founder-editorial#founder .sirai-founder-intro > p{
+ color:#ded6dd!important;
+}
+body main.sirai-page-about > section.sirai-founder-editorial#founder .sirai-founder-intro .section-kicker{
+ color:#d59db1!important;
+}
