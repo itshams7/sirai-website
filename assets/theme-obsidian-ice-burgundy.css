@@ -925,3 +925,53 @@ body main #projects :is(.ps-resource-home-copy,.tq-resource-home-copy) p{
 }
 body main #projects .feature-copy h2{color:#24212a!important}
 body main #projects .feature-copy p{color:#58545f!important}
+
+
+/* Compliance and editorial pages stay within the premium palette. */
+body main.sirai-policy{
+ background:#e9edf2!important;color:#22212b!important;
+}
+body main.sirai-policy .sirai-policy-head{
+ background:linear-gradient(128deg,#17171f 0%,#30232f 82%,#523343 100%)!important;
+ border-bottom:1px solid #6b4e61!important;
+}
+body main.sirai-policy .policy-kicker{color:#e0b2c4!important}
+body main.sirai-policy .sirai-policy-head h1{color:#f9f6fa!important}
+body main.sirai-policy .sirai-policy-head p{color:#dcd7e0!important}
+body main.sirai-policy .policy-updated{color:#72566a!important}
+body main.sirai-policy .sirai-policy-body section{border-color:#cdd1dc!important}
+body main.sirai-policy .sirai-policy-body h2{color:#28212c!important}
+body main.sirai-policy .sirai-policy-body p{color:#4f4c5a!important}
+body main.sirai-policy .sirai-policy-body a{color:#783d56!important}
+body main.sirai-policy .sirai-policy-body a:hover{color:#542b42!important}
+body main.sirai-policy .policy-links{
+ border-top:1px solid #d0cbd6!important;
+ padding-top:24px!important;
+}
+body main.sirai-policy .policy-links a{
+ display:inline-flex;align-items:center;min-height:43px;
+ background:#f7f8fa;border:1px solid #d2ced8;
+ border-radius:10px;padding:11px 15px;
+ text-decoration:none!important;
+ transition:background-color .15s,border-color .15s;
+}
+body main.sirai-policy .policy-links a:hover{background:#f2e7ed;border-color:#b17b94}
+body.sirai-credits-page .sirai-media-list{
+ display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+ column-gap:18px;row-gap:8px;
+ list-style:none;padding:0;margin:15px 0 22px;
+}
+body.sirai-credits-page .sirai-media-list li{
+ padding:10px 12px;background:#f7f8fa;
+ border:1px solid #d0d4de;border-radius:9px;
+ font-size:13px;overflow-wrap:anywhere;
+}
+body.sirai-credits-page .sirai-media-source-id{
+ display:block;font-size:10px;color:#73717c;margin-top:3px;
+}
+@media(max-width:640px){
+ body.sirai-credits-page .sirai-media-list{grid-template-columns:1fr}
+ body main.sirai-policy .sirai-policy-body{padding-bottom:60px}
+}
+.sirai-age-consent{margin-top:8px!important}
+.sirai-age-consent input{accent-color:#824660}
