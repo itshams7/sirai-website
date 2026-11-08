@@ -49,6 +49,8 @@ jobs:
           sleep 2
       - name: Audit desktop and mobile pages
         run: node tests/browser-smoke.mjs
+      - name: Presentation readiness interaction audit
+        run: node tests/presentation-audit.mjs
       - name: Preserve screenshots
         if: always()
         uses: actions/upload-artifact@v4
