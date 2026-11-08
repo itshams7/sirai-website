@@ -37,6 +37,10 @@ Object.assign(en,{heroText:"Tell us what works, what doesn't, and what would mak
 Object.assign(ar,{heroText:'أخبرنا بما ينفع وما يحتاج إلى تحسين، وكيف يمكن لـ SIRAI أن تكون أكثر فائدة. ملاحظاتك تساعدنا على تطوير أدواتنا المجانية.',asideTitle:'ملاحظاتك تساعد على تحسين أدواتنا.',resourcesTitle:'استكشف أدواتنا',resourceLabel:'أي أداة تقيّم؟',chooseResource:'اختر الأداة'});
 Object.assign(fr,{heroText:'Dites-nous ce qui fonctionne, ce qui doit changer et comment SIRAI pourrait devenir plus utile. Vos observations nous aident à améliorer nos outils gratuits.',asideTitle:'Vos retours contribuent à améliorer nos outils.',resourcesTitle:'Découvrez nos outils',resourceLabel:'Quel outil évaluez-vous ?',chooseResource:'Choisissez un outil'});
 Object.assign(de,{heroText:'Sagen Sie uns, was funktioniert und wie SIRAI nützlicher werden kann. Ihre Hinweise helfen uns, unsere kostenlosen Tools zu verbessern.',asideTitle:'Aus Feedback entstehen bessere Tools.',resourcesTitle:'Unsere Tools',resourceLabel:'Welches Tool bewerten Sie?',chooseResource:'Tool wählen'});
+Object.assign(en,{ageConsent:'I confirm that I am 18 or older and will not submit personal information about children.'});
+Object.assign(ar,{ageConsent:'أؤكد أن عمري ١٨ عاماً أو أكثر، ولن أرسل بيانات شخصية عن الأطفال.'});
+Object.assign(fr,{ageConsent:'Je confirme avoir au moins 18 ans et ne pas transmettre de données personnelles concernant des enfants.'});
+Object.assign(de,{ageConsent:'Ich bestätige, dass ich mindestens 18 Jahre alt bin und keine personenbezogenen Daten über Kinder übermittle.'});
 const localeTable={en,ar,fr,de};
 const lang=()=>['en','ar','fr','de'].includes(document.documentElement.lang)?document.documentElement.lang:'en';
 const T=k=>localeTable[lang()][k]??en[k]??k;
