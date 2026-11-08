@@ -41,6 +41,10 @@ Object.assign(en,{ageConsent:'I confirm that I am 18 or older and will not submi
 Object.assign(ar,{ageConsent:'أؤكد أن عمري ١٨ عاماً أو أكثر، ولن أرسل بيانات شخصية عن الأطفال.'});
 Object.assign(fr,{ageConsent:'Je confirme avoir au moins 18 ans et ne pas transmettre de données personnelles concernant des enfants.'});
 Object.assign(de,{ageConsent:'Ich bestätige, dass ich mindestens 18 Jahre alt bin und keine personenbezogenen Daten über Kinder übermittle.'});
+Object.assign(en,{privacyRequestLink:'Privacy, access and deletion requests'});
+Object.assign(ar,{privacyRequestLink:'الخصوصية وطلبات الاطلاع والحذف'});
+Object.assign(fr,{privacyRequestLink:'Confidentialité, accès et suppression des données'});
+Object.assign(de,{privacyRequestLink:'Datenschutz, Auskunft und Löschungsanfragen'});
 const localeTable={en,ar,fr,de};
 const lang=()=>['en','ar','fr','de'].includes(document.documentElement.lang)?document.documentElement.lang:'en';
 const T=k=>localeTable[lang()][k]??en[k]??k;
