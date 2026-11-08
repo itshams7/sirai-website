@@ -66,7 +66,7 @@ document.querySelectorAll('[data-lang-select]').forEach(el=>el.addEventListener(
   await navigator.serviceWorker.register('./sw.js',{scope:'./'});
   await navigator.serviceWorker.ready;
   const keys=await caches.keys();
-  offlineReady=keys.includes('sirai-offline-v39-visual-polish-20261107');
+  offlineReady=keys.some(key=>/^sirai-offline-v\d+-/.test(key));
   failed=!offlineReady;
  }catch(e){failed=true}
  update();
