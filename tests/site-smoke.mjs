@@ -76,7 +76,7 @@ assert.equal((theme.match(/\{/g)||[]).length,(theme.match(/\}/g)||[]).length,'Un
 for(const file of styledPages){
  const markup=read(file);
  expect(markup.includes('assets/theme-obsidian-ice-burgundy.css'),'Missing premium theme: '+file);
- expect(markup.includes('audit-20261108-5'),'Outdated palette cache key: '+file);
+ expect(markup.includes('compliance-20261108-6'),'Outdated palette cache key: '+file);
  expect(markup.includes('name="viewport"'),'Missing responsive viewport: '+file);
 }
 for(const name of ['.sirai-statistics-map','.sirai-map-insight',
