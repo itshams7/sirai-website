@@ -99,6 +99,7 @@
     <textarea id="sirai-idea-message" name="idea" rows="5" minlength="15" maxlength="4000" required placeholder="What needs to change, and what would you suggest?" data-idea-placeholder="message"></textarea>
     <label for="sirai-idea-reply" data-hub="idea.emailLabel">Your email (optional)</label>
     <input id="sirai-idea-reply" name="email" type="email" maxlength="254" autocomplete="email" placeholder="Only if you'd like a possible reply" data-idea-placeholder="email">
+    <label class="sirai-idea-consent sirai-age-consent"><input id="sirai-idea-adult" type="checkbox" name="adult_confirmation" value="18_plus" required><span data-hub="idea.ageConsent">I confirm that I am 18 or older and will not submit personal information about children.</span></label>
     <label class="sirai-idea-consent"><input type="checkbox" name="consent" value="yes" required><span data-hub="idea.consent">I understand this idea is sent to SIRAI through Formspree for review. I will not include personal details about others, precise locations or sensitive information.</span></label>
     <div class="sirai-idea-submit"><button type="submit" data-hub="idea.submit">Send your idea</button><span data-hub="idea.small">No donations, commitments or responses are promised.</span></div>
   </form>
