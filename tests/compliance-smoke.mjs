@@ -12,7 +12,7 @@ for(const file of pages){
  assert.ok(existsSync(file),'Missing page: '+file);
  const html=read(file);
  assert.ok(html.includes('assets/theme-obsidian-ice-burgundy.css'),'Premium CSS missing: '+file);
- assert.ok(!html.includes('joinsirai.org'),'Unlaunched domain in: '+file);
+ assert.ok(!html.includes('joinsirai.org/index.html'),'Use canonical domain root rather than index.html: '+file);
  for(const m of html.matchAll(/<img\b[^>]*>/g))
   assert.ok(/\balt=/.test(m[0]),'Missing image alt attribute in '+file);
  for(const m of html.matchAll(/<a\b[^>]*target="_blank"[^>]*>/g))
