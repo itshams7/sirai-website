@@ -1007,3 +1007,18 @@ body.sirai-credits-page .sirai-media-source-id{
  .sirai-compliance-links{display:grid;grid-template-columns:1fr}
  .sirai-compliance-links a{width:100%}
 }
+
+
+/* Low-data preference also applies to CSS photographs, not only <img>.
+   Avoid requesting these remote hero backgrounds after a stored preference
+   is applied in the document head, and retain a legible local fallback. */
+html.sirai-low-data body .sirai-hub .sirai-about-photo-hero,
+html.sirai-low-data body .sirai-hub .sirai-resources-photo-hero,
+html.sirai-low-data body .sirai-hub .sirai-updates-photo-hero{
+ background-image:linear-gradient(120deg,#191820,#362532)!important;
+ background-color:#191820!important;
+}
+html.sirai-low-data body .sirai-involved-photo-hero::before{
+ background-image:none!important;
+ background-color:#191820!important;
+}
