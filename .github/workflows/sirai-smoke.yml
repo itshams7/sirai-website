@@ -20,10 +20,14 @@ jobs:
           node --check assets/community-hub.js
           node --check assets/idea-form.js
           node --check assets/sirai-math.js
+          node --check assets/policies.js
+          node --check assets/feedback.js
           node --check assets/offline-images.js
           node --check sw.js
       - name: Check pages, references and disclosures
-        run: node tests/site-smoke.mjs
+        run: |
+          node tests/site-smoke.mjs
+          node tests/compliance-smoke.mjs
 
   browser:
     runs-on: ubuntu-latest
