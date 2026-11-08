@@ -1022,3 +1022,36 @@ html.sirai-low-data body .sirai-involved-photo-hero::before{
  background-image:none!important;
  background-color:#191820!important;
 }
+
+
+/* Genuine Lagos, Nigeria photograph on Feedback. Replaces vector illustration. */
+body .sf-hero .sf-photo{
+ position:relative;isolation:isolate;display:block;overflow:hidden;
+ width:100%;height:clamp(300px,24vw,410px);margin:0;
+ border:1px solid rgba(229,201,216,.32);
+ border-radius:150px 150px 20px 20px;
+ background:#302730;
+ box-shadow:0 25px 62px rgba(7,7,12,.24);
+}
+body .sf-hero .sf-photo img{
+ display:block;width:100%;height:100%;object-fit:cover;object-position:center 46%;
+ filter:saturate(.82) contrast(1.035);transition:transform .45s ease;
+}
+body .sf-hero .sf-photo::after{
+ content:"";pointer-events:none;position:absolute;inset:44% 0 0;
+ background:linear-gradient(0deg,rgba(17,15,23,.78),rgba(17,15,23,0));
+ z-index:1;
+}
+body .sf-hero .sf-photo figcaption{
+ position:absolute;inset:auto 20px 19px;z-index:2;
+ color:#f6f0f5;font-size:11px;line-height:1.5;letter-spacing:.025em;
+ text-shadow:0 1px 6px rgba(0,0,0,.5);
+}
+@media(hover:hover) and (prefers-reduced-motion:no-preference){
+ body .sf-hero .sf-photo:hover img{transform:scale(1.035)}
+}
+@media(max-width:760px){
+ body .sf-hero .sf-photo{height:290px;border-radius:100px 100px 17px 17px}
+ body .sf-hero .sf-photo figcaption{inset:auto 15px 14px}
+}
+@media(prefers-reduced-motion:reduce){body .sf-hero .sf-photo img{transition:none}}
