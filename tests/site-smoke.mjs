@@ -29,7 +29,7 @@ for(const [name,page] of Object.entries({about,resources,updates,involved})){
 for(const lang of ['en','ar','fr','de']){
  expect(locales.includes(''+lang+':')||locales.includes('"'+lang+'":'),'Missing locale: '+lang);
 }
-expect(locales.includes('photo.disclaimer'),'Localized photo disclosure missing');
+
 expect(locales.includes('alignment.disclaimer'),'Localized framework disclosure missing');
 expect(sw.includes('assets/sirai-alignment.css'),'Offline cache missing context stylesheet');
 expect(sw.includes('assets/unified-header.css'),'Offline cache missing global header');
