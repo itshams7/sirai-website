@@ -34,6 +34,10 @@ assert.ok(roadmap.includes('aria-current')&&roadmap.includes('ArrowRight')&&road
 assert.ok(roadmapCss.includes('prefers-reduced-motion'),'Reduced motion support missing');
 assert.ok(!home.includes('sirai-2028-section')&&!about.includes('class="roadmap"'),'Redundant roadmap remains');
 assert.ok(!about.includes('sirai-objectives-grid'),'Duplicated priorities remain');
+const founderTheme=read('assets/theme-obsidian-ice-burgundy.css');
+assert.ok(founderTheme.includes('section.sirai-founder-editorial#founder'),'Founder background must be scoped to the founder gallery');
+assert.ok(!founderTheme.includes('section.section:last-child{'),'Avoid final-section light canvas that overrides the founder gallery');
+assert.ok(about.includes('founder-contrast-20261108-1'),'About founder CSS cache revision missing');
 assert.ok(!updates.includes('data-hub="updates.now"'),'Redundant status card remains');
 assert.ok(!resources.includes('data-i18n="new.testing"'),'Repeated limitations panel remains');
 assert.ok(!feedback.includes('class="sf-end"'),'Repeated feedback ending remains');
