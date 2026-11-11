@@ -20,8 +20,6 @@ function render(){
 }
 /* CSS animates the trunk, branches and each of the three confirmed leaves. */
 render();
-const observer=new IntersectionObserver(entries=>{if(entries.some(e=>e.isIntersecting)){animate();observer.disconnect()}},{threshold:.2});
-observer.observe(root);
 document.querySelectorAll('[data-lang-select]').forEach(el=>el.addEventListener('change',()=>setTimeout(render,0)));
 new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 })();
