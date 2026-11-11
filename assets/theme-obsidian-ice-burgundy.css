@@ -1068,3 +1068,47 @@ body main.sirai-page-about > section.sirai-founder-editorial#founder .sirai-foun
 body main.sirai-page-about > section.sirai-founder-editorial#founder .sirai-founder-intro .section-kicker{
  color:#d59db1!important;
 }
+
+
+/* Navigation repair: keep the responsive menu anchored to the viewport, never
+   the centered header grid. This prevents the dropdown from floating over the
+   language selector or being clipped by the page container. */
+@media(max-width:900px){
+ html body .site-header{position:sticky!important;top:0!important;z-index:1000!important;overflow:visible!important}
+ html body .site-header .header-inner{position:static!important}
+ html body .site-header .nav{display:none!important}
+ html body .site-header .nav.open{
+  position:fixed!important;
+  top:74px!important;left:0!important;right:0!important;
+  width:100vw!important;max-width:100vw!important;
+  box-sizing:border-box!important;
+  display:flex!important;flex-direction:column!important;
+  align-items:stretch!important;gap:5px!important;
+  margin:0!important;padding:16px 20px 22px!important;
+  max-height:calc(100dvh - 74px)!important;overflow-y:auto!important;
+  background:#17151c!important;
+  border:0!important;border-top:1px solid #493440!important;
+  border-bottom:1px solid #795366!important;
+  border-radius:0!important;
+  box-shadow:0 22px 40px rgba(0,0,0,.32)!important;
+  z-index:1100!important;
+ }
+ html body .site-header .nav.open a{
+  display:flex!important;align-items:center!important;justify-content:flex-start!important;
+  width:100%!important;min-height:48px!important;box-sizing:border-box!important;
+  padding:13px 16px!important;margin:0!important;
+  color:#f0edf2!important;background:rgba(255,255,255,.035)!important;
+  border:1px solid rgba(238,231,241,.12)!important;border-radius:9px!important;
+  font:500 15px/1.3 Inter,system-ui,sans-serif!important;
+  transform:none!important;
+ }
+ html body .site-header .nav.open a[aria-current="page"]{
+  color:#f4cbd9!important;background:rgba(183,117,140,.18)!important;
+  border-color:#b7758c!important;
+ }
+ html body .site-header .nav.open a::after{content:none!important}
+ html body .site-header .menu-toggle{position:relative!important;z-index:1101!important}
+}
+@media(max-width:540px){
+ html body .site-header .nav.open{top:74px!important;padding:12px 14px 18px!important}
+}
