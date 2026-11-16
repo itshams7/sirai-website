@@ -15,13 +15,29 @@ function applyImages(){
   const remote=img.getAttribute('data-sirai-remote-photo');
   const fallback=img.getAttribute('data-sirai-local-photo');
   if(!remote||!fallback)return;
+  img.removeAttribute('srcset');
   if(low||!navigator.onLine){
    img.src=fallback;
-   img.removeAttribute('srcset');
-  }else if(img.dataset.siraiPhotoFailed!=='1'){
-   img.onerror=()=>{img.dataset.siraiPhotoFailed='1';img.src=fallback;};
-   img.src=remote;
+   return;
   }
+  if(img.dataset.siraiPhotoFailed==='1'||img.dataset.siraiRemoteLoaded==='1')return;
+  if(img.dataset.siraiRemotePending==='1')return;
+  // Keep the local image visible until the remote photograph is fully loaded.
+  img.dataset.siraiRemotePending='1';
+  const preload=new Image();
+  preload.onload=()=>{
+   img.dataset.siraiRemotePending='0';
+   if(!low&&navigator.onLine){
+    img.dataset.siraiRemoteLoaded='1';
+    img.src=remote;
+   }
+  };
+  preload.onerror=()=>{
+   img.dataset.siraiRemotePending='0';
+   img.dataset.siraiPhotoFailed='1';
+   img.src=fallback;
+  };
+  preload.src=remote;
  });
 }
 const footer=document.querySelector('.site-footer .container');
