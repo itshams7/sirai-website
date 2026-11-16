@@ -16,3 +16,16 @@ html[dir=rtl] .ps-step{text-align:right}html[dir=rtl] .ps-proposal-table th{text
 .ps .ps-workspace-section{display:block!important}
 .ps .ps-proposal-header{display:flex!important}
 }
+
+/* Three-step ProjectStarter flow and concise plain-language review. */
+.ps-plain-summary{margin:0 0 20px;padding:20px 22px;border-inline-start:3px solid #b7758c;background:#f6f4f1}
+.ps-plain-summary h4{margin:0 0 8px;color:#243c32;font-size:15px}
+.ps-plain-summary p{margin:0;color:#52645a;font-size:13px;line-height:1.8}
+.ps-quality-item>div{display:grid;gap:5px;min-width:0}
+.ps-quality-item strong{font-size:12px;font-weight:750}
+.ps-quality-item small{font-size:11px;line-height:1.55;opacity:.9}
+.ps-quality-item.missing small{color:#80613c}
+.ps-tab[data-panel="1"],.ps-tab[data-panel="2"]{min-height:0}
+.ps-tab[data-panel="2"]{padding-top:24px}
+@media(max-width:850px){.ps-step{min-width:0;flex:1}.ps-step strong{font-size:12px}.ps-step i{display:none}}
+@media(max-width:600px){.ps-plain-summary{padding:17px}.ps-tab[data-panel="2"]{padding-top:20px}}
