@@ -135,13 +135,14 @@ function report(data){
  host.appendChild(el('p',T('reportLimit'),'tq-report-notes'));
 }
 function refresh(){
- const data=getData();calculateText(data);renderBreakdown(data);if(step===3){if(data.valid)report(data);else $('tq-report').replaceChildren(el('p',T('invalid')))}
+ const data=getData();calculateText(data);renderBreakdown(data);if(step===2){if(data.valid)report(data);else $('tq-report').replaceChildren(el('p',T('invalid')))}
 }
 function go(n){
- step=Math.min(3,Math.max(0,n));
- document.querySelectorAll('[data-panel]').forEach((p,i)=>{p.hidden=i!==step});
+ step=Math.min(2,Math.max(0,n));
+ document.querySelectorAll('[data-panel]').forEach((p,i)=>{p.hidden=step===0?i!==0:step===1?!(i===1||i===2):i!==3});
+ $('.tq-main').classList.toggle('tq-combined-stage',step===1);
  document.querySelectorAll('[data-step]').forEach((s,i)=>{s.classList.toggle('active',i===step);if(i===step)s.setAttribute('aria-current','step');else s.removeAttribute('aria-current')});
- $('tq-prev').disabled=step===0;$('tq-next').hidden=step===3;
+ $('tq-prev').disabled=step===0;$('tq-next').hidden=step===2;
  refresh();showMessage('');
  if(window.matchMedia&&window.matchMedia('(max-width:840px)').matches)$('tq-planner').scrollIntoView({behavior:'smooth',block:'start'});
 }
@@ -199,9 +200,9 @@ $('tq-share').addEventListener('click',()=>{
  window.SIRAI_SHARE?.share(lines.join('\n'));
 });
 const batteryPresets={
- gel12:{battery:'2400',dod:'50',eff:'80',pr:'65'},
- gel24:{battery:'4800',dod:'50',eff:'80',pr:'65'},
- lithium48:{battery:'4800',dod:'80',eff:'85',pr:'70'}
+ gel12:{battery:'2400',dod:'50',eff:'80'},
+ gel24:{battery:'4800',dod:'50',eff:'80'},
+ lithium48:{battery:'4800',dod:'80',eff:'85'}
 };
 $('sirai-battery-preset')?.addEventListener('change',event=>{
  const preset=batteryPresets[event.target.value];if(!preset)return;
@@ -211,7 +212,7 @@ $('sirai-battery-preset')?.addEventListener('change',event=>{
   if(input)input.value=value;
  }
  refresh();
- showMessage('Example assumptions applied. Verify voltage, battery condition, chemistry and heat losses before purchasing.');
+ showMessage(T('batteryPresetApplied'));
 });
 $('tq-csv').addEventListener('click',exportCsv);$('tq-json').addEventListener('click',exportJson);
 $('tq-import').addEventListener('click',()=>$('tq-import-file').click());
