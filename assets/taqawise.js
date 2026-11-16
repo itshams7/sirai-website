@@ -120,6 +120,8 @@ function report(data){
  const host=$('tq-report');host.replaceChildren();
  host.appendChild(el('h4','TaqaWise / '+T('draftTitle')));
  host.appendChild(el('p',T('reportStatus'),'tq-report-lead'));
+ const summary=T('reportSummary').replaceAll('{daily}',kilowatt(data.daily)).replaceAll('{essential}',watt(data.essentialW)).replaceAll('{runtime}',data.runtime!==null?hours(data.runtime):'—').replaceAll('{outage}',number(data.settings.outage,1)).replaceAll('{pv}',data.pv!==null?watt(data.pv):'—');
+ host.appendChild(el('p',summary,'tq-report-summary'));
  const grid=el('div',undefined,'tq-report-stats');
  for(const [key,value] of [['daily',kilowatt(data.daily)],['connected',watt(data.connected)],['essLoad',watt(data.essentialW)],['runtime',data.runtime!==null?hours(data.runtime):'—'],['needed',data.required!==null?wh(data.required):'—'],['pvEstimate',data.pv!==null?watt(data.pv):'—']]){
   const card=el('div',undefined,'tq-report-stat');card.appendChild(el('span',T(key)));card.appendChild(el('strong',value));grid.appendChild(card)
