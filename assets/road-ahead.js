@@ -4,7 +4,7 @@ const root=document.querySelector('[data-sirai-roadmap]');if(!root)return;
 const copy={
 en:{moduleLabel:'DEVELOPMENT ROADMAP',navLabel:'Explore roadmap phases',eyebrow:'SIRAI / THE ROAD AHEAD',heading:'Small steps. A larger purpose.',intro:'Explore what SIRAI is building toward, from public planning tools to community-shaped action.',now:'CURRENT FOCUS',completed:'FOUNDATION BUILT',planned:'PLANNED',future:'LONGER-TERM',phase:'PHASE',previous:'Previous',next:'Next',foot:'A direction, not a percentage. No field outcomes are claimed.',action:'See development updates',items:[
  {title:'Build the foundation',text:'Publish free planning tools, clear documentation and accessible information. The initial website and resources are available for testing.',status:'completed'},
- {title:'Test and improve',text:'Validate calculations, review accessibility and languages, and learn from voluntary user feedback before formal launch.',status:'now'},
+ {title:'Test and improve',text:'Validate calculations, review accessibility and languages, and learn from voluntary user feedback through ongoing feedback and review.',status:'now'},
  {title:'Launch and share',text:'Release better-tested resources openly, explain what they can and cannot do, and make them usable across connections and devices.',status:'planned'},
  {title:'Grow with communities',text:'Explore one small community-shaped pilot by the end of 2027, only if safety, resources, feasibility and local collaboration allow.',status:'future'}
 ]},
