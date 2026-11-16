@@ -34,5 +34,6 @@ confirmLoad:'Replace the current entries with the draft saved on this device?',
 budgetInvalid:'Check all cost, quantity and funding inputs.'
 });
 Object.assign(en,{"fundingNotesLabel":"How might you cover the remaining costs?","fundingNotesHelp":"Separate secured funding from ideas that are still uncertain."});
+Object.assign(en,{tab1:'The idea',tab2:'What it needs',tab3:'The plan',summaryHeading:'Your idea, in plain language',summaryTemplate:'This draft proposes {name} for {people}. It responds to {problem}. The planned activity is {action}. The estimated budget is {budget}. It currently lists {risks} risks and {milestones} milestones. Review the details with local participants before making commitments.',suggestProblem:'Briefly describe the need and who is affected.',suggestAction:'Explain what you will do and what useful progress would look like.',suggestVoice:'Add a simple way for people to shape the plan and raise concerns.',suggestCosts:'Add at least one cost with a locally checked estimate.',suggestRoles:'Name a role responsible for the work and a way to hear concerns.',suggestMilestones:'Add one practical first step and a realistic timeframe.',suggestRisks:'Think of one thing that could go wrong and how you would respond.',suggestFunding:'State what is confirmed and how you might address any remaining gap.'});
 window.PS_LOCALES={en};
 })();
