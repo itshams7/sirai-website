@@ -3,7 +3,7 @@
 const page=document.querySelector('.ps');
 if(!page)return;
 const $=id=>document.getElementById(id);
-const STEP_COUNT=5, MAX_ROWS=30, MAX_FILE=300000;
+const STEP_COUNT=3, MAX_ROWS=30, MAX_FILE=300000;
 const FIELD_KEYS=['name','category','area','problem','people','action','success','voice','currency','funding','contingency','fundingNotes','consult','inclusion'];
 const LIMITS={name:100,area:100,problem:700,people:450,action:650,success:500,voice:500,fundingNotes:450,consult:600,inclusion:600};
 const defaultState=()=>({name:'',category:'education',area:'',problem:'',people:'',action:'',success:'',voice:'',currency:'SDG',funding:'0',contingency:'10',fundingNotes:'',consult:'',inclusion:'',costs:[{item:'',qty:'1',unit:'0'}],roles:[{role:'',responsibility:''}],milestones:[{task:'',when:'',owner:''}],risks:[{risk:'',response:'',level:'medium'}]});
@@ -60,7 +60,7 @@ function recalc(){
  const v=totals();
  for(const [id,n] of [['ps-subtotal',v.subtotal],['ps-reserve',v.reserve],['ps-total',v.grand],['ps-gap',v.gap]])$(id).textContent=v.invalid?'—':money(n);
  renderProgress();
- if(step===4)renderPreview();
+ if(step===2)renderPreview();
 }
 function repeat(kind,elementId,headingKey,properties){
  const host=$(elementId);host.replaceChildren();
@@ -86,13 +86,14 @@ function renderRepeat(kind){
 }
 function add(kind,template){if(state[kind].length>=MAX_ROWS){message(T('rowLimit'));return}state[kind].push({...template});renderRepeat(kind);recalc()}
 function message(msg){$('ps-message').textContent=msg||''}
+function panelGroup(panelIndex){return panelIndex===0?0:panelIndex<=2?1:2}
 function setStep(next){
  step=Math.max(0,Math.min(STEP_COUNT-1,next));
- document.querySelectorAll('[data-panel]').forEach((el,i)=>{el.hidden=i!==step});
+ document.querySelectorAll('[data-panel]').forEach(el=>{el.hidden=panelGroup(Number(el.dataset.panel))!==step});
  document.querySelectorAll('[data-step]').forEach((el,i)=>{el.classList.toggle('active',i===step);if(i===step)el.setAttribute('aria-current','step');else el.removeAttribute('aria-current')});
  $('ps-prev').disabled=step===0;
  $('ps-next').hidden=step===STEP_COUNT-1;
- if(step===4)renderPreview();
+ if(step===2)renderPreview();
  renderProgress();message('');
  const section=$('workspace');if(section&&window.matchMedia&&window.matchMedia('(max-width: 850px)').matches)section.scrollIntoView({block:'start',behavior:'smooth'});
 }
@@ -129,12 +130,25 @@ function proposal(){
  }
  host.appendChild(text('p',T('proposalDisclaimer'),'ps-proposal-note'));
 }
+function renderPlainSummary(){
+ const host=$('ps-plain-summary');host.replaceChildren();
+ const b=totals(),riskCount=state.risks.filter(x=>filled(x.risk)).length,milestoneCount=state.milestones.filter(x=>filled(x.task)).length;
+ let paragraph=T('summaryTemplate');
+ const values={name:state.name.trim()||T('untitled'),people:state.people.trim()||T('unspecified'),problem:state.problem.trim()||T('unspecified'),action:state.action.trim()||T('unspecified'),budget:b.invalid?'—':money(b.grand),risks:String(riskCount),milestones:String(milestoneCount)};
+ for(const [key,value] of Object.entries(values))paragraph=paragraph.split('{'+key+'}').join(value);
+ host.appendChild(text('h4',T('summaryHeading')));host.appendChild(text('p',paragraph));
+}
 function renderPreview(){
+ renderPlainSummary();
  const host=$('ps-checklist');host.replaceChildren();
- for(const [k,ok] of checks()){
+ const suggestions=['suggestProblem','suggestAction','suggestVoice','suggestCosts','suggestRoles','suggestMilestones','suggestRisks','suggestFunding'];
+ checks().forEach(([k,ok],i)=>{
   const item=text('div','','ps-quality-item'+(ok?'':' missing'));
-  item.appendChild(text('span',ok?'✓':'○'));item.appendChild(text('div',T(k)));host.appendChild(item);
- }
+  item.appendChild(text('span',ok?'✓':'○'));
+  const copy=text('div','');copy.appendChild(text('strong',T(k)));
+  if(!ok)copy.appendChild(text('small',T(suggestions[i])));
+  item.appendChild(copy);host.appendChild(item);
+ });
  proposal();
 }
 function renderLanguage(){
@@ -147,7 +161,7 @@ function renderLanguage(){
  renderRepeat('costs');renderRepeat('roles');renderRepeat('milestones');renderRepeat('risks');
  $('ps-prev').textContent=T('previous');
  $('ps-next').textContent=T('next');
- recalc();if(step===4)renderPreview();
+ recalc();if(step===2)renderPreview();
 }
 function validateDraft(raw){
  if(!raw||typeof raw!=='object'||raw.format!=='SIRAI-ProjectStarter-v1'||!raw.project||typeof raw.project!=='object')throw Error(T('badFile'));
