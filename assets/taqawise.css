@@ -18,3 +18,7 @@ html[dir=rtl] .tq-step{text-align:right}html[dir=rtl] .tq-report-table th{text-a
 .tq-external{border:1px solid #dbe7d9;border-radius:12px;background:#eef4ea;padding:22px 24px;margin-top:27px}.tq-external strong{font-size:14px;color:#2b5d43}.tq-external p{font-size:12px;color:#657766;line-height:1.7;margin:6px 0 10px}.tq-external a{font-size:12px;font-weight:850;color:#2e744e;text-decoration:underline;text-underline-offset:4px}
 @media(max-width:620px){.tq-breakdown,.tq-backup-compare{padding:17px}.tq-compare-grid{grid-template-columns:1fr}.tq-compare-grid span{min-height:0}}
 @media print{.tq-external{display:none!important}}
+
+/* TaqaWise three-stage flow: keep the combined backup/solar stage compact. */
+.tq-main.tq-combined-stage .tq-panel{min-height:0}
+.tq-main.tq-combined-stage .tq-panel+.tq-panel{padding-top:24px}
