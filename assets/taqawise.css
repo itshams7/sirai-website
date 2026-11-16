@@ -22,3 +22,5 @@ html[dir=rtl] .tq-step{text-align:right}html[dir=rtl] .tq-report-table th{text-a
 /* TaqaWise three-stage flow: keep the combined backup/solar stage compact. */
 .tq-main.tq-combined-stage .tq-panel{min-height:0}
 .tq-main.tq-combined-stage .tq-panel+.tq-panel{padding-top:24px}
+
+.tq-report-summary{margin:0 0 20px;padding:15px 17px;border-inline-start:3px solid #8cae91;background:#f5f8f1;color:#4c6652;border-radius:0 8px 8px 0;font-size:12px;line-height:1.75}
