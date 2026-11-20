@@ -81,10 +81,18 @@ function renderBreakdown(data){
  const host=$('tq-breakdown-bars');host.replaceChildren();
  if(!data.valid||!data.rows.length||data.daily<=0){host.appendChild(el('p',T('noLoads'),'tq-breakdown-empty'));return}
  const ranked=[...data.rows].sort((a,b)=>b.energy-a.energy).slice(0,6);
+ // Top consumers insight
+ const top = ranked.slice(0, Math.min(3, ranked.length));
+ const topShare = top.reduce((s,r)=>s+r.energy,0)/data.daily;
+ if(topShare >= 0.45 && top.length){
+  const names = top.map(r=>r.name).join(', ');
+  const insight = el('p', T('topInsightNamed').replace('{names}', names), 'tq-breakdown-insight');
+  host.appendChild(insight);
+ }
  for(const row of ranked){
-  const item=el('div',undefined,'tq-breakdown-row'),top=el('div',undefined,'tq-breakdown-top');
-  top.appendChild(el('span',row.name));top.appendChild(el('strong',number(row.energy/data.daily*100,0)+'% · '+wh(row.energy)));
-  item.appendChild(top);
+  const item=el('div',undefined,'tq-breakdown-row'),topEl=el('div',undefined,'tq-breakdown-top');
+  topEl.appendChild(el('span',row.name));topEl.appendChild(el('strong',number(row.energy/data.daily*100,0)+'% · '+wh(row.energy)));
+  item.appendChild(topEl);
   const track=el('div',undefined,'tq-breakdown-track'),fill=el('span');
   fill.style.width=Math.max(0,Math.min(100,row.energy/data.daily*100))+'%';
   track.appendChild(fill);item.appendChild(track);host.appendChild(item);
@@ -118,6 +126,21 @@ function table(headers,records){
 }
 function report(data){
  const host=$('tq-report');host.replaceChildren();
+ // Plain-language summary first
+ const plainBox = el('div', undefined, 'tq-plain-summary');
+ plainBox.appendChild(el('h4', T('plainSummaryHeading')));
+ let plain = T('plainSummaryTemplate');
+ const vals = {
+  daily: kilowatt(data.daily),
+  essential: watt(data.essentialW),
+  runtime: data.runtime!==null?hours(data.runtime):'—',
+  outage: number(data.settings.outage,1),
+  pv: data.pv!==null?watt(data.pv):'—'
+ };
+ for(const [k,v] of Object.entries(vals)) plain = plain.split('{'+k+'}').join(v);
+ plainBox.appendChild(el('p', plain));
+ host.appendChild(plainBox);
+
  host.appendChild(el('h4','TaqaWise / '+T('draftTitle')));
  host.appendChild(el('p',T('reportStatus'),'tq-report-lead'));
  const summary=T('reportSummary').replaceAll('{daily}',kilowatt(data.daily)).replaceAll('{essential}',watt(data.essentialW)).replaceAll('{runtime}',data.runtime!==null?hours(data.runtime):'—').replaceAll('{outage}',number(data.settings.outage,1)).replaceAll('{pv}',data.pv!==null?watt(data.pv):'—');
@@ -136,13 +159,37 @@ function report(data){
  ]));
  host.appendChild(el('p',T('reportLimit'),'tq-report-notes'));
 }
+function applyWhatIf(type){
+ if(type==='essentials'){
+  // Keep only lights, phone, router as essential; zero others' hours or unmark
+  model.items.forEach(item=>{
+   const n = (item.name||'').toLowerCase();
+   const keep = n.includes('led')||n.includes('light')||n.includes('phone')||n.includes('router')||n.includes('charger');
+   item.essential = keep;
+  });
+ }
+ if(type==='reduce'){
+  model.items.forEach(item=>{
+   const h = numeric(item.hours,0,24);
+   if(h!==null) item.hours = String(Math.max(0, Math.round(h*0.8*4)/4));
+  });
+ }
+ if(type==='outage12'){
+  model.settings.outage = '12';
+  const input = document.querySelector('[data-setting="outage"]');
+  if(input) input.value = '12';
+ }
+ renderItems();
+ refresh();
+ showMessage(T('whatIfApplied'));
+}
 function refresh(){
  const data=getData();calculateText(data);renderBreakdown(data);if(step===2){if(data.valid)report(data);else $('tq-report').replaceChildren(el('p',T('invalid')))}
 }
 function go(n){
  step=Math.min(2,Math.max(0,n));
  document.querySelectorAll('[data-panel]').forEach((p,i)=>{p.hidden=step===0?i!==0:step===1?!(i===1||i===2):i!==3});
- $('.tq-main').classList.toggle('tq-combined-stage',step===1);
+ document.querySelector('.tq-main')?.classList.toggle('tq-combined-stage',step===1);
  document.querySelectorAll('[data-step]').forEach((s,i)=>{s.classList.toggle('active',i===step);if(i===step)s.setAttribute('aria-current','step');else s.removeAttribute('aria-current')});
  $('tq-prev').disabled=step===0;$('tq-next').hidden=step===2;
  refresh();showMessage('');
@@ -150,12 +197,17 @@ function go(n){
 }
 function renderLanguage(){
  document.querySelectorAll('[data-tq]').forEach(n=>{n.textContent=T(n.dataset.tq)});
+ // Update what-if button labels if present
+ const w1=$('tq-whatif-essentials'); if(w1) w1.textContent=T('whatIfEssentials');
+ const w2=$('tq-whatif-reduce'); if(w2) w2.textContent=T('whatIfReduceHours');
+ const w3=$('tq-whatif-12h'); if(w3) w3.textContent=T('whatIf12h');
+ const wt=$('tq-whatif-title'); if(wt) wt.textContent=T('whatIfTitle');
  renderItems();refresh();
 }
 function downloadFile(name,data,mime){
  const blob=new Blob([data],{type:mime});const url=URL.createObjectURL(blob),link=document.createElement('a');link.href=url;link.download=name;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),500);
 }
-const csvField=x=>{let s=String(x);if(/^[\\s]*[=+@\\-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"'};
+const csvField=x=>{let s=String(x);if(/^[\s]*[=+@\-]/.test(s))s="'"+s;return '"'+s.replaceAll('"','""')+'"'};
 function exportCsv(){
  const d=getData();if(!d.valid||!d.rows.length){showMessage(T('invalid'));return}
  const rows=[[T('name'),T('watts'),T('qty'),T('dailyHours'),T('energy')+' (Wh)',T('essential')],...d.rows.map(r=>[r.name,r.watts,r.qty,r.hours,r.energy,r.essential?T('yes'):T('no')])];
@@ -216,6 +268,10 @@ $('sirai-battery-preset')?.addEventListener('change',event=>{
  refresh();
  showMessage(T('batteryPresetApplied'));
 });
+// What-if buttons
+$('tq-whatif-essentials')?.addEventListener('click',()=>applyWhatIf('essentials'));
+$('tq-whatif-reduce')?.addEventListener('click',()=>applyWhatIf('reduce'));
+$('tq-whatif-12h')?.addEventListener('click',()=>applyWhatIf('outage12'));
 $('tq-csv').addEventListener('click',exportCsv);$('tq-json').addEventListener('click',exportJson);
 $('tq-import').addEventListener('click',()=>$('tq-import-file').click());
 $('tq-import-file').addEventListener('change',async event=>{
