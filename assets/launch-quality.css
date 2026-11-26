@@ -151,3 +151,10 @@
 @media(max-width:350px){.sirai-national-visual{padding:15px 10px;gap:12px}.sirai-national-footer{font-size:9px}.sirai-children-breakdown{gap:8px}}
 @media(prefers-reduced-motion:reduce){.sirai-national-bar-fill{transition:none}}
 @media print{.sirai-national-visual{box-shadow:none;background:#143b30!important}}
+
+/* Clear tactile feedback for the three humanitarian indicator controls. */
+.sirai-stat-choice{position:relative;user-select:none;-webkit-tap-highlight-color:transparent}
+.sirai-stat-choice:active{transform:translateY(1px) scale(.975);background:#0d3025;color:#fff7e9;border-color:#0d3025}
+.sirai-stat-choice.is-active,.sirai-stat-choice[aria-pressed="true"]{background:#123e30!important;color:#fff7e9!important;border-color:#123e30!important;box-shadow:inset 0 0 0 1px #ffffff18,0 8px 22px #123e3030!important;transform:translateY(-1px)}
+.sirai-stat-choice.is-active .sirai-stat-choice-number,.sirai-stat-choice[aria-pressed="true"] .sirai-stat-choice-number{color:#fff7e9}
+.sirai-stat-choice:focus-visible{outline:3px solid #b7758c;outline-offset:3px}
