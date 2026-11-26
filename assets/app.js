@@ -160,7 +160,7 @@ if(statsRoot){
    const keys=mapKeys[key];mapNumber.textContent=item.number+'M';
    mapTitle.dataset.i18n=keys[0];mapTitle.textContent=strings[lang][keys[0]]||strings.en[keys[0]];
    mapText.dataset.i18n=keys[1];mapText.textContent=strings[lang][keys[1]]||strings.en[keys[1]];
-   comparison.hidden=key!=='children';
+   if(comparison)comparison.hidden=key!=='children';
    const national=statsRoot.querySelector('#sirai-national-visual');
    if(national){
     const showing=key!=='displaced';
